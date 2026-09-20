@@ -17,8 +17,10 @@ TREC DL19/DL20 reranking remains a separate IR holdout. Neither enters training.
 
 ## Provider contract
 
-All providers receive the same state, question, candidate descriptions and
-order. The typed-row adapter checks byte-identical candidate prompt round trips.
+For the fixed saved-case suites, all providers receive the same state, question,
+candidate descriptions and order. The typed-row adapter checks byte-identical
+candidate prompt round trips. TREC uses the same initial candidates, then its
+later windows adapt to each provider's earlier rankings.
 Targets, group labels, generation metadata and rationale remain in a separate
 gold file. Snapshot choices do not establish complete game, browser or flight
 success; those require closed-loop environment evaluation.
@@ -138,8 +140,18 @@ listwise Score. Equal outputs retain candidate input order. Boolean Noul
 cannot rank different relevance grades within each true/false group; these
 signals differ in resolution from Jev's probabilities and expected scores.
 A categorical Choice winner does not define a full ranking. All 36 reconstructed
-rankings passed independent checks. Real TREC DL19/DL20 inputs are prepared,
-but no model has been evaluated on that holdout yet.
+rankings passed independent checks.
+
+The separate [real TREC evaluation](../reports/ir-control-v1/trec-holdout/README.md)
+now has a completed Jev collection: 97 queries, 873 HTTP-successful requests.
+108 requests failed strict probability-mass validation, so 66 queries contribute
+zero under the predeclared strict metric. DL19/DL20 nDCG@10 is
+**0.275836/0.190667 strict**, and **0.728218/0.715734** in the separately declared
+actual-scalar analysis. Downloaded BM25 is 0.505831/0.479637. All metrics use
+full official qrels and the full 43/54 query denominators. This independently
+authored listwise Score protocol is not an exact community-demo reproduction.
+OpenAI collection continues; Open-Jev and their published TREC scores remain
+pending. The five earlier small quality suites and their costs above are unchanged.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates
 completed counts from unattempted decisions. New Open-Jev GPU inference remains

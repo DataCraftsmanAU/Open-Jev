@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 from pathlib import Path
 
 REPORTS = Path('reports/provider-comparison-20260920')
@@ -39,6 +40,52 @@ def read_report(root, relative):
             sum(r['correct'] for r in hard) != value['overall']['hard_correct']):
         raise ValueError(f'Aggregate disagrees with actual rows: {relative}')
     return value
+
+
+def build_trec(root):
+    directory = Path('reports/ir-control-v1/trec-holdout')
+    results, evidence, baselines = {}, {}, {}
+    for provider in PROVIDERS:
+        pid = provider['id']
+        relative = directory / f'{pid}-listwise-summary.json'
+        if not (root / relative).exists():
+            results[pid] = {'status': 'pending'}
+            continue
+        report = json.loads((root / relative).read_bytes())
+        expected_model = {'2b': 'Qwen/Qwen3.5-2B', '9b': 'Qwen/Qwen3.5-9B',
+                          'jev': 'jev-1.13.0', 'luna': 'gpt-5.6-luna', 'astra': 'gpt-6-astra'}[pid]
+        if report.get('model') != expected_model:
+            raise ValueError('TREC report model differs from its provider column')
+        if report['status'] != 'complete' or report['qrel_query_denominator'] != 97:
+            raise ValueError('Only completed, full-denominator TREC summaries may be published')
+        results[pid] = {'status': 'complete', 'benchmarks': {},
+                        'evidence_url': PUBLIC + str(relative)}
+        for benchmark, denominator in (('dl19', 43), ('dl20', 54)):
+            section = report['benchmarks'][benchmark]
+            if section['qrel_query_denominator'] != denominator:
+                raise ValueError('TREC query denominator differs')
+            strict = section['primary_strict']['value']
+            supplemental = section['supplemental_actual_scalar']
+            scalar = None if supplemental is None else supplemental['value']
+            baseline = section['downloaded_bm25_baseline']['value']
+            if any(not math.isfinite(x) or not 0 <= x <= 1 for x in (strict, baseline) + (() if scalar is None else (scalar,))):
+                raise ValueError('Invalid nDCG value')
+            if benchmark in baselines and baselines[benchmark] != baseline:
+                raise ValueError('TREC baseline differs across providers')
+            baselines[benchmark] = baseline
+            results[pid]['benchmarks'][benchmark] = {
+                'primary_strict_ndcg_at_10': strict,
+                'supplemental_actual_scalar_ndcg_at_10': scalar,
+                'strict_complete_queries': section['strict_complete_queries'],
+                'scalar_complete_queries': section['scalar_complete_queries'],
+            }
+        evidence[str(relative)] = hashlib.sha256((root / relative).read_bytes()).hexdigest()
+    return {'benchmarks': [{'id': name, 'label': label, 'queries': size,
+                           'downloaded_bm25_ndcg_at_10': baselines.get(name)}
+                          for name, label, size in (('dl19', 'TREC-DL19', 43), ('dl20', 'TREC-DL20', 54))],
+            'results': results, 'source_report_sha256': evidence,
+            'method_url': PUBLIC + str(directory / 'README.md'),
+            'note': 'nDCG@10 on all 97 judged queries with full official qrels and direct relevance grades. Each query reranks the downloaded BM25 top 100 using nine adaptive 20-passage Score windows. Strict failures contribute zero. Jev’s predeclared supplementary analysis uses actual scalar scores from mass-only failures, without renormalizing probabilities. Pending cells have no published model score. This independently authored protocol is not an exact reproduction of the community demo.'}
 
 
 def build(root):
@@ -96,6 +143,7 @@ def build(root):
                        'requests': requests, 'note': note, 'results': results})
     return {'schema_version': 1, 'generated_at': datetime.now(timezone.utc).isoformat(),
             'status': 'partial', 'providers': PROVIDERS, 'suites': suites,
+            'trec': build_trec(root),
             'scope': 'Fixed coverage checks and separate probes. Counts match the frozen supplied labels; a post-hoc audit flags six game references and one customer rubric ambiguity. Common-case sensitivity counts with identical exclusions are available in the method; primary counts stay unchanged. The 73,333-row full test/OOD registry remains pending; an additive 107,922-row registry is prepared but not evaluated. These are categorical decisions, not calibrated probabilities or closed-loop game success rates. Failed decisions count as incorrect; unattempted decisions remain pending.',
             'decision_policy': 'Choice uses the returned selection. Noul uses argmax of [1-p, p], with exact ties selecting false. Score uses its most probable level; OpenAI returns a categorical integer. Jev probability-mass failures with usable finite choices are reported separately in decision-only analysis; vectors are never renormalized.',
             'method_url': PUBLIC + 'docs/provider-comparison.md',

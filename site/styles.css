@@ -32,6 +32,8 @@
 
 /* Correctness comparisons retain separate denominators and pending work. */
 .comparison-section{padding-block:58px 72px;border-top:1px solid var(--line)}
+#trec-comparison{margin-top:42px}#trec-comparison h3{font-size:26px;font-weight:500;letter-spacing:-.6px;margin:0 0 14px}#trec-comparison>.text-link{font-size:11px}
+#trec-table caption{text-align:left}@media(max-width:540px){#trec-table caption{width:calc(100vw - 40px);white-space:normal}}
 .comparison-context{padding:18px 23px;background:#e9eee5;border:1px solid #d4dfcc;border-radius:6px;margin:25px 0}
 .comparison-context p{font-size:12px;line-height:1.8;color:#4f6252;margin:0}.comparison-context p+p{margin-top:10px}
 .comparison-status{font:11px/1.8 var(--mono);color:#596d56;margin:22px 0 14px}

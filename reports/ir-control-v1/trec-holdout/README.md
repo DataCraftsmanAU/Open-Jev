@@ -1,10 +1,10 @@
-# Isolated TREC holdout preparation
+# TREC holdout protocol and results
 
 These files are text-free provenance, structural checks and the recorded conversion source for TREC-DL19/DL20. Actual query/passages/qrels remain in ignored `runs/external/ir-holdout`. They are not Open-Jev training data or an MIT/CC0 dataset release.
 
 DL19 has 43 judged queries and 4,300 candidate occurrences; DL20 has 54 queries and 5,400. Every query has 100 unique candidate documents, official query text and complete qrels. Manifests contain pinned public download URLs, checksums, preprocessing and reuse terms. Candidate-source bytes match the pinned Hugging Face LFS digests; qrels and queries match the official-file checksums recorded by ir_datasets.
 
-No Jev, Open-Jev or OpenAI inference was run here. nDCG in verification files is arithmetic on downloaded BM25 rankings, not a new retrieval run or a model result. Runtime token truncation still needs an explicit policy.
+The preparation verification files contain arithmetic on downloaded BM25 rankings, not a new retrieval run. The frozen provider protocol and completed model results are recorded separately below.
 
 `prepare.py` is the exact recorded converter snapshot. It expects the raw/source layout described by the manifests next to it, and execution from the Open-Jev checkout. Reproduce in a new isolated directory outside training data, placing the source snapshot there; it refuses to overwrite prepared outputs. Do not place restricted external passages in this public evidence directory.
 
@@ -66,3 +66,52 @@ Use `TYPESAFE_API_KEY` or `OPENAI_API_KEY` through the environment, never source
 or command arguments. Output directories must be new; the runner does not
 resume or resubmit prior requests. Real passage/input/response bundles remain
 outside public code and training releases.
+
+## Completed Jev collection
+
+The [offline summary](jev-listwise-summary.json) replays all 873 saved requests
+and responses, their nine adaptive windows per query, and every full
+100-document permutation. All 97 queries returned usable scalar scores.
+However, 108 requests failed the predeclared probability-mass check, affecting
+66 queries. Only 31 queries passed every strict check. HTTP success alone
+does not establish typed-response validity.
+
+| Benchmark | Queries | Downloaded BM25 | Jev strict nDCG@10 | Jev supplementary scalar nDCG@10 | Strict-complete queries |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| DL19 | 43 | 0.505831 | 0.275836 | 0.728218 | 15/43 |
+| DL20 | 54 | 0.479637 | 0.190667 | 0.715734 | 16/54 |
+
+Each column uses the full 43/54-query denominator and full official qrels,
+including judgments outside the candidate top 100, to compute ideal DCG.
+Relevance grades are direct gains. Strict-failed queries contribute zero in
+the primary column; the supplementary column uses the actual returned scalar
+without modifying probabilities. The query-weighted combined values are
+0.228422 strict, 0.721268 supplementary and 0.491249 BM25. The strict score
+therefore reflects response validity as well as ranking quality; the scalar
+score does not validate Jev's probability vectors.
+
+OpenAI Luna/Astra are in the sequential collection queue. Open-Jev TREC
+inference remains pending until the authorized GPU allocation is available.
+No score is published for these providers yet. Jev API cost is unknown, not
+zero; the collection has no transport errors or retries.
+
+The collector used Python 3.10 and local replay uses Python 3.14. Compensated
+float summation introduced in Python 3.12 changes 25 derived diagnostic records
+by at most 2.22e-16. The scorer accepts only an exact current or exact legacy
+recomputation of the entire diagnostic list. It preserves the original raw
+bytes, strict flags, IDs, scalar values and both validation tolerances; it
+does not apply an approximate-equality escape hatch.
+
+```bash
+python -m scripts.summarize_trec_provider \
+  --run runs/provider-trec-20260920/jev-1.13.0 \
+  --holdout-root runs/external/ir-holdout/prepared \
+  --output runs/jev-trec-offline-summary.json
+```
+
+The offline command makes no API requests. The published summary binds all
+private snapshot files, frozen manifests and replay source by SHA256.
+The [independent audit](jev-result-independent-audit.json) reconstructs all
+873 windows and 17,460 Score heads without importing the runner, reranker or
+scorer, and independently recomputes the metrics from the full qrels. Its
+[verification source](verify_jev_result.py) is included for inspection.

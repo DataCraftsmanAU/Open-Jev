@@ -527,6 +527,46 @@ async function loadComparison() {
     $("#comparison-mass-note").hidden = !massFlags;
     const method = sourceURL(report.method_url);
     if (method) $("#comparison-method-link").href = method;
+    if (report.trec) {
+      const trec = report.trec;
+      const metric = (value) => {
+        if (!Number.isFinite(value) || value < 0 || value > 1) throw new Error("Invalid TREC metric");
+        return value.toFixed(4);
+      };
+      $("#trec-head").replaceChildren(...["Benchmark", "Downloaded BM25", ...report.providers.map((p) => p.name)].map((name) => {
+        const th = element("th", null, name); th.scope = "col"; return th;
+      }));
+      $("#trec-table").style.setProperty("--comparison-providers", report.providers.length + 1);
+      $("#trec-rows").replaceChildren(...trec.benchmarks.map((benchmark) => {
+        const tr = element("tr"); tr.dataset.benchmark = benchmark.id;
+        const th = element("th", null, benchmark.label); th.scope = "row";
+        th.append(element("small", null, `${benchmark.queries} judged queries · top 100`)); tr.append(th);
+        const baseline = element("td");
+        baseline.append(element("strong", "comparison-fraction", benchmark.downloaded_bm25_ndcg_at_10 === null ? "Pending" : metric(benchmark.downloaded_bm25_ndcg_at_10)), element("small", null, "Saved ranking; no retrieval rerun"));
+        tr.append(baseline);
+        for (const provider of report.providers) {
+          const td = element("td"); td.dataset.provider = provider.id;
+          const result = trec.results[provider.id];
+          if (result.status === "pending") {
+            td.append(element("span", "comparison-pending", "Pending"), element("small", null, "Awaiting audited result"));
+          } else {
+            const values = result.benchmarks[benchmark.id];
+            td.append(element("strong", "comparison-fraction", metric(values.primary_strict_ndcg_at_10)), element("small", null, `Strict · ${values.strict_complete_queries}/${benchmark.queries} valid queries`));
+            if (values.supplemental_actual_scalar_ndcg_at_10 !== null) {
+              td.append(element("small", "comparison-mass", `Supplementary scalar: ${metric(values.supplemental_actual_scalar_ndcg_at_10)} · ${values.scalar_complete_queries}/${benchmark.queries} queries`));
+            }
+            const url = sourceURL(result.evidence_url);
+            if (url) { const link = element("a", "comparison-evidence", "Evidence ↗"); link.href = url; td.append(link); }
+          }
+          tr.append(td);
+        }
+        return tr;
+      }));
+      $("#trec-note").textContent = trec.note;
+      const trecMethod = sourceURL(trec.method_url);
+      if (trecMethod) $("#trec-method-link").href = trecMethod;
+      $("#trec-comparison").hidden = false;
+    }
     $("#comparison-content").hidden = false;
   } catch (error) {
     $("#comparison-status").textContent = "The comparison could not be loaded. Read the method and detailed results on GitHub.";

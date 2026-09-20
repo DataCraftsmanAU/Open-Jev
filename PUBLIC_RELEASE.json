@@ -30,12 +30,12 @@
     },
     {
       "path": "README.md",
-      "sha256": "b7aca5b95456b5b2c2ba9c9fc6bccfebe5909790673963240e8608bd09011559",
-      "bytes": 14336,
-      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
-      "source_sha256": "d8e461061d3266b6c389a309a273aa7bd23fd2f65899d72275245d67bf9a1586",
+      "sha256": "1ec4fbb453b2e01c9e311309c1f41120dcb4e61aaa4611e74b74bf40ce93ec2b",
+      "bytes": 14748,
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "source_sha256": "b694749a38b9e049e5ee30ef6e747f3eb5a37f9896853b612bcf11fc3c27d3fa",
       "changes": [
-        "Public README layout preserved; completed comparison results updated from the source release."
+        "Preserve custom public README; add audited real TREC result paragraph."
       ]
     },
     {
@@ -291,6 +291,16 @@
       "bytes": 15250
     },
     {
+      "path": "docs/posttraining-evaluation-supervisor.md",
+      "sha256": "dcfa60e43cb7a7a436ffc283c66912a3f2f25a88a7f50c298ac7abcf654d0a27",
+      "bytes": 8156,
+      "source_sha256": "dcfa60e43cb7a7a436ffc283c66912a3f2f25a88a7f50c298ac7abcf654d0a27",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
       "path": "docs/prefix-caching.md",
       "source_sha256": "22ddfb7337f77431a1c331b062e0e43d57348984d17df90e94b3668d2aec5510",
       "sha256": "22ddfb7337f77431a1c331b062e0e43d57348984d17df90e94b3668d2aec5510",
@@ -302,10 +312,13 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "669590b500ec023742d1ae6b92cb78e0a30a5a37db3072a0ef28242ee39de9c9",
-      "bytes": 13259,
-      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
-      "source_sha256": "669590b500ec023742d1ae6b92cb78e0a30a5a37db3072a0ef28242ee39de9c9"
+      "sha256": "fdac6cdad789ff95826a38de37a2f48f8a25afd9adeee7d613fef198deffad93",
+      "bytes": 14089,
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "source_sha256": "fdac6cdad789ff95826a38de37a2f48f8a25afd9adeee7d613fef198deffad93",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
     },
     {
       "path": "docs/public-capabilities.md",
@@ -3325,10 +3338,13 @@
     },
     {
       "path": "reports/ir-control-v1/trec-holdout/README.md",
-      "sha256": "94b732a3c67273b0eace944160db48ba97f56dc1bd5cacc67714e2356ec018cf",
-      "bytes": 4698,
-      "source_sha256": "94b732a3c67273b0eace944160db48ba97f56dc1bd5cacc67714e2356ec018cf",
-      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
+      "sha256": "c744e3c3c34bbb011772d5a825ed4b55bb8bb7e85d153209b3c8d1f561015a71",
+      "bytes": 7348,
+      "source_sha256": "c744e3c3c34bbb011772d5a825ed4b55bb8bb7e85d153209b3c8d1f561015a71",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
     },
     {
       "path": "reports/ir-control-v1/trec-holdout/dl19-manifest.json",
@@ -3371,6 +3387,26 @@
       ]
     },
     {
+      "path": "reports/ir-control-v1/trec-holdout/jev-listwise-summary.json",
+      "sha256": "2a4925b265c18cb1bad192cf96d824e96d2c4510eee259e80c95d8fb7501c20a",
+      "bytes": 17872,
+      "source_sha256": "2a4925b265c18cb1bad192cf96d824e96d2c4510eee259e80c95d8fb7501c20a",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/jev-result-independent-audit.json",
+      "sha256": "e4a6c67ca9831f3fa608d6c24a7f4735a5cd2561d582c3341466881ee9046189",
+      "bytes": 3462,
+      "source_sha256": "e4a6c67ca9831f3fa608d6c24a7f4735a5cd2561d582c3341466881ee9046189",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
       "path": "reports/ir-control-v1/trec-holdout/preparation-report.json",
       "sha256": "2aec767f1f9779baeb408287fea2315ae1dd9a5c3607c1a220772f2e5d67177f",
       "bytes": 2355,
@@ -3406,6 +3442,46 @@
       "bytes": 2675,
       "source_sha256": "05d26bb2ab5abb4641a3e419619050641d52ced762fd4f94ebfb272e437502a1",
       "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/publication-review.json",
+      "sha256": "c1ea2ca27f45cb7593911425d167d80d1cf362eb6b53be589a1c7f547a63dbbe",
+      "bytes": 4416,
+      "source_sha256": "c1ea2ca27f45cb7593911425d167d80d1cf362eb6b53be589a1c7f547a63dbbe",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/scorer-validation.json",
+      "sha256": "016862e6cd64e488e1e6623e760111375eb28ddbf3d26e5ed6529939e8afe070",
+      "bytes": 1861,
+      "source_sha256": "016862e6cd64e488e1e6623e760111375eb28ddbf3d26e5ed6529939e8afe070",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/site-verification.json",
+      "sha256": "b73955b3f50f6f225b780b3ea8d288177ff55bdaa700d5c8238a7a5fa6d85362",
+      "bytes": 3824,
+      "source_sha256": "b73955b3f50f6f225b780b3ea8d288177ff55bdaa700d5c8238a7a5fa6d85362",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/verify_jev_result.py",
+      "sha256": "a2e214ac4890383d1d52c4563f5deaf868912bee709622a3c3a0b015946d7f74",
+      "bytes": 13868,
+      "source_sha256": "a2e214ac4890383d1d52c4563f5deaf868912bee709622a3c3a0b015946d7f74",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
     },
     {
       "path": "reports/ir-control-v1/trec-ndcg-source.json",
@@ -6333,12 +6409,12 @@
     },
     {
       "path": "scripts/build_provider_quality_site.py",
-      "sha256": "a9552a826c4434e658cec47fa15ba03215dbdb1fa11970dcfaeeef9ccaacccaf",
-      "bytes": 7536,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "a9552a826c4434e658cec47fa15ba03215dbdb1fa11970dcfaeeef9ccaacccaf",
+      "sha256": "2283ce7c1b2d541f9ed2dd6ca4a0310fbc6ba81e6e8f874a75a247c1ce7f89d1",
+      "bytes": 10856,
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "source_sha256": "2283ce7c1b2d541f9ed2dd6ca4a0310fbc6ba81e6e8f874a75a247c1ce7f89d1",
       "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
       ]
     },
     {
@@ -6528,6 +6604,16 @@
       "bytes": 2576
     },
     {
+      "path": "scripts/run_posttraining_evaluation.py",
+      "sha256": "5636d3c2017099a22bb89f664e802efba8abaaa38bb25bf7ff183274ef08312f",
+      "bytes": 24189,
+      "source_sha256": "5636d3c2017099a22bb89f664e802efba8abaaa38bb25bf7ff183274ef08312f",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
       "path": "scripts/run_service_suite.py",
       "source_sha256": "58bacf0ffa79946cee3ecf376fb8379008dd09796df3c20ac5289a27aba9b356",
       "sha256": "58bacf0ffa79946cee3ecf376fb8379008dd09796df3c20ac5289a27aba9b356",
@@ -6550,13 +6636,23 @@
       "bytes": 6029
     },
     {
-      "path": "site/app.js",
-      "sha256": "454f7e2eab35b1a4309dc8075f73f8a6f4186767c1652b791196c7cf0faaacd4",
-      "bytes": 30274,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "454f7e2eab35b1a4309dc8075f73f8a6f4186767c1652b791196c7cf0faaacd4",
+      "path": "scripts/summarize_trec_provider.py",
+      "sha256": "af3b21f67a9293241a464de42e6e0f093bba95c8b2c0637d3c1904cb953b90cb",
+      "bytes": 22479,
+      "source_sha256": "af3b21f67a9293241a464de42e6e0f093bba95c8b2c0637d3c1904cb953b90cb",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
       "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "site/app.js",
+      "sha256": "1943f9d7947a4be1b3f5ae94873bdbb7bf232da8bd6f7ba8b95462f137aebff3",
+      "bytes": 32859,
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "source_sha256": "1943f9d7947a4be1b3f5ae94873bdbb7bf232da8bd6f7ba8b95462f137aebff3",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
       ]
     },
     {
@@ -6567,12 +6663,12 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "45f75168ad77828e867ae2d57440cae44b433aa7592c3760ea06935660cbc7e8",
-      "bytes": 27657,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "45f75168ad77828e867ae2d57440cae44b433aa7592c3760ea06935660cbc7e8",
+      "sha256": "ce9c2f25734f5d3cab39780b1fdf56fb5cd7e43be15a31598df6e7716983fd4e",
+      "bytes": 28383,
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "source_sha256": "ce9c2f25734f5d3cab39780b1fdf56fb5cd7e43be15a31598df6e7716983fd4e",
       "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
       ]
     },
     {
@@ -7269,10 +7365,13 @@
     },
     {
       "path": "site/provider-quality.json",
-      "sha256": "da2f7108b31b728eda5468c1be527a2a7061c14d9dc0b5f63db1a60d3455bf3e",
-      "bytes": 94359,
-      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
-      "source_sha256": "da2f7108b31b728eda5468c1be527a2a7061c14d9dc0b5f63db1a60d3455bf3e"
+      "sha256": "cfc06975fe5992d52751de2795cb5fa22f7796b4e0aa50cb96460df33ba2932e",
+      "bytes": 96440,
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "source_sha256": "cfc06975fe5992d52751de2795cb5fa22f7796b4e0aa50cb96460df33ba2932e",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
     },
     {
       "path": "site/results.json",
@@ -7286,12 +7385,12 @@
     },
     {
       "path": "site/styles.css",
-      "sha256": "7c38cc18a5e6debd842b267b1142798e77a5568a7a806e443d38cd0425fadeaa",
-      "bytes": 42304,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "7c38cc18a5e6debd842b267b1142798e77a5568a7a806e443d38cd0425fadeaa",
+      "sha256": "a11949cb34f953e17e10becbae514d13b79f708e3c3e63a2b1e1d9d91af11bb9",
+      "bytes": 42595,
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "source_sha256": "a11949cb34f953e17e10becbae514d13b79f708e3c3e63a2b1e1d9d91af11bb9",
       "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
       ]
     },
     {
@@ -7543,6 +7642,16 @@
       "bytes": 14068
     },
     {
+      "path": "tests/test_posttraining_evaluation.py",
+      "sha256": "9fc706bdb650cbf372b0b0cd5b3f3cb06ecc1557a3a6324cce230f4823c10d2b",
+      "bytes": 15328,
+      "source_sha256": "9fc706bdb650cbf372b0b0cd5b3f3cb06ecc1557a3a6324cce230f4823c10d2b",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
       "path": "tests/test_prefix_cache.py",
       "source_sha256": "0eda14426b917b89d04fc5f3afcca6a7070d5faad0c17e0ab5d95fb1d20deb65",
       "sha256": "0eda14426b917b89d04fc5f3afcca6a7070d5faad0c17e0ab5d95fb1d20deb65",
@@ -7630,6 +7739,16 @@
       "bytes": 15621,
       "source_sha256": "741590894f7280d46f71d817f50c9a7a2e97a94904e1a959ae5c2c22044a2bf9",
       "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
+    },
+    {
+      "path": "tests/test_trec_summary.py",
+      "sha256": "763f7c3bdcbf38125f9ec30d456950b6f1606c953e527773e367e1bb14a07a0a",
+      "bytes": 13347,
+      "source_sha256": "763f7c3bdcbf38125f9ec30d456950b6f1606c953e527773e367e1bb14a07a0a",
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "changes": [
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
     },
     {
       "path": "tests/test_workflows.py",
@@ -8133,7 +8252,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905",
+  "current_source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8397,6 +8516,32 @@
         "reports/ir-control-v1/trec-holdout/README.md",
         "reports/ir-control-v1/trec-holdout/provider-evaluation-plan.json",
         "reports/ir-control-v1/trec-holdout/provider-input-preparation.json"
+      ]
+    },
+    {
+      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "created_at": "2026-09-20T23:51:30.040751+00:00",
+      "description": "Real Jev TREC collection complete and independently audited; strict and supplementary scalar results separate, other providers pending. Verified mobile/desktop presentation and guarded post-training evaluation implementation. Raw external text and private operational evidence excluded.",
+      "paths": [
+        "README.md",
+        "docs/provider-comparison.md",
+        "docs/posttraining-evaluation-supervisor.md",
+        "scripts/build_provider_quality_site.py",
+        "scripts/summarize_trec_provider.py",
+        "scripts/run_posttraining_evaluation.py",
+        "tests/test_trec_summary.py",
+        "tests/test_posttraining_evaluation.py",
+        "site/index.html",
+        "site/app.js",
+        "site/styles.css",
+        "site/provider-quality.json",
+        "reports/ir-control-v1/trec-holdout/README.md",
+        "reports/ir-control-v1/trec-holdout/jev-listwise-summary.json",
+        "reports/ir-control-v1/trec-holdout/jev-result-independent-audit.json",
+        "reports/ir-control-v1/trec-holdout/verify_jev_result.py",
+        "reports/ir-control-v1/trec-holdout/scorer-validation.json",
+        "reports/ir-control-v1/trec-holdout/site-verification.json",
+        "reports/ir-control-v1/trec-holdout/publication-review.json"
       ]
     }
   ]

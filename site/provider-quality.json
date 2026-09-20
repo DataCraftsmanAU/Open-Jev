@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-20T23:15:13.198339+00:00",
+  "generated_at": "2026-09-20T23:46:00.801501+00:00",
   "status": "partial",
   "providers": [
     {
@@ -2355,6 +2355,59 @@
       }
     }
   ],
+  "trec": {
+    "benchmarks": [
+      {
+        "id": "dl19",
+        "label": "TREC-DL19",
+        "queries": 43,
+        "downloaded_bm25_ndcg_at_10": 0.5058310024399073
+      },
+      {
+        "id": "dl20",
+        "label": "TREC-DL20",
+        "queries": 54,
+        "downloaded_bm25_ndcg_at_10": 0.4796366724252675
+      }
+    ],
+    "results": {
+      "2b": {
+        "status": "pending"
+      },
+      "9b": {
+        "status": "pending"
+      },
+      "jev": {
+        "status": "complete",
+        "benchmarks": {
+          "dl19": {
+            "primary_strict_ndcg_at_10": 0.27583611543892894,
+            "supplemental_actual_scalar_ndcg_at_10": 0.7282184260107177,
+            "strict_complete_queries": 15,
+            "scalar_complete_queries": 43
+          },
+          "dl20": {
+            "primary_strict_ndcg_at_10": 0.1906665802224159,
+            "supplemental_actual_scalar_ndcg_at_10": 0.7157341301273342,
+            "strict_complete_queries": 16,
+            "scalar_complete_queries": 54
+          }
+        },
+        "evidence_url": "https://github.com/Zefan-Cai/Open-Jev/blob/main/reports/ir-control-v1/trec-holdout/jev-listwise-summary.json"
+      },
+      "luna": {
+        "status": "pending"
+      },
+      "astra": {
+        "status": "pending"
+      }
+    },
+    "source_report_sha256": {
+      "reports/ir-control-v1/trec-holdout/jev-listwise-summary.json": "2a4925b265c18cb1bad192cf96d824e96d2c4510eee259e80c95d8fb7501c20a"
+    },
+    "method_url": "https://github.com/Zefan-Cai/Open-Jev/blob/main/reports/ir-control-v1/trec-holdout/README.md",
+    "note": "nDCG@10 on all 97 judged queries with full official qrels and direct relevance grades. Each query reranks the downloaded BM25 top 100 using nine adaptive 20-passage Score windows. Strict failures contribute zero. Jev’s predeclared supplementary analysis uses actual scalar scores from mass-only failures, without renormalizing probabilities. Pending cells have no published model score. This independently authored protocol is not an exact reproduction of the community demo."
+  },
   "scope": "Fixed coverage checks and separate probes. Counts match the frozen supplied labels; a post-hoc audit flags six game references and one customer rubric ambiguity. Common-case sensitivity counts with identical exclusions are available in the method; primary counts stay unchanged. The 73,333-row full test/OOD registry remains pending; an additive 107,922-row registry is prepared but not evaluated. These are categorical decisions, not calibrated probabilities or closed-loop game success rates. Failed decisions count as incorrect; unattempted decisions remain pending.",
   "decision_policy": "Choice uses the returned selection. Noul uses argmax of [1-p, p], with exact ties selecting false. Score uses its most probable level; OpenAI returns a categorical integer. Jev probability-mass failures with usable finite choices are reported separately in decision-only analysis; vectors are never renormalized.",
   "method_url": "https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/provider-comparison.md",
