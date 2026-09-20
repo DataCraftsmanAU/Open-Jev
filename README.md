@@ -1,0 +1,191 @@
+# Open-Jev
+
+**Open probability decisions with Qwen3.5-2B, Qwen3.5-9B and Qwen3.8-27B.**
+Supply a context, questions and candidates; get typed probabilities directly,
+without autoregressive answer generation or parsing generated JSON.
+
+[Website and successful demos](https://zefan-cai.github.io/open-jev/) ·
+[Code](https://github.com/Zefan-Cai/Open-Jev) ·
+[Dataset](https://huggingface.co/datasets/ZefanCai/Open-Jev) ·
+[2B checkpoint](https://huggingface.co/ZefanCai/Open-Jev-2B) ·
+[9B checkpoint](https://huggingface.co/ZefanCai/Open-Jev-9B)
+
+**Public releases:** the dataset and completed 2B/9B checkpoints are available
+at the links above. The 2B/9B artifacts are LoRA adapters plus a trained scalar decision
+head and calibration temperature. They require the pinned upstream Qwen
+weights and the Open-Jev loader; they are not merged base models or ordinary
+text-generation checkpoints. The fresh 27B expansion run and its final
+checkpoint evaluation remain in progress.
+
+Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
+not reproduce proprietary RLCD, private weights or training data, and does not
+claim TypeSafe's advertised speedups or parity with every community demo.
+
+## Install and run
+
+Use Python 3.10 or newer. Core task contracts, data generators and CPU tests
+need only the source package. Model inference and training share the `train`
+extra; a suitable GPU and the upstream model weights are required for the
+published checkpoint workflow. The full GPU workflow targets Linux.
+
+```bash
+git clone https://github.com/Zefan-Cai/Open-Jev.git
+cd Open-Jev
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+python -m unittest discover -s tests -v
+
+# Add the pinned model runtime dependencies.
+python -m pip install -e '.[train]'
+hf download ZefanCai/Open-Jev-2B \
+  --revision 0c7aa498b1627be8da4acf34c863ff0ee0a92785 --local-dir models/Open-Jev-2B
+python -m jev.server --checkpoint models/Open-Jev-2B/package/checkpoint \
+  --device cuda:0 --max-length 4096 --batch-size 1 --no-prefix-cache
+```
+
+The download is pinned to the published 2B revision. The 9B package uses the
+same layout at revision `47e966881e489511c0c7f5633a9e1960a676a551`. The public
+dataset revision is `341d9338462da1cf56ba57519fb0f3f5258b825f`.
+Open **http://127.0.0.1:8791** for the task lab or
+**http://127.0.0.1:8791/examples/painting/index.html** for probability painting.
+Run from the checkout to serve the example UI. No live business action is
+performed by the server.
+
+To start directly from the base model, without an Open-Jev adapter:
+
+```bash
+python -m jev.server --model Qwen/Qwen3.5-2B \
+  --revision 15852e8c16360a2fea060d615a32b45270f8a8fc --max-length 4096
+```
+
+This base-model initialization is distinct from the trained checkpoint above.
+Optional extras are `.[phone]` for phone-number controls and `.[doom]` for
+ViZDoom. Video rendering additionally needs Pillow, ffmpeg and ffprobe.
+
+## Social video drafts
+
+The [introduction draft](release/social/open-jev-introduction.mp4) introduces
+the project, and the [successful-demo draft](release/social/open-jev-demos.mp4)
+shows selected examples. Captions, transcripts and source evidence accompany
+them in [release/social](release/social). These are social video drafts;
+publication on X/Twitter is not implied. Their renderer is
+[`scripts/render_launch_videos.py`](scripts/render_launch_videos.py).
+
+## Typed decisions
+
+With the server running, use the Python client from another terminal:
+
+```python
+from jev.client import Client
+
+result = Client().ask(
+    state="My order arrived damaged. Please refund it.",
+    questions={
+        "refund_requested": {
+            "type": "noul", "instructions": "Is a refund explicitly requested?"
+        },
+        "route": {
+            "type": "choice", "instructions": "Which team should handle this?",
+            "criteria": {"billing": "Refunds and charges", "engineering": "Software defects"}
+        },
+        "frustration": {
+            "type": "score", "instructions": "Rate expressed frustration.",
+            "criteria": ["Calm", "Frustrated but civil", "Very angry"]
+        }
+    }
+)
+print(result["answers"])
+```
+
+Choice returns probabilities over supplied candidates and the highest-scoring
+candidate. Noul returns a yes/no probability. Score returns probabilities over
+ordered criteria and their expected index. A scalar head scores candidate
+sequences; one calibrated probability distribution is assembled per question.
+The loader rejects overlength inputs instead of silently truncating them.
+
+[Prefix caching](docs/prefix-caching.md) is optional and off by default. It
+reuses exact shared request/question token prefixes while preserving independent
+attention, convolution and recurrent states for candidate branches. Tiny hybrid
+CPU/LoRA checks pass; full-checkpoint BF16/CUDA parity and latency comparisons
+remain pending. CPU token reuse is not a measured GPU speedup.
+
+## What is included
+
+| Area | Runnable components | Scope |
+| --- | --- | --- |
+| API | Choice, Noul, Score, dynamic candidates, batching, calibration, Python client | Partial hosted-API compatibility |
+| Workflows | Customer service, security incidents, agent traces, invoices | Original synthetic policies and offline action proposals |
+| Games | Snake, T-Rex, tile platformer, Wiki, tic-tac-toe, optional ViZDoom | Local environments, replay, model/random/teacher evaluation |
+| Painting | Palette, silhouette, binary RGB and HSL probability representations | Browser interface and generated geometry controls |
+| Recipes | Search/ranking, RAG, guardrails, spans/dates, functions, skills, hierarchy, verification | Request builders and postprocessors; external execution where documented |
+| Community adapters | Browser DOM, RuneScape, Pokémon, HEIST, drone, 4/4/255/28-field stress forms | State/action interfaces; external environments are not bundled |
+| Extraction controls | Citation, entity alignment, amount, email and phone | Generated data and evaluation software; no trained quality claim on these newer corpora |
+
+See [capability evidence](docs/public-capabilities.md),
+[workflows](docs/workflows.md), [games](docs/games.md),
+[painting](docs/painting.md), [recipes](docs/recipes.md) and
+[community adapters](docs/community.md). The website selects reviewed successful
+examples and explicit interface walkthroughs. It is an outcome-selected
+showcase, not a representative success-rate estimate. Original failures remain
+in the scientific reports.
+
+## Training data and measured results
+
+Both completed models consumed **80,816 training rows** in one pass over the
+original frozen `release-v2` training split: 20,204 optimizer steps, global
+batch 4, rank-8 LoRA and a jointly trained decision head. Temperature was fitted
+only on 512 calibration rows. Saved checkpoint reload checks passed.
+
+The public `release-v2-redistributable` training projection contains **79,116
+rows**. It excludes 1,700 original `wikispeedia-v1` training records because
+redistribution permission for that archive has not been confirmed. It is not
+byte-identical to the dataset used for the published adapters. Original
+split hashes remain recorded; no scientific metric is relabeled as a result
+on the reduced public projection.
+
+The [independent complete evaluation](reports/full-data-eval-n1-v1/README.md)
+covers 10,532 test and 15,920 OOD rows per model with zero missing, duplicate or
+failed predictions. It uses the original dataset, including Wiki records.
+
+| Model | Test hard correct / hard rows | OOD hard correct / hard rows |
+| --- | ---: | ---: |
+| 2B | 9,515 / 10,046 (94.71%) | 13,287 / 15,446 (86.02%) |
+| 9B | 9,799 / 10,046 (97.54%) | 14,205 / 15,446 (91.97%) |
+
+Hard accuracy excludes soft-target rows; the audit retains probability metrics
+and every subgroup. No full-data baseline was run, so these figures do not
+measure full-data training gain. Separate [2B](reports/fullpass-2b-n1/README.md)
+and [9B](reports/fullpass-9b-n1/README.md) audits compare base/trained models on
+512 test and 512 OOD selections. These synthetic decision results do not
+establish real-world workflow completion, game wins or autonomous control.
+
+The larger prepared inventory includes browser/drone and later extraction
+controls. Completed 2B/9B training did not use the newer expansion or extraction
+corpora. Final-model JF100 and closed-loop task results remain pending. Older
+[pilot evaluations](reports/pilot-suite-n1-4k.md) retain failures and identify
+their different checkpoints.
+
+For data generation, training and evaluation, use the documented task-specific
+commands in [training](docs/training.md), [data](docs/data.md),
+[multidomain training](docs/multidomain-training.md),
+[model evaluation](docs/model-evaluation.md) and
+[checkpoint packaging](docs/checkpoint-package.md). Training records the Git
+revision, so use a Git checkout. Historical cluster capture/supervisor scripts
+are preserved for audit; their recorded host/process plans are not portable
+launch configurations. Active private cluster policy and monitoring logs are
+not part of this source release.
+
+## License and provenance
+
+Original source code is [MIT](LICENSE). The trained LoRA adapters and decision
+heads are Apache-2.0 under their published model cards and pinned Qwen terms.
+Original generated controls carry CC0-1.0 where marked; third-party data and
+optional engines retain their own terms. See
+[third-party notices](THIRD_PARTY_NOTICES.md) and
+[model provenance](docs/model-provenance.md).
+
+No base-model weights, credentials, private official Jev cases, commercial ROMs
+or development Git history are included. This public repository is a reviewed
+source snapshot; `PUBLIC_RELEASE.json` records its source commit, file
+inventory and publication transformations.

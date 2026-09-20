@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Open-Jev turns context and explicit questions into typed probabilities. Explore Qwen-based decision models, inspectable demos, and measured results.">
+  <meta property="og:title" content="Open-Jev — Less to generate. More to decide.">
+  <meta property="og:description" content="Open probability decisions from Qwen. Typed outputs, inspectable demos, and transparent evaluation.">
+  <meta property="og:type" content="website">
+  <title>Open-Jev — Models that make a choice.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23152032'/%3E%3Cpath d='M18 18h-5v28h5M46 18h5v28h-5M27 19h12v20q0 8-8 8t-8-8' fill='none' stroke='%23bef3d8' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M9 5H5v14h14v-4M13 5h6v6M19 5 9 15"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#" aria-label="Open-Jev home"><span class="brand-mark" aria-hidden="true">[<b>J</b>]</span> Open-Jev<span class="brand-dot">.</span></a>
+      <nav class="top-nav" aria-label="Main navigation"><a href="#interface">Interface</a><a href="#demos">Demos</a><a href="#results">Results</a></nav>
+      <a class="header-code" href="https://github.com/Zefan-Cai/Open-Jev"><span class="desktop-label">Source code</span><span class="mobile-label">Code</span><svg class="icon"><use href="#i-external"/></svg></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> OPEN DECISION MODELS <span class="preview-tag">Research preview</span></div>
+        <h1 id="hero-title">Less to generate.<br><span>More to decide.</span></h1>
+        <p class="hero-description">Give a model context and explicit questions.<br class="desktop-break"> Get typed probabilities over the choices you provide.</p>
+        <div class="hero-actions"><button class="button button-dark" id="watch-overview" type="button">Watch full games <svg class="icon"><use href="#i-play"/></svg></button><a class="text-link" href="#demos">Explore all tasks <span aria-hidden="true">↗</span></a></div>
+        <div class="model-line"><span>Built on Qwen</span><a class="model-size" href="https://huggingface.co/ZefanCai/Open-Jev-2B">2B</a><a class="model-size" href="https://huggingface.co/ZefanCai/Open-Jev-9B">9B</a><span class="model-size">27B</span><span class="model-note">One decision interface.</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustrative typed Choice interface; not a model result">
+        <div class="hero-visual-top"><span><span class="live-square"></span> DECISION / 001</span><span class="mono">Choice &lt;3&gt;</span></div>
+        <div class="context-label">CONTEXT</div>
+        <div id="hero-context" class="hero-context">“My order arrived damaged.<br>Can I get a refund?”</div>
+        <div class="decision-divider"><span>Which team should handle this?</span><span class="branch-line" aria-hidden="true">↙ ↓ ↘</span></div>
+        <div class="choice-rows" id="hero-choices">
+          <div class="choice-row chosen"><span class="choice-key">A</span><span class="choice-name">Billing</span><div class="choice-meter"><i style="--probability:94%"></i></div><span class="choice-probability">0.94</span><svg class="icon"><use href="#i-check"/></svg></div>
+          <div class="choice-row"><span class="choice-key">B</span><span class="choice-name">Engineering</span><div class="choice-meter"><i style="--probability:4%"></i></div><span class="choice-probability">0.04</span><span class="choice-empty"></span></div>
+          <div class="choice-row"><span class="choice-key">C</span><span class="choice-name">Sales</span><div class="choice-meter"><i style="--probability:2%"></i></div><span class="choice-probability">0.02</span><span class="choice-empty"></span></div>
+        </div>
+        <div class="hero-output"><span class="output-bracket">{</span><span><span class="code-key">"choice"</span>: <span class="code-value" id="hero-output">"billing"</span></span><span class="output-bracket">}</span><span class="output-typed">typed, by construction</span></div>
+        <div class="hero-caption"><span>Illustrative interface · not model output</span><button id="hero-motion" class="motion-toggle" type="button" aria-pressed="false">Pause animation</button></div>
+        <span class="hero-corner corner-one" aria-hidden="true">+</span><span class="hero-corner corner-two" aria-hidden="true">+</span>
+      </div>
+    </section>
+
+    <section class="featured-games wrap" id="full-games" aria-labelledby="full-games-title" hidden>
+      <div class="section-heading"><div><span class="eyebrow">FROM START TO FINISH</span><h2 id="full-games-title">Watch complete games.</h2></div><p>Selected successful episodes, from the opening state to the goal. Replayed actions from the original Qwen3.5-9B pilot.</p></div>
+      <div class="featured-game-grid">
+        <button class="featured-game" type="button" data-game-id="doom" aria-label="Watch the complete Doom episode"><img src="./media/gameplay-doom.jpg" width="1280" height="720" loading="lazy" alt="Actual first-person ViZDoom gameplay"><span class="featured-game-copy"><strong>Doom</strong><span>Goal: eliminate the target</span><span class="game-result">11 decisions · target eliminated</span><span class="featured-play">Play full episode ↗</span></span></button>
+        <button class="featured-game" type="button" data-game-id="trex" aria-label="Watch the complete Box Runner episode"><img src="./media/gameplay-trex.jpg" width="1280" height="720" loading="lazy" alt="Box Runner clearing the course obstacles"><span class="featured-game-copy"><strong>Box Runner</strong><span>Goal: clear the course</span><span class="game-result">12 / 12 obstacles cleared</span><span class="featured-play">Play full episode ↗</span></span></button>
+      </div>
+    </section>
+
+    <section class="inventory wrap" aria-label="Current data inventory">
+      <div class="inventory-intro"><span class="eyebrow">THE WORK, IN NUMBERS</span><p>A growing set of<br>inspectable decision tasks.</p></div>
+      <div class="inventory-stat"><strong>252,250</strong><span>typed decision rows</span></div>
+      <div class="inventory-stat"><strong>20</strong><span>task-source identifiers</span></div>
+      <div class="inventory-stat"><strong>168,740</strong><span>training rows in inventory</span></div>
+      <div class="inventory-stat"><strong>64,948</strong><span>test + OOD rows in inventory</span></div>
+      <p class="inventory-note">Current corpus inventory. Completed 2B/9B results below use the earlier release-v2 training mixture.</p>
+    </section>
+
+    <section class="interface-section wrap" id="interface" aria-labelledby="interface-title">
+      <div class="section-heading"><div><span class="eyebrow">01 / THE INTERFACE</span><h2 id="interface-title">A small vocabulary.<br>A useful way to think.</h2></div><p>Choose an action. Test a condition. Score a criterion. Ask independent questions over the same context, with outputs you can use directly.</p></div>
+      <div class="interface-layout">
+        <div class="primitive-tabs" role="tablist" aria-label="Decision output types" aria-orientation="vertical">
+          <button type="button" class="primitive-tab active" id="tab-choice" role="tab" aria-selected="true" aria-controls="primitive-panel" data-primitive="choice"><span class="primitive-glyph" aria-hidden="true">↗</span><span><strong>Choice</strong><small>A probability for each candidate.</small></span><span class="primitive-number">01</span></button>
+          <button type="button" class="primitive-tab" id="tab-noul" role="tab" aria-selected="false" aria-controls="primitive-panel" tabindex="-1" data-primitive="noul"><span class="primitive-glyph" aria-hidden="true">◐</span><span><strong>Noul</strong><small>A condition, on a scale from 0 to 1.</small></span><span class="primitive-number">02</span></button>
+          <button type="button" class="primitive-tab" id="tab-score" role="tab" aria-selected="false" aria-controls="primitive-panel" tabindex="-1" data-primitive="score"><span class="primitive-glyph" aria-hidden="true">≋</span><span><strong>Score</strong><small>A score over an ordered rubric.</small></span><span class="primitive-number">03</span></button>
+        </div>
+        <div class="primitive-panel" id="primitive-panel" role="tabpanel" aria-labelledby="tab-choice" tabindex="0">
+          <div class="code-window-top"><span><i></i><i></i><i></i></span><span>POST /v1/systemone</span><span class="code-window-label">Illustrative request</span></div>
+          <pre class="request-code"><code id="primitive-request">{
+  "state": "My order arrived damaged. Please refund it.",
+  "questions": {
+    "route": {
+      "type": "choice",
+      "instructions": "Which team should handle this?",
+      "criteria": {
+        "billing": "Refunds and charges",
+        "engineering": "Software defects"
+      }
+    }
+  }
+}</code></pre>
+          <div class="primitive-explanation"><span class="output-chip" id="primitive-chip">Choice</span><p id="primitive-description">The candidates are yours. The model assigns probabilities; your application decides what to do next.</p></div>
+        </div>
+      </div>
+      <p class="implementation-note">Direct probability decisions, without autoregressive text generation or parsing generated JSON. Independent implementation inspired by Jev; no claim to reproduce its proprietary method or speedups.</p>
+    </section>
+
+    <section class="gallery-section" id="demos" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <div class="section-heading gallery-heading"><div><span class="eyebrow">02 / WATCH & INSPECT</span><h2 id="gallery-title">Decisions in motion.</h2></div><p>Browse <span id="catalog-count">the</span> selected demos across <span id="domain-count">our task</span> categories. Successful examples and interface walkthroughs; see Results for the full evaluation.</p></div>
+        <div class="evidence-legend"><span><i class="legend-dot replay-dot"></i><strong>Model replay</strong> A saved model response</span><span><i class="legend-dot walkthrough-dot"></i><strong>Interface walkthrough</strong> A task contract, without a trained result</span></div>
+        <div class="gallery-toolbar"><div id="category-filters" class="category-filters" role="group" aria-label="Filter demos by category"><button class="filter active" type="button" aria-pressed="true" data-category="All">All demos</button></div><label class="search-box"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="demo-search" placeholder="Find a task…" aria-label="Search demos" autocomplete="off"><kbd aria-hidden="true">/</kbd></label></div>
+        <div class="gallery-status"><p id="filter-status" role="status" aria-live="polite">Loading demo catalog…</p><span id="evidence-count"></span></div>
+        <div id="demo-grid" class="demo-grid" aria-label="Demo videos"></div>
+        <div id="gallery-empty" class="gallery-empty" hidden><span aria-hidden="true">↗</span><h3>No matching decisions.</h3><p>Try another task name or category.</p><button id="clear-filters" class="button button-dark" type="button">Clear filters</button></div>
+        <div class="gallery-more"><button id="load-more" class="button button-outline" type="button" hidden>Show more demos <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+        <noscript><p class="catalog-error">Enable JavaScript to filter and play the demo catalog. You can also <a href="./catalog.json">read the catalog directly</a>.</p></noscript>
+        <div class="gallery-footnote"><span class="footnote-mark">↳</span><p>These clips make the interface inspectable. A replay of one response is not an end-to-end success rate; an interface walkthrough is not a model capability result.</p></div>
+        <details class="coverage-details" id="coverage-details" hidden><summary>Coverage still in progress <span id="coverage-count"></span></summary><ul id="uncovered-list"></ul></details>
+      </div>
+    </section>
+
+    <section class="results-section" id="results" aria-labelledby="results-title">
+      <div class="wrap results-layout"><div class="results-copy"><span class="eyebrow light-eyebrow">03 / MEASURED RESULTS</span><h2 id="results-title">Show the work.<br>Keep the limits.</h2><p>Full-data evaluation on every release-v2 test and OOD decision row. Independently audited, with failed, missing, and duplicate predictions checked.</p><a class="text-link light-link" href="https://github.com/Zefan-Cai/Open-Jev/blob/main/reports/full-data-eval-n1-v1/README.md">Read the evaluation report <svg class="icon"><use href="#i-external"/></svg></a><div class="result-context"><span class="result-context-line"></span><p><strong>JF100 is a separate holdout.</strong><br>100 questions × 3 option rotations, excluded from training. Final-model JF100 results remain pending.</p></div></div>
+      <div class="results-data"><div class="table-label"><span>HELD-OUT HARD-LABEL ACCURACY</span><span>release-v2</span></div><table class="results-table"><caption class="sr-only">Full-data 2B and 9B hard-label decision accuracy; 27B training ongoing</caption><thead><tr><th scope="col">Model</th><th scope="col">Test</th><th scope="col">OOD</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">Qwen3.5 <span>2B</span></th><td>94.71<span>%</span></td><td>86.02<span>%</span></td><td><span class="table-status">Audited</span></td></tr><tr class="highlight-result"><th scope="row">Qwen3.5 <span>9B</span></th><td>97.54<span>%</span></td><td>91.97<span>%</span></td><td><span class="table-status">Audited</span></td></tr><tr class="pending-result"><th scope="row">Qwen3.8 <span>27B</span></th><td>—</td><td>—</td><td><span class="table-status training-status">Training</span></td></tr></tbody></table><div class="result-notes"><p>Each completed model: <strong>26,452 held-out decision rows</strong>, including <strong>25,492 hard-label rows</strong> used for accuracy. Test: 10,046 hard labels; OOD: 15,446.</p><p>These are decision-row metrics, not gameplay or workflow completion rates. No full-data base-model comparison was run. Final-model closed-loop results remain pending.</p><p>Aggregate scores hide weak subgroups: 9B Wiki OOD expected accuracy is 32.74%, and reasoning OOD hard-label accuracy is 73.60%. T-Rex test has only 4 rows. All source-level results remain available.</p><a class="text-link light-link" href="./results.json" download="open-jev-verified-results.json">Download verified results <svg class="icon"><use href="#i-download"/></svg></a></div></div></div>
+    </section>
+
+    <section class="start-section wrap" id="start" aria-labelledby="start-title"><div><span class="eyebrow">OPEN RESEARCH, IN PROGRESS</span><h2 id="start-title">Build a smaller<br>decision loop.</h2><p>Inspect the contracts, follow the evidence, and make the next choice explicit.</p></div><div class="start-links"><a class="resource-link" href="https://github.com/Zefan-Cai/Open-Jev"><span class="resource-number">01</span><span><strong>Source code</strong><small>Source, data builders, evaluation tools</small></span><svg class="icon"><use href="#i-external"/></svg></a><a class="resource-link" href="./catalog.json" download="open-jev-catalog.json"><span class="resource-number">02</span><span><strong>Download the demo catalog</strong><small>Requests, answers, provenance and limits</small></span><svg class="icon"><use href="#i-download"/></svg></a><a class="resource-link" href="https://huggingface.co/ZefanCai/Open-Jev-2B"><span class="resource-number">03</span><span><strong>Open-Jev-2B</strong><small>Trained LoRA adapter and decision head</small></span><svg class="icon"><use href="#i-external"/></svg></a><a class="resource-link" href="https://huggingface.co/ZefanCai/Open-Jev-9B"><span class="resource-number">04</span><span><strong>Open-Jev-9B</strong><small>Trained LoRA adapter and decision head</small></span><svg class="icon"><use href="#i-external"/></svg></a><a class="resource-link" href="https://huggingface.co/datasets/ZefanCai/Open-Jev"><span class="resource-number">05</span><span><strong>Open-Jev task data</strong><small>Dataset splits, source manifests and reconstruction guide</small></span><svg class="icon"><use href="#i-external"/></svg></a><p class="access-note">Model packages require their pinned upstream Qwen base weights. The dataset card documents redistribution exclusions and reconstruction of the original training mixtures.</p></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><a class="brand" href="#"><span class="brand-mark" aria-hidden="true">[<b>J</b>]</span> Open-Jev<span class="brand-dot">.</span></a><p>Independent research inspired by <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">Jev ↗</a>.<br>Original code: MIT. Data and upstream models retain their licenses.</p><a href="#main" class="back-top">Back to top <span aria-hidden="true">↑</span></a></div></footer>
+
+  <dialog id="demo-modal" aria-labelledby="demo-title">
+    <div class="modal-shell"><div class="modal-header"><span id="modal-evidence" class="evidence-badge"></span><button id="close-modal" class="close-button" type="button" aria-label="Close demo"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="video-frame"><video id="demo-video" controls playsinline preload="none" aria-label="Selected demo video"></video><p id="video-error" class="video-error" hidden>This video could not be loaded. You can still inspect and download its evidence below.</p></div><div class="modal-body"><span id="modal-category" class="eyebrow"></span><h2 id="demo-title"></h2><p id="demo-description" class="modal-description"></p><p id="demo-model" class="demo-model"></p><p id="demo-summary" class="demo-summary"></p><div class="modal-downloads"><a id="video-download" class="button button-dark" download><svg class="icon"><use href="#i-download"/></svg> Download video</a><button id="evidence-download" class="button button-outline" type="button">Download evidence</button><a id="transcript-download" class="text-link" download>Transcript <span aria-hidden="true">↗</span></a></div><details class="evidence-details"><summary>Inspect the request & response</summary><div class="evidence-columns"><div><h3>Request</h3><pre id="demo-request"></pre></div><div><h3>Answer / evidence</h3><pre id="demo-answer"></pre></div></div></details><div class="provenance-grid"><section><h3>Provenance</h3><p id="demo-provenance"></p><a id="demo-source" class="text-link" target="_blank" rel="noopener">Source reference <svg class="icon"><use href="#i-external"/></svg></a></section><section><h3>What this does & doesn't show</h3><ul id="demo-limitations"></ul></section></div><details class="transcript-details"><summary>Read transcript</summary><div id="demo-transcript" class="transcript-content">Open a demo to read its transcript.</div></details></div></div>
+  </dialog>
+</body>
+</html>
