@@ -239,6 +239,16 @@
       "bytes": 9126
     },
     {
+      "path": "docs/mailroom-control-data.md",
+      "sha256": "86891e8d5f6fc9b27e83c73c18ff1a190bd907ad9b92048c9df3bec82bdf4747",
+      "bytes": 8231,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "86891e8d5f6fc9b27e83c73c18ff1a190bd907ad9b92048c9df3bec82bdf4747",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
       "path": "docs/model-evaluation.md",
       "source_sha256": "5995f435c5231c6e8764d8f28602d24a1144fbff63d0c0dc13b69b0bdecca484",
       "sha256": "5995f435c5231c6e8764d8f28602d24a1144fbff63d0c0dc13b69b0bdecca484",
@@ -874,6 +884,36 @@
       "source_sha256": "a307096e19f8d212b0b81eee7a75b033d4d4e073abf0a9d43ee02499fc690da3",
       "changes": [
         "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "jev/mailroom_audit.py",
+      "sha256": "20bdd9de36d06f0591889c85f4a634f9f748e8a15125fd686eae26dcf8c09e09",
+      "bytes": 16010,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "20bdd9de36d06f0591889c85f4a634f9f748e8a15125fd686eae26dcf8c09e09",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "jev/mailroom_data.py",
+      "sha256": "cd84ef39473153ec23cfebb426db9810ea68b3fcda8040d761671ae282af1a49",
+      "bytes": 20475,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "cd84ef39473153ec23cfebb426db9810ea68b3fcda8040d761671ae282af1a49",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "jev/mailroom_probe.py",
+      "sha256": "621a2fb6e9c95e9bff69bef8f73dc3a6cf053968bf33b3d8795c72c92ad290a4",
+      "bytes": 6766,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "621a2fb6e9c95e9bff69bef8f73dc3a6cf053968bf33b3d8795c72c92ad290a4",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
       ]
     },
     {
@@ -3269,6 +3309,126 @@
       ]
     },
     {
+      "path": "reports/mailroom-control-v1/expansion-stability.json",
+      "sha256": "0537cb437726ac4cf2422dead14d5bc4678fbc53aa773f4d91358902af6b6a6e",
+      "bytes": 906,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "0537cb437726ac4cf2422dead14d5bc4678fbc53aa773f4d91358902af6b6a6e",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/export_provider.py",
+      "sha256": "ef75c3755cf53119c028b80f85b81ddb15d7421bc3c0b69c43f8931ec56eea28",
+      "bytes": 4395,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "ef75c3755cf53119c028b80f85b81ddb15d7421bc3c0b69c43f8931ec56eea28",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/full-audit.json",
+      "sha256": "e177a405931c50b3852902dd7c7aa622717a65f3788dba21eed47d5a1b04f296",
+      "bytes": 1758,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "e177a405931c50b3852902dd7c7aa622717a65f3788dba21eed47d5a1b04f296",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/full-source-manifest.json",
+      "sha256": "afa9daabd5639a333c9adf8e89e7c7bbfcf84adfc051fb9843978c29703122f6",
+      "bytes": 2756,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "afa9daabd5639a333c9adf8e89e7c7bbfcf84adfc051fb9843978c29703122f6",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/jev-probe-quality-strict.json",
+      "sha256": "b9c25f1722bc0f601bae85187ba90fdd1152a53e8494f98278904b85700a85e4",
+      "bytes": 158106,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "b9c25f1722bc0f601bae85187ba90fdd1152a53e8494f98278904b85700a85e4",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/probe-audit-v2.json",
+      "sha256": "89e8f599c6d998cd55664b58230fa7e3e3fa7dc8af1e4a8a9a14d83b9ca3b620",
+      "bytes": 1652,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "89e8f599c6d998cd55664b58230fa7e3e3fa7dc8af1e4a8a9a14d83b9ca3b620",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/probe-audit.json",
+      "sha256": "86e6bc56d5adfbe2ba93d6cced91304e9a64805b82620085186a9af6947960e1",
+      "bytes": 1652,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "86e6bc56d5adfbe2ba93d6cced91304e9a64805b82620085186a9af6947960e1",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/probe-requests.json",
+      "sha256": "766471bc5441199dc77ea02446370ab7eef8735f2ef4ddec2692bf8327552c34",
+      "bytes": 519151,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "766471bc5441199dc77ea02446370ab7eef8735f2ef4ddec2692bf8327552c34",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/probe-source-manifest.json",
+      "sha256": "6ec887c96072c7bf862a82fef5f65cc651a2cd7f0ac59f240b3cb9f0c849c572",
+      "bytes": 2678,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "6ec887c96072c7bf862a82fef5f65cc651a2cd7f0ac59f240b3cb9f0c849c572",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/provider-binding-audit.json",
+      "sha256": "f6bf17afdea20779a5faf4aff095d456da157c044051ee34e5ae66d985487809",
+      "bytes": 424,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "f6bf17afdea20779a5faf4aff095d456da157c044051ee34e5ae66d985487809",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/review.json",
+      "sha256": "d08172f169936938f2704ecc3de708006859517cef843cb97bdde5bb492ea5bb",
+      "bytes": 2105,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "d08172f169936938f2704ecc3de708006859517cef843cb97bdde5bb492ea5bb",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-control-v1/verify_expansion.py",
+      "sha256": "65156fa741acbe4fd52da7c10bbddb3d3c39a90c17e0082db73eb6fea853d73a",
+      "bytes": 3053,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "65156fa741acbe4fd52da7c10bbddb3d3c39a90c17e0082db73eb6fea853d73a",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
       "path": "reports/model-licenses.json",
       "source_sha256": "77d1864f6a1bddca1a2fd83c9bdf1ef7a2f3bd2610cd5cf08f9a86d4bf84a6dc",
       "sha256": "77d1864f6a1bddca1a2fd83c9bdf1ef7a2f3bd2610cd5cf08f9a86d4bf84a6dc",
@@ -5007,6 +5167,16 @@
       ]
     },
     {
+      "path": "reports/provider-comparison-20260920/jev-mailroom-quality.json",
+      "sha256": "272db97cf9e635ab4438c80542ee3d8a66fbcc1498e7e8260c512dda453de5b7",
+      "bytes": 467089,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "272db97cf9e635ab4438c80542ee3d8a66fbcc1498e7e8260c512dda453de5b7",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
       "path": "reports/provider-comparison-20260920/jf100-suite-manifest.json",
       "sha256": "03b5c41c198e04614a0add36c717c326570ed7b2982be0515fb7dca65efbb2ca",
       "bytes": 2516,
@@ -5028,12 +5198,12 @@
     },
     {
       "path": "reports/provider-comparison-20260920/quality-evidence-identity.json",
-      "sha256": "da095f75df75a784a69fd4b50ce8c0bffe8754d8d951796526e4e2a59c901e40",
-      "bytes": 1222,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "da095f75df75a784a69fd4b50ce8c0bffe8754d8d951796526e4e2a59c901e40",
+      "sha256": "fe5163aba1d90ca84acb09ceb8d83c61c1fd6e9fea6ac03eec0b21c6a8439339",
+      "bytes": 1472,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "fe5163aba1d90ca84acb09ceb8d83c61c1fd6e9fea6ac03eec0b21c6a8439339",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
       ]
     },
     {
@@ -6763,6 +6933,16 @@
       "bytes": 6130
     },
     {
+      "path": "tests/test_mailroom_data.py",
+      "sha256": "9096f352d0a760340f19ac2009b0e13fa1e883e0b2b729e508cb07b2f202a767",
+      "bytes": 9244,
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "source_sha256": "9096f352d0a760340f19ac2009b0e13fa1e883e0b2b729e508cb07b2f202a767",
+      "changes": [
+        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
       "path": "tests/test_metrics.py",
       "source_sha256": "f36e8e2c7b4444f2b7c20f58f7b5d595447a58bb9d8ddd33587887c290245d10",
       "sha256": "f36e8e2c7b4444f2b7c20f58f7b5d595447a58bb9d8ddd33587887c290245d10",
@@ -7380,7 +7560,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+  "current_source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -7514,6 +7694,32 @@
         "reports/ir-control-v1/tweet-table-provenance.json",
         "reports/ir-control-v1/verify.py",
         "tests/test_ir_control.py"
+      ]
+    },
+    {
+      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+      "created_at": "2026-09-20T22:45:31.859450+00:00",
+      "description": "Original multilingual mailroom controls and real Jev quality probe.",
+      "paths": [
+        "docs/mailroom-control-data.md",
+        "jev/mailroom_audit.py",
+        "jev/mailroom_data.py",
+        "jev/mailroom_probe.py",
+        "reports/mailroom-control-v1/expansion-stability.json",
+        "reports/mailroom-control-v1/export_provider.py",
+        "reports/mailroom-control-v1/full-audit.json",
+        "reports/mailroom-control-v1/full-source-manifest.json",
+        "reports/mailroom-control-v1/jev-probe-quality-strict.json",
+        "reports/mailroom-control-v1/probe-audit-v2.json",
+        "reports/mailroom-control-v1/probe-audit.json",
+        "reports/mailroom-control-v1/probe-requests.json",
+        "reports/mailroom-control-v1/probe-source-manifest.json",
+        "reports/mailroom-control-v1/provider-binding-audit.json",
+        "reports/mailroom-control-v1/review.json",
+        "reports/mailroom-control-v1/verify_expansion.py",
+        "reports/provider-comparison-20260920/jev-mailroom-quality.json",
+        "reports/provider-comparison-20260920/quality-evidence-identity.json",
+        "tests/test_mailroom_data.py"
       ]
     }
   ]

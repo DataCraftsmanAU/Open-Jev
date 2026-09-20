@@ -23,5 +23,12 @@
     "path": "runs/provider-comparison-20260920/jev-ir-pilot/samples.jsonl",
     "sha256": "fe41b37e08ab4137828dfe43cfb0020aa870003219b284530c315b489101ef62",
     "attempts": 132
+  },
+  "jev_mailroom_raw": {
+    "path": "runs/provider-comparison-20260920/jev-mailroom/samples.jsonl",
+    "sha256": "11fe3f720cc65dbd1c39ad00663022859d33094fc8b16a182f4e9259a0d33a7d",
+    "attempts": 87,
+    "http_200": 87,
+    "strict_valid": 87
   }
 }
