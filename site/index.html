@@ -28,7 +28,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#" aria-label="Open-Jev home"><span class="brand-mark" aria-hidden="true">[<b>J</b>]</span> Open-Jev<span class="brand-dot">.</span></a>
-      <nav class="top-nav" aria-label="Main navigation"><a href="#interface">Interface</a><a href="#demos">Demos</a><a href="#results">Results</a></nav>
+      <nav class="top-nav" aria-label="Main navigation"><a href="#interface">Interface</a><a href="#demos">Demos</a><a href="#latency">Latency</a><a href="#results">Results</a></nav>
       <a class="header-code" href="https://github.com/Zefan-Cai/Open-Jev"><span class="desktop-label">Source code</span><span class="mobile-label">Code</span><svg class="icon"><use href="#i-external"/></svg></a>
     </div>
   </header>
@@ -68,11 +68,11 @@
 
     <section class="inventory wrap" aria-label="Current data inventory">
       <div class="inventory-intro"><span class="eyebrow">THE WORK, IN NUMBERS</span><p>A growing set of<br>inspectable decision tasks.</p></div>
-      <div class="inventory-stat"><strong>252,250</strong><span>typed decision rows</span></div>
-      <div class="inventory-stat"><strong>20</strong><span>task-source identifiers</span></div>
-      <div class="inventory-stat"><strong>168,740</strong><span>training rows in inventory</span></div>
-      <div class="inventory-stat"><strong>64,948</strong><span>test + OOD rows in inventory</span></div>
-      <p class="inventory-note">Current corpus inventory. Completed 2B/9B results below use the earlier release-v2 training mixture.</p>
+      <div class="inventory-stat"><strong>282,484</strong><span>typed decision rows</span></div>
+      <div class="inventory-stat"><strong>23</strong><span>task-source identifiers</span></div>
+      <div class="inventory-stat"><strong>187,655</strong><span>training rows in inventory</span></div>
+      <div class="inventory-stat"><strong>73,333</strong><span>test + OOD rows in inventory</span></div>
+      <p class="inventory-note">Prepared corpus inventory. The three new community control datasets are independently audited, with no training or model evaluation yet. Completed 2B/9B results below use the earlier release-v2 mixture.</p>
     </section>
 
     <section class="interface-section wrap" id="interface" aria-labelledby="interface-title">
@@ -117,6 +117,27 @@
         <div class="gallery-footnote"><span class="footnote-mark">↳</span><p>These clips make the interface inspectable. A replay of one response is not an end-to-end success rate; an interface walkthrough is not a model capability result.</p></div>
         <details class="coverage-details" id="coverage-details" hidden><summary>Coverage still in progress <span id="coverage-count"></span></summary><ul id="uncovered-list"></ul></details>
       </div>
+    </section>
+
+    <section class="latency-section wrap" id="latency" aria-labelledby="latency-title">
+      <div class="section-heading"><div><span class="eyebrow">MEASURE THE DECISION LOOP</span><h2 id="latency-title">How fast is 2B?</h2></div><p>Measured requests from the released Open-Jev-2B checkpoint. Inspect the workload, timing boundary and every raw attempt.</p></div>
+      <p id="latency-status" class="latency-status" role="status">Loading the latency report…</p>
+      <div id="latency-content" hidden>
+        <div class="latency-comparison"><strong>Open-Jev-2B vs hosted APIs</strong><p id="latency-jev"></p><p>All providers receive the same saved state and question semantics. The 2B numbers use a warm H100 with cache off and loopback HTTP. Hosted APIs use a fresh HTTPS connection per request, including Internet transit, TLS, routing and scheduling. These are client-observed request times, not a matched-hardware model speedup.</p><p id="latency-openai" hidden></p></div>
+        <p class="latency-scroll-hint">Swipe the table horizontally to compare providers →</p>
+        <div class="latency-table-scroll" tabindex="0" role="region" aria-label="Provider latency comparison, horizontally scrollable"><table class="latency-table" id="latency-provider-table"><caption>P50 / P95 in milliseconds. Counts show valid responses, not semantic accuracy. One request at a time. State tokens use the Qwen tokenizer.</caption><thead><tr id="latency-provider-head"></tr></thead><tbody id="latency-provider-rows"></tbody></table></div>
+        <div id="latency-provider-links" class="latency-links"></div>
+        <details class="latency-diagnostics"><summary>Local timing boundaries and experimental cache diagnostics</summary>
+        <div class="latency-controls"><label for="latency-transport">Timing boundary</label><select id="latency-transport"><option value="http_loopback">Loopback HTTP</option><option value="predictor">In-process Predictor</option></select><span id="latency-runtime"></span></div>
+        <p id="latency-boundary" class="latency-method"></p>
+        <div class="latency-table-scroll" tabindex="0" role="region" aria-label="Latency measurements, horizontally scrollable"><table class="latency-table"><caption>P50 / P95 in milliseconds. Warm model, one request at a time.</caption><thead><tr><th scope="col">Workload</th><th scope="col">State tokens</th><th scope="col">Candidates</th><th scope="col">Cache off</th><th scope="col">Experimental cache</th><th scope="col">Validation</th></tr></thead><tbody id="latency-rows"></tbody></table></div>
+        <p id="latency-cache-note" class="latency-method"></p>
+        <p id="latency-sampling" class="latency-method"></p>
+        </details>
+        <p class="latency-method">For context, TypeSafe's <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">launch article ↗</a> reports 70–500 ms end-to-end for Jev. That vendor range uses unspecified workloads and is separate from our measurements above.</p>
+        <div class="latency-evidence"><div><h3>Watch a measured request.</h3><p>One recorded model response and the full timing distribution for that workload. Playback length is presentation time; the measured request time is printed on screen.</p><div class="latency-links"><a id="latency-raw" class="text-link" href="https://github.com/Zefan-Cai/Open-Jev/tree/main/reports/inference-latency">Raw measurements ↗</a><a class="text-link" href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/inference-latency.md">Method & reproduction ↗</a></div><details class="latency-request"><summary>Exact request and recorded response</summary><pre id="latency-example"></pre></details></div><figure id="latency-video-wrap" hidden><video id="latency-video" controls playsinline preload="metadata" aria-label="Open-Jev-2B measured latency evidence"></video><figcaption id="latency-video-caption"></figcaption></figure></div>
+      </div>
+      <noscript><p>Read the <a href="./latency.json">machine-readable latency summary</a> and <a href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/inference-latency.md">measurement method</a>.</p></noscript>
     </section>
 
     <section class="results-section" id="results" aria-labelledby="results-title">

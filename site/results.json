@@ -787,17 +787,53 @@
         },
         "manifest_path": "reports/data-manifests/phone-extraction-control-v1.json",
         "manifest_sha256": "1001f1e04795308bf4f68db51076e8e1e1e47802986de54fc33b3b8d33548cfb"
+      },
+      {
+        "name": "context-retention-control-v1",
+        "splits": {
+          "calibration": 456,
+          "ood": 2160,
+          "test": 522,
+          "train": 6138,
+          "validation": 558
+        },
+        "manifest_path": "reports/context-retention-control-v1/manifest.json",
+        "manifest_sha256": "03badf69899809919e90bd299c5ddea4b3f8d646505d02f9544a1312e13bbd94"
+      },
+      {
+        "name": "sponsor-segment-control-v1",
+        "splits": {
+          "calibration": 756,
+          "ood": 2160,
+          "test": 999,
+          "train": 6345,
+          "validation": 540
+        },
+        "manifest_path": "reports/sponsor-segment-control-v1/manifest.json",
+        "manifest_sha256": "6a143ede0485b22588fc92f4612f41428c46b1fa7d8f8cc0d32422d09b548f13"
+      },
+      {
+        "name": "silent-failure-control-v1",
+        "splits": {
+          "calibration": 264,
+          "ood": 1920,
+          "test": 624,
+          "train": 6432,
+          "validation": 360
+        },
+        "manifest_path": "reports/silent-failure-control-v1/manifest.json",
+        "manifest_sha256": "a7d326a480c0132dd608d0d7119a948bc16e36667e0ff7049e111f33c5445fac"
       }
     ],
     "splits": {
-      "calibration": 10979,
-      "ood": 43219,
-      "test": 21729,
-      "train": 168740,
-      "validation": 7583
+      "calibration": 12455,
+      "ood": 49459,
+      "test": 23874,
+      "train": 187655,
+      "validation": 9041
     },
-    "total_decision_rows": 252250,
-    "task_source_identifiers": 20
+    "total_decision_rows": 282484,
+    "task_source_identifiers": 23
   },
   "limitations": [
     "2B and 9B trained on 80,816 release-v2 training rows; broader inventory is not their evaluation set.",
@@ -805,7 +841,7 @@
     "Synthetic controlled decision accuracy is not an end-to-end task or gameplay success rate.",
     "No full-data base-model baseline was run; no full-data training gain is claimed.",
     "27B final evaluation and final-model JF100/service suites are pending.",
-    "The five new corpora have no new-domain trained-model evaluation.",
+    "The eight new corpora have no new-domain trained-model evaluation.",
     "JF100 is a separate holdout: 100 questions with three option rotations."
   ]
 }

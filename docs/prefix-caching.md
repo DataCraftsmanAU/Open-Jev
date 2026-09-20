@@ -7,10 +7,13 @@ The existing training `DecisionModel.forward` still runs with `use_cache=False`;
 the head, LoRA weights, candidate prompts, chat template, calibration and model
 serialization are unchanged.
 
-Caching remains **off by default** until full-checkpoint BF16 and CUDA
-comparisons are complete. Strict FP32 CPU parity passes; reduced-precision
-segmentation can still change scores. The feature is implemented and available,
-but those numerical and performance checks are not represented as completed.
+Caching remains **off by default**. The released 2B checkpoint has now been
+measured on an H100: 9 of 11 workloads exceeded the predeclared `1e-4`
+probability-error tolerance, with a maximum error of `0.005703`. Selected
+decisions matched in all paired attempts, but the probabilities were not
+equivalent under that test. The [full CUDA report](../reports/inference-latency/public/2b-h100-20260920/report.json)
+retains timings and numerical differences. The 9B and 27B full-checkpoint CUDA
+comparisons remain pending; strict FP32 CPU parity is a separate check.
 
 This implementation targets the pinned `transformers==5.10.2` Qwen3.5 text
 backbone used by Qwen3.5-2B, Qwen3.5-9B and Qwen3.8-27B. The last model's pinned

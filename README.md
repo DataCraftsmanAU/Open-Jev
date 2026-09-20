@@ -21,6 +21,32 @@ Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
 not reproduce proprietary RLCD, private weights or training data, and does not
 claim TypeSafe's advertised speedups or parity with every community demo.
 
+## Inference latency
+
+The [latency report](docs/inference-latency.md) measures the released 2B
+checkpoint with warmed in-process Predictor calls and real loopback HTTP
+requests. It records P50/P95, context and candidate counts, hardware, cache
+mode, all warmup/timed attempts, and cache-output parity. The
+[website latency table and evidence video](https://zefan-cai.github.io/open-jev/#latency)
+use those saved measurements; video playback duration is not inference time.
+
+The same 11 saved workloads were measured against **Jev-1.13.0** from the same
+client: 220 measured HTTPS requests and 33 warmups, with no request errors.
+For customer service, median local Open-Jev HTTP latency is **85.03 ms** versus
+**295.26 ms** for Jev HTTPS. At 1024 state tokens and 32 candidates, Open-Jev is
+slower: **1015.90 ms** versus **301.37 ms**. Hardware and network paths differ;
+this is observed deployment latency, not matched-hardware speedup. CUDA prefix
+caching exceeded the probability tolerance on 9/11 workloads; all selected
+decisions matched, and caching remains off by default. Full results, including unfavorable cases, are in the
+[public evidence](reports/inference-latency/public).
+
+The [provider comparison](docs/provider-comparison.md) also evaluates OpenAI
+structured decisions on identical saved requests and maintains a separate
+all-domain quality suite. Latency does not establish equal task quality.
+For the same customer-service request, OpenAI Luna and Astra have P50 response
+times of **918.13 ms** and **1938.39 ms**, respectively, with their recorded
+reasoning settings and structured categorical outputs.
+
 ## Install and run
 
 Use Python 3.10 or newer. Core task contracts, data generators and CPU tests
@@ -46,7 +72,7 @@ python -m jev.server --checkpoint models/Open-Jev-2B/package/checkpoint \
 
 The download is pinned to the published 2B revision. The 9B package uses the
 same layout at revision `47e966881e489511c0c7f5633a9e1960a676a551`. The public
-dataset revision is `341d9338462da1cf56ba57519fb0f3f5258b825f`.
+dataset revision is `cad3d65e934ca0f1aede72b5c39d3f0384c4ca7f`; the original release remains reproducible at `341d9338462da1cf56ba57519fb0f3f5258b825f`.
 Open **http://127.0.0.1:8791** for the task lab or
 **http://127.0.0.1:8791/examples/painting/index.html** for probability painting.
 Run from the checkout to serve the example UI. No live business action is
@@ -63,13 +89,12 @@ This base-model initialization is distinct from the trained checkpoint above.
 Optional extras are `.[phone]` for phone-number controls and `.[doom]` for
 ViZDoom. Video rendering additionally needs Pillow, ffmpeg and ffprobe.
 
-## Social video drafts
+## Project videos
 
-The [introduction draft](release/social/open-jev-introduction.mp4) introduces
-the project, and the [successful-demo draft](release/social/open-jev-demos.mp4)
+The [introduction video](release/social/open-jev-introduction.mp4) introduces
+the project, and the [successful-demo video](release/social/open-jev-demos.mp4)
 shows selected examples. Captions, transcripts and source evidence accompany
-them in [release/social](release/social). These are social video drafts;
-publication on X/Twitter is not implied. Their renderer is
+them in [release/social](release/social). The demo was published in [the launch quote](https://x.com/Zefan_Cai/status/2101782158658695388); the [introduction reply](https://x.com/Zefan_Cai/status/2101786019607740436) and [website reply](https://x.com/Zefan_Cai/status/2101789698947793231) accompany it. Their renderer is
 [`scripts/render_launch_videos.py`](scripts/render_launch_videos.py).
 
 ## Typed decisions
@@ -107,8 +132,9 @@ The loader rejects overlength inputs instead of silently truncating them.
 [Prefix caching](docs/prefix-caching.md) is optional and off by default. It
 reuses exact shared request/question token prefixes while preserving independent
 attention, convolution and recurrent states for candidate branches. Tiny hybrid
-CPU/LoRA checks pass; full-checkpoint BF16/CUDA parity and latency comparisons
-remain pending. CPU token reuse is not a measured GPU speedup.
+CPU/LoRA checks pass. The released 2B BF16/CUDA benchmark did not pass every
+probability/decision parity check; prefix caching remains experimental and off
+by default. See the full latency evidence above.
 
 ## What is included
 
@@ -129,6 +155,17 @@ See [capability evidence](docs/public-capabilities.md),
 examples and explicit interface walkthroughs. It is an outcome-selected
 showcase, not a representative success-rate estimate. Original failures remain
 in the scientific reports.
+
+
+The latest three original community corpora add **30,234 audited typed rows**
+for [context retention](docs/context-retention-data.md),
+[seven-way transcript categorization](docs/sponsor-segment-data.md) and
+[silent API failure detection](docs/silent-failure-data.md). They are published
+as three additional HF configs, with all earlier payloads preserved. These
+corpora have not been used to retrain the released adapters. The broader
+prepared inventory is **282,484 rows / 23 source identifiers**, including
+187,655 training and 73,333 test/OOD rows; it includes the original Wiki
+records omitted from the public redistribution.
 
 ## Training data and measured results
 

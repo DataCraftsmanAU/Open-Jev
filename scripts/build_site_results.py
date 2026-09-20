@@ -36,13 +36,19 @@ def main():
         })
     corpora = []
     totals = {}
+    sources = set()
     for name in ("browser-drone-expansion-v1", "citation-control-v1",
                  "entity-alignment-control-v1", "amount-extraction-control-v1",
-                 "email-selection-control-v1", "phone-extraction-control-v1"):
+                 "email-selection-control-v1", "phone-extraction-control-v1",
+                 "context-retention-control-v1", "sponsor-segment-control-v1",
+                 "silent-failure-control-v1"):
         path = ROOT / f"reports/data-manifests/{name}.json"
+        if not path.exists():
+            path = ROOT / f"reports/{name}/manifest.json"
         raw = path.read_bytes()
         data = json.loads(raw)
         splits = data["summary"]["splits"]
+        sources.update(data["summary"]["sources"])
         for split, count in splits.items():
             totals[split] = totals.get(split, 0) + count
         corpora.append({"name": name, "splits": splits,
@@ -52,14 +58,14 @@ def main():
         "scope": "Completed release-v2 checkpoint evaluation; broader prepared inventory is separate.",
         "evaluation_models": models,
         "prepared_inventory": {"corpora": corpora, "splits": totals,
-                               "total_decision_rows": sum(totals.values()), "task_source_identifiers": 20},
+                               "total_decision_rows": sum(totals.values()), "task_source_identifiers": len(sources)},
         "limitations": [
             "2B and 9B trained on 80,816 release-v2 training rows; broader inventory is not their evaluation set.",
             "Hard accuracy excludes 960 soft-target rows per model; expected accuracy includes all rows.",
             "Synthetic controlled decision accuracy is not an end-to-end task or gameplay success rate.",
             "No full-data base-model baseline was run; no full-data training gain is claimed.",
             "27B final evaluation and final-model JF100/service suites are pending.",
-            "The five new corpora have no new-domain trained-model evaluation.",
+            "The eight new corpora have no new-domain trained-model evaluation.",
             "JF100 is a separate holdout: 100 questions with three option rotations.",
         ],
     }

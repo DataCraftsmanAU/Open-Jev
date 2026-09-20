@@ -27,7 +27,7 @@ function icon(name) {
 }
 
 function localAsset(path) {
-  if (typeof path !== "string" || !/^media\/[a-zA-Z0-9_.-]+$/.test(path)) return null;
+  if (typeof path !== "string" || !/^(?:media|latency-media)\/[a-zA-Z0-9_.-]+$/.test(path)) return null;
   return new URL(path, document.baseURI).href;
 }
 
@@ -365,3 +365,97 @@ reducedMotion.addEventListener("change", (event) => { motionPaused = event.match
 document.addEventListener("visibilitychange", updateMotion);
 updateMotion();
 loadCatalog();
+
+async function loadLatency() {
+  try {
+    const response = await fetch("./latency.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const report = await response.json();
+    if (report.schema_version !== 1 || !report.summaries.length) throw new Error("No completed measurements");
+    const milliseconds = (value) => Number.isFinite(value) ? value.toFixed(1) : "—";
+    const render = () => {
+      const transport = $("#latency-transport").value;
+      $("#latency-boundary").textContent = report.scope[transport];
+      $("#latency-rows").replaceChildren(...report.workloads.map((workload) => {
+        const rows = report.summaries.filter((row) => row.request_id === workload.id && row.transport === transport);
+        const pair = report.cache_comparisons.find((row) => row.request_id === workload.id && row.transport === transport);
+        const tr = element("tr");
+        const name = element("th", null, workload.label);
+        name.scope = "row";
+        name.append(element("small", null, `${workload.question_count} question${workload.question_count === 1 ? "" : "s"}`));
+        const tokens = element("td", null, workload.state_tokens);
+        tokens.append(element("small", null, `max ${Math.max(...workload.candidate_input_tokens)} / input`));
+        tr.append(name, tokens, element("td", null, workload.candidate_sequences));
+        for (const mode of ["uncached", "cached"]) {
+          const row = rows.find((item) => item.mode === mode);
+          const cell = element("td", "latency-numbers", row ? `${milliseconds(row.p50_ms)} / ${milliseconds(row.p95_ms)}` : "Not measured");
+          if (row) cell.append(element("small", null, `${row.successes}/${row.attempts} successful`));
+          tr.append(cell);
+        }
+        const validation = element("td", "latency-validation", pair?.parity_passed ? "Cache parity passed" : "Cache parity failed");
+        if (pair) validation.append(element("small", pair.parity_passed ? null : "latency-error", `max |Δp| ${pair.max_probability_error.toExponential(1)}`));
+        const errors = rows.reduce((sum, row) => sum + row.errors, 0);
+        if (errors) validation.append(element("small", "latency-error", `${errors} failed attempts; retained in raw log`));
+        tr.append(validation);
+        return tr;
+      }));
+    };
+    $("#latency-status").textContent = `Measured ${report.measured_at.slice(0, 10)} · released 2B LoRA + decision head · ${report.measured_attempts} timed local requests · ${report.runtime.gpu}`;
+    $("#latency-runtime").textContent = `${report.runtime.gpu} · ${report.dtype} · candidate batch ${report.configuration.batch_size}`;
+    $("#latency-sampling").textContent = `${report.configuration.warmup} warmups + ${report.configuration.repetitions} timed attempts per workload and path. P50/P95 use successful timed attempts, with linear interpolation. ${report.errors_including_warmup} errors including warmup; all attempts retained. Candidate counts are compiled model input sequences; Noul uses one sequence per question. ${report.scope.cache}.`;
+    $("#latency-cache-note").textContent = report.cache_note;
+    $("#latency-jev").textContent = report.jev.status_text;
+    const providers = [
+      {model: "Open-Jev-2B", boundary: "Loopback HTTP · cache off", summaries: report.summaries.filter((row) => row.transport === "http_loopback" && row.mode === "uncached"), raw_report_url: report.raw_report_url},
+      {...report.jev, model: report.jev.model || "Jev API", boundary: "Fresh HTTPS"},
+      ...(report.openai || []).map((provider) => ({...provider, boundary: `Fresh HTTPS · reasoning ${provider.reasoning_effort}`}))
+    ];
+    const workloadHeader = element("th", null, "Workload");
+    $("#latency-provider-table").style.setProperty("--provider-columns", providers.length);
+    workloadHeader.scope = "col";
+    $("#latency-provider-head").replaceChildren(workloadHeader, ...providers.map((provider) => {
+      const th = element("th", null, provider.model); th.scope = "col";
+      th.append(element("small", null, provider.boundary));
+      return th;
+    }));
+    $("#latency-provider-rows").replaceChildren(...report.workloads.map((workload) => {
+      const tr = element("tr");
+      const title = element("th", null, workload.label); title.scope = "row";
+      title.append(element("small", null, `${workload.state_tokens} state tokens · ${workload.question_count} question${workload.question_count === 1 ? "" : "s"}`));
+      tr.append(title, ...providers.map((provider) => {
+        const row = provider.summaries.find((entry) => entry.request_id === workload.id);
+        const td = element("td", "latency-numbers", row?.successes ? `${milliseconds(row.p50_ms)} / ${milliseconds(row.p95_ms)}` : "Not measured");
+        if (row) td.append(element("small", null, `${row.successes}/${row.attempts} valid responses`));
+        return td;
+      }));
+      return tr;
+    }));
+    $("#latency-provider-links").replaceChildren(...providers.filter((provider) => provider.raw_report_url).map((provider) => {
+      const a = element("a", "text-link", `${provider.model} raw attempts ↗`);
+      a.href = sourceURL(provider.raw_report_url);
+      return a;
+    }));
+    if (report.openai?.length) {
+      $("#latency-openai").textContent = `OpenAI produces categorical decisions as structured text; Open-Jev and Jev return typed probabilities. Full response times include generation, not just time to first token. Remote server-side caching is controlled by each provider. ${report.openai.map((provider) => provider.status_text).join(" ")}`;
+      $("#latency-openai").hidden = false;
+    }
+    $("#latency-raw").href = sourceURL(report.raw_report_url);
+    if (report.example) $("#latency-example").textContent = JSON.stringify(report.example, null, 2);
+    if (report.video) {
+      const player = $("#latency-video");
+      player.src = localAsset(report.video.path);
+      player.poster = localAsset(report.video.poster);
+      const track = element("track");
+      track.kind = "captions"; track.label = "English"; track.srclang = "en"; track.src = localAsset(report.video.captions); track.default = true;
+      player.append(track);
+      $("#latency-video-caption").textContent = report.video.caption;
+      $("#latency-video-wrap").hidden = false;
+    }
+    $("#latency-transport").addEventListener("change", render);
+    render();
+    $("#latency-content").hidden = false;
+  } catch (error) {
+    $("#latency-status").textContent = "The latency summary could not be loaded. See the measurement report on GitHub.";
+  }
+}
+loadLatency();

@@ -46,7 +46,8 @@ Playback is edited for readability; its duration is not inference latency.
 Wrong decisions and unsuccessful episodes remain in the original evaluation
 records; curation changes neither predictions nor metrics. No clip substitutes
 reference labels, teacher actions or fixture answers for learned predictions.
-The five newly prepared citation, entity, amount, email and phone corpora have
+The eight newly prepared citation, entity, amount, email, phone, context-retention,
+sponsor-segment and silent-failure corpora have
 no new-domain trained-model evaluation. A historical recipe smoke response
 does not evaluate those corpora.
 
@@ -59,7 +60,7 @@ gallery coverage is not a claim of parity with every Jev example on X.
 ## Data and evaluation scope
 
 The prepared inventory counts the 163,050-row browser/drone expansion once,
-plus the five newer corpora, without counting its constituent datasets again.
+plus the eight newer corpora, without counting its constituent datasets again.
 
 | Corpus | Train | Test | OOD | All splits |
 | --- | ---: | ---: | ---: | ---: |
@@ -69,11 +70,14 @@ plus the five newer corpora, without counting its constituent datasets again.
 | Amount extraction | 32,984 | 3,472 | 9,920 | 49,600 |
 | Email selection | 3,618 | 432 | 1,080 | 5,400 |
 | Phone extraction | 12,350 | 1,615 | 3,800 | 19,000 |
-| **Total** | **168,740** | **21,729** | **43,219** | **252,250** |
+| Context retention | 6,138 | 522 | 2,160 | 9,834 |
+| Sponsor segments | 6,345 | 999 | 2,160 | 10,800 |
+| Silent failure | 6,432 | 624 | 1,920 | 9,600 |
+| **Total** | **187,655** | **23,874** | **49,459** | **282,484** |
 
-There are 20 independent task-source identifiers (19 domains if the two
-customer sources are grouped). Calibration adds 10,979 rows and validation
-7,583. These are typed decision rows, not distinct documents or episodes.
+There are 23 independent task-source identifiers (22 domains if the two
+customer sources are grouped). Calibration adds 12,455 rows and validation
+9,041. These are typed decision rows, not distinct documents or episodes.
 Citation quote-not-found controls are separate: 400 across all splits,
 including 30 test and 80 OOD. They are not added to the typed counts above.
 

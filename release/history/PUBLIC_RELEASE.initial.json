@@ -5,7 +5,7 @@
   "public_repository": "https://github.com/Zefan-Cai/Open-Jev",
   "source_history_included": false,
   "scope": "Reviewed source snapshot with required scientific evidence, selected website and social video drafts; no model weights or development operational logs.",
-  "files_scope": "Current release payload except PUBLIC_RELEASE.json; initial manifest preserved under release/history.",
+  "files_scope": "All release payload files except PUBLIC_RELEASE.json itself.",
   "files": [
     {
       "path": ".gitattributes",
@@ -30,13 +30,12 @@
     },
     {
       "path": "README.md",
-      "source_sha256": "f1b0c9a57f43d7cb839573676e1739f929324bf429eac720d0d64c811ab7799f",
-      "sha256": "044b220b47596cca27edeb922448d5c026893587aced71122449d5f01f3c1b41",
-      "bytes": 12375,
+      "source_sha256": "d90599c197dc2e26fd06be7d8a37a926aead5e69d654390500ffa4c2a2a7f01d",
+      "sha256": "ba55a4f9acf516f9708febcaf6d376bd6a4d962512cc1fb3601d7e51e49fe78b",
+      "bytes": 9784,
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ],
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3"
+        "public release README"
+      ]
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -55,16 +54,6 @@
       "source_sha256": "e9cdeba834cabde2c7d8a92edd1d823c1bfd2aeed621bf6a7260bb93adacb114",
       "sha256": "e9cdeba834cabde2c7d8a92edd1d823c1bfd2aeed621bf6a7260bb93adacb114",
       "bytes": 8002
-    },
-    {
-      "path": "configs/probes/fizzbuzz.json",
-      "sha256": "d7abb5866e92216b99d71507aeb428fbbc39a4c2ec33c9b490cf47d90998fd3f",
-      "bytes": 747,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "d7abb5866e92216b99d71507aeb428fbbc39a4c2ec33c9b490cf47d90998fd3f",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "docs/amount-extraction-control.md",
@@ -109,16 +98,6 @@
       "bytes": 6932
     },
     {
-      "path": "docs/community-research-20260920.md",
-      "sha256": "689670eb2bf4b34144f42bc032d67dadd03e638c0fc6c852d6150f6f307b908c",
-      "bytes": 13621,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "689670eb2bf4b34144f42bc032d67dadd03e638c0fc6c852d6150f6f307b908c",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "docs/community.md",
       "source_sha256": "f582a794a047508a99e957181fa4888b3ecf7abe7aeba7a5f0bf25df3ee0188c",
       "sha256": "f582a794a047508a99e957181fa4888b3ecf7abe7aeba7a5f0bf25df3ee0188c",
@@ -129,16 +108,6 @@
       "source_sha256": "9db0e606a9b4c405926247426950f3130a7b9a5502fa53ce0e1e8eae84c2d923",
       "sha256": "9db0e606a9b4c405926247426950f3130a7b9a5502fa53ce0e1e8eae84c2d923",
       "bytes": 13751
-    },
-    {
-      "path": "docs/context-retention-data.md",
-      "sha256": "f278f44264fb496d1c3f5cfa4a66b81765d92abd86daadf2c9f05efc83022165",
-      "bytes": 7579,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "f278f44264fb496d1c3f5cfa4a66b81765d92abd86daadf2c9f05efc83022165",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "docs/customer-case.md",
@@ -213,16 +182,6 @@
       "bytes": 20586
     },
     {
-      "path": "docs/inference-latency.md",
-      "sha256": "2e0e641b327f60c1f77130961993fd9d61b256f9a5da300cae3fd4c73306ba49",
-      "bytes": 5295,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "bdb4ab119d482b9a70d4beb923dfd9eb5f1666533fcc0754eedc75df77db6305",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "docs/latency.md",
       "source_sha256": "2426a50b48beadbbffcee9add660da4a4dab029371fa88b0f7e1538aec4866fc",
       "sha256": "2426a50b48beadbbffcee9add660da4a4dab029371fa88b0f7e1538aec4866fc",
@@ -272,23 +231,9 @@
     },
     {
       "path": "docs/prefix-caching.md",
-      "source_sha256": "22ddfb7337f77431a1c331b062e0e43d57348984d17df90e94b3668d2aec5510",
-      "sha256": "22ddfb7337f77431a1c331b062e0e43d57348984d17df90e94b3668d2aec5510",
-      "bytes": 12445,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "docs/provider-comparison.md",
-      "sha256": "0c8df300a5f443ecbe5631b4ed375850f095bdc4691bdc4332771f80f71f66b0",
-      "bytes": 7014,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "0c8df300a5f443ecbe5631b4ed375850f095bdc4691bdc4332771f80f71f66b0",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+      "source_sha256": "5c41c84a48cb290e6d0914603755b4df21942bf9147a902edd1a9e41b03583a6",
+      "sha256": "5c41c84a48cb290e6d0914603755b4df21942bf9147a902edd1a9e41b03583a6",
+      "bytes": 12186
     },
     {
       "path": "docs/public-capabilities.md",
@@ -326,16 +271,6 @@
       ]
     },
     {
-      "path": "docs/silent-failure-data.md",
-      "sha256": "442357387c6bc5dc618650e133c4573cd2555c5a8253f8beca6ba8fa0c25087d",
-      "bytes": 8931,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "442357387c6bc5dc618650e133c4573cd2555c5a8253f8beca6ba8fa0c25087d",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "docs/source-coverage-followup-20260920.md",
       "source_sha256": "329386a196926b9acda316b49f73d8ed5196efb070d13803805ba40fc0789f45",
       "sha256": "329386a196926b9acda316b49f73d8ed5196efb070d13803805ba40fc0789f45",
@@ -348,16 +283,6 @@
       "bytes": 11046,
       "changes": [
         "normalize final blank line for clean source-snapshot diff check"
-      ]
-    },
-    {
-      "path": "docs/sponsor-segment-data.md",
-      "sha256": "a5f01b32f43191577f63533efe44c6d3359377bf01dd0b7b5b6c52ca736c3fd7",
-      "bytes": 3276,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "a5f01b32f43191577f63533efe44c6d3359377bf01dd0b7b5b6c52ca736c3fd7",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
       ]
     },
     {
@@ -374,13 +299,9 @@
     },
     {
       "path": "docs/website-and-videos.md",
-      "source_sha256": "e86f7b6fed9cd8b54254cc2831de8ef45008cbbf1ecc0ef340e709aee0cfc079",
-      "sha256": "e86f7b6fed9cd8b54254cc2831de8ef45008cbbf1ecc0ef340e709aee0cfc079",
-      "bytes": 8257,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+      "source_sha256": "574ec83f7c22d3b7dc4ed7e681975aecb96510508d270a4b33f0a97fb66151e8",
+      "sha256": "574ec83f7c22d3b7dc4ed7e681975aecb96510508d270a4b33f0a97fb66151e8",
+      "bytes": 8050
     },
     {
       "path": "docs/wikiracing-case.md",
@@ -773,16 +694,6 @@
       "bytes": 19085
     },
     {
-      "path": "jev/case_sponsor_segments.py",
-      "sha256": "42b34e2316cd75c9bcb41e6f7946244f866017e76c258ec64de10f1dfcfe9b7e",
-      "bytes": 14779,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "42b34e2316cd75c9bcb41e6f7946244f866017e76c258ec64de10f1dfcfe9b7e",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "jev/case_wikiracing.py",
       "source_sha256": "5718abb0e18dd655fd75f48c14c88daec57f404250da0648d344d2e6bd0a3782",
       "sha256": "5718abb0e18dd655fd75f48c14c88daec57f404250da0648d344d2e6bd0a3782",
@@ -805,16 +716,6 @@
       "source_sha256": "b784c0c64e9dd72f2ce0ba13f77133a66b996702b9b043687ea9d3ed93fcac2b",
       "sha256": "b784c0c64e9dd72f2ce0ba13f77133a66b996702b9b043687ea9d3ed93fcac2b",
       "bytes": 26979
-    },
-    {
-      "path": "jev/context_retention_data.py",
-      "sha256": "b3a9e163fbc3c78343be99cf3465e6433933df05b4e0ec209d2da22331e14678",
-      "bytes": 16620,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "b3a9e163fbc3c78343be99cf3465e6433933df05b4e0ec209d2da22331e14678",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "jev/data.py",
@@ -907,16 +808,6 @@
       "bytes": 7823
     },
     {
-      "path": "jev/silent_failure_data.py",
-      "sha256": "f0127220b61a2b9eb913b60f99ebe84f9948b999c9f1bf813ffd35dfd13bf4a7",
-      "bytes": 15943,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "f0127220b61a2b9eb913b60f99ebe84f9948b999c9f1bf813ffd35dfd13bf4a7",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "jev/train.py",
       "source_sha256": "f94d444e77a79c0bf1f20ca7587a036ff0a28a7112c72dc3b6a1edea2c9f8eef",
       "sha256": "f94d444e77a79c0bf1f20ca7587a036ff0a28a7112c72dc3b6a1edea2c9f8eef",
@@ -939,15 +830,6 @@
       "source_sha256": "7f3d7ead5700ebaa49e2777bbd27e8c02db3a96a58912c8ea7ead04f13c47d5d",
       "sha256": "7f3d7ead5700ebaa49e2777bbd27e8c02db3a96a58912c8ea7ead04f13c47d5d",
       "bytes": 640
-    },
-    {
-      "path": "release/history/PUBLIC_RELEASE.initial.json",
-      "sha256": "948cc26de8d28577bfd984cc597949fd89b134e37028260d874f6ed9191b3f2a",
-      "bytes": 284858,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "release/social/README.md",
@@ -1440,85 +1322,6 @@
       "source_sha256": "630b8442672b424e0cf604771565271a1ec81b6554540578ff0d2ccc93de32c2",
       "sha256": "630b8442672b424e0cf604771565271a1ec81b6554540578ff0d2ccc93de32c2",
       "bytes": 20166
-    },
-    {
-      "path": "reports/community-data-release-20260920/verification.json",
-      "sha256": "88bacacc597fac2b4cf06522e5a5006f909991c036eb171579c72691964e58a2",
-      "bytes": 406,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/community-research-20260920/authenticated-x-followup.json",
-      "sha256": "4d1f1ad129768519d4b32eb6c2ace123a553996fda09b5e65972dc3b2c5cbaff",
-      "bytes": 4720,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "4d1f1ad129768519d4b32eb6c2ace123a553996fda09b5e65972dc3b2c5cbaff",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/community-research-20260920/discovery.json",
-      "sha256": "6b5fcf50f624cd5d6773679a2cf898ca100f7287f12246117c1360af9ae53e3d",
-      "bytes": 55149,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "5b6ff56bc9493585b5d8232f95a58923a666b106b83dac4e9c1d6c69bd0f3704",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/community-research-20260920/domain-proposals.json",
-      "sha256": "801798b5930a6dcd3dc708d14fc4b739b673e41779364064dcbc88ddf2772ea2",
-      "bytes": 12530,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "9cd9dd88f8e354b6e7a2556e073511432370c79f998b6081f667c52ea3be3f88",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/community-research-20260920/followup-discovery.json",
-      "sha256": "3f320204a7955a9fae5553655a701b13569f263ccdc3dd0edc52aa6d2e41385b",
-      "bytes": 6413,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "22c56e3844f2e156ec9853d35adb35b6db1ac7969cfb2d9814dc24d7d08dbd13",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/community-research-20260920/repository-pins.json",
-      "sha256": "633603aa825ea4b8beccc7e380398ccedf4744af4892f270fb2eee8191641048",
-      "bytes": 3587,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "37dd10e50b4309af21c2a3ce84b105c748b8799e58ba9bdb7085434359401995",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/community-research-20260920/social-search-access.json",
-      "sha256": "0c8b56f937a648dd3e73c14e237afd13aaebec667c4409d6275dbfbd630c92a7",
-      "bytes": 2782,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "9d178ecb0ae05abc6701901f51e5b0bf651eda5675997b2f3dc1b5627e75abd3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/community-research-20260920/source-contracts.json",
-      "sha256": "846e428501ca27a8d3b3cccaf576854f3c0af8be24ae6d432d9ae655da0e7ada",
-      "bytes": 6260,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "8e982ba94faa055a80b293989bbc6509b5d93d7f3b0271e77db5185b1e9a62b9",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "reports/contact-service-eval/capture_tokenizer_lengths.py",
@@ -2122,76 +1925,6 @@
       "source_sha256": "e32af3c51dc4281be2a7f3c9b4ae7fc2506469efcf623f17c63934e8373c331e",
       "sha256": "e32af3c51dc4281be2a7f3c9b4ae7fc2506469efcf623f17c63934e8373c331e",
       "bytes": 9756
-    },
-    {
-      "path": "reports/context-retention-control-v1/build-verification.json",
-      "sha256": "89046e61a8d6d48f14db04365c7e471b89c0bfbc19b999cda508c1207df44acc",
-      "bytes": 1771,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "89046e61a8d6d48f14db04365c7e471b89c0bfbc19b999cda508c1207df44acc",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/context-retention-control-v1/example.json",
-      "sha256": "5807b1c192d69875b3602de7d14cf36694baefc1b7753f9e2f2507d22f685dee",
-      "bytes": 6622,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "5807b1c192d69875b3602de7d14cf36694baefc1b7753f9e2f2507d22f685dee",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/context-retention-control-v1/independent-audit.json",
-      "sha256": "2ff1b4ad8e2156d7cefad0df41d35edaa50f1d3a892338b656758e68c29f72e1",
-      "bytes": 940,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "2ff1b4ad8e2156d7cefad0df41d35edaa50f1d3a892338b656758e68c29f72e1",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/context-retention-control-v1/manifest.json",
-      "sha256": "03badf69899809919e90bd299c5ddea4b3f8d646505d02f9544a1312e13bbd94",
-      "bytes": 2797,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "03badf69899809919e90bd299c5ddea4b3f8d646505d02f9544a1312e13bbd94",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/context-retention-control-v1/root-full-audit.json",
-      "sha256": "2ff1b4ad8e2156d7cefad0df41d35edaa50f1d3a892338b656758e68c29f72e1",
-      "bytes": 940,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "2ff1b4ad8e2156d7cefad0df41d35edaa50f1d3a892338b656758e68c29f72e1",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/context-retention-control-v1/tests.log",
-      "sha256": "6b5089f183e88cd950d2a6b808af91f5b2a228b56b7224d1b57f51c0f9275ad7",
-      "bytes": 1981,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "6b5089f183e88cd950d2a6b808af91f5b2a228b56b7224d1b57f51c0f9275ad7",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/context-retention-control-v1/verify.py",
-      "sha256": "3c33f8447950e580f3032e24b0f1ee739a42bdc565b6e57bd7720156f3338ebc",
-      "bytes": 12864,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "3c33f8447950e580f3032e24b0f1ee739a42bdc565b6e57bd7720156f3338ebc",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "reports/data-manifests/amount-extraction-control-v1.json",
@@ -2849,196 +2582,6 @@
       "source_sha256": "6fb4aa69fbb59395a1555deb11b57e8b2c1017e14e6ee24afc2a3bd6f38ad5d4",
       "sha256": "6fb4aa69fbb59395a1555deb11b57e8b2c1017e14e6ee24afc2a3bd6f38ad5d4",
       "bytes": 926
-    },
-    {
-      "path": "reports/inference-latency/public/2b-h100-20260920/publication.json",
-      "sha256": "d8763f2feb0313a654779dd5e8431ca23c343481af25679c91911f07afad9d4b",
-      "bytes": 1527,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "d8763f2feb0313a654779dd5e8431ca23c343481af25679c91911f07afad9d4b",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/2b-h100-20260920/report.json",
-      "sha256": "8ddcd2e56a7ca603b7946c0554fbaa4e00e9ceb41781aee51ef99dc02e4b3f4e",
-      "bytes": 210217,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "8ddcd2e56a7ca603b7946c0554fbaa4e00e9ceb41781aee51ef99dc02e4b3f4e",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/2b-h100-20260920/requests.json",
-      "sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "bytes": 51818,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/2b-h100-20260920/samples.jsonl",
-      "sha256": "e80fdc748804acea0fd08e462ae695c8ceda6c3819b73ab8994be56ab500c10b",
-      "bytes": 2378427,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "e80fdc748804acea0fd08e462ae695c8ceda6c3819b73ab8994be56ab500c10b",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/jev-api-20260920/publication.json",
-      "sha256": "bbe11aecfd795492a670e710a8e84dc5fecd90df769786233c22bc11e8e3166e",
-      "bytes": 1367,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "bbe11aecfd795492a670e710a8e84dc5fecd90df769786233c22bc11e8e3166e",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/jev-api-20260920/report.json",
-      "sha256": "e6bbca75ec2dd5aa8e9c6bae5182cc6edafe1b4203575f5f3251cd0716459b77",
-      "bytes": 6410,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "e6bbca75ec2dd5aa8e9c6bae5182cc6edafe1b4203575f5f3251cd0716459b77",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/jev-api-20260920/requests.json",
-      "sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "bytes": 51818,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/jev-api-20260920/samples.jsonl",
-      "sha256": "8dd07acd62b228fd62554ea96c42a0f5144c2308f381297e43edbfb80699b463",
-      "bytes": 322724,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "8dd07acd62b228fd62554ea96c42a0f5144c2308f381297e43edbfb80699b463",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/payloads.json",
-      "sha256": "81199c5ebdd5a8bb9deb092c3f74f4971a5a4a48fbb40d369c981aa90e63caa7",
-      "bytes": 62511,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "81199c5ebdd5a8bb9deb092c3f74f4971a5a4a48fbb40d369c981aa90e63caa7",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/publication.json",
-      "sha256": "d8e8ddf26665b7bc1351575552e9bd7bb08d8d832ef9ed9a13242e7dcb39d87f",
-      "bytes": 1645,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "d8e8ddf26665b7bc1351575552e9bd7bb08d8d832ef9ed9a13242e7dcb39d87f",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/report.json",
-      "sha256": "4902b7acb2cc1d49bb42aadc5d0bed9ba0e02900bd752a3e387dd699cba9522d",
-      "bytes": 6695,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "4902b7acb2cc1d49bb42aadc5d0bed9ba0e02900bd752a3e387dd699cba9522d",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/requests.json",
-      "sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "bytes": 51818,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/samples.jsonl",
-      "sha256": "45cb01e51aeb2ed61d21a69a7a8d6fd6b7a9710830b5f0d2492c89cc3383154c",
-      "bytes": 1785291,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "45cb01e51aeb2ed61d21a69a7a8d6fd6b7a9710830b5f0d2492c89cc3383154c",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-6-astra-20260920/payloads.json",
-      "sha256": "bfbad11f55bf702ccaf5a3f99edc4868b4f799b613b3b0e2e6bca36c0950f1ec",
-      "bytes": 62489,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "bfbad11f55bf702ccaf5a3f99edc4868b4f799b613b3b0e2e6bca36c0950f1ec",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-6-astra-20260920/publication.json",
-      "sha256": "5ed7f2cc47f095978a68bcfa5ce017b2ba9a6a926e8be16b61fa6c334983d75c",
-      "bytes": 1645,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "5ed7f2cc47f095978a68bcfa5ce017b2ba9a6a926e8be16b61fa6c334983d75c",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-6-astra-20260920/report.json",
-      "sha256": "217aa666745316ec4fe444d9a3705a0cef3dcb0b4529eda03771280566ccee24",
-      "bytes": 6728,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "217aa666745316ec4fe444d9a3705a0cef3dcb0b4529eda03771280566ccee24",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-6-astra-20260920/requests.json",
-      "sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "bytes": 51818,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "a49c592a14e3d55b15a0c31dab0eaba707d3ed53df52e3e1d3eb203639176e40",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/public/openai-gpt-6-astra-20260920/samples.jsonl",
-      "sha256": "1e442dc1eebab70d72d42bb63e044751a78a871f5b56ded4c87ebdd10fbc7e9e",
-      "bytes": 1851855,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "1e442dc1eebab70d72d42bb63e044751a78a871f5b56ded4c87ebdd10fbc7e9e",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/inference-latency/root-statistical-verification.json",
-      "sha256": "47a17fc452b5be0ec29a41e25c6213d043b7a038d5ac250e84b0b51f98d31dca",
-      "bytes": 866,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "47a17fc452b5be0ec29a41e25c6213d043b7a038d5ac250e84b0b51f98d31dca",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "reports/integration/27b-api-check.jsonl",
@@ -4805,55 +4348,6 @@
       "bytes": 6684
     },
     {
-      "path": "reports/provider-comparison-20260920/coverage-suite-manifest.json",
-      "sha256": "f03b181d6470732dea6818df75c18ee80cb9401281bfe4fad410ed0829bac727",
-      "bytes": 16016,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "f03b181d6470732dea6818df75c18ee80cb9401281bfe4fad410ed0829bac727",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/provider-comparison-20260920/jf100-suite-manifest.json",
-      "sha256": "03b5c41c198e04614a0add36c717c326570ed7b2982be0515fb7dca65efbb2ca",
-      "bytes": 2516,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "03b5c41c198e04614a0add36c717c326570ed7b2982be0515fb7dca65efbb2ca",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/provider-comparison-20260920/presentation-peer-review.json",
-      "sha256": "6beeb2ae9fef9f07a03143e32fba44de60b8a0d9238bb5997fd10add1cbfed58",
-      "bytes": 482,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "6beeb2ae9fef9f07a03143e32fba44de60b8a0d9238bb5997fd10add1cbfed58",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/provider-comparison-20260920/quality-evidence-identity.json",
-      "sha256": "da095f75df75a784a69fd4b50ce8c0bffe8754d8d951796526e4e2a59c901e40",
-      "bytes": 1222,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "da095f75df75a784a69fd4b50ce8c0bffe8754d8d951796526e4e2a59c901e40",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/provider-comparison-20260920/summary.json",
-      "sha256": "883397a2dc69377263ea86d3922685af4fb98fa89c51001072b41340a0f39a1f",
-      "bytes": 32460,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "reports/runtime-checks/27b-expansion-eval-preflight.json",
       "source_sha256": "a5bf807cbbde3a22f22d909d59d64be5a638bf5c70bbab0293f28abced64c672",
       "sha256": "a5bf807cbbde3a22f22d909d59d64be5a638bf5c70bbab0293f28abced64c672",
@@ -5043,96 +4537,6 @@
       "bytes": 8253
     },
     {
-      "path": "reports/silent-failure-control-v1/build-verification.json",
-      "sha256": "c9f30e283ba2b76bdaca1c8c2069d2e51b410ee987cce3a9724848d70faf8738",
-      "bytes": 2128,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "c9f30e283ba2b76bdaca1c8c2069d2e51b410ee987cce3a9724848d70faf8738",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/independent-audit.json",
-      "sha256": "97656fb416bec304eb77e585ae4c58e858153c55f8d5c494c3166a377a1c3631",
-      "bytes": 15876,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "97656fb416bec304eb77e585ae4c58e858153c55f8d5c494c3166a377a1c3631",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/manifest.json",
-      "sha256": "a7d326a480c0132dd608d0d7119a948bc16e36667e0ff7049e111f33c5445fac",
-      "bytes": 2950,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "a7d326a480c0132dd608d0d7119a948bc16e36667e0ff7049e111f33c5445fac",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/root-full-audit.json",
-      "sha256": "1a5a5306d49743f73b977de6cbe314cea0d7997ff54884227b8db5cba7387eac",
-      "bytes": 15814,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "1a5a5306d49743f73b977de6cbe314cea0d7997ff54884227b8db5cba7387eac",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/shared-data-validation.json",
-      "sha256": "7438350abde62b9a437d264306bf656d9a636d804149c14c10cead155c6d2b6a",
-      "bytes": 317,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "7438350abde62b9a437d264306bf656d9a636d804149c14c10cead155c6d2b6a",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/source-contract.json",
-      "sha256": "b856213380bffbefa6481efe7212a2770cf986f8e88ada01b2cb2c2b45deff6a",
-      "bytes": 1450,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "b856213380bffbefa6481efe7212a2770cf986f8e88ada01b2cb2c2b45deff6a",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/test-verification.json",
-      "sha256": "651a0aeabfcfcfd8a0e58892d95e293322f81ab15c777fcc3bfcc2c7b74c72cf",
-      "bytes": 427,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "651a0aeabfcfcfd8a0e58892d95e293322f81ab15c777fcc3bfcc2c7b74c72cf",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/tests.log",
-      "sha256": "7ce81aec2208d8b97276ca9e5a71c64d15d7e812220b1faf3202cab7a0f71854",
-      "bytes": 3039,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "7ce81aec2208d8b97276ca9e5a71c64d15d7e812220b1faf3202cab7a0f71854",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/silent-failure-control-v1/verify.py",
-      "sha256": "b697c9515e724fc9ca722d910f0034e8e02ced593fac6818816c904fe7ee6cff",
-      "bytes": 25965,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "b697c9515e724fc9ca722d910f0034e8e02ced593fac6818816c904fe7ee6cff",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "reports/site/README.md",
       "source_sha256": "d285892411c282c1dc218b834bdcbb13edc836d0fd730cfe05f97baf78916d18",
       "sha256": "d285892411c282c1dc218b834bdcbb13edc836d0fd730cfe05f97baf78916d18",
@@ -5221,36 +4625,6 @@
       "source_sha256": "98c9292a699d82255b92bcb9febf13b5358523bdde88f99dd95496fd2d953ca4",
       "sha256": "98c9292a699d82255b92bcb9febf13b5358523bdde88f99dd95496fd2d953ca4",
       "bytes": 624
-    },
-    {
-      "path": "reports/sponsor-segment-control-v1/independent-audit.json",
-      "sha256": "0f5c5e523a709c8529f0f791aa1ac337ad45a049fca17af394443b466846ee42",
-      "bytes": 949,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "0f5c5e523a709c8529f0f791aa1ac337ad45a049fca17af394443b466846ee42",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/sponsor-segment-control-v1/manifest.json",
-      "sha256": "6a143ede0485b22588fc92f4612f41428c46b1fa7d8f8cc0d32422d09b548f13",
-      "bytes": 2201,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "6a143ede0485b22588fc92f4612f41428c46b1fa7d8f8cc0d32422d09b548f13",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "reports/sponsor-segment-control-v1/peer-review.json",
-      "sha256": "8b4aee98bc30036609401b448671c7bf8ac4e9eedb38a54cb17cf5d0705ebb79",
-      "bytes": 896,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "8b4aee98bc30036609401b448671c7bf8ac4e9eedb38a54cb17cf5d0705ebb79",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "reports/workflow-service/27b-workflow-pilot/predictions.jsonl",
@@ -5361,16 +4735,6 @@
       "bytes": 16250
     },
     {
-      "path": "scripts/audit_sponsor_segments.py",
-      "sha256": "efe4813b3786595a9422c3f9fae44a10ab9a19589b648bc32fa8a7c6d0a763ce",
-      "bytes": 6807,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "efe4813b3786595a9422c3f9fae44a10ab9a19589b648bc32fa8a7c6d0a763ce",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "scripts/benchmark_api.py",
       "source_sha256": "73ab5b9717ce416bdcf00acc1c204c324c411b956d1e309a36ccc4be56d91c67",
       "sha256": "73ab5b9717ce416bdcf00acc1c204c324c411b956d1e309a36ccc4be56d91c67",
@@ -5381,36 +4745,6 @@
       "source_sha256": "356629c6ca2a53b21fe88c908d902b0fa9f4a79041f01a9940527568cc1d07e9",
       "sha256": "356629c6ca2a53b21fe88c908d902b0fa9f4a79041f01a9940527568cc1d07e9",
       "bytes": 21988
-    },
-    {
-      "path": "scripts/benchmark_inference_latency.py",
-      "sha256": "3599947a5befd68e91ff191a0282b77dfe06fa9ae5811e5f14ac9694f1277976",
-      "bytes": 21036,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "3599947a5befd68e91ff191a0282b77dfe06fa9ae5811e5f14ac9694f1277976",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "scripts/benchmark_jev_api_latency.py",
-      "sha256": "e1ad737c0a7705fa0a4aaad7c89127404318ad4574c19a0b0894c9f4d90005b0",
-      "bytes": 8842,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "e1ad737c0a7705fa0a4aaad7c89127404318ad4574c19a0b0894c9f4d90005b0",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "scripts/benchmark_openai_api.py",
-      "sha256": "63949cd352f7bb67f1a852dbb7770b70cb8bc0657249fc2a13b0f51dfcd3e3eb",
-      "bytes": 11969,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "63949cd352f7bb67f1a852dbb7770b70cb8bc0657249fc2a13b0f51dfcd3e3eb",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "scripts/benchmark_prefix_cache.py",
@@ -5425,34 +4759,10 @@
       "bytes": 29548
     },
     {
-      "path": "scripts/build_fizzbuzz_probe.py",
-      "sha256": "355f1926f6e3522f751332e6565e06275cf67f27f434654dc7a01226e6912e07",
-      "bytes": 2962,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "355f1926f6e3522f751332e6565e06275cf67f27f434654dc7a01226e6912e07",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "scripts/build_provider_suite.py",
-      "sha256": "729339e5faeb4169e94bb10347e3a90beb286424c9769811b59a200a6010da23",
-      "bytes": 7719,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "729339e5faeb4169e94bb10347e3a90beb286424c9769811b59a200a6010da23",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "scripts/build_site_results.py",
-      "source_sha256": "dbdf656c26001904869026f5bd5c915ba204bef01d332b9ba67e0b791674fafc",
-      "sha256": "dbdf656c26001904869026f5bd5c915ba204bef01d332b9ba67e0b791674fafc",
-      "bytes": 3784,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+      "source_sha256": "c3fb1ce0ec56ead69114ba4b467fe73cf47127d0406e95424a9dd02df42bce60",
+      "sha256": "c3fb1ce0ec56ead69114ba4b467fe73cf47127d0406e95424a9dd02df42bce60",
+      "bytes": 3489
     },
     {
       "path": "scripts/capture_doom_gameplay.py",
@@ -5533,16 +4843,6 @@
       "bytes": 14262
     },
     {
-      "path": "scripts/export_latency_evidence.py",
-      "sha256": "93ee35a60bcf60bcc621387604931e76ecacf8d414a2b14ad05e205c241ea364",
-      "bytes": 4181,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "93ee35a60bcf60bcc621387604931e76ecacf8d414a2b14ad05e205c241ea364",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "scripts/export_site.py",
       "source_sha256": "1736e0c1049b37350808ab8e3599b5b0b482c1c06d63e90bb52dc1bc1ca01bcd",
       "sha256": "1736e0c1049b37350808ab8e3599b5b0b482c1c06d63e90bb52dc1bc1ca01bcd",
@@ -5579,16 +4879,6 @@
       "bytes": 31098
     },
     {
-      "path": "scripts/render_latency_video.py",
-      "sha256": "1bf2a932f0dc0c5cb780aef4f3aa521c8809a1621318c9fab5bcdae375b7aeb8",
-      "bytes": 24643,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "1bf2a932f0dc0c5cb780aef4f3aa521c8809a1621318c9fab5bcdae375b7aeb8",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "scripts/render_launch_videos.py",
       "source_sha256": "7146698142b8669f5f2934959e4f31f981688626bd129d25fce2b4da38e065ca",
       "sha256": "7146698142b8669f5f2934959e4f31f981688626bd129d25fce2b4da38e065ca",
@@ -5613,16 +4903,6 @@
       "bytes": 24124
     },
     {
-      "path": "scripts/summarize_provider_quality.py",
-      "sha256": "708b460f95e55e473cccac7ebbc5d015be99e8d908d82ac7ed0f9ba039999367",
-      "bytes": 9497,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "708b460f95e55e473cccac7ebbc5d015be99e8d908d82ac7ed0f9ba039999367",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "scripts/summarize_runs.py",
       "source_sha256": "b76fb6cb958a2e1fa3a72d804a359ca7fe3688a64eb927ee12ece4f64d8ec7c6",
       "sha256": "b76fb6cb958a2e1fa3a72d804a359ca7fe3688a64eb927ee12ece4f64d8ec7c6",
@@ -5630,13 +4910,9 @@
     },
     {
       "path": "site/app.js",
-      "source_sha256": "70c04515bfee730ed7ada61c0ecd898bc4c01844b91d337356cf4d231dba8d1d",
-      "sha256": "70c04515bfee730ed7ada61c0ecd898bc4c01844b91d337356cf4d231dba8d1d",
-      "bytes": 25747,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+      "source_sha256": "c89391a990a314ac3f4550f923a4730c69138c32a07d08b6075a86b5ee5a1cf4",
+      "sha256": "c89391a990a314ac3f4550f923a4730c69138c32a07d08b6075a86b5ee5a1cf4",
+      "bytes": 19129
     },
     {
       "path": "site/catalog.json",
@@ -5646,93 +4922,9 @@
     },
     {
       "path": "site/index.html",
-      "source_sha256": "ca61f3ff3c47e297c8fee6cf5393e38d9aea5d0ba4ca4889a4b78b91531919f7",
-      "sha256": "ca61f3ff3c47e297c8fee6cf5393e38d9aea5d0ba4ca4889a4b78b91531919f7",
-      "bytes": 24583,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency-media/open-jev-2b-latency-comparison.jpg",
-      "sha256": "52a6f7cf7d9a10c20ea9522f1d5522180fb365a3fc537c7e60bfd3a366cdcf57",
-      "bytes": 105723,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "52a6f7cf7d9a10c20ea9522f1d5522180fb365a3fc537c7e60bfd3a366cdcf57",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency-media/open-jev-2b-latency-distribution.jpg",
-      "sha256": "ac9c9f8ee4c2146bf42652091eb6a33691c8f60f86d72438e9f336b891caa79e",
-      "bytes": 102802,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "ac9c9f8ee4c2146bf42652091eb6a33691c8f60f86d72438e9f336b891caa79e",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency-media/open-jev-2b-latency-generation.jpg",
-      "sha256": "80db98afc19b64eaaf39f65eea5af60af8e7bdee3c1b96232a0a0c8074e36717",
-      "bytes": 114186,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "80db98afc19b64eaaf39f65eea5af60af8e7bdee3c1b96232a0a0c8074e36717",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency-media/open-jev-2b-latency-request.jpg",
-      "sha256": "4c9fcaa9531de8d6498eceaa761bb42cf75f15b066d89d5708f854af45a1e7a3",
-      "bytes": 117427,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "4c9fcaa9531de8d6498eceaa761bb42cf75f15b066d89d5708f854af45a1e7a3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency-media/open-jev-2b-latency-response.jpg",
-      "sha256": "5ee6013bb82b94dd702cbdd4e97b6b6635d7e79625d02d9dd42f4cde15ef549c",
-      "bytes": 119246,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "5ee6013bb82b94dd702cbdd4e97b6b6635d7e79625d02d9dd42f4cde15ef549c",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency-media/open-jev-2b-latency.mp4",
-      "sha256": "5b1eaf89947e1d90723bcaf2ef3a15324ebaaebfb673ff541fc083c93567a2bf",
-      "bytes": 1278234,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "5b1eaf89947e1d90723bcaf2ef3a15324ebaaebfb673ff541fc083c93567a2bf",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency-media/open-jev-2b-latency.vtt",
-      "sha256": "52dc10cadefb98ca8a9ac568444fe6e29a75b5339579bca1973c1273714f5381",
-      "bytes": 765,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "52dc10cadefb98ca8a9ac568444fe6e29a75b5339579bca1973c1273714f5381",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "site/latency.json",
-      "sha256": "f285b9526f80ae3e62050953b5c5a56a1a2834217ebbbfae527533784db7e2ba",
-      "bytes": 77221,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "f285b9526f80ae3e62050953b5c5a56a1a2834217ebbbfae527533784db7e2ba",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+      "source_sha256": "dfe596796cdfe3814f745cf9d68832e8c34bbfc82dea6219f06ea20991b5bfdd",
+      "sha256": "dfe596796cdfe3814f745cf9d68832e8c34bbfc82dea6219f06ea20991b5bfdd",
+      "bytes": 20280
     },
     {
       "path": "site/media/README.md",
@@ -6348,23 +5540,15 @@
     },
     {
       "path": "site/results.json",
-      "source_sha256": "2735a0cebdca88f7bebbea2c60a71853f257b93f6efe90163b1fdc5a15b90c40",
-      "sha256": "2735a0cebdca88f7bebbea2c60a71853f257b93f6efe90163b1fdc5a15b90c40",
-      "bytes": 31006,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+      "source_sha256": "c5122aea557dd115dec0c42c710b48c281ffb244380e3c57cc85026e42810c6a",
+      "sha256": "c5122aea557dd115dec0c42c710b48c281ffb244380e3c57cc85026e42810c6a",
+      "bytes": 29821
     },
     {
       "path": "site/styles.css",
-      "source_sha256": "45aa07499846e5665b1bec933613699799d87e9ce7a1ea3eb6d54a0cd3d2dca5",
-      "sha256": "45aa07499846e5665b1bec933613699799d87e9ce7a1ea3eb6d54a0cd3d2dca5",
-      "bytes": 38926,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+      "source_sha256": "2592abe644ec2028d8f17ffbfa24e048285aa6a954bac5889821c8023d590e41",
+      "sha256": "2592abe644ec2028d8f17ffbfa24e048285aa6a954bac5889821c8023d590e41",
+      "bytes": 35104
     },
     {
       "path": "tests/test_amount_extraction_control.py",
@@ -6457,16 +5641,6 @@
       "bytes": 24760
     },
     {
-      "path": "tests/test_context_retention_data.py",
-      "sha256": "ea1c1cc3b0963cb36b60c4eb6664d9abe3e1c4466a02e1bc5d0675ea57f2c6ad",
-      "bytes": 6984,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "ea1c1cc3b0963cb36b60c4eb6664d9abe3e1c4466a02e1bc5d0675ea57f2c6ad",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "tests/test_data.py",
       "source_sha256": "67b8440aa69204520ca35a0f96498c8354f7b67e489fba4e273c23ae31dae862",
       "sha256": "67b8440aa69204520ca35a0f96498c8354f7b67e489fba4e273c23ae31dae862",
@@ -6545,16 +5719,6 @@
       "bytes": 19660
     },
     {
-      "path": "tests/test_jev_api_latency.py",
-      "sha256": "c89031cc84a6be92a92df30ed2339de74b210afb7b8a47afa0d2d1bd5c73eb0b",
-      "bytes": 3620,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "c89031cc84a6be92a92df30ed2339de74b210afb7b8a47afa0d2d1bd5c73eb0b",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "tests/test_launch_expansion.py",
       "source_sha256": "8b395a0cc8ba4787b54a986ea874f8ada9d1b0a72a5008f15b3adb448ff7f2b8",
       "sha256": "8b395a0cc8ba4787b54a986ea874f8ada9d1b0a72a5008f15b3adb448ff7f2b8",
@@ -6565,16 +5729,6 @@
       "source_sha256": "f36e8e2c7b4444f2b7c20f58f7b5d595447a58bb9d8ddd33587887c290245d10",
       "sha256": "f36e8e2c7b4444f2b7c20f58f7b5d595447a58bb9d8ddd33587887c290245d10",
       "bytes": 5155
-    },
-    {
-      "path": "tests/test_openai_api_benchmark.py",
-      "sha256": "2c2beda77b76b5658e7f20fd03cae3fd47a84bbb5968284c0780f77665b08222",
-      "bytes": 3694,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "2c2beda77b76b5658e7f20fd03cae3fd47a84bbb5968284c0780f77665b08222",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "tests/test_painting.py",
@@ -6601,26 +5755,6 @@
       "bytes": 24699
     },
     {
-      "path": "tests/test_provider_quality.py",
-      "sha256": "30effdf33c4ffc6c8b87409c0f9ee7a1b6c7c0e89ace7bcbc4ec2746dfdc8a41",
-      "bytes": 1775,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "30effdf33c4ffc6c8b87409c0f9ee7a1b6c7c0e89ace7bcbc4ec2746dfdc8a41",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "tests/test_provider_suite.py",
-      "sha256": "9422b371bdba0859ff1c948972206d479f0387a52a0ced0912e2a7c23f8670a2",
-      "bytes": 1286,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "9422b371bdba0859ff1c948972206d479f0387a52a0ced0912e2a7c23f8670a2",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
       "path": "tests/test_public_data.py",
       "source_sha256": "182008de89861e68ff5cbcce1c0ec066731f0e3682b498c96d144810db073b82",
       "sha256": "182008de89861e68ff5cbcce1c0ec066731f0e3682b498c96d144810db073b82",
@@ -6643,26 +5777,6 @@
       "source_sha256": "4bb3da885f134e533588aa472fcab3df4cfb1c3f2ba585786c74187a319c694d",
       "sha256": "4bb3da885f134e533588aa472fcab3df4cfb1c3f2ba585786c74187a319c694d",
       "bytes": 6769
-    },
-    {
-      "path": "tests/test_silent_failure_data.py",
-      "sha256": "cdb7d46c67121343d28d36df385880f31633c891fc6c969185035bce3961c684",
-      "bytes": 12322,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "cdb7d46c67121343d28d36df385880f31633c891fc6c969185035bce3961c684",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
-    },
-    {
-      "path": "tests/test_sponsor_segments.py",
-      "sha256": "77b0fe4a221ef589476230a2c7c6f044141b89c4be61255fb125a1f5627cc7c8",
-      "bytes": 4597,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "77b0fe4a221ef589476230a2c7c6f044141b89c4be61255fb125a1f5627cc7c8",
-      "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
     },
     {
       "path": "tests/test_training_provenance.py",
@@ -7177,115 +6291,5 @@
   ],
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
-  "social_posts_published_by_this_release": false,
-  "current_source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-  "followup_releases": [
-    {
-      "id": "community-and-provider-comparison-20260920",
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "created_at": "2026-09-20T22:35:44.578323+00:00",
-      "changed_paths": [
-        "README.md",
-        "configs/probes/fizzbuzz.json",
-        "docs/community-research-20260920.md",
-        "docs/context-retention-data.md",
-        "docs/inference-latency.md",
-        "docs/prefix-caching.md",
-        "docs/provider-comparison.md",
-        "docs/silent-failure-data.md",
-        "docs/sponsor-segment-data.md",
-        "docs/website-and-videos.md",
-        "jev/case_sponsor_segments.py",
-        "jev/context_retention_data.py",
-        "jev/silent_failure_data.py",
-        "release/history/PUBLIC_RELEASE.initial.json",
-        "reports/community-data-release-20260920/verification.json",
-        "reports/community-research-20260920/authenticated-x-followup.json",
-        "reports/community-research-20260920/discovery.json",
-        "reports/community-research-20260920/domain-proposals.json",
-        "reports/community-research-20260920/followup-discovery.json",
-        "reports/community-research-20260920/repository-pins.json",
-        "reports/community-research-20260920/social-search-access.json",
-        "reports/community-research-20260920/source-contracts.json",
-        "reports/context-retention-control-v1/build-verification.json",
-        "reports/context-retention-control-v1/example.json",
-        "reports/context-retention-control-v1/independent-audit.json",
-        "reports/context-retention-control-v1/manifest.json",
-        "reports/context-retention-control-v1/root-full-audit.json",
-        "reports/context-retention-control-v1/tests.log",
-        "reports/context-retention-control-v1/verify.py",
-        "reports/inference-latency/public/2b-h100-20260920/publication.json",
-        "reports/inference-latency/public/2b-h100-20260920/report.json",
-        "reports/inference-latency/public/2b-h100-20260920/requests.json",
-        "reports/inference-latency/public/2b-h100-20260920/samples.jsonl",
-        "reports/inference-latency/public/jev-api-20260920/publication.json",
-        "reports/inference-latency/public/jev-api-20260920/report.json",
-        "reports/inference-latency/public/jev-api-20260920/requests.json",
-        "reports/inference-latency/public/jev-api-20260920/samples.jsonl",
-        "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/payloads.json",
-        "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/publication.json",
-        "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/report.json",
-        "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/requests.json",
-        "reports/inference-latency/public/openai-gpt-5.6-luna-20260920/samples.jsonl",
-        "reports/inference-latency/public/openai-gpt-6-astra-20260920/payloads.json",
-        "reports/inference-latency/public/openai-gpt-6-astra-20260920/publication.json",
-        "reports/inference-latency/public/openai-gpt-6-astra-20260920/report.json",
-        "reports/inference-latency/public/openai-gpt-6-astra-20260920/requests.json",
-        "reports/inference-latency/public/openai-gpt-6-astra-20260920/samples.jsonl",
-        "reports/inference-latency/root-statistical-verification.json",
-        "reports/provider-comparison-20260920/coverage-suite-manifest.json",
-        "reports/provider-comparison-20260920/jf100-suite-manifest.json",
-        "reports/provider-comparison-20260920/presentation-peer-review.json",
-        "reports/provider-comparison-20260920/quality-evidence-identity.json",
-        "reports/provider-comparison-20260920/summary.json",
-        "reports/silent-failure-control-v1/build-verification.json",
-        "reports/silent-failure-control-v1/independent-audit.json",
-        "reports/silent-failure-control-v1/manifest.json",
-        "reports/silent-failure-control-v1/root-full-audit.json",
-        "reports/silent-failure-control-v1/shared-data-validation.json",
-        "reports/silent-failure-control-v1/source-contract.json",
-        "reports/silent-failure-control-v1/test-verification.json",
-        "reports/silent-failure-control-v1/tests.log",
-        "reports/silent-failure-control-v1/verify.py",
-        "reports/sponsor-segment-control-v1/independent-audit.json",
-        "reports/sponsor-segment-control-v1/manifest.json",
-        "reports/sponsor-segment-control-v1/peer-review.json",
-        "scripts/audit_sponsor_segments.py",
-        "scripts/benchmark_inference_latency.py",
-        "scripts/benchmark_jev_api_latency.py",
-        "scripts/benchmark_openai_api.py",
-        "scripts/build_fizzbuzz_probe.py",
-        "scripts/build_provider_suite.py",
-        "scripts/build_site_results.py",
-        "scripts/export_latency_evidence.py",
-        "scripts/render_latency_video.py",
-        "scripts/summarize_provider_quality.py",
-        "site/app.js",
-        "site/index.html",
-        "site/latency-media/open-jev-2b-latency-comparison.jpg",
-        "site/latency-media/open-jev-2b-latency-distribution.jpg",
-        "site/latency-media/open-jev-2b-latency-generation.jpg",
-        "site/latency-media/open-jev-2b-latency-request.jpg",
-        "site/latency-media/open-jev-2b-latency-response.jpg",
-        "site/latency-media/open-jev-2b-latency.mp4",
-        "site/latency-media/open-jev-2b-latency.vtt",
-        "site/latency.json",
-        "site/results.json",
-        "site/styles.css",
-        "tests/test_context_retention_data.py",
-        "tests/test_jev_api_latency.py",
-        "tests/test_openai_api_benchmark.py",
-        "tests/test_provider_quality.py",
-        "tests/test_provider_suite.py",
-        "tests/test_silent_failure_data.py",
-        "tests/test_sponsor_segments.py"
-      ],
-      "scope": "Audited community data generators, fixed provider suites, measured2B/Jev/OpenAI latency, successful evidence video and factual publication updates. Restricted raw corpus and operational logs excluded.",
-      "validation": [
-        "42 focused CPU tests in public checkout",
-        "All1771latency raw samples independently recomputed",
-        "Desktop1440/mobile390 video and interface QA"
-      ]
-    }
-  ]
+  "social_posts_published_by_this_release": false
 }
