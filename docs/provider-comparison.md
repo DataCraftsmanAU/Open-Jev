@@ -88,23 +88,58 @@ cover all integers 1–100 in FizzBuzz (299/300 typed decisions correct) and
 132 controlled IR requests (165/165 hard decisions, nine soft targets). The
 IR probe covers six original query instances and is not TREC evaluation.
 These additional suites do not alter the frozen 189-request coverage pass.
-GPT-5.6 Luna has completed coverage and JF100 with no request errors:
-**109/140 hard coverage decisions** and **227/300 JF100 rotations** correct.
-Its actual returned token usage implies standard list-price estimates of
-$0.03442948 and $0.04262940 respectively, not invoices. GPT-6 Astra's coverage
-run also completed all 189 requests without errors: **135/140 hard decisions**
-correct, with a standard list-price estimate of $1.83997. Its JF100 run completed
-**300/300 reference matches**, with zero request errors and an estimated
-$2.20712 standard list-price cost. Luna's IR pilot completed with 160/165 hard
-reference matches and its FizzBuzz probe with 300/300, both without request
-errors. Their estimated standard list-price costs are $0.015046 and $0.0108868.
-The remaining OpenAI probes are still running.
-A further original multilingual mailroom probe
-contains 87 requests, 957 runtime questions and 921 labelled decisions; 36
-inapplicable category questions remain in the requests but have no gold.
-Jev answered 908/921 correctly with all requests strictly valid.
+The completed original OpenAI stages used 721 requests per model: coverage,
+JF100, IR and FizzBuzz. All returned valid structured decisions with zero request
+errors. Reference matches are:
+
+| Suite | Open-Jev 2B | Open-Jev 9B | Jev 1.13.0 | GPT-5.6 Luna (none) | GPT-6 Astra (low) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Same hard coverage cases | 65/76 | 72/76 | 66/76 | 60/76 | 71/76 |
+| Broader hard coverage | 64 pending | 64 pending | 117/140 | 109/140 | 135/140 |
+| JF100, three rotations | Pending | Pending | 232/300 | 227/300 | 300/300 |
+| Graded IR pilot | Pending | Pending | 165/165 | 160/165 | 165/165 |
+| FizzBuzz | Pending | Pending | 299/300 | 300/300 | 300/300 |
+| Multilingual mailroom | Pending | Pending | 908/921 | 900/921 | 913/921 |
+
+The first row reuses the verified historical 2B/9B predictions. Their 76
+completed hard coverage cases are a subset of the broader 140; the other 64
+remain unattempted. These fractions measure agreement with frozen references;
+the label audit below documents why some references are not unique answers.
+JF100 rotations and controls within a family are correlated, so these totals
+are not counts of independent problems.
+
+The original multilingual mailroom probe contains 87 requests, 957 runtime
+questions and 921 labelled decisions; 36 inapplicable category questions remain
+in the requests but have no gold. Jev and Luna have completed all 87 requests
+with valid responses. Astra also completed all 87, matching 913/921 references.
+Across the five suites, each OpenAI model made 808 requests; all **1,616**
+completed successfully. Saved response hashes, frozen gold identities and
+all ten aggregates passed a [local recheck](../reports/provider-comparison-20260920/completed-openai-verification.json).
+
+Standard list-price cost estimates from actual returned usage are shown below;
+these are not invoices and exclude latency runs:
+
+| Quality suite | Luna estimate (USD) | Astra estimate (USD) |
+| --- | ---: | ---: |
+| Coverage | 0.03442948 | 1.83997 |
+| JF100 | 0.04262940 | 2.20712 |
+| IR pilot | 0.015046 | 0.74017 |
+| FizzBuzz | 0.0108868 | 0.51095 |
+| Mailroom | 0.0312876 | 1.50899 |
+
 The common Noul decision rule is argmax of `[1-p, p]`, with exact ties selecting
 false. No probability vector is invented for OpenAI's categorical decisions.
+
+A [ranking replay](../reports/provider-comparison-20260920/openai-ir-ranking/README.md)
+uses the existing IR outputs without further API calls. On the six queries,
+Luna/Astra nDCG@10 is 0.933359/0.933359 for Boolean pointwise Noul,
+1.000000/1.000000 for integer pointwise Score, and 0.996324/1.000000 for
+listwise Score. Equal outputs retain candidate input order. Boolean Noul
+cannot rank different relevance grades within each true/false group; these
+signals differ in resolution from Jev's probabilities and expected scores.
+A categorical Choice winner does not define a full ranking. All 36 reconstructed
+rankings passed independent checks. Real TREC DL19/DL20 inputs are prepared,
+but no model has been evaluated on that holdout yet.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates
 completed counts from unattempted decisions. New Open-Jev GPU inference remains
@@ -142,6 +177,16 @@ Astra 69/70. These narrower post-hoc counts do not replace the original scores,
 establish a corrected benchmark, or support population-level rankings.
 Future task versions must specify the policy or accept equivalent actions
 before evaluation; neither frozen training data nor current requests changed.
+
+The [full-corpus repair inventory](../reports/provider-comparison-20260920/reference-repair-plan.json)
+found 1,097 of 1,697 platformer Choice rows with a non-gold action producing
+identical physical next state, reward and terminal status. It also found 3,031
+ViZDoom movement Choice prompts with omitted policy parameters; their stored
+labels all match the generating script, so this is not a count of incorrect
+labels. The customer template occurs in 171 Score rows: one reviewed ambiguity
+and 170 awaiting semantic review. These are shared rows in the two mixtures
+and must not be counted twice. The report specifies a future separate task
+version; no current data, label, model or score was changed.
 
 ## Reproduce
 

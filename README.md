@@ -181,8 +181,12 @@ coverage decisions, released 2B/9B have 65/72 correct, Jev has 66, GPT-5.6
 Luna has 60 and GPT-6 Astra has 71. The released-model predictions are reused only after exact
 row/checkpoint/hash validation. In the broader 140-hard-case coverage pass,
 Jev scores 117, Luna 109 and Astra 135; on JF100's 300 option rotations, Jev and
-Luna score 232 and 227 respectively, while Astra scores 300/300. The remaining probes are running. These
-coverage checks are separate from the full held-out inventory.
+Luna score 232 and 227 respectively, while Astra scores 300/300. All five API
+quality suites are complete. Jev/Luna/Astra mailroom reference matches are
+908/921, 900/921 and 913/921; all 1,616 OpenAI quality requests completed with
+zero request errors. [Full results and IR ranking replay](docs/provider-comparison.md)
+retain per-suite scope and label limitations. New Open-Jev GPU cases and the
+full held-out inventory remain pending.
 
 The frozen counts are reference matches. A subsequent game-label audit found
 equivalent platformer actions and omitted ViZDoom policy constants; these

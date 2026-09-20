@@ -30,12 +30,12 @@
     },
     {
       "path": "README.md",
-      "sha256": "feeba096d6177cf072fc298c95a9c775165ed05fa35cd11207f09bb9b5fd813b",
-      "bytes": 14068,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "3dda85ce4d765271bce8b3e6f74d0c4955fd76384522499c0aa299025eacda49",
+      "sha256": "b7aca5b95456b5b2c2ba9c9fc6bccfebe5909790673963240e8608bd09011559",
+      "bytes": 14336,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "d8e461061d3266b6c389a309a273aa7bd23fd2f65899d72275245d67bf9a1586",
       "changes": [
-        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+        "Public README layout preserved; completed comparison results updated from the source release."
       ]
     },
     {
@@ -302,13 +302,10 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "123feb0cd4538a16aa8446cf2a3a4bf7eb79cde9f6c907b50335a35f16dc5d2a",
-      "bytes": 10733,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "123feb0cd4538a16aa8446cf2a3a4bf7eb79cde9f6c907b50335a35f16dc5d2a",
-      "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
-      ]
+      "sha256": "669590b500ec023742d1ae6b92cb78e0a30a5a37db3072a0ef28242ee39de9c9",
+      "bytes": 13259,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "669590b500ec023742d1ae6b92cb78e0a30a5a37db3072a0ef28242ee39de9c9"
     },
     {
       "path": "docs/public-capabilities.md",
@@ -5395,6 +5392,13 @@
       ]
     },
     {
+      "path": "reports/provider-comparison-20260920/completed-openai-verification.json",
+      "sha256": "d190c8343cb3a203b88b277c4a0944e65dfe5c4e8f736635c06c376979f8ce1b",
+      "bytes": 5860,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "d190c8343cb3a203b88b277c4a0944e65dfe5c4e8f736635c06c376979f8ce1b"
+    },
+    {
       "path": "reports/provider-comparison-20260920/coverage-suite-manifest.json",
       "sha256": "f03b181d6470732dea6818df75c18ee80cb9401281bfe4fad410ed0829bac727",
       "bytes": 16016,
@@ -5525,6 +5529,20 @@
       ]
     },
     {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-mailroom-audit.json",
+      "sha256": "e700bf5be2f8e02f1cdb1561bc9179cfbc93b0adabf385f2c11dff5296dc6bb4",
+      "bytes": 2391,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "e700bf5be2f8e02f1cdb1561bc9179cfbc93b0adabf385f2c11dff5296dc6bb4"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-mailroom-quality.json",
+      "sha256": "7b276d78d6da081d659b96a355a4174ab0f5581809d4c39d5edf55de16a0091e",
+      "bytes": 467071,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "7b276d78d6da081d659b96a355a4174ab0f5581809d4c39d5edf55de16a0091e"
+    },
+    {
       "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-coverage-audit.json",
       "sha256": "a6d8f62caefb2928f514b698d15b33db77e1bdca4ed61ab001c8ab618546adbc",
       "bytes": 2274,
@@ -5543,6 +5561,34 @@
       "changes": [
         "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-fizzbuzz-audit.json",
+      "sha256": "aa36a60c206d542683c92200056ae414f77d1f9e8bf20cdeefec6b3b4c0882d9",
+      "bytes": 2246,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "aa36a60c206d542683c92200056ae414f77d1f9e8bf20cdeefec6b3b4c0882d9"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-fizzbuzz-quality.json",
+      "sha256": "c3e50e9f2ccf6dfa63a0f25578a1142d5ff6e937cc0f9513d4c532194efa28d3",
+      "bytes": 130544,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "c3e50e9f2ccf6dfa63a0f25578a1142d5ff6e937cc0f9513d4c532194efa28d3"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-ir-pilot-audit.json",
+      "sha256": "a5944bbd182b6e77d6e99c9ffc2ad8332bfd6ec8a81c65509d4a0749e8b31138",
+      "bytes": 2255,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "a5944bbd182b6e77d6e99c9ffc2ad8332bfd6ec8a81c65509d4a0749e8b31138"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-ir-pilot-quality.json",
+      "sha256": "9dbc87a87986c9cf3a0aefb6921123cb617c549bf5d2e9d0fc2ae8fe8c34a04d",
+      "bytes": 87553,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "9dbc87a87986c9cf3a0aefb6921123cb617c549bf5d2e9d0fc2ae8fe8c34a04d"
     },
     {
       "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-jf100-audit.json",
@@ -5565,6 +5611,62 @@
       ]
     },
     {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-mailroom-audit.json",
+      "sha256": "1cb7a8d7a83c9c997cce7e82ac9b54d2747bf115ecd1d03b0efc77fccf65413c",
+      "bytes": 2388,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "1cb7a8d7a83c9c997cce7e82ac9b54d2747bf115ecd1d03b0efc77fccf65413c"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-mailroom-quality.json",
+      "sha256": "20e08744273ea110897eebd3fcc16e1a825556cb3bafacb3cf2165435973962e",
+      "bytes": 466995,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "20e08744273ea110897eebd3fcc16e1a825556cb3bafacb3cf2165435973962e"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-ir-ranking/README.md",
+      "sha256": "b29450fad1c08f01003bca8aad63762214091e5f245637d7847df0008ab7653d",
+      "bytes": 3706,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "b29450fad1c08f01003bca8aad63762214091e5f245637d7847df0008ab7653d"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-ir-ranking/evaluate.py",
+      "sha256": "acb88b9acc70ffb104af978c415889187d8c8bcce21df65a3ff69e2cb9bc5b27",
+      "bytes": 14380,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "acb88b9acc70ffb104af978c415889187d8c8bcce21df65a3ff69e2cb9bc5b27"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-ir-ranking/results.json",
+      "sha256": "eae8c6b67a121e625e6b718aeed1d93c99541b7417e8ca28e5a9d676f5ccc4fa",
+      "bytes": 76943,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "eae8c6b67a121e625e6b718aeed1d93c99541b7417e8ca28e5a9d676f5ccc4fa"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-ir-ranking/verification.json",
+      "sha256": "53e643261fbeda48a75f9aaf9029effd2a0c0a2450704bc6eabc114b596203f4",
+      "bytes": 1610,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "53e643261fbeda48a75f9aaf9029effd2a0c0a2450704bc6eabc114b596203f4"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-ir-ranking/verify.py",
+      "sha256": "06ba53613eb4be7f1224dc51183b0fc1999a0e5c0bdd78dd09a5755cd26c9dde",
+      "bytes": 5616,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "06ba53613eb4be7f1224dc51183b0fc1999a0e5c0bdd78dd09a5755cd26c9dde"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-quality-completion-audit.json",
+      "sha256": "c3bd52d578fe99f00701ad393277dd0986f32420d193e7e9f1d233baf7692746",
+      "bytes": 9672,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "c3bd52d578fe99f00701ad393277dd0986f32420d193e7e9f1d233baf7692746"
+    },
+    {
       "path": "reports/provider-comparison-20260920/presentation-peer-review.json",
       "sha256": "6beeb2ae9fef9f07a03143e32fba44de60b8a0d9238bb5997fd10add1cbfed58",
       "bytes": 482,
@@ -5583,6 +5685,13 @@
       "changes": [
         "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
       ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/reference-repair-plan.json",
+      "sha256": "18afdd0e74051c49625b2918cf68d20b6f1f9a0eb7a8ef95d6a28673032895e2",
+      "bytes": 446451,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "18afdd0e74051c49625b2918cf68d20b6f1f9a0eb7a8ef95d6a28673032895e2"
     },
     {
       "path": "reports/provider-comparison-20260920/registry-v2-extension-audit.json",
@@ -5604,14 +5713,18 @@
       ]
     },
     {
+      "path": "reports/provider-comparison-20260920/verify_completed_openai.py",
+      "sha256": "c8edb1ea16d3772083aaeb81845ca3fe37ee7490a27bd589481963fc4bc49d59",
+      "bytes": 3772,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "c8edb1ea16d3772083aaeb81845ca3fe37ee7490a27bd589481963fc4bc49d59"
+    },
+    {
       "path": "reports/provider-comparison-20260920/website-comparison-qa.json",
-      "sha256": "adb000509c4ff73a4a7239df8685ee5700e300ebf9b4d404382a030af2f734a6",
-      "bytes": 17613,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "adb000509c4ff73a4a7239df8685ee5700e300ebf9b4d404382a030af2f734a6",
-      "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
-      ]
+      "sha256": "b5ca67e635b5bf16442b6811bac7204a9fd3abcab2e1f6d892533cc7d9877d01",
+      "bytes": 17733,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "b5ca67e635b5bf16442b6811bac7204a9fd3abcab2e1f6d892533cc7d9877d01"
     },
     {
       "path": "reports/runtime-checks/27b-expansion-eval-preflight.json",
@@ -7128,13 +7241,10 @@
     },
     {
       "path": "site/provider-quality.json",
-      "sha256": "ed49d61e23a5bf144cd6b0f600edbcf32a16ed59dcef2e24ac2668e7b7dc2877",
-      "bytes": 80310,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "ed49d61e23a5bf144cd6b0f600edbcf32a16ed59dcef2e24ac2668e7b7dc2877",
-      "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
-      ]
+      "sha256": "da2f7108b31b728eda5468c1be527a2a7061c14d9dc0b5f63db1a60d3455bf3e",
+      "bytes": 94359,
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "source_sha256": "da2f7108b31b728eda5468c1be527a2a7061c14d9dc0b5f63db1a60d3455bf3e"
     },
     {
       "path": "site/results.json",
@@ -7988,7 +8098,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+  "current_source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8211,6 +8321,34 @@
         "site/provider-quality.json",
         "site/results.json",
         "site/styles.css"
+      ]
+    },
+    {
+      "source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+      "created_at": "2026-09-20T23:17:46.758216+00:00",
+      "description": "All ten OpenAI API quality stages complete, zero new-API IR ranking replay, and full-corpus reference-repair inventory. Frozen primary scores unchanged; new Open-Jev GPU/full-holdout/TREC evaluations remain pending.",
+      "paths": [
+        "README.md",
+        "docs/provider-comparison.md",
+        "site/provider-quality.json",
+        "reports/provider-comparison-20260920/completed-openai-verification.json",
+        "reports/provider-comparison-20260920/verify_completed_openai.py",
+        "reports/provider-comparison-20260920/openai-quality-completion-audit.json",
+        "reports/provider-comparison-20260920/reference-repair-plan.json",
+        "reports/provider-comparison-20260920/website-comparison-qa.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-mailroom-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-mailroom-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-ir-pilot-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-ir-pilot-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-fizzbuzz-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-fizzbuzz-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-mailroom-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-mailroom-quality.json",
+        "reports/provider-comparison-20260920/openai-ir-ranking/results.json",
+        "reports/provider-comparison-20260920/openai-ir-ranking/README.md",
+        "reports/provider-comparison-20260920/openai-ir-ranking/evaluate.py",
+        "reports/provider-comparison-20260920/openai-ir-ranking/verification.json",
+        "reports/provider-comparison-20260920/openai-ir-ranking/verify.py"
       ]
     }
   ]
