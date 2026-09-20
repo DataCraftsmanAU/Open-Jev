@@ -223,6 +223,16 @@
       ]
     },
     {
+      "path": "docs/ir-control-data.md",
+      "sha256": "5f058381aa3b8d7d441215cc39054e39761fa29319d1bbc9985f170ac9eb8b64",
+      "bytes": 12220,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "5f058381aa3b8d7d441215cc39054e39761fa29319d1bbc9985f170ac9eb8b64",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
       "path": "docs/latency.md",
       "source_sha256": "2426a50b48beadbbffcee9add660da4a4dab029371fa88b0f7e1538aec4866fc",
       "sha256": "2426a50b48beadbbffcee9add660da4a4dab029371fa88b0f7e1538aec4866fc",
@@ -845,6 +855,26 @@
       "source_sha256": "5b7ac9f459bd86a724b39c7c2f87f8e8d7441a28aa7a7f14ef0fe94366544afe",
       "sha256": "5b7ac9f459bd86a724b39c7c2f87f8e8d7441a28aa7a7f14ef0fe94366544afe",
       "bytes": 50657
+    },
+    {
+      "path": "jev/ir_data.py",
+      "sha256": "c615f711e57ccf5488468de3aa649447c2bc8d4c884e4aa42c820459b9b781d0",
+      "bytes": 11984,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "c615f711e57ccf5488468de3aa649447c2bc8d4c884e4aa42c820459b9b781d0",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "jev/ir_eval.py",
+      "sha256": "a307096e19f8d212b0b81eee7a75b033d4d4e073abf0a9d43ee02499fc690da3",
+      "bytes": 15392,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "a307096e19f8d212b0b81eee7a75b033d4d4e073abf0a9d43ee02499fc690da3",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
     },
     {
       "path": "jev/metrics.py",
@@ -3075,6 +3105,168 @@
       "source_sha256": "11a4af4fe8b11679f5974c85af12b1769e615197d85bc13c4f475badcdfe04c1",
       "sha256": "11a4af4fe8b11679f5974c85af12b1769e615197d85bc13c4f475badcdfe04c1",
       "bytes": 388
+    },
+    {
+      "path": "reports/ir-control-v1/README.md",
+      "sha256": "bf11664c85a7768233d2cd99ad569ac94cc6d2fee1e19a605a9f1349c06beac1",
+      "bytes": 2915,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "bf11664c85a7768233d2cd99ad569ac94cc6d2fee1e19a605a9f1349c06beac1",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/evaluate_pilot.py",
+      "sha256": "708a4c92c4c7f9ac8a25132141dbc26f46c632ba8e00e7ac5f531468eb3a825c",
+      "bytes": 11457,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "708a4c92c4c7f9ac8a25132141dbc26f46c632ba8e00e7ac5f531468eb3a825c",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/external-evaluation-contract.json",
+      "sha256": "133c03ec92b59a749d2fcbd9df0c8668a350f549010499472dc9c3275ba811bc",
+      "bytes": 3359,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "133c03ec92b59a749d2fcbd9df0c8668a350f549010499472dc9c3275ba811bc",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/independent-audit.json",
+      "sha256": "9fcc50de615a74d6f5b25444a0b77d4c4cfc09bd4bde1ad055c5c0624ebd948a",
+      "bytes": 1172,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "9fcc50de615a74d6f5b25444a0b77d4c4cfc09bd4bde1ad055c5c0624ebd948a",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/jev-pilot-ranking.json",
+      "sha256": "23c8ad8c2f6e6d334ef88e934fc788fd7b7222c708cc6590f6b8a6b207aa97c2",
+      "bytes": 30155,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "5aa295a21f02776600fe3b69db122d263b98447676082f949ab72d511206d6e8",
+      "changes": [
+        "Audited original IR controls and reranking follow-up.",
+        "Public projection replaces absolute local paths with relative paths."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/manifest.json",
+      "sha256": "5305dad7326fbf32aa006447137c5a3eb92872d90cde71302bc7efb39f882590",
+      "bytes": 2577,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "5305dad7326fbf32aa006447137c5a3eb92872d90cde71302bc7efb39f882590",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/pilot-independent-audit.json",
+      "sha256": "9ac2a4941eae9a4b2f835ede01c1aa4d0af3de6cdfeb543d8f5e57dae6ca8811",
+      "bytes": 1092,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "9ac2a4941eae9a4b2f835ede01c1aa4d0af3de6cdfeb543d8f5e57dae6ca8811",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/pilot-ranking-arithmetic-check.json",
+      "sha256": "1bdb044ca90b59ab1659cac12dcbf1bfa97a72408d852012bbd73168420cb90e",
+      "bytes": 1238,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "1bdb044ca90b59ab1659cac12dcbf1bfa97a72408d852012bbd73168420cb90e",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/pilot-source/ir_data.py",
+      "sha256": "65d7025f3e30c83987c126ad130cc24ffbf0e2d9b93141c9c407cd92fdcdaa0d",
+      "bytes": 11790,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "65d7025f3e30c83987c126ad130cc24ffbf0e2d9b93141c9c407cd92fdcdaa0d",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/source-code-research.json",
+      "sha256": "103004e2b2131ab9cba4afd3ba8174575c5351591d0031a506b5fa9bb756d6b6",
+      "bytes": 12523,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "103004e2b2131ab9cba4afd3ba8174575c5351591d0031a506b5fa9bb756d6b6",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/stable-split-verification.json",
+      "sha256": "0dcc91e9038dea768c020cb9f5c8617892cca04c5a935de564cf28ca7b6807e8",
+      "bytes": 3208,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "0dcc91e9038dea768c020cb9f5c8617892cca04c5a935de564cf28ca7b6807e8",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/test-output.txt",
+      "sha256": "f8aedf7b9c991e477c375b7084d39bffdc473076eb3249dd8d16b61609b7ac0d",
+      "bytes": 3082,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "f8aedf7b9c991e477c375b7084d39bffdc473076eb3249dd8d16b61609b7ac0d",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/test-verification.json",
+      "sha256": "868954427aedb1feedbc5e466f82654d481e21baad1d75eba5e6ae51e28c7ff3",
+      "bytes": 1785,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "55b29c5e9010700f0b3e79594c4316ad6409a76eb5456ca3ee16857e9a774cf5",
+      "changes": [
+        "Audited original IR controls and reranking follow-up.",
+        "Public projection replaces absolute local paths with relative paths."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-ndcg-source.json",
+      "sha256": "8c5e3718110f12542eba8f5acf74f1fcbe8f326e8cceaa3441d88ea4886eec5a",
+      "bytes": 1944,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "8c5e3718110f12542eba8f5acf74f1fcbe8f326e8cceaa3441d88ea4886eec5a",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/tweet-table-provenance.json",
+      "sha256": "1d674742443e8e986ccca72e81f7196caf9259fef2bd4033ac9b6050f3906b28",
+      "bytes": 5554,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "1d674742443e8e986ccca72e81f7196caf9259fef2bd4033ac9b6050f3906b28",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/verify.py",
+      "sha256": "e374d2f93915a9ef32235552f47738d287637fb5590ac24d9ee2dc1c8d121945",
+      "bytes": 11833,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "e374d2f93915a9ef32235552f47738d287637fb5590ac24d9ee2dc1c8d121945",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
     },
     {
       "path": "reports/model-licenses.json",
@@ -6545,6 +6737,16 @@
       "bytes": 19660
     },
     {
+      "path": "tests/test_ir_control.py",
+      "sha256": "a0ac6a9580a994e8c0c8de37cfe88ebc99acd06247f02e96242be648761175b3",
+      "bytes": 15037,
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "source_sha256": "a0ac6a9580a994e8c0c8de37cfe88ebc99acd06247f02e96242be648761175b3",
+      "changes": [
+        "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
       "path": "tests/test_jev_api_latency.py",
       "sha256": "c89031cc84a6be92a92df30ed2339de74b210afb7b8a47afa0d2d1bd5c73eb0b",
       "bytes": 3620,
@@ -7178,7 +7380,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
+  "current_source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -7285,6 +7487,33 @@
         "42 focused CPU tests in public checkout",
         "All1771latency raw samples independently recomputed",
         "Desktop1440/mobile390 video and interface QA"
+      ]
+    },
+    {
+      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
+      "created_at": "2026-09-20T22:41:59.824904+00:00",
+      "description": "Audited graded IR corpus, runtime and isolated external evaluation contract; external TREC execution remains pending.",
+      "paths": [
+        "docs/ir-control-data.md",
+        "jev/ir_data.py",
+        "jev/ir_eval.py",
+        "reports/ir-control-v1/README.md",
+        "reports/ir-control-v1/evaluate_pilot.py",
+        "reports/ir-control-v1/external-evaluation-contract.json",
+        "reports/ir-control-v1/independent-audit.json",
+        "reports/ir-control-v1/jev-pilot-ranking.json",
+        "reports/ir-control-v1/manifest.json",
+        "reports/ir-control-v1/pilot-independent-audit.json",
+        "reports/ir-control-v1/pilot-ranking-arithmetic-check.json",
+        "reports/ir-control-v1/pilot-source/ir_data.py",
+        "reports/ir-control-v1/source-code-research.json",
+        "reports/ir-control-v1/stable-split-verification.json",
+        "reports/ir-control-v1/test-output.txt",
+        "reports/ir-control-v1/test-verification.json",
+        "reports/ir-control-v1/trec-ndcg-source.json",
+        "reports/ir-control-v1/tweet-table-provenance.json",
+        "reports/ir-control-v1/verify.py",
+        "tests/test_ir_control.py"
       ]
     }
   ]
