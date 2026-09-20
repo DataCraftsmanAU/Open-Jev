@@ -459,3 +459,77 @@ async function loadLatency() {
   }
 }
 loadLatency();
+
+async function loadComparison() {
+  try {
+    const response = await fetch("./provider-quality.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const report = await response.json();
+    if (!report.providers?.length || !report.suites?.length) throw new Error("No comparison suites");
+    const count = (value) => value.toLocaleString("en-US");
+    const integer = (value) => Number.isInteger(value) && value >= 0;
+    const heading = element("th", null, "Evaluation suite");
+    heading.scope = "col";
+    $("#comparison-head").replaceChildren(heading, ...report.providers.map((provider) => {
+      const th = element("th", null, provider.name);
+      th.scope = "col";
+      return th;
+    }));
+    $("#comparison-table").style.setProperty("--comparison-providers", report.providers.length);
+    let massFlags = false;
+    const rows = report.suites.map((suite) => {
+      const tr = element("tr", suite.id === "matched-coverage" ? "comparison-matched" : null);
+      tr.dataset.suite = suite.id;
+      const name = element("th", null, suite.label);
+      name.scope = "row";
+      name.append(element("small", null, `${count(suite.hard_targets)} hard targets · ${count(suite.requests)} requests`));
+      if (suite.soft_targets) name.append(element("small", "comparison-soft", `${count(suite.soft_targets)} soft targets excluded`));
+      tr.append(name);
+      for (const provider of report.providers) {
+        const result = suite.results[provider.id] || { status: "pending", total: 0, planned: suite.hard_targets };
+        const td = element("td");
+        td.dataset.provider = provider.id;
+        const planned = result.planned ?? suite.hard_targets;
+        if (!integer(result.total) || !integer(planned) || result.total > planned) throw new Error("Invalid comparison counts");
+        if (!result.total) {
+          td.append(element("span", "comparison-pending", "Pending"), element("small", null, `${count(planned)} planned`));
+        } else {
+          if (!integer(result.correct) || result.correct > result.total) throw new Error("Invalid correct count");
+          td.append(element("strong", "comparison-fraction", `${count(result.correct)} / ${count(result.total)}`));
+          const pending = result.pending ?? planned - result.total;
+          if (!integer(pending) || pending + result.total !== planned) throw new Error("Invalid pending count");
+          td.append(element("small", pending ? "comparison-partial" : "comparison-complete", pending ? `${count(pending)} pending` : "Complete"));
+          if (result.errors) td.append(element("small", "comparison-error", `${count(result.errors)} failed decisions`));
+          const flags = result.strict_probability_mass_failures_counted_categorically || 0;
+          if (flags) {
+            massFlags = true;
+            td.append(element("small", "comparison-mass", `${count(flags)} probability-mass flag${flags === 1 ? "" : "s"}*`));
+          }
+          const url = sourceURL(result.evidence_url);
+          if (url) {
+            const link = element("a", "comparison-evidence", "Evidence ↗");
+            link.href = url;
+            link.setAttribute("aria-label", `${provider.name}, ${suite.label}: evidence for ${count(result.correct)} of ${count(result.total)} reference matches`);
+            td.append(link);
+          }
+        }
+        tr.append(td);
+      }
+      return tr;
+    });
+    $("#comparison-rows").replaceChildren(...rows);
+    $("#comparison-suite-notes").replaceChildren(...report.suites.flatMap((suite) => [element("dt", null, suite.label), element("dd", null, suite.note || "")]));
+    $("#comparison-scope").textContent = report.scope;
+    $("#comparison-policy").textContent = report.decision_policy || "See the method for each decision rule.";
+    const date = new Date(report.generated_at);
+    const updated = Number.isNaN(date.getTime()) ? "" : `Updated ${date.toISOString().slice(0, 16).replace("T", " ")} UTC · `;
+    $("#comparison-status").textContent = `${updated}${report.status === "complete" ? "All listed comparison runs complete" : "Comparison in progress; pending results stay visible"}`;
+    $("#comparison-mass-note").hidden = !massFlags;
+    const method = sourceURL(report.method_url);
+    if (method) $("#comparison-method-link").href = method;
+    $("#comparison-content").hidden = false;
+  } catch (error) {
+    $("#comparison-status").textContent = "The comparison could not be loaded. Read the method and detailed results on GitHub.";
+  }
+}
+loadComparison();

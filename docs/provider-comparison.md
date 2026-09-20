@@ -77,7 +77,8 @@ of these same selected rows (76 hard, six soft). Historical predictions are
 reused only after matching the whole row hash, checkpoint hash, target and
 audited prediction-file hash. They supply quality evidence and no new latency.
 On those **same 76 hard cases**, Open-Jev 2B scores 65, Open-Jev 9B scores 72,
-and newly measured Jev scores 66. The 64 newer selected rows still require
+newly measured Jev scores 66, GPT-5.6 Luna scores 60, and GPT-6 Astra scores 71.
+The 64 newer selected rows still require
 Open-Jev inference. Do not compare the 82-row and 146-row denominators.
 
 The new Jev JF100 run completed all 300 rotations with 232 correct categorical
@@ -87,9 +88,60 @@ cover all integers 1–100 in FizzBuzz (299/300 typed decisions correct) and
 132 controlled IR requests (165/165 hard decisions, nine soft targets). The
 IR probe covers six original query instances and is not TREC evaluation.
 These additional suites do not alter the frozen 189-request coverage pass.
-The queued OpenAI quality runs evaluate the same saved coverage, JF100, IR and
-FizzBuzz requests. New Open-Jev GPU inference remains scheduled after the
-active training allocation is released.
+GPT-5.6 Luna has completed coverage and JF100 with no request errors:
+**109/140 hard coverage decisions** and **227/300 JF100 rotations** correct.
+Its actual returned token usage implies standard list-price estimates of
+$0.03442948 and $0.04262940 respectively, not invoices. GPT-6 Astra's coverage
+run also completed all 189 requests without errors: **135/140 hard decisions**
+correct, with a standard list-price estimate of $1.83997. Its JF100 run completed
+**300/300 reference matches**, with zero request errors and an estimated
+$2.20712 standard list-price cost. Luna's IR pilot completed with 160/165 hard
+reference matches and its FizzBuzz probe with 300/300, both without request
+errors. Their estimated standard list-price costs are $0.015046 and $0.0108868.
+The remaining OpenAI probes are still running.
+A further original multilingual mailroom probe
+contains 87 requests, 957 runtime questions and 921 labelled decisions; 36
+inapplicable category questions remain in the requests but have no gold.
+Jev answered 908/921 correctly with all requests strictly valid.
+The common Noul decision rule is argmax of `[1-p, p]`, with exact ties selecting
+false. No probability vector is invented for OpenAI's categorical decisions.
+
+The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates
+completed counts from unattempted decisions. New Open-Jev GPU inference remains
+scheduled after the active training allocation is released. These first-pass
+results do not complete the 73,333-row frozen test/OOD registry. A separate
+additive v2 registry includes the new IR and mailroom corpora: **107,922 held-out
+rows across 25 source identifiers**. Its 209-request selection contains 166
+labelled requests and the same 43 examples; it has not been evaluated.
+Every old request, gold record and all 73,333 original registry lines remain
+unchanged, verified in the [extension audit](../reports/provider-comparison-20260920/registry-v2-extension-audit.json).
+The results above continue to use the original frozen suites.
+
+A subsequent [label audit](../reports/provider-comparison-20260920/astra-error-label-review.json)
+reviewed all 12 ViZDoom and both platformer decisions in this coverage suite,
+plus one customer severity case. Two airborne platformer decisions have an
+alternative action producing the same next state; all four ViZDoom movement
+Choices depend on omitted policy constants. The eight ViZDoom Noul/Score
+questions do state their required thresholds and remain in the analysis.
+The customer case has a separate semantic ambiguity; it does not justify
+automatically replacing its reference answer with a model's answer.
+
+Original labels and primary scores remain frozen. A **post-hoc sensitivity
+analysis** applies the same six technical exclusions to every provider.
+Removing the customer case as well is a second, separately labelled analysis:
+
+| Provider | Original broader coverage | Exclude six technical cases | Also exclude customer ambiguity |
+| --- | ---: | ---: | ---: |
+| Jev | 117/140 | 115/134 | 115/133 |
+| GPT-5.6 Luna | 109/140 | 106/134 | 106/133 |
+| GPT-6 Astra | 135/140 | 133/134 | 133/133 |
+
+On the [common released-model slice](../reports/provider-comparison-20260920/common-case-label-sensitivity.json),
+the same six exclusions yield 2B 60/70, 9B 67/70, Jev 64/70, Luna 57/70 and
+Astra 69/70. These narrower post-hoc counts do not replace the original scores,
+establish a corrected benchmark, or support population-level rankings.
+Future task versions must specify the policy or accept equivalent actions
+before evaluation; neither frozen training data nor current requests changed.
 
 ## Reproduce
 
@@ -109,6 +161,13 @@ python -m scripts.summarize_provider_quality \
   --gold data/provider-comparison-v1/gold.json \
   --samples runs/jev-coverage/samples.jsonl --categorical-only \
   --output runs/jev-coverage-quality.json
+```
+
+Create the expanded registry in a new directory without changing v1:
+
+```bash
+python -m scripts.build_provider_suite --output data/provider-comparison-v2 \
+  --extra-corpus ir-control-v1 --extra-corpus mailroom-control-v1
 ```
 
 The original frozen inventory includes Wikispeedia records whose redistribution

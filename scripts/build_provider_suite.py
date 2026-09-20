@@ -59,14 +59,19 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--examples', type=Path, default=Path('examples'))
     parser.add_argument('--per-stratum', type=int, default=2)
+    parser.add_argument('--extra-corpus', action='append', default=[],
+                        help='Append a reviewed corpus without changing the frozen default suite')
     args = parser.parse_args()
     if not 1 <= args.per_stratum <= 100:
         parser.error('per-stratum must be 1–100')
+    corpora = [*CORPORA, *args.extra_corpus]
+    if len(corpora) != len(set(corpora)) or any(Path(name).name != name for name in corpora):
+        parser.error('Corpus names must be unique direct children of data-root')
     args.output.mkdir(parents=True, exist_ok=False)
     strata, counts, manifests = defaultdict(list), Counter(), []
     seen = set()
     with (args.output/'all-heldout.jsonl').open('x') as all_rows:
-        for name in CORPORA:
+        for name in corpora:
             directory = args.data_root/name
             raw_manifest = (directory/'manifest.json').read_bytes()
             manifest = json.loads(raw_manifest)

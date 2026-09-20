@@ -72,7 +72,7 @@ python -m jev.server --checkpoint models/Open-Jev-2B/package/checkpoint \
 
 The download is pinned to the published 2B revision. The 9B package uses the
 same layout at revision `47e966881e489511c0c7f5633a9e1960a676a551`. The public
-dataset revision is `cad3d65e934ca0f1aede72b5c39d3f0384c4ca7f`; the original release remains reproducible at `341d9338462da1cf56ba57519fb0f3f5258b825f`.
+dataset revision is `c67699e13d0ae25e35b77165a4b6b079bedc8aba`; the original release remains reproducible at `341d9338462da1cf56ba57519fb0f3f5258b825f`.
 Open **http://127.0.0.1:8791** for the task lab or
 **http://127.0.0.1:8791/examples/painting/index.html** for probability painting.
 Run from the checkout to serve the example UI. No live business action is
@@ -132,9 +132,10 @@ The loader rejects overlength inputs instead of silently truncating them.
 [Prefix caching](docs/prefix-caching.md) is optional and off by default. It
 reuses exact shared request/question token prefixes while preserving independent
 attention, convolution and recurrent states for candidate branches. Tiny hybrid
-CPU/LoRA checks pass. The released 2B BF16/CUDA benchmark did not pass every
-probability/decision parity check; prefix caching remains experimental and off
-by default. See the full latency evidence above.
+CPU/LoRA checks pass. In the released 2B BF16/CUDA benchmark, probability
+tolerance failed on 9/11 workloads while all 440 paired selected decisions
+matched. Prefix caching remains experimental and off by default. See the full
+latency evidence above; full 9B/27B comparisons remain pending.
 
 ## What is included
 
@@ -163,9 +164,33 @@ for [context retention](docs/context-retention-data.md),
 [silent API failure detection](docs/silent-failure-data.md). They are published
 as three additional HF configs, with all earlier payloads preserved. These
 corpora have not been used to retrain the released adapters. The broader
-prepared inventory is **282,484 rows / 23 source identifiers**, including
-187,655 training and 73,333 test/OOD rows; it includes the original Wiki
+prepared inventory is **408,884 rows / 25 source identifiers**, including
+268,493 training and 107,922 test/OOD rows; it includes the original Wiki
 records omitted from the public redistribution.
+
+[Graded retrieval controls](docs/ir-control-data.md) add 11,600 rows and six
+executable reranking methods. [Multilingual mailroom controls](docs/mailroom-control-data.md)
+add 114,800 rows with 11 question heads in English, Chinese and Turkish.
+These are finite original controls. They have not been used to retrain the
+released models, and do not establish TREC performance or production email
+automation accuracy.
+
+The [live provider comparison](https://zefan-cai.github.io/open-jev/#comparison)
+keeps common cases and pending evaluations explicit. On the same 76 hard
+coverage decisions, released 2B/9B have 65/72 correct, Jev has 66, GPT-5.6
+Luna has 60 and GPT-6 Astra has 71. The released-model predictions are reused only after exact
+row/checkpoint/hash validation. In the broader 140-hard-case coverage pass,
+Jev scores 117, Luna 109 and Astra 135; on JF100's 300 option rotations, Jev and
+Luna score 232 and 227 respectively, while Astra scores 300/300. The remaining probes are running. These
+coverage checks are separate from the full held-out inventory.
+
+The frozen counts are reference matches. A subsequent game-label audit found
+equivalent platformer actions and omitted ViZDoom policy constants; these
+limitations are recorded in the provider-comparison method and must not be
+interpreted as game-performance differences. Original scores remain preserved.
+Applying the same six technical exclusions to the common slice gives 2B 60/70,
+9B 67/70, Jev 64/70, Luna 57/70 and Astra 69/70. This is a post-hoc sensitivity
+analysis, not a replacement benchmark or a population-level model ranking.
 
 ## Training data and measured results
 

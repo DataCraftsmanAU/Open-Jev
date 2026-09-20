@@ -41,7 +41,7 @@ def main():
                  "entity-alignment-control-v1", "amount-extraction-control-v1",
                  "email-selection-control-v1", "phone-extraction-control-v1",
                  "context-retention-control-v1", "sponsor-segment-control-v1",
-                 "silent-failure-control-v1"):
+                 "silent-failure-control-v1", "ir-control-v1", "mailroom-control-v1"):
         path = ROOT / f"reports/data-manifests/{name}.json"
         if not path.exists():
             path = ROOT / f"reports/{name}/manifest.json"
@@ -65,7 +65,7 @@ def main():
             "Synthetic controlled decision accuracy is not an end-to-end task or gameplay success rate.",
             "No full-data base-model baseline was run; no full-data training gain is claimed.",
             "27B final evaluation and final-model JF100/service suites are pending.",
-            "The eight new corpora have no new-domain trained-model evaluation.",
+            "The new corpora have not been used to retrain the released models; new-domain Open-Jev evaluation remains pending.",
             "JF100 is a separate holdout: 100 questions with three option rotations.",
         ],
     }

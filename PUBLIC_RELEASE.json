@@ -30,13 +30,13 @@
     },
     {
       "path": "README.md",
-      "source_sha256": "f1b0c9a57f43d7cb839573676e1739f929324bf429eac720d0d64c811ab7799f",
-      "sha256": "044b220b47596cca27edeb922448d5c026893587aced71122449d5f01f3c1b41",
-      "bytes": 12375,
+      "sha256": "feeba096d6177cf072fc298c95a9c775165ed05fa35cd11207f09bb9b5fd813b",
+      "bytes": 14068,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "3dda85ce4d765271bce8b3e6f74d0c4955fd76384522499c0aa299025eacda49",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ],
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3"
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -224,12 +224,12 @@
     },
     {
       "path": "docs/ir-control-data.md",
-      "sha256": "5f058381aa3b8d7d441215cc39054e39761fa29319d1bbc9985f170ac9eb8b64",
-      "bytes": 12220,
-      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
-      "source_sha256": "5f058381aa3b8d7d441215cc39054e39761fa29319d1bbc9985f170ac9eb8b64",
+      "sha256": "25c2b31640c46d08a870b875977f4dc24ac8af62a926810744bca7533c1e1780",
+      "bytes": 13412,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "25c2b31640c46d08a870b875977f4dc24ac8af62a926810744bca7533c1e1780",
       "changes": [
-        "Audited original IR controls and reranking follow-up."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -240,12 +240,12 @@
     },
     {
       "path": "docs/mailroom-control-data.md",
-      "sha256": "86891e8d5f6fc9b27e83c73c18ff1a190bd907ad9b92048c9df3bec82bdf4747",
-      "bytes": 8231,
-      "source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
-      "source_sha256": "86891e8d5f6fc9b27e83c73c18ff1a190bd907ad9b92048c9df3bec82bdf4747",
+      "sha256": "348f04d7e8cd5b199ba8c7b957b9af98a881b5245cdfb2ec1b9b58263fbd25c8",
+      "bytes": 8843,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "348f04d7e8cd5b199ba8c7b957b9af98a881b5245cdfb2ec1b9b58263fbd25c8",
       "changes": [
-        "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -302,12 +302,12 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "0c8df300a5f443ecbe5631b4ed375850f095bdc4691bdc4332771f80f71f66b0",
-      "bytes": 7014,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "0c8df300a5f443ecbe5631b4ed375850f095bdc4691bdc4332771f80f71f66b0",
+      "sha256": "123feb0cd4538a16aa8446cf2a3a4bf7eb79cde9f6c907b50335a35f16dc5d2a",
+      "bytes": 10733,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "123feb0cd4538a16aa8446cf2a3a4bf7eb79cde9f6c907b50335a35f16dc5d2a",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -394,12 +394,12 @@
     },
     {
       "path": "docs/website-and-videos.md",
-      "source_sha256": "e86f7b6fed9cd8b54254cc2831de8ef45008cbbf1ecc0ef340e709aee0cfc079",
-      "sha256": "e86f7b6fed9cd8b54254cc2831de8ef45008cbbf1ecc0ef340e709aee0cfc079",
-      "bytes": 8257,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
+      "sha256": "4fdbe8489488af3ae9f7f013b0987615381cf562bafd5f7445714cfc371989ac",
+      "bytes": 8373,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "4fdbe8489488af3ae9f7f013b0987615381cf562bafd5f7445714cfc371989ac",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -1021,9 +1021,13 @@
     },
     {
       "path": "release/social/README.md",
-      "source_sha256": "2f9e4a0673eca003838f05210dc0b792684bc84296807550aeebe42789592a5a",
-      "sha256": "2f9e4a0673eca003838f05210dc0b792684bc84296807550aeebe42789592a5a",
-      "bytes": 2521
+      "sha256": "6a2a9722da4d8a7de96805983fc5c57072f9c23a7c5e1b280edb7d7e38376852",
+      "bytes": 3037,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "6a2a9722da4d8a7de96805983fc5c57072f9c23a7c5e1b280edb7d7e38376852",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
     },
     {
       "path": "release/social/browser-review.json",
@@ -1033,9 +1037,13 @@
     },
     {
       "path": "release/social/index.html",
-      "source_sha256": "69acb59fab78bf5dd18d00776ebf01702eec17772f6caf648370ef45d561904c",
-      "sha256": "69acb59fab78bf5dd18d00776ebf01702eec17772f6caf648370ef45d561904c",
-      "bytes": 3204
+      "sha256": "a15992d14a8a6ba71ef119e3159c4d4716048d5dbb95899125ff48b445b86827",
+      "bytes": 3743,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "a15992d14a8a6ba71ef119e3159c4d4716048d5dbb95899125ff48b445b86827",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
     },
     {
       "path": "release/social/launch-post.txt",
@@ -1108,6 +1116,16 @@
       "source_sha256": "19aa7f1c4517f900eb341948d800086adf33cbde46fb5cb8921694cc8991908b",
       "sha256": "19aa7f1c4517f900eb341948d800086adf33cbde46fb5cb8921694cc8991908b",
       "bytes": 6082
+    },
+    {
+      "path": "release/social/website-reply.txt",
+      "sha256": "38b059f64fd89d3a5c18be6bc35124875a1f45ee058153a6a9b18e2327295027",
+      "bytes": 63,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "38b059f64fd89d3a5c18be6bc35124875a1f45ee058153a6a9b18e2327295027",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
     },
     {
       "path": "reports/27b-ddp-n1/README.md",
@@ -2408,6 +2426,26 @@
       "bytes": 1119
     },
     {
+      "path": "reports/data-manifests/ir-control-v1.json",
+      "sha256": "5305dad7326fbf32aa006447137c5a3eb92872d90cde71302bc7efb39f882590",
+      "bytes": 2577,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "5305dad7326fbf32aa006447137c5a3eb92872d90cde71302bc7efb39f882590",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/data-manifests/mailroom-control-v1.json",
+      "sha256": "afa9daabd5639a333c9adf8e89e7c7bbfcf84adfc051fb9843978c29703122f6",
+      "bytes": 2756,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "afa9daabd5639a333c9adf8e89e7c7bbfcf84adfc051fb9843978c29703122f6",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
       "path": "reports/data-manifests/mixed.json",
       "source_sha256": "7ab467d1ef40694d697c5c1c8c1f88e2889ac27dd531170e31219371aa6379ab",
       "sha256": "7ab467d1ef40694d697c5c1c8c1f88e2889ac27dd531170e31219371aa6379ab",
@@ -2921,6 +2959,16 @@
       "bytes": 926
     },
     {
+      "path": "reports/inference-latency/presentation-qa-20260920/live-publication-verification.json",
+      "sha256": "159f9ed31eb7a54d08a247708be5361da5b835a9bdf28415714dcbbd5cea0513",
+      "bytes": 1687,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "159f9ed31eb7a54d08a247708be5361da5b835a9bdf28415714dcbbd5cea0513",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
       "path": "reports/inference-latency/public/2b-h100-20260920/publication.json",
       "sha256": "d8763f2feb0313a654779dd5e8431ca23c343481af25679c91911f07afad9d4b",
       "bytes": 1527,
@@ -3148,12 +3196,12 @@
     },
     {
       "path": "reports/ir-control-v1/README.md",
-      "sha256": "bf11664c85a7768233d2cd99ad569ac94cc6d2fee1e19a605a9f1349c06beac1",
-      "bytes": 2915,
-      "source_commit": "5650fb8c74ae35dbbb3eb9831bf2a356c6dc2fba",
-      "source_sha256": "bf11664c85a7768233d2cd99ad569ac94cc6d2fee1e19a605a9f1349c06beac1",
+      "sha256": "8f71fd4f8b7e70ce405dfc5a36eae4c6cb9ba70845b9446990d9471b1dba0c0a",
+      "bytes": 3000,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "8f71fd4f8b7e70ce405dfc5a36eae4c6cb9ba70845b9446990d9471b1dba0c0a",
       "changes": [
-        "Audited original IR controls and reranking follow-up."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -3279,6 +3327,76 @@
       ]
     },
     {
+      "path": "reports/ir-control-v1/trec-holdout/README.md",
+      "sha256": "b03632358828bf0b53a23608f2b3b4d2fa97d392bad61cb4b33e0fd9ab30553e",
+      "bytes": 1308,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "b03632358828bf0b53a23608f2b3b4d2fa97d392bad61cb4b33e0fd9ab30553e",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/dl19-manifest.json",
+      "sha256": "84c7cc23ce0f7309a48432c449e7856aeff96f9e2571f1f18cdb405703a6c297",
+      "bytes": 4538,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "84c7cc23ce0f7309a48432c449e7856aeff96f9e2571f1f18cdb405703a6c297",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/dl19-verification.json",
+      "sha256": "4a0e27044dbc10b80bdbd9d606919d83ecff8175ae8234f15673fe02c26055a4",
+      "bytes": 2367,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "4a0e27044dbc10b80bdbd9d606919d83ecff8175ae8234f15673fe02c26055a4",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/dl20-manifest.json",
+      "sha256": "494d6f39537b65981ea6707c7ba232e890460ad8f51e86628d2c2a5547288ea4",
+      "bytes": 4539,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "494d6f39537b65981ea6707c7ba232e890460ad8f51e86628d2c2a5547288ea4",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/dl20-verification.json",
+      "sha256": "705cf4793d8fc1599d9186d0186ccf4241085099492f25bf1b2a88a8dec57c2d",
+      "bytes": 2760,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "705cf4793d8fc1599d9186d0186ccf4241085099492f25bf1b2a88a8dec57c2d",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/preparation-report.json",
+      "sha256": "2aec767f1f9779baeb408287fea2315ae1dd9a5c3607c1a220772f2e5d67177f",
+      "bytes": 2355,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "2aec767f1f9779baeb408287fea2315ae1dd9a5c3607c1a220772f2e5d67177f",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/prepare.py",
+      "sha256": "6f9688d700f586e5ba88d409b264045ce5b17eb796771d01cfa9470ac2f87c84",
+      "bytes": 9790,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "6f9688d700f586e5ba88d409b264045ce5b17eb796771d01cfa9470ac2f87c84",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
       "path": "reports/ir-control-v1/trec-ndcg-source.json",
       "sha256": "8c5e3718110f12542eba8f5acf74f1fcbe8f326e8cceaa3441d88ea4886eec5a",
       "bytes": 1944,
@@ -3306,6 +3424,56 @@
       "source_sha256": "e374d2f93915a9ef32235552f47738d287637fb5590ac24d9ee2dc1c8d121945",
       "changes": [
         "Audited original IR controls and reranking follow-up."
+      ]
+    },
+    {
+      "path": "reports/ir-data-release-20260920/README.md",
+      "sha256": "82663f0b216a8f1004916aeff1ed03d673f2a1898139d4652ca11562a7abd586",
+      "bytes": 1327,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "32560cc1e8ee29cc79da72680226713196147412a5d73ebaa35ede7ff0fa4c1e",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/ir-data-release-20260920/anonymous-payload-verification.json",
+      "sha256": "80ab4b6d3cd2123753ade56c6770c372e80e97611ceaad83b656509b444dcab8",
+      "bytes": 6994,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "aaaaf0ee085280081964daa4f9ebc380bf56558566a29c066860c2693931bc5f",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/ir-data-release-20260920/local-verification.json",
+      "sha256": "d757db7f9dd29cee6f454fb9a5e4f6c2a6e0b2fb53ca08b2868ad0906d16b803",
+      "bytes": 1882,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "ef626dc587d0ad4ef20924abf886eeed9173f043a72d1b6eea08a126a254e65a",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/ir-data-release-20260920/remote-verification.json",
+      "sha256": "0b3b9cf1cc79ce8fbf248a4de1dbf4c9d4d901fc250d146dd56e477e6ddb61a1",
+      "bytes": 46420,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "768edcaf458d0964fa8cb65825f4fbd68f0d2965913311d5377db9a2d917db88",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/ir-data-release-20260920/upload-plan.json",
+      "sha256": "a51cbc5434834d08af468638a176ee72a34fa8ad499dcd2e57365eb7a2904343",
+      "bytes": 4059,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "3c102812aed68469bfdbfb6d939efff2dbc359dfa91ec44a2955ea9371e1012a",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
       ]
     },
     {
@@ -3426,6 +3594,56 @@
       "source_sha256": "65156fa741acbe4fd52da7c10bbddb3d3c39a90c17e0082db73eb6fea853d73a",
       "changes": [
         "Original multilingual mailroom corpus, stable holdout, independent audit and actual Jev probe."
+      ]
+    },
+    {
+      "path": "reports/mailroom-data-release-20260920/README.md",
+      "sha256": "6c440d6195dcf28a3e320c5cd9a9e7dad5012e8d68bd0e4ca2b50b340769d21c",
+      "bytes": 1346,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "16ce9a05164a02fa13ab02b130c25a5a3a929b58ed03f0c64dfac7e0476ca7de",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/mailroom-data-release-20260920/anonymous-payload-verification.json",
+      "sha256": "e806684895cecfc2ee4b54d9fcdebfef9f76c13eb5c3274699ed155b80d8a1e7",
+      "bytes": 6813,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "7c35542485ce66a3ab6d1d8d5423a32a90941095b68efd8576915737b87578ee",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/mailroom-data-release-20260920/local-verification.json",
+      "sha256": "5e3117919ae40f11434470deb432182fb2b30784c842c58995342e92a1d759dc",
+      "bytes": 3430,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "09818aa91d37dd8662bb0cb9cf3ea657805de72ce486a526e3097cbf34969b20",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/mailroom-data-release-20260920/remote-verification.json",
+      "sha256": "efa8dd94195f0d91f37e27f6e74bb5491516d327e1a43002a22f505d8f39b1c4",
+      "bytes": 50161,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "68d47343f180a459d5a63f4b8704cc293c38b14a16046b7a6d9672485ae99ea1",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
+      ]
+    },
+    {
+      "path": "reports/mailroom-data-release-20260920/upload-plan.json",
+      "sha256": "f63eff4ac56d0aa63b7646e470f5ad28aa65f0e35515500320e23cba183e5d29",
+      "bytes": 4055,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "0e4d88ef2d8e1fcc6bf6639480f41852662942927dee74a7168f33006f9206ba",
+      "changes": [
+        "Public projection retains original evidence hashes; removes operational path details or preserves public README layout."
       ]
     },
     {
@@ -5157,6 +5375,26 @@
       "bytes": 6684
     },
     {
+      "path": "reports/provider-comparison-20260920/astra-error-label-review.json",
+      "sha256": "340471c660086c40971a937787d90df88aa7fad89391b6743c5947e7df1061ba",
+      "bytes": 67456,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "340471c660086c40971a937787d90df88aa7fad89391b6743c5947e7df1061ba",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/common-case-label-sensitivity.json",
+      "sha256": "d0ac4e2b6b43533932a8b410b70b8a56d08289dad8a627e2eb0b59b541757780",
+      "bytes": 2060,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "d0ac4e2b6b43533932a8b410b70b8a56d08289dad8a627e2eb0b59b541757780",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
       "path": "reports/provider-comparison-20260920/coverage-suite-manifest.json",
       "sha256": "f03b181d6470732dea6818df75c18ee80cb9401281bfe4fad410ed0829bac727",
       "bytes": 16016,
@@ -5164,6 +5402,26 @@
       "source_sha256": "f03b181d6470732dea6818df75c18ee80cb9401281bfe4fad410ed0829bac727",
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/coverage-suite-v2-manifest.json",
+      "sha256": "5db92ef05da9fb7b09501a675f7d8a2a8d58973e0872b06c046d0af2a2e1a61e",
+      "bytes": 18295,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "5db92ef05da9fb7b09501a675f7d8a2a8d58973e0872b06c046d0af2a2e1a61e",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/export_website_qa.py",
+      "sha256": "8f4f5fd2996caae44c2d02f4fb9e5835ff93315a7bba390588b33f2ec3b38955",
+      "bytes": 3306,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "8f4f5fd2996caae44c2d02f4fb9e5835ff93315a7bba390588b33f2ec3b38955",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -5187,6 +5445,126 @@
       ]
     },
     {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-coverage-audit.json",
+      "sha256": "25802e0b18044c603bd2b53ebb69433a5c51b33e6ef41f19570cb374bb41c53d",
+      "bytes": 2278,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "25802e0b18044c603bd2b53ebb69433a5c51b33e6ef41f19570cb374bb41c53d",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-coverage-quality.json",
+      "sha256": "f58d4239c04eb059d0463bab2b0e6442da1e5a487dde8fbc68e4dd1496aa2058",
+      "bytes": 85030,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "f58d4239c04eb059d0463bab2b0e6442da1e5a487dde8fbc68e4dd1496aa2058",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-fizzbuzz-audit.json",
+      "sha256": "514f73585435dd4afb76da9b6de81e38fb50b94ea3b2def52cd609ad8ae08df6",
+      "bytes": 2249,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "514f73585435dd4afb76da9b6de81e38fb50b94ea3b2def52cd609ad8ae08df6",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-fizzbuzz-quality.json",
+      "sha256": "122ec66566611bb4337915003e43f2fa8bdfea82950b6cab723e3f04fe078508",
+      "bytes": 130545,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "122ec66566611bb4337915003e43f2fa8bdfea82950b6cab723e3f04fe078508",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-ir-pilot-audit.json",
+      "sha256": "6a2d59427e06a08385a5b5144c80fd178d734b403773fb5782b4d8908457b3ca",
+      "bytes": 2270,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "6a2d59427e06a08385a5b5144c80fd178d734b403773fb5782b4d8908457b3ca",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-ir-pilot-quality.json",
+      "sha256": "90ff99921f0008df7e6895c1f2c034e05bfb444e16d15b5be7c5da80be16c8c5",
+      "bytes": 87611,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "90ff99921f0008df7e6895c1f2c034e05bfb444e16d15b5be7c5da80be16c8c5",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-jf100-audit.json",
+      "sha256": "11a0f7f4e6b127b35f1d15fab231cb4e5e25c2b394fcb6f98fe2304b1353889a",
+      "bytes": 2281,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "11a0f7f4e6b127b35f1d15fab231cb4e5e25c2b394fcb6f98fe2304b1353889a",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-5.6-luna-jf100-quality.json",
+      "sha256": "bcb634b0a7c39573fe47e969ca3360b03502cf6920b3ba37a7b1407b6b19fc48",
+      "bytes": 138756,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "bcb634b0a7c39573fe47e969ca3360b03502cf6920b3ba37a7b1407b6b19fc48",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-coverage-audit.json",
+      "sha256": "a6d8f62caefb2928f514b698d15b33db77e1bdca4ed61ab001c8ab618546adbc",
+      "bytes": 2274,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "a6d8f62caefb2928f514b698d15b33db77e1bdca4ed61ab001c8ab618546adbc",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-coverage-quality.json",
+      "sha256": "7da5f1494ca1d7e8b139f7911379fd4dab0d6a665d3e1ebc81de6cc38564dd8d",
+      "bytes": 84969,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "7da5f1494ca1d7e8b139f7911379fd4dab0d6a665d3e1ebc81de6cc38564dd8d",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-jf100-audit.json",
+      "sha256": "e20ab5cff58fe426c2ac521fd43bef20fd99c35a13bbc64b505017061d27ce2f",
+      "bytes": 2240,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "e20ab5cff58fe426c2ac521fd43bef20fd99c35a13bbc64b505017061d27ce2f",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/openai-gpt-6-astra-jf100-quality.json",
+      "sha256": "55ce041d4b8a21cea69554842dd7a603ac4241ccfb2435a89b84d2adb6f1a25b",
+      "bytes": 138503,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "55ce041d4b8a21cea69554842dd7a603ac4241ccfb2435a89b84d2adb6f1a25b",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
       "path": "reports/provider-comparison-20260920/presentation-peer-review.json",
       "sha256": "6beeb2ae9fef9f07a03143e32fba44de60b8a0d9238bb5997fd10add1cbfed58",
       "bytes": 482,
@@ -5207,12 +5585,32 @@
       ]
     },
     {
+      "path": "reports/provider-comparison-20260920/registry-v2-extension-audit.json",
+      "sha256": "ee6fe6af3ceaf74048ab840851db222da75b8e5b4030a70597efc0938512674b",
+      "bytes": 663,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "ee6fe6af3ceaf74048ab840851db222da75b8e5b4030a70597efc0938512674b",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
       "path": "reports/provider-comparison-20260920/summary.json",
       "sha256": "883397a2dc69377263ea86d3922685af4fb98fa89c51001072b41340a0f39a1f",
       "bytes": 32460,
       "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
+      ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/website-comparison-qa.json",
+      "sha256": "adb000509c4ff73a4a7239df8685ee5700e300ebf9b4d404382a030af2f734a6",
+      "bytes": 17613,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "adb000509c4ff73a4a7239df8685ee5700e300ebf9b4d404382a030af2f734a6",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -5705,6 +6103,16 @@
       "bytes": 47666
     },
     {
+      "path": "reports/x-release/website-reply-public-verification.json",
+      "sha256": "f36114fbec2c349ee23dc2d7a0a41e3120d2751b7761ddeb8aa6d202cac2814c",
+      "bytes": 511,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "f36114fbec2c349ee23dc2d7a0a41e3120d2751b7761ddeb8aa6d202cac2814c",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
       "path": "requirements.txt",
       "source_sha256": "47d6b9c1b487c77c04597bccba2ab2cfcc3cf2be80609e0ce20c89b6e11f1f78",
       "sha256": "47d6b9c1b487c77c04597bccba2ab2cfcc3cf2be80609e0ce20c89b6e11f1f78",
@@ -5797,23 +6205,33 @@
       ]
     },
     {
-      "path": "scripts/build_provider_suite.py",
-      "sha256": "729339e5faeb4169e94bb10347e3a90beb286424c9769811b59a200a6010da23",
-      "bytes": 7719,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
-      "source_sha256": "729339e5faeb4169e94bb10347e3a90beb286424c9769811b59a200a6010da23",
+      "path": "scripts/build_provider_quality_site.py",
+      "sha256": "a9552a826c4434e658cec47fa15ba03215dbdb1fa11970dcfaeeef9ccaacccaf",
+      "bytes": 7536,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "a9552a826c4434e658cec47fa15ba03215dbdb1fa11970dcfaeeef9ccaacccaf",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "scripts/build_provider_suite.py",
+      "sha256": "09ac07cca6809a5f9c8ad0e17b55c3d6fd751d9cdd9eb7dff004ad95c998a8c1",
+      "bytes": 8109,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "09ac07cca6809a5f9c8ad0e17b55c3d6fd751d9cdd9eb7dff004ad95c998a8c1",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
       "path": "scripts/build_site_results.py",
-      "source_sha256": "dbdf656c26001904869026f5bd5c915ba204bef01d332b9ba67e0b791674fafc",
-      "sha256": "dbdf656c26001904869026f5bd5c915ba204bef01d332b9ba67e0b791674fafc",
-      "bytes": 3784,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
+      "sha256": "80a5b2e961fbe079325650fe2aeadfb60f7973e91a08d119881fdd02755e3525",
+      "bytes": 3872,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "80a5b2e961fbe079325650fe2aeadfb60f7973e91a08d119881fdd02755e3525",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -5992,12 +6410,12 @@
     },
     {
       "path": "site/app.js",
-      "source_sha256": "70c04515bfee730ed7ada61c0ecd898bc4c01844b91d337356cf4d231dba8d1d",
-      "sha256": "70c04515bfee730ed7ada61c0ecd898bc4c01844b91d337356cf4d231dba8d1d",
-      "bytes": 25747,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
+      "sha256": "454f7e2eab35b1a4309dc8075f73f8a6f4186767c1652b791196c7cf0faaacd4",
+      "bytes": 30274,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "454f7e2eab35b1a4309dc8075f73f8a6f4186767c1652b791196c7cf0faaacd4",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -6008,12 +6426,12 @@
     },
     {
       "path": "site/index.html",
-      "source_sha256": "ca61f3ff3c47e297c8fee6cf5393e38d9aea5d0ba4ca4889a4b78b91531919f7",
-      "sha256": "ca61f3ff3c47e297c8fee6cf5393e38d9aea5d0ba4ca4889a4b78b91531919f7",
-      "bytes": 24583,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
+      "sha256": "45f75168ad77828e867ae2d57440cae44b433aa7592c3760ea06935660cbc7e8",
+      "bytes": 27657,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "45f75168ad77828e867ae2d57440cae44b433aa7592c3760ea06935660cbc7e8",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -6709,23 +7127,33 @@
       "bytes": 590
     },
     {
-      "path": "site/results.json",
-      "source_sha256": "2735a0cebdca88f7bebbea2c60a71853f257b93f6efe90163b1fdc5a15b90c40",
-      "sha256": "2735a0cebdca88f7bebbea2c60a71853f257b93f6efe90163b1fdc5a15b90c40",
-      "bytes": 31006,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
+      "path": "site/provider-quality.json",
+      "sha256": "ed49d61e23a5bf144cd6b0f600edbcf32a16ed59dcef2e24ac2668e7b7dc2877",
+      "bytes": 80310,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "ed49d61e23a5bf144cd6b0f600edbcf32a16ed59dcef2e24ac2668e7b7dc2877",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+      ]
+    },
+    {
+      "path": "site/results.json",
+      "sha256": "c8e8c635ccbaeaea028f79646c7e5f1895cb8d56fd4f1e7cd4ac23323e068acf",
+      "bytes": 31820,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "c8e8c635ccbaeaea028f79646c7e5f1895cb8d56fd4f1e7cd4ac23323e068acf",
+      "changes": [
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
       "path": "site/styles.css",
-      "source_sha256": "45aa07499846e5665b1bec933613699799d87e9ce7a1ea3eb6d54a0cd3d2dca5",
-      "sha256": "45aa07499846e5665b1bec933613699799d87e9ce7a1ea3eb6d54a0cd3d2dca5",
-      "bytes": 38926,
-      "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
+      "sha256": "7c38cc18a5e6debd842b267b1142798e77a5568a7a806e443d38cd0425fadeaa",
+      "bytes": 42304,
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "source_sha256": "7c38cc18a5e6debd842b267b1142798e77a5568a7a806e443d38cd0425fadeaa",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
     },
     {
@@ -7560,7 +7988,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "aa97a3ba255e854d0c8f49c6f7b697fcc7eb2eff",
+  "current_source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -7720,6 +8148,69 @@
         "reports/provider-comparison-20260920/jev-mailroom-quality.json",
         "reports/provider-comparison-20260920/quality-evidence-identity.json",
         "tests/test_mailroom_data.py"
+      ]
+    },
+    {
+      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
+      "created_at": "2026-09-20T23:06:29.900083+00:00",
+      "description": "Five-provider quality coverage, common label sensitivity, verified IR/mailroom dataset release and real TREC input provenance. API probes and GPU full-heldout work remain pending.",
+      "paths": [
+        "README.md",
+        "docs/ir-control-data.md",
+        "docs/mailroom-control-data.md",
+        "docs/provider-comparison.md",
+        "docs/website-and-videos.md",
+        "release/social/README.md",
+        "release/social/index.html",
+        "release/social/website-reply.txt",
+        "reports/data-manifests/ir-control-v1.json",
+        "reports/data-manifests/mailroom-control-v1.json",
+        "reports/inference-latency/presentation-qa-20260920/live-publication-verification.json",
+        "reports/ir-control-v1/README.md",
+        "reports/ir-control-v1/trec-holdout/README.md",
+        "reports/ir-control-v1/trec-holdout/dl19-manifest.json",
+        "reports/ir-control-v1/trec-holdout/dl19-verification.json",
+        "reports/ir-control-v1/trec-holdout/dl20-manifest.json",
+        "reports/ir-control-v1/trec-holdout/dl20-verification.json",
+        "reports/ir-control-v1/trec-holdout/preparation-report.json",
+        "reports/ir-control-v1/trec-holdout/prepare.py",
+        "reports/ir-data-release-20260920/README.md",
+        "reports/ir-data-release-20260920/anonymous-payload-verification.json",
+        "reports/ir-data-release-20260920/local-verification.json",
+        "reports/ir-data-release-20260920/remote-verification.json",
+        "reports/ir-data-release-20260920/upload-plan.json",
+        "reports/mailroom-data-release-20260920/README.md",
+        "reports/mailroom-data-release-20260920/anonymous-payload-verification.json",
+        "reports/mailroom-data-release-20260920/local-verification.json",
+        "reports/mailroom-data-release-20260920/remote-verification.json",
+        "reports/mailroom-data-release-20260920/upload-plan.json",
+        "reports/provider-comparison-20260920/astra-error-label-review.json",
+        "reports/provider-comparison-20260920/common-case-label-sensitivity.json",
+        "reports/provider-comparison-20260920/coverage-suite-v2-manifest.json",
+        "reports/provider-comparison-20260920/export_website_qa.py",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-coverage-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-coverage-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-fizzbuzz-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-fizzbuzz-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-ir-pilot-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-ir-pilot-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-jf100-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-5.6-luna-jf100-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-coverage-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-coverage-quality.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-jf100-audit.json",
+        "reports/provider-comparison-20260920/openai-gpt-6-astra-jf100-quality.json",
+        "reports/provider-comparison-20260920/registry-v2-extension-audit.json",
+        "reports/provider-comparison-20260920/website-comparison-qa.json",
+        "reports/x-release/website-reply-public-verification.json",
+        "scripts/build_provider_quality_site.py",
+        "scripts/build_provider_suite.py",
+        "scripts/build_site_results.py",
+        "site/app.js",
+        "site/index.html",
+        "site/provider-quality.json",
+        "site/results.json",
+        "site/styles.css"
       ]
     }
   ]

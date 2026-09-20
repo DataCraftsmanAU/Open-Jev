@@ -823,17 +823,41 @@
         },
         "manifest_path": "reports/silent-failure-control-v1/manifest.json",
         "manifest_sha256": "a7d326a480c0132dd608d0d7119a948bc16e36667e0ff7049e111f33c5445fac"
+      },
+      {
+        "name": "ir-control-v1",
+        "splits": {
+          "calibration": 464,
+          "ood": 2320,
+          "test": 986,
+          "train": 7366,
+          "validation": 464
+        },
+        "manifest_path": "reports/data-manifests/ir-control-v1.json",
+        "manifest_sha256": "5305dad7326fbf32aa006447137c5a3eb92872d90cde71302bc7efb39f882590"
+      },
+      {
+        "name": "mailroom-control-v1",
+        "splits": {
+          "calibration": 4018,
+          "ood": 22960,
+          "test": 8323,
+          "train": 73472,
+          "validation": 6027
+        },
+        "manifest_path": "reports/data-manifests/mailroom-control-v1.json",
+        "manifest_sha256": "afa9daabd5639a333c9adf8e89e7c7bbfcf84adfc051fb9843978c29703122f6"
       }
     ],
     "splits": {
-      "calibration": 12455,
-      "ood": 49459,
-      "test": 23874,
-      "train": 187655,
-      "validation": 9041
+      "calibration": 16937,
+      "ood": 74739,
+      "test": 33183,
+      "train": 268493,
+      "validation": 15532
     },
-    "total_decision_rows": 282484,
-    "task_source_identifiers": 23
+    "total_decision_rows": 408884,
+    "task_source_identifiers": 25
   },
   "limitations": [
     "2B and 9B trained on 80,816 release-v2 training rows; broader inventory is not their evaluation set.",
@@ -841,7 +865,7 @@
     "Synthetic controlled decision accuracy is not an end-to-end task or gameplay success rate.",
     "No full-data base-model baseline was run; no full-data training gain is claimed.",
     "27B final evaluation and final-model JF100/service suites are pending.",
-    "The eight new corpora have no new-domain trained-model evaluation.",
+    "The new corpora have not been used to retrain the released models; new-domain Open-Jev evaluation remains pending.",
     "JF100 is a separate holdout: 100 questions with three option rotations."
   ]
 }

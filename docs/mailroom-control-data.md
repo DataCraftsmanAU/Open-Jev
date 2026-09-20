@@ -38,7 +38,15 @@ The frozen provider bundle at `data/provider-mailroom-probe-v1` uses the shared 
 
 The prepared full corpus has 400 families, 11,600 requests, and 114,800 distinct ordered model-input rows: 73,472 train, 4,018 calibration, 6,027 validation, 8,323 test, and 22,960 OOD. The generic validator reports 114,400 inputs after also disregarding candidate order. `reports/mailroom-control-v1/expansion-stability.json` verifies that all 290 small-corpus requests and all 2,870 small-corpus rows remain byte-identical in the same full-corpus files. The frozen 87-request probe remains a fixed subset; expanding the corpus does not expand that evaluation retrospectively.
 
-No training, frozen-mixture update, HF upload, live mailbox access, or end-to-end customer email automation is implied by this control set.
+The separate [`mailroom-control-v1` HF config](https://huggingface.co/datasets/ZefanCai/Open-Jev/tree/c67699e13d0ae25e35b77165a4b6b079bedc8aba/data/mailroom-control-v1)
+is published with all five splits. Anonymous `datasets` loading and exact
+Parquet/raw JSONL round-trip verification passed for all 114,800 rows. All 219
+prior files other than the root dataset card remain byte-identical by their
+content identifiers; previous config definitions, the default and frozen
+training mixtures are unchanged. The [release evidence](../reports/mailroom-data-release-20260920/README.md)
+records the pinned revision, upload hashes and verification results. This
+publication does not imply training, live mailbox access or end-to-end customer
+email automation.
 
 The first real Jev 1.13.0 probe completed all 87 held-out requests with HTTP 200
 and strict typed-output validation. It answered **908 of 921 supervised

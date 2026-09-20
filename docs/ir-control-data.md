@@ -167,9 +167,13 @@ python3 -m unittest tests.test_ir_control -v
 The [full manifest](../reports/ir-control-v1/manifest.json),
 [independent audit](../reports/ir-control-v1/independent-audit.json) and
 [test execution record](../reports/ir-control-v1/test-verification.json)
-bind counts, file/source hashes and verification results. The corpus is local
-generated data at this point; these IR files have not been uploaded as an HF
-dataset config. The previously published community configs are separate.
+bind counts, file/source hashes and verification results. The corpus is published
+as the separate [`ir-control-v1` HF config](https://huggingface.co/datasets/ZefanCai/Open-Jev/tree/b0aad4004b8d74f4a6ca66c7a9175fe17478d688/data/ir-control-v1).
+All five splits and 11,600 rows passed anonymous Parquet/raw byte-for-byte
+round-trip verification. The additive upload preserved 202 existing files and
+all earlier config definitions; only the root dataset card changed. The
+[release evidence](../reports/ir-data-release-20260920/README.md) records the
+pinned revision and checksums. Training mixtures remain unchanged.
 
 ## Real Jev pilot observations
 
@@ -207,9 +211,23 @@ nDCG claim here. All pilot results remain separate from the existing frozen
 
 ## External TREC evaluation remains pending
 
-No TREC passages, candidates or qrels have been downloaded or evaluated by this
-work. The [external evaluation contract](../reports/ir-control-v1/external-evaluation-contract.json)
-records the required provenance and an incomplete manifest template.
+The real held-out inputs are now prepared: DL19 has **43 judged queries with
+4,300 candidate occurrences and 9,260 qrels**; DL20 has **54 queries with 5,400
+candidate occurrences and 11,386 qrels**. The
+[preparation evidence](../reports/ir-control-v1/trec-holdout/README.md) records
+immutable source revisions, checksums, official-query agreement and complete
+judged-query coverage. Raw texts stay in the isolated local holdout directory;
+they were not uploaded as Open-Jev training data. **No model has evaluated this
+TREC holdout yet.**
+
+The downloaded BM25 rankings give linear nDCG@10 of 0.505831 on DL19 and
+0.479637 on DL20. These are arithmetic checks of supplied rankings, not a new
+retrieval run or a reproduction of the author's Jev results. The author's
+original downloads were not pinned, and runtime query/passage truncation has
+not been baked into the stored full texts.
+
+The earlier [external evaluation contract](../reports/ir-control-v1/external-evaluation-contract.json)
+records the required provenance and its original manifest template.
 `load_external_holdout` reads checksummed `candidates.jsonl` and `qrels.txt`
 outside the training-data tree, including resolved symlinks. It requires an
 `evaluation_only` manifest, TREC-DL19/DL20 identity and 100 unique ordered BM25

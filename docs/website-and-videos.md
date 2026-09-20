@@ -46,8 +46,8 @@ Playback is edited for readability; its duration is not inference latency.
 Wrong decisions and unsuccessful episodes remain in the original evaluation
 records; curation changes neither predictions nor metrics. No clip substitutes
 reference labels, teacher actions or fixture answers for learned predictions.
-The eight newly prepared citation, entity, amount, email, phone, context-retention,
-sponsor-segment and silent-failure corpora have
+The newly prepared citation, entity, amount, email, phone, context-retention,
+sponsor-segment, silent-failure, retrieval and mailroom corpora have
 no new-domain trained-model evaluation. A historical recipe smoke response
 does not evaluate those corpora.
 
@@ -60,7 +60,7 @@ gallery coverage is not a claim of parity with every Jev example on X.
 ## Data and evaluation scope
 
 The prepared inventory counts the 163,050-row browser/drone expansion once,
-plus the eight newer corpora, without counting its constituent datasets again.
+plus the ten newer corpora, without counting its constituent datasets again.
 
 | Corpus | Train | Test | OOD | All splits |
 | --- | ---: | ---: | ---: | ---: |
@@ -73,11 +73,13 @@ plus the eight newer corpora, without counting its constituent datasets again.
 | Context retention | 6,138 | 522 | 2,160 | 9,834 |
 | Sponsor segments | 6,345 | 999 | 2,160 | 10,800 |
 | Silent failure | 6,432 | 624 | 1,920 | 9,600 |
-| **Total** | **187,655** | **23,874** | **49,459** | **282,484** |
+| Graded retrieval | 7,366 | 986 | 2,320 | 11,600 |
+| Multilingual mailroom | 73,472 | 8,323 | 22,960 | 114,800 |
+| **Total** | **268,493** | **33,183** | **74,739** | **408,884** |
 
-There are 23 independent task-source identifiers (22 domains if the two
-customer sources are grouped). Calibration adds 12,455 rows and validation
-9,041. These are typed decision rows, not distinct documents or episodes.
+There are 25 task-source identifiers (24 domains if the two
+customer sources are grouped). Calibration adds 16,937 rows and validation
+15,532. These are typed decision rows, not distinct documents or episodes.
 Citation quote-not-found controls are separate: 400 across all splits,
 including 30 test and 80 OOD. They are not added to the typed counts above.
 

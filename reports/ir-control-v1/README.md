@@ -2,9 +2,9 @@
 
 The full original corpus has 200 families, 400 queries, 8,800 request cases and
 11,600 typed records. The independent body audit passes. Six complete runtime
-algorithms and the graded metric/holdout loader are implemented. **External
-TREC evaluation and IR HF publication remain pending.** No training on this
-corpus is claimed.
+algorithms and the graded metric/holdout loader are implemented. The independent
+IR config is [published and anonymously verified](../ir-data-release-20260920/README.md).
+**External TREC evaluation remains pending.** No training on this corpus is claimed.
 
 | Evidence | File |
 | --- | --- |
