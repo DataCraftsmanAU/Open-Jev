@@ -3325,13 +3325,10 @@
     },
     {
       "path": "reports/ir-control-v1/trec-holdout/README.md",
-      "sha256": "b03632358828bf0b53a23608f2b3b4d2fa97d392bad61cb4b33e0fd9ab30553e",
-      "bytes": 1308,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "b03632358828bf0b53a23608f2b3b4d2fa97d392bad61cb4b33e0fd9ab30553e",
-      "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
-      ]
+      "sha256": "94b732a3c67273b0eace944160db48ba97f56dc1bd5cacc67714e2356ec018cf",
+      "bytes": 4698,
+      "source_sha256": "94b732a3c67273b0eace944160db48ba97f56dc1bd5cacc67714e2356ec018cf",
+      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
     },
     {
       "path": "reports/ir-control-v1/trec-holdout/dl19-manifest.json",
@@ -3392,6 +3389,23 @@
       "changes": [
         "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/provider-evaluation-plan.json",
+      "sha256": "8f9dfdc0834be9a79b1294b8fdb4ba6e3b30cc78866fe76db0e76941bf3fe13b",
+      "bytes": 38361,
+      "source_sha256": "587ef8709cb8950c04e293f2d6d9474c2eb7ce605115e2a33bc844bc6310d798",
+      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905",
+      "changes": [
+        "Local absolute runtime path replaced by its repository-relative path. Original source hash retained."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/provider-input-preparation.json",
+      "sha256": "05d26bb2ab5abb4641a3e419619050641d52ced762fd4f94ebfb272e437502a1",
+      "bytes": 2675,
+      "source_sha256": "05d26bb2ab5abb4641a3e419619050641d52ced762fd4f94ebfb272e437502a1",
+      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
     },
     {
       "path": "reports/ir-control-v1/trec-ndcg-source.json",
@@ -6420,6 +6434,13 @@
       "bytes": 15453
     },
     {
+      "path": "scripts/evaluate_trec_provider.py",
+      "sha256": "b618ea6f09ef1d964e45a4471f48dfa72537461da48e686f2984941400db669d",
+      "bytes": 22073,
+      "source_sha256": "b618ea6f09ef1d964e45a4471f48dfa72537461da48e686f2984941400db669d",
+      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
+    },
+    {
       "path": "scripts/evaluate_workflow_service.py",
       "source_sha256": "15058c8cba6e19e056a22b47be3bf88d36c83b30b67d962caf358d0ce2253e23",
       "sha256": "15058c8cba6e19e056a22b47be3bf88d36c83b30b67d962caf358d0ce2253e23",
@@ -6458,6 +6479,13 @@
       "source_sha256": "91bf2b7af29b14edcfd5cb4d79f5188abca98d19e6a0bf016e17c0aafab62bdc",
       "sha256": "91bf2b7af29b14edcfd5cb4d79f5188abca98d19e6a0bf016e17c0aafab62bdc",
       "bytes": 2102
+    },
+    {
+      "path": "scripts/prepare_trec_provider_input.py",
+      "sha256": "08fccfc9b09143f50f4d8e9c3c3c2e2496890723066ce9d7715a48c897fb7a99",
+      "bytes": 5257,
+      "source_sha256": "08fccfc9b09143f50f4d8e9c3c3c2e2496890723066ce9d7715a48c897fb7a99",
+      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
     },
     {
       "path": "scripts/render_demo_videos.py",
@@ -7597,6 +7625,13 @@
       "bytes": 9134
     },
     {
+      "path": "tests/test_trec_provider.py",
+      "sha256": "741590894f7280d46f71d817f50c9a7a2e97a94904e1a959ae5c2c22044a2bf9",
+      "bytes": 15621,
+      "source_sha256": "741590894f7280d46f71d817f50c9a7a2e97a94904e1a959ae5c2c22044a2bf9",
+      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905"
+    },
+    {
       "path": "tests/test_workflows.py",
       "source_sha256": "cbec713649762b8966f17f7fad40da3be35b170fd566d6f8f9ccdfd4e69bbe50",
       "sha256": "cbec713649762b8966f17f7fad40da3be35b170fd566d6f8f9ccdfd4e69bbe50",
@@ -8098,7 +8133,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "75f2f0418efdc2394d86d7947eae7306c0e47510",
+  "current_source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8349,6 +8384,19 @@
         "reports/provider-comparison-20260920/openai-ir-ranking/evaluate.py",
         "reports/provider-comparison-20260920/openai-ir-ranking/verification.json",
         "reports/provider-comparison-20260920/openai-ir-ranking/verify.py"
+      ]
+    },
+    {
+      "source_commit": "838bcd3e9b7c38639442c8a6784eb02024574905",
+      "created_at": "2026-09-20T23:33:09.118224+00:00",
+      "description": "Frozen real TREC provider input protocol and tested bounded API runner; no TREC quality result claimed in this release. Real texts and credentials excluded.",
+      "paths": [
+        "scripts/prepare_trec_provider_input.py",
+        "scripts/evaluate_trec_provider.py",
+        "tests/test_trec_provider.py",
+        "reports/ir-control-v1/trec-holdout/README.md",
+        "reports/ir-control-v1/trec-holdout/provider-evaluation-plan.json",
+        "reports/ir-control-v1/trec-holdout/provider-input-preparation.json"
       ]
     }
   ]
