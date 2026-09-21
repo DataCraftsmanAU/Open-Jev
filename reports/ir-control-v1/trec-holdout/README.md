@@ -90,7 +90,7 @@ without modifying probabilities. The query-weighted combined values are
 therefore reflects response validity as well as ranking quality; the scalar
 score does not validate Jev's probability vectors.
 
-Luna's completed collection is reported below; Astra is still running.
+The completed Luna and Astra collections are reported below.
 Open-Jev TREC inference remains pending until the authorized GPU allocation
 is available. Jev API cost is unknown, not zero; its collection has no
 transport errors or retries.
@@ -142,6 +142,31 @@ zero cached or reasoning tokens and no unknown-cost requests. An independent
 Decimal calculation gives a **$0.799273 standard-list usage estimate**, not
 an invoice amount. This is separate from the earlier five small quality suites.
 
-Astra and Open-Jev have no published TREC score in this snapshot. These
-results do not establish an overall provider winner or reproduce the
-community demo's exact prompts, model revision or gateway.
+Open-Jev has no published TREC score in this snapshot. These results do not
+establish an overall provider winner or reproduce the community demo's exact
+prompts, model revision or gateway.
+
+## Completed Astra collection
+
+[GPT-6 Astra with reasoning `low`](astra-listwise-summary.json) completed
+all 873 requests and all 97 queries, with no transport or strict-validation
+failures and no retries. It uses the same frozen initial candidates and
+adaptive window protocol; its later windows follow its own earlier rankings.
+
+| Benchmark | Full query denominator | Astra strict nDCG@10 | Strict-complete queries |
+| --- | ---: | ---: | ---: |
+| DL19 | 43 | 0.736610 | 43/43 |
+| DL20 | 54 | 0.714484 | 54/54 |
+
+The combined query-weighted nDCG@10 is **0.724292**. The
+[independent audit](astra-result-independent-audit.json) checks all 17,460
+integer grades and 873 adaptive windows without importing the runner, provider
+adapter, reranker or scorer. Every per-query score matches the offline summary
+exactly. The unchanged [audit source](verify_openai_results.py) verifies the
+request/response identities, saved JSON schema, reasoning settings and usage.
+
+Returned usage totals 3,204,672 input tokens and 151,590 output tokens, including
+18,174 reported reasoning output tokens. Cached input tokens and unknown-cost
+requests are both zero. Independent Decimal arithmetic gives a **$39.62622
+standard-list usage estimate**, not an invoice amount. This is separate from
+the earlier five small quality suites and their costs.

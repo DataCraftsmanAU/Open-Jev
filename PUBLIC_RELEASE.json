@@ -30,12 +30,12 @@
     },
     {
       "path": "README.md",
-      "sha256": "182c15c1331bfd4c2cdab1ba78f5f99187972daf536cd97ab7653fddbc4ae110",
-      "bytes": 14899,
-      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
-      "source_sha256": "811552f5ed44c7a8621e548f1bf293d4f7ce384d5c2a2e1f3de0268969e5d913",
+      "sha256": "139329ce4850f85fe0f7962f9eb8bfe53115e43d3ce29944a816bad2f345edfe",
+      "bytes": 15001,
+      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
+      "source_sha256": "a99b56e2b26941be5706fdadfcfb4cba1185a9e53de186a10bd166fa101a2ac9",
       "changes": [
-        "Preserve custom public README; update only the audited TREC result paragraph with completed Luna metrics."
+        "Preserve custom public README; update only the TREC paragraph with completed independently audited Astra metrics."
       ]
     },
     {
@@ -322,12 +322,12 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "95e07dd9eea2f08392e09382e6b94110ca14c5873c423cfe3db91a90b38cf8a9",
-      "bytes": 14406,
-      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
-      "source_sha256": "95e07dd9eea2f08392e09382e6b94110ca14c5873c423cfe3db91a90b38cf8a9",
+      "sha256": "e83c605b22a19ecb500e235104466b0209b2d347c5490589e27e2a52e661f9c5",
+      "bytes": 14703,
+      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
+      "source_sha256": "e83c605b22a19ecb500e235104466b0209b2d347c5490589e27e2a52e661f9c5",
       "changes": [
-        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved."
       ]
     },
     {
@@ -3348,12 +3348,32 @@
     },
     {
       "path": "reports/ir-control-v1/trec-holdout/README.md",
-      "sha256": "7c52ed98c6c937aafadf3cf07558063354c22f6f48732c17747994c042b172f3",
-      "bytes": 8878,
-      "source_sha256": "7c52ed98c6c937aafadf3cf07558063354c22f6f48732c17747994c042b172f3",
-      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "sha256": "92d4c863bce12d5949afed845b17034a63625f86019fbdf0e08b06eb8f5ccde1",
+      "bytes": 10186,
+      "source_sha256": "92d4c863bce12d5949afed845b17034a63625f86019fbdf0e08b06eb8f5ccde1",
+      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
       "changes": [
-        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/astra-listwise-summary.json",
+      "sha256": "b14bdc66ccc1a940de1a942fa07ca61134fab3f11718a942394d1522a93937f8",
+      "bytes": 12952,
+      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
+      "source_sha256": "b14bdc66ccc1a940de1a942fa07ca61134fab3f11718a942394d1522a93937f8",
+      "changes": [
+        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/astra-result-independent-audit.json",
+      "sha256": "7210efed4437199f22e2c1a966b5c2e431a2501a0564d941cf9a797b8ef91639",
+      "bytes": 3942,
+      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
+      "source_sha256": "7210efed4437199f22e2c1a966b5c2e431a2501a0564d941cf9a797b8ef91639",
+      "changes": [
+        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved."
       ]
     },
     {
@@ -7459,12 +7479,12 @@
     },
     {
       "path": "site/provider-quality.json",
-      "sha256": "1340fb3c79717da959974f859441bfcd41a63ca60bbd458f22886f7265c3fd89",
-      "bytes": 97231,
-      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
-      "source_sha256": "1340fb3c79717da959974f859441bfcd41a63ca60bbd458f22886f7265c3fd89",
+      "sha256": "73ee1afd0cbbd16e88176fa0524833b3ce5ff1338b3d35569bac296d75695048",
+      "bytes": 98024,
+      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
+      "source_sha256": "73ee1afd0cbbd16e88176fa0524833b3ce5ff1338b3d35569bac296d75695048",
       "changes": [
-        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved."
       ]
     },
     {
@@ -8350,7 +8370,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+  "current_source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8663,6 +8683,19 @@
         "reports/ir-control-v1/trec-holdout/verify_openai_results.py",
         "reports/ir-control-v1/trec-holdout/luna-site-verification.json",
         "reports/ir-control-v1/trec-holdout/luna-publication-review.json"
+      ]
+    },
+    {
+      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
+      "created_at": "2026-09-21T01:15:56.105774+00:00",
+      "description": "Astra TREC collection complete and independently audited: all 97 queries and 873 requests strictly valid, full-denominator metrics and observed-usage estimate published. Existing Jev/Luna/BM25 and categorical results preserved; Open-Jev TREC remains pending. Raw TREC inputs/responses and credentials excluded.",
+      "paths": [
+        "README.md",
+        "docs/provider-comparison.md",
+        "reports/ir-control-v1/trec-holdout/README.md",
+        "reports/ir-control-v1/trec-holdout/astra-listwise-summary.json",
+        "reports/ir-control-v1/trec-holdout/astra-result-independent-audit.json",
+        "site/provider-quality.json"
       ]
     }
   ]

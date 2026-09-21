@@ -154,7 +154,11 @@ Luna also completed all 97 TREC queries and 873 requests, with no transport or
 strict-validation failures. Its DL19/DL20 nDCG@10 is **0.729911/0.702082**;
 the [independent audit](../reports/ir-control-v1/trec-holdout/luna-result-independent-audit.json)
 reproduces every query score and the **$0.799273** usage-based cost estimate.
-Astra collection continues and Open-Jev TREC inference remains pending.
+Astra also completed all 97 queries and 873 requests, with no transport or
+strict-validation failures. Its DL19/DL20 nDCG@10 is **0.736610/0.714484**;
+the [independent audit](../reports/ir-control-v1/trec-holdout/astra-result-independent-audit.json)
+reproduces every query score and the **$39.62622** usage-based cost estimate.
+Open-Jev TREC inference remains pending.
 The five earlier small quality suites and their costs above are unchanged.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates

@@ -194,8 +194,9 @@ has completed Jev's 97 queries / 873 requests. DL19/DL20 nDCG@10 is
 predeclared supplementary scalar analysis. Probability-mass failures affect
 66 queries and remain zero in the strict metric. Luna also completed all 97
 queries with strict nDCG@10 of 0.729911/0.702082, zero request errors and an
-independently checked $0.799273 usage estimate. Astra collection continues;
-Open-Jev TREC results remain pending.
+independently checked $0.799273 usage estimate. Astra also completed all 97
+queries with strict nDCG@10 of 0.736610/0.714484, zero request errors and a
+$39.62622 usage estimate. Open-Jev TREC results remain pending.
 
 The frozen counts are reference matches. A subsequent game-label audit found
 equivalent platformer actions and omitted ViZDoom policy constants; these

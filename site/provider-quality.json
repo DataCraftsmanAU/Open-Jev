@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-21T00:27:07.300696+00:00",
+  "generated_at": "2026-09-21T01:13:58.305852+00:00",
   "status": "partial",
   "providers": [
     {
@@ -2414,12 +2414,28 @@
         "evidence_url": "https://github.com/Zefan-Cai/Open-Jev/blob/main/reports/ir-control-v1/trec-holdout/luna-listwise-summary.json"
       },
       "astra": {
-        "status": "pending"
+        "status": "complete",
+        "benchmarks": {
+          "dl19": {
+            "primary_strict_ndcg_at_10": 0.7366099323007737,
+            "supplemental_actual_scalar_ndcg_at_10": null,
+            "strict_complete_queries": 43,
+            "scalar_complete_queries": null
+          },
+          "dl20": {
+            "primary_strict_ndcg_at_10": 0.7144837978397526,
+            "supplemental_actual_scalar_ndcg_at_10": null,
+            "strict_complete_queries": 54,
+            "scalar_complete_queries": null
+          }
+        },
+        "evidence_url": "https://github.com/Zefan-Cai/Open-Jev/blob/main/reports/ir-control-v1/trec-holdout/astra-listwise-summary.json"
       }
     },
     "source_report_sha256": {
       "reports/ir-control-v1/trec-holdout/jev-listwise-summary.json": "2a4925b265c18cb1bad192cf96d824e96d2c4510eee259e80c95d8fb7501c20a",
-      "reports/ir-control-v1/trec-holdout/luna-listwise-summary.json": "c3fdd38e5566a9593713be0e102953007c7ab6f551201dc380ca1f4d7d839684"
+      "reports/ir-control-v1/trec-holdout/luna-listwise-summary.json": "c3fdd38e5566a9593713be0e102953007c7ab6f551201dc380ca1f4d7d839684",
+      "reports/ir-control-v1/trec-holdout/astra-listwise-summary.json": "b14bdc66ccc1a940de1a942fa07ca61134fab3f11718a942394d1522a93937f8"
     },
     "method_url": "https://github.com/Zefan-Cai/Open-Jev/blob/main/reports/ir-control-v1/trec-holdout/README.md",
     "note": "nDCG@10 on all 97 judged queries with full official qrels and direct relevance grades. Each query reranks the downloaded BM25 top 100 using nine adaptive 20-passage Score windows. Strict failures contribute zero. Jev’s predeclared supplementary analysis uses actual scalar scores from mass-only failures, without renormalizing probabilities. Pending cells have no published model score. This independently authored protocol is not an exact reproduction of the community demo."
