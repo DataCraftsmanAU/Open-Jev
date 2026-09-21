@@ -14,9 +14,9 @@ without autoregressive answer generation or parsing generated JSON.
 at the links above. The 2B/9B artifacts are LoRA adapters plus a trained scalar decision
 head and calibration temperature. They require the pinned upstream Qwen
 weights and the Open-Jev loader; they are not merged base models or ordinary
-text-generation checkpoints. The 27B expansion run remains paused until the
-dedicated JevBench evaluation completes, then training will resume. Its final
-checkpoint evaluation and other GPU follow-up evaluations remain pending.
+text-generation checkpoints. The dedicated public JevBench evaluation is
+complete. A new 27B training iteration with more diverse training data is
+being prepared; its training and final checkpoint evaluation remain pending.
 
 Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
 not reproduce proprietary RLCD, private weights or training data, and does not
@@ -26,6 +26,12 @@ Current results: [methods and quality](docs/provider-comparison.md) ·
 [interactive comparison](https://zefan-cai.github.io/open-jev/#comparison) ·
 [published X thread](https://x.com/Zefan_Cai/status/2101845509170417784) ·
 [community cases and benchmark plan](docs/community-research-20260921.md).
+
+**New external evaluation:** the [audited JevBench public-subset report](docs/jevbench-public.md)
+compares the released 2B/9B baselines, Jev, GPT-5.6 Luna and GPT-6 Astra on all
+231 available public tasks. It includes every decision, per-tier results,
+probability validation and timing diagnostics, with candidate-order and
+hardware/network limitations. See the [dedicated website table](https://zefan-cai.github.io/open-jev/#jevbench).
 
 ## Inference latency
 

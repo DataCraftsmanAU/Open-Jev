@@ -30,13 +30,14 @@
     },
     {
       "path": "README.md",
-      "sha256": "31d4fc4d0c2dafd723822a327b0975d8656355c86f38dcd3322d93645e27a5b0",
-      "bytes": 15417,
-      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
+      "sha256": "49b2637d7a544ecad274c0004bfb61b66a380ab6f9c4f498bf85e4b3728cd86c",
+      "bytes": 15851,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
       "source_sha256": "7f60f963ef878aea76eb4bdf0986ae41ac3f8d737baf76abaf59b3359d94c570",
       "changes": [
         "Preserve custom public README; update only the TREC paragraph with completed independently audited Astra metrics.",
-        "Preserve the custom public README; update research links and JevBench-before-27B scheduling status only."
+        "Preserve the custom public README; update research links and JevBench-before-27B scheduling status only.",
+        "Preserve custom public README; add audited JevBench links and mark the new 27B diversity-data iteration as preparation."
       ]
     },
     {
@@ -249,6 +250,13 @@
       "changes": [
         "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
+    },
+    {
+      "path": "docs/jevbench-public.md",
+      "sha256": "accf5d503bea826bd264b17c4ea8af98ef7f8649f371b3bacbf22f3b7db49f2d",
+      "bytes": 8610,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "accf5d503bea826bd264b17c4ea8af98ef7f8649f371b3bacbf22f3b7db49f2d"
     },
     {
       "path": "docs/latency.md",
@@ -3760,6 +3768,34 @@
       ]
     },
     {
+      "path": "reports/jevbench-public-20260921/baseline-summary.json",
+      "sha256": "7b11216fbb1d88213c85dccd36d275e7359b53b27a2720ca551dce8a29085cc2",
+      "bytes": 84623,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "7b11216fbb1d88213c85dccd36d275e7359b53b27a2720ca551dce8a29085cc2"
+    },
+    {
+      "path": "reports/jevbench-public-20260921/hosted-independent-summary-audit.json",
+      "sha256": "a3a04d1f3bd2a2c26013de28bd027523c9593c98b80ddd3fce38410672ef6d2c",
+      "bytes": 3978,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "a3a04d1f3bd2a2c26013de28bd027523c9593c98b80ddd3fce38410672ef6d2c"
+    },
+    {
+      "path": "reports/jevbench-public-20260921/hosted-raw-replay-audit.json",
+      "sha256": "0bd587ad999154a3d91dcca2311218462d1d0822bbbfca4d11923d3f5f7d4daa",
+      "bytes": 1604,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "0bd587ad999154a3d91dcca2311218462d1d0822bbbfca4d11923d3f5f7d4daa"
+    },
+    {
+      "path": "reports/jevbench-public-20260921/openjev-independent-replay-audit.json",
+      "sha256": "e89aeb89aae29f3f9f804d22488a3716a8b22b8d253eea552a79f89545adf111",
+      "bytes": 10634,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "e89aeb89aae29f3f9f804d22488a3716a8b22b8d253eea552a79f89545adf111"
+    },
+    {
       "path": "reports/mailroom-control-v1/expansion-stability.json",
       "sha256": "0537cb437726ac4cf2422dead14d5bc4678fbc53aa773f4d91358902af6b6a6e",
       "bytes": 906,
@@ -6899,6 +6935,13 @@
       "bytes": 3066
     },
     {
+      "path": "scripts/jevbench_openjev.py",
+      "sha256": "cf1d6c77f538036d0c9cd230d3bb9150203a9309239e6e25cd05ac8f1cc43dd9",
+      "bytes": 22062,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "cf1d6c77f538036d0c9cd230d3bb9150203a9309239e6e25cd05ac8f1cc43dd9"
+    },
+    {
       "path": "scripts/launch_expansion.py",
       "source_sha256": "6102b96fa357b0c37ba05c43f39fa709aa24f8eaa4d394085211ecd8a0355af2",
       "sha256": "6102b96fa357b0c37ba05c43f39fa709aa24f8eaa4d394085211ecd8a0355af2",
@@ -6956,6 +6999,20 @@
       "source_sha256": "8294e8e0f1556ac6b590dfd3d8989db36fd20ea5ddf40e09e07a2a932ab316b0",
       "sha256": "8294e8e0f1556ac6b590dfd3d8989db36fd20ea5ddf40e09e07a2a932ab316b0",
       "bytes": 20331
+    },
+    {
+      "path": "scripts/run_jevbench_hosted.py",
+      "sha256": "d6c11865af14c8410bd2c16437cc68c0710fcc53dcee6f0da3f85e99aa81a2ab",
+      "bytes": 15526,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "d6c11865af14c8410bd2c16437cc68c0710fcc53dcee6f0da3f85e99aa81a2ab"
+    },
+    {
+      "path": "scripts/run_jevbench_suite.py",
+      "sha256": "e0b389a70ca5a58a2ab0f31cdbff16680ac44bf77061e7f5ac3965ee52372a8f",
+      "bytes": 17305,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "e0b389a70ca5a58a2ab0f31cdbff16680ac44bf77061e7f5ac3965ee52372a8f"
     },
     {
       "path": "scripts/run_pilot.py",
@@ -7037,13 +7094,27 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "fa6be174705d2e477c7d23a8785be3dcfaebe4a80dddc87ccc34caf68f10cb34",
-      "bytes": 28630,
-      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
-      "source_sha256": "fa6be174705d2e477c7d23a8785be3dcfaebe4a80dddc87ccc34caf68f10cb34",
+      "sha256": "1a25b7bf36081180d495c4b412aa9ce385a29d5ac18a2ee091bf69c2da801597",
+      "bytes": 32546,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "1a25b7bf36081180d495c4b412aa9ce385a29d5ac18a2ee091bf69c2da801597",
       "changes": [
         "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
       ]
+    },
+    {
+      "path": "site/jevbench.js",
+      "sha256": "0554ba2ebbc7ca0365b6d86f643615981fe523b2f4c8fbf1888b35385a45fe28",
+      "bytes": 3329,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "0554ba2ebbc7ca0365b6d86f643615981fe523b2f4c8fbf1888b35385a45fe28"
+    },
+    {
+      "path": "site/jevbench.json",
+      "sha256": "7b11216fbb1d88213c85dccd36d275e7359b53b27a2720ca551dce8a29085cc2",
+      "bytes": 84623,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "7b11216fbb1d88213c85dccd36d275e7359b53b27a2720ca551dce8a29085cc2"
     },
     {
       "path": "site/latency-media/open-jev-2b-latency-comparison.jpg",
@@ -7966,6 +8037,27 @@
       ]
     },
     {
+      "path": "tests/test_jevbench_hosted.py",
+      "sha256": "bf9180654a527128f2562d711042cc59c259486fc782e8b13cd3d84742f3e580",
+      "bytes": 6185,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "bf9180654a527128f2562d711042cc59c259486fc782e8b13cd3d84742f3e580"
+    },
+    {
+      "path": "tests/test_jevbench_openjev.py",
+      "sha256": "6ed2ccca9452127d8e59fc046dd424dc66339b76b81849758174043c52f58772",
+      "bytes": 14964,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "6ed2ccca9452127d8e59fc046dd424dc66339b76b81849758174043c52f58772"
+    },
+    {
+      "path": "tests/test_jevbench_suite.py",
+      "sha256": "4593a5cb3daeb7a8ffa959bb9ea80cccdab39ea9413ec97698eb61858bea85bd",
+      "bytes": 10950,
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "source_sha256": "4593a5cb3daeb7a8ffa959bb9ea80cccdab39ea9413ec97698eb61858bea85bd"
+    },
+    {
       "path": "tests/test_launch_expansion.py",
       "source_sha256": "8b395a0cc8ba4787b54a986ea874f8ada9d1b0a72a5008f15b3adb448ff7f2b8",
       "sha256": "8b395a0cc8ba4787b54a986ea874f8ada9d1b0a72a5008f15b3adb448ff7f2b8",
@@ -8660,7 +8752,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
+  "current_source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -9114,6 +9206,51 @@
         "secret_or_absolute_host_path_flags": [],
         "new_model_measurements": false,
         "evaluation_code_copied": false
+      }
+    },
+    {
+      "id": "jevbench-public-baselines-20260921",
+      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+      "evaluated_execution_code_commit": "3c5bb4a5451ccfd81a5b9f2e05edaf2103805c94",
+      "upstream_commit": "f8ce71361165846101d02ebc83ad44e47ae44fc3",
+      "created_at": "2026-09-21T06:33:00.898262+00:00",
+      "description": "Publish all 231 public JevBench tasks for the already released Open-Jev 2B/9B baselines and three hosted models, with three completed independent audits and an isolated website section. Publish the missing pinned-benchmark evaluation drivers and tests; the current runner adds optional 27B selection, while the reported measurements used the recorded execution commit. Preserve the custom README, all existing numeric JSONs and prior comparison results. No training changes, benchmark task payloads, raw responses, credentials, operational state, or social posts are included.",
+      "paths": [
+        "docs/jevbench-public.md",
+        "reports/jevbench-public-20260921/baseline-summary.json",
+        "reports/jevbench-public-20260921/openjev-independent-replay-audit.json",
+        "reports/jevbench-public-20260921/hosted-independent-summary-audit.json",
+        "reports/jevbench-public-20260921/hosted-raw-replay-audit.json",
+        "site/index.html",
+        "site/jevbench.js",
+        "site/jevbench.json",
+        "scripts/jevbench_openjev.py",
+        "scripts/run_jevbench_suite.py",
+        "scripts/run_jevbench_hosted.py",
+        "tests/test_jevbench_openjev.py",
+        "tests/test_jevbench_suite.py",
+        "tests/test_jevbench_hosted.py",
+        "README.md"
+      ],
+      "publication_only": true,
+      "new_model_quality_results": true,
+      "already_released_checkpoints": true,
+      "public_tasks_per_model": 231,
+      "full_benchmark_score_claimed": false,
+      "existing_numeric_results_modified": false,
+      "social_posts_published": false,
+      "verification": {
+        "command": "python3 -m unittest tests.test_jevbench_openjev tests.test_jevbench_suite tests.test_jevbench_hosted -v",
+        "exit_code": 0,
+        "tests": 31,
+        "skipped": 0,
+        "seconds": 1.3332850419683382,
+        "log_sha256": "2d4a5018482689de5163f1e3a892e38ae3a9c281f2f0e615e48efa20d199fdba",
+        "matching_existing_dependencies": 7,
+        "public_site_previous_jsons_unchanged": 5,
+        "website_previous_jsons_unchanged": 5,
+        "native_and_hosted_audits": "passed",
+        "runtime_requests_issued_by_publication": 0
       }
     }
   ]
