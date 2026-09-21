@@ -30,14 +30,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "49b2637d7a544ecad274c0004bfb61b66a380ab6f9c4f498bf85e4b3728cd86c",
-      "bytes": 15851,
-      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
-      "source_sha256": "7f60f963ef878aea76eb4bdf0986ae41ac3f8d737baf76abaf59b3359d94c570",
+      "source_sha256": "e7067bf770aab5a340ed562f42b63151ea7d6f169d692c0789b9296c5b1cd0c2",
+      "sha256": "423dc8d700e36ab5152254c0b254b4ec7a8b6d0c245ea1de27b76ddc8f681c1f",
+      "bytes": 16259,
       "changes": [
-        "Preserve custom public README; update only the TREC paragraph with completed independently audited Astra metrics.",
-        "Preserve the custom public README; update research links and JevBench-before-27B scheduling status only.",
-        "Preserve custom public README; add audited JevBench links and mark the new 27B diversity-data iteration as preparation."
+        "Preserve custom public README; add broader-data and project-story links and verified initialization status."
       ]
     },
     {
@@ -111,6 +108,18 @@
       "bytes": 6932
     },
     {
+      "path": "docs/community-diversity-v2.md",
+      "source_sha256": "e21fc9e796eabcaa114ebe174783b0b4866fbcd025d9ea31e497fc6b62c3bf69",
+      "sha256": "e21fc9e796eabcaa114ebe174783b0b4866fbcd025d9ea31e497fc6b62c3bf69",
+      "bytes": 6798
+    },
+    {
+      "path": "docs/community-hard-training-v2.md",
+      "source_sha256": "e823f2be2cced1db4b8ecc8d4ba85308ab181343146b13e768cd2432b287d407",
+      "sha256": "e823f2be2cced1db4b8ecc8d4ba85308ab181343146b13e768cd2432b287d407",
+      "bytes": 6535
+    },
+    {
       "path": "docs/community-research-20260920.md",
       "sha256": "689670eb2bf4b34144f42bc032d67dadd03e638c0fc6c852d6150f6f307b908c",
       "bytes": 13621,
@@ -126,6 +135,12 @@
       "bytes": 13647,
       "source_sha256": "19fd635807f8a381817a513e2e8e2b41567578333c83c819df43d1a8d9f5d4c1",
       "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "docs/community-research-broadening-20260921.md",
+      "source_sha256": "26468574063c4863808ba7e299a0f60d972eddf34ce5a60e66efb3e15897684a",
+      "sha256": "26468574063c4863808ba7e299a0f60d972eddf34ce5a60e66efb3e15897684a",
+      "bytes": 16584
     },
     {
       "path": "docs/community.md",
@@ -884,6 +899,12 @@
       "bytes": 26979
     },
     {
+      "path": "jev/community_diversity_v2.py",
+      "source_sha256": "2336b2e25f01f98e436924f7ff46a0057b05b772fa4d2e482a4db6af7f2a61c4",
+      "sha256": "2336b2e25f01f98e436924f7ff46a0057b05b772fa4d2e482a4db6af7f2a61c4",
+      "bytes": 62711
+    },
+    {
       "path": "jev/context_retention_data.py",
       "sha256": "b3a9e163fbc3c78343be99cf3465e6433933df05b4e0ec209d2da22331e14678",
       "bytes": 16620,
@@ -1051,9 +1072,15 @@
     },
     {
       "path": "jev/train_distributed.py",
-      "source_sha256": "14165c6eac5e5dd96e81ac24a55bbab9801a0f1ab83401e12542299103c2e765",
-      "sha256": "14165c6eac5e5dd96e81ac24a55bbab9801a0f1ab83401e12542299103c2e765",
-      "bytes": 28717
+      "source_sha256": "faf7e1869d33608af8f32103c174cab2bdb7bc8ce304e18fc561f21a3626dbfc",
+      "sha256": "faf7e1869d33608af8f32103c174cab2bdb7bc8ce304e18fc561f21a3626dbfc",
+      "bytes": 35934
+    },
+    {
+      "path": "jev/wanli_data.py",
+      "source_sha256": "2624e0cfa1b0c7e2ee80c22d718e3b8a5f7c8c649f25632c0b972e64ea3c651d",
+      "sha256": "2624e0cfa1b0c7e2ee80c22d718e3b8a5f7c8c649f25632c0b972e64ea3c651d",
+      "bytes": 7573
     },
     {
       "path": "jev/workflows.py",
@@ -1075,6 +1102,12 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "release/project-story/index.html",
+      "source_sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
+      "sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
+      "bytes": 53809
     },
     {
       "path": "release/social/README.md",
@@ -1638,6 +1671,72 @@
       ]
     },
     {
+      "path": "reports/community-diversity-v2/cpu-validation.json",
+      "source_sha256": "57c7a6edafd91e1b01271ef336a71b66c4dff3dd2b9558f4e3881cbccff1e164",
+      "sha256": "57c7a6edafd91e1b01271ef336a71b66c4dff3dd2b9558f4e3881cbccff1e164",
+      "bytes": 705
+    },
+    {
+      "path": "reports/community-diversity-v2/data-pipeline-audit.json",
+      "source_sha256": "450691c07ae0963b3130453644a0b4e477c0fb423dcf44a0f37899d7302398f1",
+      "sha256": "450691c07ae0963b3130453644a0b4e477c0fb423dcf44a0f37899d7302398f1",
+      "bytes": 3315
+    },
+    {
+      "path": "reports/community-diversity-v2/final-overlap-screen.json",
+      "source_sha256": "94fb13d6318a2afd536c594737e23f0227a9dc73d3bc739f4786e51aaf2e1332",
+      "sha256": "94fb13d6318a2afd536c594737e23f0227a9dc73d3bc739f4786e51aaf2e1332",
+      "bytes": 1128
+    },
+    {
+      "path": "reports/community-diversity-v2/generation-audit.json",
+      "source_sha256": "015d8b50db2149a0bda09b746d5b8f728289b5be0744a1f3552b0f284672673e",
+      "sha256": "015d8b50db2149a0bda09b746d5b8f728289b5be0744a1f3552b0f284672673e",
+      "bytes": 2790
+    },
+    {
+      "path": "reports/community-diversity-v2/independent-oracle-audit.json",
+      "source_sha256": "6dd53a2c7f669d8f50dd981ef0971476c483885ca5a52e4dc9f95c0fb6ad074a",
+      "sha256": "6dd53a2c7f669d8f50dd981ef0971476c483885ca5a52e4dc9f95c0fb6ad074a",
+      "bytes": 5493
+    },
+    {
+      "path": "reports/community-diversity-v2/initial-overlap-screen.json",
+      "source_sha256": "70dffca1806ecdd25c3b6b058a8a08e2a2c6ec565c3b3d3b0fdf58ae395d5e94",
+      "sha256": "70dffca1806ecdd25c3b6b058a8a08e2a2c6ec565c3b3d3b0fdf58ae395d5e94",
+      "bytes": 1313
+    },
+    {
+      "path": "reports/community-diversity-v2/manifest.json",
+      "source_sha256": "90a1f02ea457e65d3e3c40859fb73c5113e090fcc7dfe3cead72dbe6730bb2e1",
+      "sha256": "90a1f02ea457e65d3e3c40859fb73c5113e090fcc7dfe3cead72dbe6730bb2e1",
+      "bytes": 33143
+    },
+    {
+      "path": "reports/community-diversity-v2/tokenizer-preflight.json",
+      "source_sha256": "e882a18f5bb243708b83313c9131540269cce0feeea06d09114221c165cdc8c9",
+      "sha256": "e882a18f5bb243708b83313c9131540269cce0feeea06d09114221c165cdc8c9",
+      "bytes": 11115
+    },
+    {
+      "path": "reports/community-diversity-v2/training-mixture-manifest.json",
+      "source_sha256": "7b26f948d2ae11f20d7a18be437d1ada616fc479e1596ae94be7596787fe4e54",
+      "sha256": "7b26f948d2ae11f20d7a18be437d1ada616fc479e1596ae94be7596787fe4e54",
+      "bytes": 24757
+    },
+    {
+      "path": "reports/community-diversity-v2/training-plan.json",
+      "source_sha256": "409ce76452e375f133ef8d45197f1c852cad36fd163498ba70641c8846a84ce3",
+      "sha256": "409ce76452e375f133ef8d45197f1c852cad36fd163498ba70641c8846a84ce3",
+      "bytes": 1701
+    },
+    {
+      "path": "reports/community-diversity-v2/wanli-manifest.json",
+      "source_sha256": "38d50b03e62c63c561eff879351a73c426fec3a431b8cedd5edb0d564aa0f5af",
+      "sha256": "38d50b03e62c63c561eff879351a73c426fec3a431b8cedd5edb0d564aa0f5af",
+      "bytes": 1962
+    },
+    {
       "path": "reports/community-research-20260920/authenticated-x-followup.json",
       "sha256": "4d1f1ad129768519d4b32eb6c2ace123a553996fda09b5e65972dc3b2c5cbaff",
       "bytes": 4720,
@@ -1706,6 +1805,72 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/app-reviews-upstream-metadata.json",
+      "source_sha256": "642943c5478af767368d7872c49351bcee12e25d6fb89b7dd3cc1c84e8866357",
+      "sha256": "642943c5478af767368d7872c49351bcee12e25d6fb89b7dd3cc1c84e8866357",
+      "bytes": 1623
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/github-search-0.json",
+      "source_sha256": "38d6b8072ecd293c6f7e4ffbdd3c30f8ed7b1bf65134155a12fd17dded7c25fa",
+      "sha256": "38d6b8072ecd293c6f7e4ffbdd3c30f8ed7b1bf65134155a12fd17dded7c25fa",
+      "bytes": 16625
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/github-search-1.json",
+      "source_sha256": "22174566797291fb0d57130b07654ce1043d83b747d180a2cbf5834b65c65898",
+      "sha256": "22174566797291fb0d57130b07654ce1043d83b747d180a2cbf5834b65c65898",
+      "bytes": 16601
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/github-search-2.json",
+      "source_sha256": "5ac3bb82bcd254493cea04e80675b70d578410498b216d0006432706922f5379",
+      "sha256": "5ac3bb82bcd254493cea04e80675b70d578410498b216d0006432706922f5379",
+      "bytes": 18317
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/jevguide-tree.json",
+      "source_sha256": "8ceb4f28069a1c632a84e9006f651231ab014dadc3aa190267939d205f733d86",
+      "sha256": "8ceb4f28069a1c632a84e9006f651231ab014dadc3aa190267939d205f733d86",
+      "bytes": 106394
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/official-cookbook-readbacks.json",
+      "source_sha256": "049a1b72d705ac5ff83d62c55dff04ba45ee20c7c0098be2bcd21d3d9ab8684f",
+      "sha256": "049a1b72d705ac5ff83d62c55dff04ba45ee20c7c0098be2bcd21d3d9ab8684f",
+      "bytes": 13429
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/source-fetch-inventory.json",
+      "source_sha256": "5668b401c2174d28bede22c3ccf2d2297bf92c9b4663a8bf38892f9c4f481841",
+      "sha256": "5668b401c2174d28bede22c3ccf2d2297bf92c9b4663a8bf38892f9c4f481841",
+      "bytes": 196108
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/usecase-inventory.json",
+      "source_sha256": "487a699b0fb17f96bd2dd56f6ca737f6b4a627c60e35c15aad078cb32b50b699",
+      "sha256": "487a699b0fb17f96bd2dd56f6ca737f6b4a627c60e35c15aad078cb32b50b699",
+      "bytes": 59002
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/validation.json",
+      "source_sha256": "e818d3aec881f64ed850551cddcfb449adbd747d176f2f0e8318dd412d465824",
+      "sha256": "e818d3aec881f64ed850551cddcfb449adbd747d176f2f0e8318dd412d465824",
+      "bytes": 515
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/x-followup-readbacks.json",
+      "source_sha256": "feffbc2a96ccd0d7f1039d84a7af6ff5cd299876800cc47aad9d6baabba61ca0",
+      "sha256": "feffbc2a96ccd0d7f1039d84a7af6ff5cd299876800cc47aad9d6baabba61ca0",
+      "bytes": 5971
+    },
+    {
+      "path": "reports/community-research-20260921-broadening/x-public-readbacks.json",
+      "source_sha256": "32d2b405f3509bc95530bc15d1e9a67c8097af05122bb12e9df462728c522827",
+      "sha256": "32d2b405f3509bc95530bc15d1e9a67c8097af05122bb12e9df462728c522827",
+      "bytes": 8605
     },
     {
       "path": "reports/community-research-20260921/benchmark-discovery.json",
@@ -6710,6 +6875,12 @@
       "bytes": 16250
     },
     {
+      "path": "scripts/audit_community_diversity_v2.py",
+      "source_sha256": "5959cb018de8741aca71cb5f3becc124b067a1611ab3e12b12952f0ad7e7f9f5",
+      "sha256": "5959cb018de8741aca71cb5f3becc124b067a1611ab3e12b12952f0ad7e7f9f5",
+      "bytes": 13571
+    },
+    {
       "path": "scripts/audit_sponsor_segments.py",
       "sha256": "efe4813b3786595a9422c3f9fae44a10ab9a19589b648bc32fa8a7c6d0a763ce",
       "bytes": 6807,
@@ -6766,6 +6937,12 @@
       "source_sha256": "b2891642012edd30671989a3dcf6cdd727f7d10fb7b6a6d54462507ce4fa71f0",
       "sha256": "b2891642012edd30671989a3dcf6cdd727f7d10fb7b6a6d54462507ce4fa71f0",
       "bytes": 12217
+    },
+    {
+      "path": "scripts/build_community_hard_mix.py",
+      "source_sha256": "0b6bbef03ecb862512d777a2fdfbe09497413f8647f4017650835d073816a4f9",
+      "sha256": "0b6bbef03ecb862512d777a2fdfbe09497413f8647f4017650835d073816a4f9",
+      "bytes": 5715
     },
     {
       "path": "scripts/build_demo_catalog.py",
@@ -7041,6 +7218,12 @@
       ]
     },
     {
+      "path": "scripts/screen_training_overlap.py",
+      "source_sha256": "9eb4dc46d456c05250bf2b0f4ae1b5b2d172283e5a8a0721422a15773e0f0edb",
+      "sha256": "9eb4dc46d456c05250bf2b0f4ae1b5b2d172283e5a8a0721422a15773e0f0edb",
+      "bytes": 4851
+    },
+    {
       "path": "scripts/summarize_openjev_trec.py",
       "sha256": "9ab2fc6e0dd6aa13f954acc2e3f3055ec5e64b0602b843a09b4649087024d5af",
       "bytes": 16291,
@@ -7094,13 +7277,9 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "1a25b7bf36081180d495c4b412aa9ce385a29d5ac18a2ee091bf69c2da801597",
-      "bytes": 32546,
-      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
-      "source_sha256": "1a25b7bf36081180d495c4b412aa9ce385a29d5ac18a2ee091bf69c2da801597",
-      "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
-      ]
+      "source_sha256": "aa7c31a048dc2b48ba5f918e942bb43a586da72832b95f377c3d856129968231",
+      "sha256": "aa7c31a048dc2b48ba5f918e942bb43a586da72832b95f377c3d856129968231",
+      "bytes": 32804
     },
     {
       "path": "site/jevbench.js",
@@ -7829,6 +8008,12 @@
       ]
     },
     {
+      "path": "site/story/index.html",
+      "source_sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
+      "sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
+      "bytes": 53809
+    },
+    {
       "path": "site/styles.css",
       "sha256": "a11949cb34f953e17e10becbae514d13b79f708e3c3e63a2b1e1d9d91af11bb9",
       "bytes": 42595,
@@ -7921,6 +8106,24 @@
       "source_sha256": "29350fb3d5705e76702993593ca2778c72217accb6414022cbb00600f521543e",
       "sha256": "29350fb3d5705e76702993593ca2778c72217accb6414022cbb00600f521543e",
       "bytes": 8339
+    },
+    {
+      "path": "tests/test_community_diversity_v2.py",
+      "source_sha256": "28b70ae591f8b454d19876278d9f88d2417aca269309bc637fc394763758553d",
+      "sha256": "28b70ae591f8b454d19876278d9f88d2417aca269309bc637fc394763758553d",
+      "bytes": 6084
+    },
+    {
+      "path": "tests/test_community_diversity_v2_audit.py",
+      "source_sha256": "3f56d7a20c3bdb8061f3fd4c502e169c15ad2917201ba31f85cbd8c23180c47e",
+      "sha256": "3f56d7a20c3bdb8061f3fd4c502e169c15ad2917201ba31f85cbd8c23180c47e",
+      "bytes": 3759
+    },
+    {
+      "path": "tests/test_community_hard_mix.py",
+      "source_sha256": "5ec3ea0c3d8dc76ab7d2b6d6507e0f79ede8626cc13e996123169f1edb48419b",
+      "sha256": "5ec3ea0c3d8dc76ab7d2b6d6507e0f79ede8626cc13e996123169f1edb48419b",
+      "bytes": 8437
     },
     {
       "path": "tests/test_contact_service.py",
@@ -8222,6 +8425,12 @@
       ]
     },
     {
+      "path": "tests/test_training_initialization.py",
+      "source_sha256": "cd927478a7c47a9dc086cc2e2c8cc9c15913ed860ea42dcb9fa152ad96e169b0",
+      "sha256": "cd927478a7c47a9dc086cc2e2c8cc9c15913ed860ea42dcb9fa152ad96e169b0",
+      "bytes": 24582
+    },
+    {
       "path": "tests/test_training_provenance.py",
       "source_sha256": "e0d92c578167301e9a7e2a144ace389b9926ada460f0eb64c6a4a24cf2bd7600",
       "sha256": "e0d92c578167301e9a7e2a144ace389b9926ada460f0eb64c6a4a24cf2bd7600",
@@ -8249,6 +8458,12 @@
       "changes": [
         "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
       ]
+    },
+    {
+      "path": "tests/test_wanli_data.py",
+      "source_sha256": "75b8c2dc89037090084204eeced85bdcefff289ae07c73fc5020773af825bbbb",
+      "sha256": "75b8c2dc89037090084204eeced85bdcefff289ae07c73fc5020773af825bbbb",
+      "bytes": 3538
     },
     {
       "path": "tests/test_workflows.py",
@@ -8752,7 +8967,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
+  "current_source_commit": "bae5ec7502226d50aeff0cc3e559715095bcad89",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -9251,6 +9466,76 @@
         "website_previous_jsons_unchanged": 5,
         "native_and_hosted_audits": "passed",
         "runtime_requests_issued_by_publication": 0
+      }
+    },
+    {
+      "id": "community-hard-v2-and-project-story-20260921",
+      "source_commit": "bae5ec7502226d50aeff0cc3e559715095bcad89",
+      "created_at": "2026-09-21T06:58:05.076551+00:00",
+      "description": "Publish independent community and WANLI converters, frozen mixture construction, weights-only initialization, independent data/length audits, broader primary-source inventory and Chinese project story. New27B job has launched initialization evaluation; no new model quality result is claimed.",
+      "paths": [
+        "README.md",
+        "docs/community-diversity-v2.md",
+        "docs/community-hard-training-v2.md",
+        "docs/community-research-broadening-20260921.md",
+        "jev/community_diversity_v2.py",
+        "jev/train_distributed.py",
+        "jev/wanli_data.py",
+        "release/project-story/index.html",
+        "reports/community-diversity-v2/cpu-validation.json",
+        "reports/community-diversity-v2/data-pipeline-audit.json",
+        "reports/community-diversity-v2/final-overlap-screen.json",
+        "reports/community-diversity-v2/generation-audit.json",
+        "reports/community-diversity-v2/independent-oracle-audit.json",
+        "reports/community-diversity-v2/initial-overlap-screen.json",
+        "reports/community-diversity-v2/manifest.json",
+        "reports/community-diversity-v2/tokenizer-preflight.json",
+        "reports/community-diversity-v2/training-mixture-manifest.json",
+        "reports/community-diversity-v2/training-plan.json",
+        "reports/community-diversity-v2/wanli-manifest.json",
+        "reports/community-research-20260921-broadening/app-reviews-upstream-metadata.json",
+        "reports/community-research-20260921-broadening/github-search-0.json",
+        "reports/community-research-20260921-broadening/github-search-1.json",
+        "reports/community-research-20260921-broadening/github-search-2.json",
+        "reports/community-research-20260921-broadening/jevguide-tree.json",
+        "reports/community-research-20260921-broadening/official-cookbook-readbacks.json",
+        "reports/community-research-20260921-broadening/source-fetch-inventory.json",
+        "reports/community-research-20260921-broadening/usecase-inventory.json",
+        "reports/community-research-20260921-broadening/validation.json",
+        "reports/community-research-20260921-broadening/x-followup-readbacks.json",
+        "reports/community-research-20260921-broadening/x-public-readbacks.json",
+        "scripts/audit_community_diversity_v2.py",
+        "scripts/build_community_hard_mix.py",
+        "scripts/screen_training_overlap.py",
+        "site/index.html",
+        "site/story/index.html",
+        "tests/test_community_diversity_v2.py",
+        "tests/test_community_diversity_v2_audit.py",
+        "tests/test_community_hard_mix.py",
+        "tests/test_training_initialization.py",
+        "tests/test_wanli_data.py"
+      ],
+      "training_execution_commit": "2c66be1eeb5b1010bd532361abae3d3f150e76b7",
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "raw_training_data_included": false,
+      "private_operational_files_included": false,
+      "social_posts_published": false,
+      "verification": {
+        "tests": 34,
+        "skipped": 0,
+        "exit_code": 0,
+        "test_log_sha256": "f39eca620fbeb0919d737d910dc9330f422d45cce85d440d0b702bc4569cb4fc",
+        "story_responsive_widths": [
+          1440,
+          900,
+          390,
+          320
+        ],
+        "story_javascript_errors": 0,
+        "story_offline_external_requests": 0,
+        "tokenizer_rows": 328672,
+        "max_tokens": 1756
       }
     }
   ]

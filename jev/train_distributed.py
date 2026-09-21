@@ -1,4 +1,4 @@
-"""Fresh four-rank training with global batch four and strict DDP-only resume.
+"""Four-rank training with explicit weights-only initialization or strict resume.
 
 Launch with torchrun --standalone --nproc-per-node=4 -m jev.train_distributed.
 Single-process snapshots are deliberately not a supported resume format.
@@ -167,6 +167,86 @@ def read_distributed_checkpoint(path, identity, distribution):
     return info
 
 
+def validate_initialization_provenance(value):
+    hashes = {"source_manifest_sha256", "source_training_state_sha256", "source_training_identity_sha256",
+              "source_distribution_sha256"}
+    fixed = {"kind": "ddp_snapshot_weights_only", "optimizer": "new_adamw_state",
+             "rng": "new_run_seed_and_rank_streams", "step_cursor": 0,
+             "baseline_initialization": "warm_start_checkpoint"}
+    if (not isinstance(value, dict) or set(value) != hashes | set(fixed) | {"source_completed_step"}
+            or any(value.get(key) != expected or type(value.get(key)) is not type(expected) for key, expected in fixed.items())
+            or type(value.get("source_completed_step")) is not int or value["source_completed_step"] < 1
+            or any(not isinstance(value.get(key), str) or re.fullmatch(r"[0-9a-f]{64}", value[key]) is None for key in hashes)):
+        raise ValueError("Invalid weights-only initialization provenance")
+    return value
+
+
+def read_initialization_checkpoint(path, model, revision, lora_rank):
+    """Validate a prior complete snapshot against its own immutable run identity."""
+    path = Path(path)
+    hint = json.loads((path / "resume.json").read_text())
+    metadata = read_distributed_checkpoint(path, hint.get("identity", {}), hint.get("distribution", {}))
+    original = metadata["identity"]["arguments"]
+    expected = {"model": model, "revision": revision, "lora_rank": lora_rank}
+    if any(original.get(key) != value or type(original.get(key)) is not type(value) for key, value in expected.items()):
+        raise ValueError("Initialization snapshot base model, revision or LoRA rank differs")
+    if lora_rank < 1 or metadata["distribution"].get("world_size") != WORLD_SIZE:
+        raise ValueError("Initialization requires a trained four-rank LoRA snapshot")
+    provenance = {"kind": "ddp_snapshot_weights_only", "source_manifest_sha256": _file_sha256(path / "resume.json"),
+                  "source_training_state_sha256": metadata["files_sha256"]["training_state.pt"],
+                  "source_training_identity_sha256": _json_sha256(metadata["identity"]),
+                  "source_distribution_sha256": _json_sha256(metadata["distribution"]),
+                  "source_completed_step": metadata["completed_step"], "optimizer": "new_adamw_state",
+                  "rng": "new_run_seed_and_rank_streams", "step_cursor": 0,
+                  "baseline_initialization": "warm_start_checkpoint"}
+    return metadata, validate_initialization_provenance(provenance)
+
+
+def bind_initialization_identity(identity, *, initialization=None, resume_metadata=None):
+    """A resumed new-stage run inherits its original, tensor-bound seed identity."""
+    if initialization is not None and resume_metadata is not None:
+        raise ValueError("Weights-only initialization and exact resume are mutually exclusive")
+    if resume_metadata is not None:
+        initialization = resume_metadata.get("identity", {}).get("initialization")
+    if initialization is None:
+        return identity
+    return {**identity, "initialization": dict(validate_initialization_provenance(initialization))}
+
+
+def initialize_training_weights(model, path, metadata, provenance):
+    """Copy only LoRA/head tensors; never restore optimizer, RNG, cursor or logs."""
+    import torch
+    path = Path(path)
+    validate_initialization_provenance(provenance)
+    if (provenance["source_training_identity_sha256"] != _json_sha256(metadata["identity"])
+            or provenance["source_distribution_sha256"] != _json_sha256(metadata["distribution"])
+            or provenance["source_completed_step"] != metadata["completed_step"]):
+        raise ValueError("Initialization provenance differs from snapshot metadata")
+    if (_file_sha256(path / "resume.json") != provenance["source_manifest_sha256"]
+            or _file_sha256(path / "training_state.pt") != provenance["source_training_state_sha256"]):
+        raise ValueError("Initialization snapshot changed after preflight")
+    state = torch.load(path / "training_state.pt", map_location="cpu", weights_only=True)
+    expected = _json_sha256({"training": metadata["identity"], "distribution": metadata["distribution"]})
+    if (state.get("identity_sha256") != expected or type(state.get("completed_step")) is not int
+            or state["completed_step"] != metadata["completed_step"]):
+        raise ValueError("Initialization tensor identity/cursor mismatch")
+    parameters = {name: parameter for name, parameter in model.named_parameters() if parameter.requires_grad}
+    saved = state.get("trainable_parameters")
+    if not isinstance(saved, dict) or set(saved) != set(parameters) or not parameters:
+        raise ValueError("Initialization trainable parameter names differ")
+    for name, parameter in parameters.items():
+        value = saved[name]
+        if (not isinstance(value, torch.Tensor) or value.shape != parameter.shape or value.dtype != parameter.dtype
+                or not torch.isfinite(value).all()):
+            raise ValueError("Initialization parameter shape/dtype/value differs: " + name)
+    # Validate every tensor before copying any, so a rejected source cannot
+    # leave a partially initialized model behind.
+    with torch.no_grad():
+        for name, parameter in parameters.items():
+            parameter.copy_(saved[name])
+    return provenance
+
+
 def save_distributed_checkpoint(model, optimizer, completed_step, output, identity, distribution, run_metadata, device):
     """Gather four RNG streams; rank zero atomically publishes immutable bytes."""
     import torch
@@ -275,7 +355,7 @@ def distributed_step(ddp, optimizer, row, brier_weight):
 
 
 def final_evaluation(model, args, out, rows, baseline, meta):
-    """Unwrapped rank-zero model; preserve the fresh run's original base scores."""
+    """Unwrapped rank-zero model; preserve this run's measured initialization."""
     from .metrics import evaluate_probabilities, fit_temperature, softmax
     model.save(out / "checkpoint")
     calibration = evaluate(model, rows["calibration"], out / "calibration.jsonl")
@@ -315,6 +395,9 @@ def final_evaluation(model, args, out, rows, baseline, meta):
 
 
 def run(args):
+    initialize_from = getattr(args, "initialize_training_weights", None)
+    if initialize_from and args.resume_training:
+        raise ValueError("Weights-only initialization and exact resume are mutually exclusive")
     source_commit = source_checkout_commit(__file__)
     import torch
     import torch.distributed as dist
@@ -355,6 +438,11 @@ def run(args):
             raise ValueError("Every selected split must be nonempty")
         hashes = {s: _file_sha256(Path(args.data) / f"{s}.jsonl") for s in ("train", "calibration", "validation", "test", "ood")}
         identity = training_identity(args, hashes, rows, {"torch": str(torch.__version__), "transformers": version("transformers"), "peft": version("peft")})
+        initialization_metadata, initialization = (read_initialization_checkpoint(
+            initialize_from, args.model, args.revision, args.lora_rank) if initialize_from else (None, None))
+        resume_hint = json.loads((Path(args.resume_training) / "resume.json").read_text()) if args.resume_training else None
+        identity = bind_initialization_identity(identity, initialization=initialization, resume_metadata=resume_hint)
+        initialization = identity.get("initialization")
         distribution = distribution_identity(args.backend)
         identities = [None] * WORLD_SIZE
         dist.all_gather_object(identities, _json_sha256({"training": identity, "distribution": distribution}))
@@ -373,7 +461,9 @@ def run(args):
         on_rank_zero(prepare_output)
         meta = {**(resume["run_metadata"] if resume else {}), **vars(args), "commit": source_commit,
                 "started_at": resume["run_metadata"]["started_at"] if resume else time.time(),
-                "initialization": "fresh_pinned_upstream" if not resume else "strict_same_run_ddp_resume",
+                "initialization": ("strict_same_run_ddp_resume" if resume else
+                                   "ddp_snapshot_weights_only" if initialization else "fresh_pinned_upstream"),
+                "baseline_initialization": "warm_start_checkpoint" if initialization else "pretrained",
                 "distribution": distribution, "identity_sha256": identities[0], "data_sha256": hashes,
                 "allocation": allocation,
                 "evaluation_ids": [r["id"] for r in rows["test"]], "ood_ids": [r["id"] for r in rows["ood"]],
@@ -381,8 +471,14 @@ def run(args):
                 "training_rows_consumed": args.steps * WORLD_SIZE,
                 "resume_step": resume["completed_step"] if resume else 0,
                 "rank_training_seeds": [int(_json_sha256(["open-jev-ddp-rng-v1", args.seed, r])[:16], 16) % (2**63 - 1) for r in range(WORLD_SIZE)]}
+        if initialization:
+            meta["initialization_provenance"] = initialization
+        if initialize_from:
+            meta["initialization_source_snapshot"] = str(Path(initialize_from).resolve())
         on_rank_zero(lambda: (out / "run.json").write_text(json.dumps(meta, indent=2) + "\n"))
         model = DecisionModel(args.model, args.revision, device=str(device), lora_rank=args.lora_rank, max_length=args.max_length)
+        if initialize_from:
+            initialize_training_weights(model, initialize_from, initialization_metadata, initialization)
         meta["trainable_parameters"] = sum(p.numel() for p in model.parameters() if p.requires_grad)
         optimizer = torch.optim.AdamW([
             {"params": [p for p in model.backbone.parameters() if p.requires_grad], "lr": args.lr},
@@ -454,6 +550,9 @@ def run(args):
                        "trained_rows_consumed": args.steps * WORLD_SIZE, "distribution": distribution,
                        "checkpoint_reload_max_error": error, **result,
                        "limitations": ["Fresh four-rank run, not continuation of a single-process pilot", "DDP reduction/RNG streams do not promise bitwise single-process equivalence", "Synthetic held-out metrics do not establish real-world task competence"]}
+            if initialization:
+                summary.update(initialization_provenance=initialization, baseline_initialization="warm_start_checkpoint")
+                summary["limitations"][0] = "New four-rank training stage initialized from a prior DDP snapshot; optimizer/RNG/cursor reset; baseline measures that initialization on the new held-out data"
             (out / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
         on_rank_zero(reload_and_finish)
     finally:
@@ -473,7 +572,9 @@ def main():
     p.add_argument("--training-sampling", choices=("shuffled", "source_kind_round_robin"), default="shuffled")
     p.add_argument("--backend", choices=("nccl", "gloo"), default="nccl")
     p.add_argument("--resource-policy", default=str(Path(__file__).resolve().parents[1] / "state/auto_research/resource_policy.json"))
-    p.add_argument("--resume-training", help="Only a matching schema-2 DDP optimizer-boundary snapshot is accepted")
+    initialization = p.add_mutually_exclusive_group()
+    initialization.add_argument("--resume-training", help="Only a matching schema-2 DDP optimizer-boundary snapshot is accepted")
+    initialization.add_argument("--initialize-training-weights", help="Start a new run with only LoRA/head weights from a complete schema-2 snapshot; reset optimizer/RNG/cursor")
     run(p.parse_args())
 
 

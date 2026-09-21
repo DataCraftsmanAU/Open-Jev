@@ -16,7 +16,7 @@ head and calibration temperature. They require the pinned upstream Qwen
 weights and the Open-Jev loader; they are not merged base models or ordinary
 text-generation checkpoints. The dedicated public JevBench evaluation is
 complete. A new 27B training iteration with more diverse training data is
-being prepared; its training and final checkpoint evaluation remain pending.
+now running initialization evaluation on four H100 GPUs; new optimizer updates and final checkpoint evaluation remain pending.
 
 Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
 not reproduce proprietary RLCD, private weights or training data, and does not
@@ -32,6 +32,8 @@ compares the released 2B/9B baselines, Jev, GPT-5.6 Luna and GPT-6 Astra on all
 231 available public tasks. It includes every decision, per-tier results,
 probability validation and timing diagnostics, with candidate-order and
 hardware/network limitations. See the [dedicated website table](https://zefan-cai.github.io/open-jev/#jevbench).
+
+**Broader data iteration:** [new community cases](docs/community-research-broadening-20260921.md), [the frozen 148,639-row training mixture](docs/community-hard-training-v2.md), and the [Chinese project story](https://zefan-cai.github.io/open-jev/story/) document the sources, construction, controls and limitations. New model gains have not been measured.
 
 ## Inference latency
 
