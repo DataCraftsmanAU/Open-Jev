@@ -14,12 +14,18 @@ without autoregressive answer generation or parsing generated JSON.
 at the links above. The 2B/9B artifacts are LoRA adapters plus a trained scalar decision
 head and calibration temperature. They require the pinned upstream Qwen
 weights and the Open-Jev loader; they are not merged base models or ordinary
-text-generation checkpoints. The fresh 27B expansion run and its final
-checkpoint evaluation remain in progress.
+text-generation checkpoints. The 27B expansion run remains paused until the
+dedicated JevBench evaluation completes, then training will resume. Its final
+checkpoint evaluation and other GPU follow-up evaluations remain pending.
 
 Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
 not reproduce proprietary RLCD, private weights or training data, and does not
 claim TypeSafe's advertised speedups or parity with every community demo.
+
+Current results: [methods and quality](docs/provider-comparison.md) ·
+[interactive comparison](https://zefan-cai.github.io/open-jev/#comparison) ·
+[published X thread](https://x.com/Zefan_Cai/status/2101845509170417784) ·
+[community cases and benchmark plan](docs/community-research-20260921.md).
 
 ## Inference latency
 

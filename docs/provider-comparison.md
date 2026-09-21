@@ -162,17 +162,19 @@ Open-Jev TREC inference remains pending. A separate
 [local collector and offline replayer](openjev-trec-followup.md) now supports
 the frozen 97-query protocol, with strict probability and identity validation,
 unrounded expected Scores, full official qrels and failure-preserving journals.
-Its CPU checks do not constitute new model results; GPU execution waits for the
-existing training and follow-up allocation gates.
+Its CPU checks do not constitute new model results. These TREC follow-up
+evaluations remain pending. The dedicated JevBench evaluation now has priority,
+with 27B training to resume afterward.
 The five earlier small quality suites and their costs above are unchanged.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates
-completed counts from unattempted decisions. New Open-Jev GPU inference remains
-scheduled after the active training allocation is released. A
+completed counts from unattempted decisions. The dedicated JevBench run does
+not complete these earlier quality suites. A
 [reviewed five-suite service runner](openjev-provider-quality-followup.md) is now provisioned:
 808 requests and 1,841 labelled decisions per model, with frozen inputs and
 per-response checkpoint identity checks. Its local and N1 CPU tests pass; it has not yet
-produced new model results and must wait for the core and contact/amount queues.
+produced new model results. The core, contact/amount and provider follow-up queues
+remain pending under the updated execution order.
 The existing results do not complete the 73,333-row frozen test/OOD registry. A separate
 additive v2 registry includes the new IR and mailroom corpora: **107,922 held-out
 rows across 25 source identifiers**. Its 209-request selection contains 166
@@ -249,3 +251,8 @@ permission has not been confirmed. Both the full registry and the selected
 request/payload/raw-response bundles can contain those records; do not publish
 them wholesale. Publish per-source statistics, hashes and explicitly filtered
 redistributable evidence. The public HF projection omits those original rows.
+
+The [September 21 community research](community-research-20260921.md) maps new X
+use cases to proposed data and benchmarks, with source and model-identity checks.
+It does not add new model measurements. The [published comparison thread](https://x.com/Zefan_Cai/status/2101845509170417784)
+contains the existing results and their limitations.

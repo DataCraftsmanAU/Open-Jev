@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "OpenAI quality and newer Open-Jev rows pending",
+  "status": "Historical summary; OpenAI results are complete in the linked current reports, while newer Open-Jev suite results remain pending",
   "results": {
     "2b-coverage-quality-archive": {
       "status": "partial",
@@ -876,5 +876,12 @@
       ],
       "gold_sha256": "bfdb34b6a7a939335244f812b7ffe89c895578d2768adf9b352bfd96d20229ff"
     }
+  },
+  "snapshot_notice": {
+    "historical_results_preserved": true,
+    "superseded_by": "https://zefan-cai.github.io/open-jev/provider-quality.json",
+    "method": "https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/provider-comparison.md",
+    "updated_at": "2026-09-21",
+    "new_measurements_added": false
   }
 }

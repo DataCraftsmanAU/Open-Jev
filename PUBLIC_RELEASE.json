@@ -30,12 +30,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "139329ce4850f85fe0f7962f9eb8bfe53115e43d3ce29944a816bad2f345edfe",
-      "bytes": 15001,
-      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
-      "source_sha256": "a99b56e2b26941be5706fdadfcfb4cba1185a9e53de186a10bd166fa101a2ac9",
+      "sha256": "31d4fc4d0c2dafd723822a327b0975d8656355c86f38dcd3322d93645e27a5b0",
+      "bytes": 15417,
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
+      "source_sha256": "7f60f963ef878aea76eb4bdf0986ae41ac3f8d737baf76abaf59b3359d94c570",
       "changes": [
-        "Preserve custom public README; update only the TREC paragraph with completed independently audited Astra metrics."
+        "Preserve custom public README; update only the TREC paragraph with completed independently audited Astra metrics.",
+        "Preserve the custom public README; update research links and JevBench-before-27B scheduling status only."
       ]
     },
     {
@@ -117,6 +118,13 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "docs/community-research-20260921.md",
+      "sha256": "19fd635807f8a381817a513e2e8e2b41567578333c83c819df43d1a8d9f5d4c1",
+      "bytes": 13647,
+      "source_sha256": "19fd635807f8a381817a513e2e8e2b41567578333c83c819df43d1a8d9f5d4c1",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
     },
     {
       "path": "docs/community.md",
@@ -342,12 +350,13 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "fb0e1c1abe34504899730b3c5dba382203055c2c170c8f487e0f5b4511816025",
-      "bytes": 15420,
-      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
-      "source_sha256": "fb0e1c1abe34504899730b3c5dba382203055c2c170c8f487e0f5b4511816025",
+      "sha256": "8de9ab9bd61ebf8df21cae6f258359f038fe507ad6c712ac4d43b842f1989ba0",
+      "bytes": 15857,
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
+      "source_sha256": "3215b8472aba5a2576888bead2b5bb5362b2be6828c2b2bdceebd1da8b55ee87",
       "changes": [
-        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes.",
+        "Preserve the public method document without unpublished full-registry links; update publication/research links and scheduling status only."
       ]
     },
     {
@@ -1689,6 +1698,51 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "reports/community-research-20260921/benchmark-discovery.json",
+      "sha256": "161529c6e497be31c13715d48bd1260f8fef82857b74bb7a9b4977b494eb22c3",
+      "bytes": 49079,
+      "source_sha256": "161529c6e497be31c13715d48bd1260f8fef82857b74bb7a9b4977b494eb22c3",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/community-research-20260921/jevbench-public-readiness.json",
+      "sha256": "40502414704d05111aebecfa5a72880a78c2970fe4f8e2ee2d70324d06f45574",
+      "bytes": 3826,
+      "source_sha256": "40502414704d05111aebecfa5a72880a78c2970fe4f8e2ee2d70324d06f45574",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/community-research-20260921/model-benchmark-options.json",
+      "sha256": "e5bf76c065f9bfe685e70c377505b136b4c1b1a199aa07911d1b5bf1ede423e7",
+      "bytes": 49917,
+      "source_sha256": "c2b4898248bc09c833c43609500af482ff7d2777cec844e2c60417a855314d85",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
+      "changes": [
+        "Public release omits the absolute local openai-docs skill path; research content is unchanged."
+      ]
+    },
+    {
+      "path": "reports/community-research-20260921/openai-model-docs.json",
+      "sha256": "10a7108efba43f636ff66c0c0070785b2063a4d9389349ca5b0c82347a55a4a7",
+      "bytes": 1147,
+      "source_sha256": "10a7108efba43f636ff66c0c0070785b2063a4d9389349ca5b0c82347a55a4a7",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/community-research-20260921/publication-check.json",
+      "sha256": "ca77c8687988fb7a6045d5c02647d60ff92641ea7ce058b67d9dbf230d94d735",
+      "bytes": 46279,
+      "source_sha256": "ca77c8687988fb7a6045d5c02647d60ff92641ea7ce058b67d9dbf230d94d735",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/community-research-20260921/x-direct-checks.json",
+      "sha256": "248e961fc9c2b4ef781e575d4a4a3c165fb194642408c06f7218608fa37856be",
+      "bytes": 4219,
+      "source_sha256": "248e961fc9c2b4ef781e575d4a4a3c165fb194642408c06f7218608fa37856be",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
     },
     {
       "path": "reports/contact-service-eval/capture_tokenizer_lengths.py",
@@ -5604,6 +5658,20 @@
       "bytes": 6684
     },
     {
+      "path": "reports/provider-comparison-20260920/2b-coverage-quality-archive.json",
+      "sha256": "ac03294438cc2fe85cc03bcd5304d78cbe5291ea461b9ee21d5cd7b128ad9a88",
+      "bytes": 43184,
+      "source_sha256": "ac03294438cc2fe85cc03bcd5304d78cbe5291ea461b9ee21d5cd7b128ad9a88",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/9b-coverage-quality-archive.json",
+      "sha256": "46e7d47846a75ebead59c7376e09db4fa97e2d2ab0f26c458d7b67a3d91ddb7d",
+      "bytes": 43144,
+      "source_sha256": "46e7d47846a75ebead59c7376e09db4fa97e2d2ab0f26c458d7b67a3d91ddb7d",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
       "path": "reports/provider-comparison-20260920/astra-error-label-review.json",
       "sha256": "340471c660086c40971a937787d90df88aa7fad89391b6743c5947e7df1061ba",
       "bytes": 67456,
@@ -5659,6 +5727,34 @@
       "changes": [
         "Verified provider reference-match comparison, label audit, data publication and website follow-up."
       ]
+    },
+    {
+      "path": "reports/provider-comparison-20260920/jev-coverage-quality.json",
+      "sha256": "f08013d9d189cdac5c712db4537cae301215210adcc466b23cb2f6592a6ac0a9",
+      "bytes": 80159,
+      "source_sha256": "f08013d9d189cdac5c712db4537cae301215210adcc466b23cb2f6592a6ac0a9",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/jev-fizzbuzz-quality.json",
+      "sha256": "bed8c9f7514e59a374ca55000721fc69b157ad1d7c19406fcdfda34aa4f80d65",
+      "bytes": 130603,
+      "source_sha256": "bed8c9f7514e59a374ca55000721fc69b157ad1d7c19406fcdfda34aa4f80d65",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/jev-ir-pilot-quality.json",
+      "sha256": "343dfcd968d69ceb63c0f4a800e6cc1d78f0db4a4ddd971b497a5c91bca087ea",
+      "bytes": 87550,
+      "source_sha256": "343dfcd968d69ceb63c0f4a800e6cc1d78f0db4a4ddd971b497a5c91bca087ea",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/provider-comparison-20260920/jev-jf100-quality.json",
+      "sha256": "19c6d776ae9cee2ced4e6ae46776bc403191872d6889e741673c6b9eef903974",
+      "bytes": 129331,
+      "source_sha256": "19c6d776ae9cee2ced4e6ae46776bc403191872d6889e741673c6b9eef903974",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
     },
     {
       "path": "reports/provider-comparison-20260920/jev-mailroom-quality.json",
@@ -5937,12 +6033,14 @@
     },
     {
       "path": "reports/provider-comparison-20260920/summary.json",
-      "sha256": "883397a2dc69377263ea86d3922685af4fb98fa89c51001072b41340a0f39a1f",
-      "bytes": 32460,
+      "sha256": "c785ce48233c10cbc904b9aa8e17ec099dd5941283f501bb7988fa3cac0707b0",
+      "bytes": 32856,
       "source_commit": "8458f33c72d4edfb3be9b01cef84cf5c5dcacec3",
       "changes": [
-        "Verified community/provider-comparison follow-up; public projection where documented."
-      ]
+        "Verified community/provider-comparison follow-up; public projection where documented.",
+        "Retain all historical numeric results; clarify snapshot status and current-report links without adding measurements."
+      ],
+      "previous_public_sha256": "883397a2dc69377263ea86d3922685af4fb98fa89c51001072b41340a0f39a1f"
     },
     {
       "path": "reports/provider-comparison-20260920/verify_completed_openai.py",
@@ -6939,10 +7037,10 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "ce9c2f25734f5d3cab39780b1fdf56fb5cd7e43be15a31598df6e7716983fd4e",
-      "bytes": 28383,
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
-      "source_sha256": "ce9c2f25734f5d3cab39780b1fdf56fb5cd7e43be15a31598df6e7716983fd4e",
+      "sha256": "fa6be174705d2e477c7d23a8785be3dcfaebe4a80dddc87ccc34caf68f10cb34",
+      "bytes": 28630,
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
+      "source_sha256": "fa6be174705d2e477c7d23a8785be3dcfaebe4a80dddc87ccc34caf68f10cb34",
       "changes": [
         "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
       ]
@@ -8562,7 +8660,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+  "current_source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8975,6 +9073,47 @@
         "max_upper_bound_tokens": 13680,
         "context_limit": 16384,
         "actual_tokenization_is_sanity_check_only": true
+      }
+    },
+    {
+      "id": "community-research-publication-repair-20260921",
+      "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
+      "created_at": "2026-09-21T06:05:30.881432+00:00",
+      "description": "Publish six primary-source community/benchmark research reports and their overview, restore six previously missing comparison evidence files byte-for-byte, and clarify current scheduling and historical-summary status. Link the verified existing X thread and research plan from the website. Preserve custom public documentation, all existing website numeric JSONs and historical results. No new model scores, evaluation code, private runtime reports, raw benchmark inputs or social posts are published. JevBench runs first on N1; 27B remains paused until that evaluation finishes.",
+      "paths": [
+        "docs/community-research-20260921.md",
+        "reports/community-research-20260921/benchmark-discovery.json",
+        "reports/community-research-20260921/jevbench-public-readiness.json",
+        "reports/community-research-20260921/model-benchmark-options.json",
+        "reports/community-research-20260921/openai-model-docs.json",
+        "reports/community-research-20260921/publication-check.json",
+        "reports/community-research-20260921/x-direct-checks.json",
+        "site/index.html",
+        "README.md",
+        "docs/provider-comparison.md",
+        "reports/provider-comparison-20260920/summary.json",
+        "reports/provider-comparison-20260920/2b-coverage-quality-archive.json",
+        "reports/provider-comparison-20260920/9b-coverage-quality-archive.json",
+        "reports/provider-comparison-20260920/jev-coverage-quality.json",
+        "reports/provider-comparison-20260920/jev-fizzbuzz-quality.json",
+        "reports/provider-comparison-20260920/jev-ir-pilot-quality.json",
+        "reports/provider-comparison-20260920/jev-jf100-quality.json"
+      ],
+      "publication_only": true,
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "evaluation_code_publication_deferred": true,
+      "social_posts_published": false,
+      "verification": {
+        "local_markdown_links_checked": 61,
+        "missing_local_links": [],
+        "site_html_matches_website": true,
+        "public_site_numeric_json_unchanged": 5,
+        "website_numeric_json_unchanged": 5,
+        "historical_summary_results_unchanged": true,
+        "secret_or_absolute_host_path_flags": [],
+        "new_model_measurements": false,
+        "evaluation_code_copied": false
       }
     }
   ]
