@@ -158,7 +158,12 @@ Astra also completed all 97 queries and 873 requests, with no transport or
 strict-validation failures. Its DL19/DL20 nDCG@10 is **0.736610/0.714484**;
 the [independent audit](../reports/ir-control-v1/trec-holdout/astra-result-independent-audit.json)
 reproduces every query score and the **$39.62622** usage-based cost estimate.
-Open-Jev TREC inference remains pending.
+Open-Jev TREC inference remains pending. A separate
+[local collector and offline replayer](openjev-trec-followup.md) now supports
+the frozen 97-query protocol, with strict probability and identity validation,
+unrounded expected Scores, full official qrels and failure-preserving journals.
+Its CPU checks do not constitute new model results; GPU execution waits for the
+existing training and follow-up allocation gates.
 The five earlier small quality suites and their costs above are unchanged.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates

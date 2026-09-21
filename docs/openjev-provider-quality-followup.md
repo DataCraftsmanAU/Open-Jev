@@ -7,9 +7,19 @@ and Astra. It does not run TREC or the full 73,333/107,922-row held-out registri
 GPU inference with this follow-up has not started, and current published results
 remain unchanged.
 
+The [TREC follow-up update](openjev-trec-followup.md) also strengthens this
+runner's raw JSON type/order verification. The original `88c8aef` preparation
+below is historical. Future quality inference must use the replacement commit
+`e5188e7555bd8c706008b7a5e62a856b383a5cb6`. Its isolated remote deployment passed
+all 79 CPU tests without skips and the 808-request provider preflight. Its 15
+frozen input files remain the same. No GPU run used the old collection path,
+and no completed result was rescored. The
+[replacement deployment record](../reports/runtime-checks/openjev-trec-deployment.json)
+binds the new code, remote tests and unchanged frozen inputs.
+
 The [CPU validation record](../reports/runtime-checks/openjev-provider-quality-cpu.json)
-binds all four implementation/test files and the real frozen input preflight.
-All 48 focused CPU tests pass without skips. An independent review verified
+binds the original four implementation/test files and real frozen input preflight.
+At that revision, all 48 focused CPU tests passed without skips. An independent review verified
 the failure accounting, including real subprocess SIGTERM/SIGKILL tests with
 a CPU loopback fixture. This is implementation evidence, not model performance.
 The separate N1 deployment of commit
@@ -47,8 +57,8 @@ kind and candidate order. It only passes each request file and its SHA256 to
 `scripts/evaluate_openjev_provider.py`. Gold is read later by the launcher's
 offline summarizer, not by that client or the model.
 
-The same preflight can run without a server or GPU from a checkout containing
-the original private frozen inputs:
+The same preflight can run without a server or GPU from the reviewed checkout,
+using the original private frozen inputs:
 
 ```bash
 python3 - <<'PY'
@@ -58,7 +68,8 @@ from pathlib import Path
 from scripts.run_service_suite import preflight_provider_inputs
 
 result = preflight_provider_inputs(argparse.Namespace(
-    measurements=['provider_quality'], provider_data_root=Path('data')))
+    measurements=['provider_quality'],
+    provider_data_root=Path('/data/zefan/open-jev/provider-quality-20260921/data')))
 print(json.dumps(result, indent=2))
 PY
 ```
@@ -101,17 +112,18 @@ and all scheduling/GPU leases and owned servers released. If an output already
 exists, inspect it instead of overwriting it or repeating its requests. No new
 user approval is needed for these evidence checks.
 
-The independently reviewed checkout and the five input directories are now
-provisioned under `/data/zefan/open-jev/provider-quality-20260921`:
-`code-88c8aef` contains the pinned code, and `data` contains the 15 original
-private files. Run from that checkout with the existing Python runtime and
-per-process import path. The following command does **not** wait for the
-prerequisites and must only run once those checks pass:
+The original `/data/zefan/open-jev/provider-quality-20260921/data` directory
+retains the same 15 frozen private files. The original `code-88c8aef` directory
+and evidence remain historical. The replacement serving source is deployed to
+`/data/zefan/open-jev/openjev-trec-20260921/code-e5188e7` and passed remote CPU
+verification. After the prerequisites above pass, run from this replacement
+checkout with the existing Python runtime and per-process import path. The
+following command does **not** wait for those checks:
 
 ```bash
-cd /data/zefan/open-jev/provider-quality-20260921/code-88c8aef
+cd /data/zefan/open-jev/openjev-trec-20260921/code-e5188e7
 HF_HUB_CACHE=/mnt/localssd/open-jev/hf-cache \
-PYTHONPATH=/data/zefan/open-jev/provider-quality-20260921/code-88c8aef \
+PYTHONPATH=/data/zefan/open-jev/openjev-trec-20260921/code-e5188e7 \
 /mnt/localssd/open-jev/runtime/venv/bin/python -m scripts.run_service_suite \
   --expected-hostname kwade5342000001 --gpu 3 \
   --models 2b 9b \
@@ -127,8 +139,8 @@ Only N1-1 physical GPU 3 is selected here, serially for 2B then 9B. The
 launcher's existing GPU lease, UUID binding, owned process identity and cleanup
 checks remain active. Physical GPUs 4–7 and N4-4 are prohibited. The other
 measurement defaults, existing core deployment and contact/amount commands are
-unchanged. This is an isolated CPU-verified deployment; model inference has not
-started. `HF_HUB_CACHE` points directly at the existing cache directory; setting
+unchanged. The replacement deployment passed CPU verification; model inference
+has not started. `HF_HUB_CACHE` points directly at the existing cache directory; setting
 only `HF_HOME` to that path would incorrectly append a missing `hub` directory.
 
 Each model writes `provider_quality/<suite>/requests.json`, `attempts.jsonl`,
@@ -153,9 +165,13 @@ aggregates. Update the site's archive-only Open-Jev report selection separately,
 while retaining the common historical slice and frozen reference labels. The
 current post-hoc label sensitivity analysis remains explicitly post-hoc.
 
-TREC still needs a local Open-Jev collection/replay adapter preserving the same
-97-query input, nine adaptive windows, full qrel denominator and expected Score
-semantics. The external-provider TREC runner currently accepts Jev/Luna/Astra
-only and must not be repurposed by giving Open-Jev an external provider's model
-identity. Full-registry GPU inference and new-domain retraining also remain
+The separate [Open-Jev TREC collector and offline replay](openjev-trec-followup.md)
+now implement the same 97-query input, nine adaptive windows, full qrel
+denominator and expected Score semantics. Its
+[tokenizer proof](../reports/runtime-checks/openjev-trec-tokenizer.json) establishes
+a sufficient 13,680-token bound for the frozen adaptive windows with both
+pinned 2B/9B tokenizers. TREC model inference is pending and
+must follow this five-suite stage after all leases release. Its collector uses
+the actual Open-Jev identity; the completed external-provider collections remain
+unchanged. Full-registry GPU inference and new-domain retraining also remain
 separate pending work.

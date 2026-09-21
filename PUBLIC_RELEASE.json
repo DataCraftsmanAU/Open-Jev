@@ -284,12 +284,22 @@
     },
     {
       "path": "docs/openjev-provider-quality-followup.md",
-      "sha256": "43efa9937a8bfa4ad251c9f026cb48b80ffdd7e9c20c4cf91eb9be054c940bc2",
-      "bytes": 9220,
-      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
-      "source_sha256": "43efa9937a8bfa4ad251c9f026cb48b80ffdd7e9c20c4cf91eb9be054c940bc2",
+      "sha256": "676f81c0629d7cc3e7abaa5fded44be55825f856aacc899a99aa4aabd696d963",
+      "bytes": 10325,
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "source_sha256": "676f81c0629d7cc3e7abaa5fded44be55825f856aacc899a99aa4aabd696d963",
       "changes": [
-        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
+      "path": "docs/openjev-trec-followup.md",
+      "sha256": "9fd374ba41f0b263191106926841ea8739a8cf1c3afcc2d3301997018b02443f",
+      "bytes": 9637,
+      "source_sha256": "9fd374ba41f0b263191106926841ea8739a8cf1c3afcc2d3301997018b02443f",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
       ]
     },
     {
@@ -332,13 +342,12 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "1df973988d06d691d9eeeecdd44622a0704f2cab67f09aa0691e6f9892a8ecbe",
-      "bytes": 15042,
-      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
-      "source_sha256": "1df973988d06d691d9eeeecdd44622a0704f2cab67f09aa0691e6f9892a8ecbe",
+      "sha256": "fb0e1c1abe34504899730b3c5dba382203055c2c170c8f487e0f5b4511816025",
+      "bytes": 15420,
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "source_sha256": "fb0e1c1abe34504899730b3c5dba382203055c2c170c8f487e0f5b4511816025",
       "changes": [
-        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved.",
-        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
       ]
     },
     {
@@ -5995,6 +6004,16 @@
       ]
     },
     {
+      "path": "reports/runtime-checks/check_openjev_trec_tokenizer.py",
+      "sha256": "5303f7abc5af819af6aa0dd4e3dd42d78e98ff31d401b9dd10dd80e9e10b623a",
+      "bytes": 16538,
+      "source_sha256": "5303f7abc5af819af6aa0dd4e3dd42d78e98ff31d401b9dd10dd80e9e10b623a",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
       "path": "reports/runtime-checks/checkpoint-metric-pilot-compatibility.json",
       "source_sha256": "3220ef209684d3559a53fdee079bff8525bd1fded723c90274225ece0bf6f19d",
       "sha256": "3220ef209684d3559a53fdee079bff8525bd1fded723c90274225ece0bf6f19d",
@@ -6118,6 +6137,36 @@
       "source_sha256": "9ea3ae3757b532a18ab0fc86c052e340472192aa5a709f79e8ff88cd6a5bf694",
       "changes": [
         "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+      ]
+    },
+    {
+      "path": "reports/runtime-checks/openjev-trec-cpu.json",
+      "sha256": "39ca778dc2d32f201ad82a3f7a8b6ad6f820ed31b5f4eb22de52ce79901fceff",
+      "bytes": 3472,
+      "source_sha256": "39ca778dc2d32f201ad82a3f7a8b6ad6f820ed31b5f4eb22de52ce79901fceff",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
+      "path": "reports/runtime-checks/openjev-trec-deployment.json",
+      "sha256": "bc1697b83ec11f19f0094df77cfebfceea64ef1c4187419a5bad37e64f8e09bd",
+      "bytes": 5698,
+      "source_sha256": "bc1697b83ec11f19f0094df77cfebfceea64ef1c4187419a5bad37e64f8e09bd",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
+      "path": "reports/runtime-checks/openjev-trec-tokenizer.json",
+      "sha256": "c9aedc9ccc1a42c1a2f0f889ad9a6b6938c86bb1d15d38ecb6be64755daa97a9",
+      "bytes": 58924,
+      "source_sha256": "c9aedc9ccc1a42c1a2f0f889ad9a6b6938c86bb1d15d38ecb6be64755daa97a9",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
       ]
     },
     {
@@ -6713,6 +6762,16 @@
       ]
     },
     {
+      "path": "scripts/evaluate_openjev_trec.py",
+      "sha256": "2d772eba2d5d3347aa639fa2797989a7b288d3bfa9bddd47cf3ade93e8b518b9",
+      "bytes": 14043,
+      "source_sha256": "2d772eba2d5d3347aa639fa2797989a7b288d3bfa9bddd47cf3ade93e8b518b9",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
       "path": "scripts/evaluate_trec_provider.py",
       "sha256": "b618ea6f09ef1d964e45a4471f48dfa72537461da48e686f2984941400db669d",
       "bytes": 22073,
@@ -6818,13 +6877,22 @@
     },
     {
       "path": "scripts/run_service_suite.py",
-      "source_sha256": "3ad2edd5d3539edeab746f373ec8c07dc3a959201dd3efe41b4ef1e5575b6977",
-      "sha256": "3ad2edd5d3539edeab746f373ec8c07dc3a959201dd3efe41b4ef1e5575b6977",
-      "bytes": 36597,
-      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "e2fc86dfa26721f5b6477fa7a8d6d4875d211f1b11cb39c4fe6b0c907a85a17e",
+      "sha256": "e2fc86dfa26721f5b6477fa7a8d6d4875d211f1b11cb39c4fe6b0c907a85a17e",
+      "bytes": 43062,
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
       "changes": [
-        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending.",
-        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
+      "path": "scripts/summarize_openjev_trec.py",
+      "sha256": "9ab2fc6e0dd6aa13f954acc2e3f3055ec5e64b0602b843a09b4649087024d5af",
+      "bytes": 16291,
+      "source_sha256": "9ab2fc6e0dd6aa13f954acc2e3f3055ec5e64b0602b843a09b4649087024d5af",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
       ]
     },
     {
@@ -7842,6 +7910,26 @@
       ]
     },
     {
+      "path": "tests/test_openjev_trec.py",
+      "sha256": "cd33ff499c0ac2f81b2eff06fc1b59cd2150afb6e9f5c65208754de62652f757",
+      "bytes": 19533,
+      "source_sha256": "cd33ff499c0ac2f81b2eff06fc1b59cd2150afb6e9f5c65208754de62652f757",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
+      "path": "tests/test_openjev_trec_summary.py",
+      "sha256": "8f930f80b2ef7d7d6d76dad12351b2ae05a3e21698f3ccd309365e18bf81945b",
+      "bytes": 13119,
+      "source_sha256": "8f930f80b2ef7d7d6d76dad12351b2ae05a3e21698f3ccd309365e18bf81945b",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "changes": [
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
+      ]
+    },
+    {
       "path": "tests/test_painting.py",
       "source_sha256": "471d289a6d5e4bc7ed0466bae268282d76b666551d524045ab42ba2496259fe5",
       "sha256": "471d289a6d5e4bc7ed0466bae268282d76b666551d524045ab42ba2496259fe5",
@@ -7909,13 +7997,12 @@
     },
     {
       "path": "tests/test_service_suite.py",
-      "source_sha256": "7be2aaf3a9a07aeaabc764064d29502de646375e734a613796310895e1a29049",
-      "sha256": "7be2aaf3a9a07aeaabc764064d29502de646375e734a613796310895e1a29049",
-      "bytes": 46157,
-      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "c6f43ee67d024394c25e986cad88c7f2c57e1c1e1adb3e81af1ba6b39d4f7b9f",
+      "sha256": "c6f43ee67d024394c25e986cad88c7f2c57e1c1e1adb3e81af1ba6b39d4f7b9f",
+      "bytes": 62491,
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
       "changes": [
-        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending.",
-        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+        "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes."
       ]
     },
     {
@@ -8475,7 +8562,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+  "current_source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8844,6 +8931,50 @@
         "skipped": 0,
         "seconds": 3.737,
         "log_sha256": "ffa5a32cc45bd6e63ac003c3f02446cbe348d71cb1b7ee079eac3caaaf38314a"
+      }
+    },
+    {
+      "id": "openjev-trec-preparation-20260921",
+      "source_commit": "15e77abc116fb659e688c8444264f9ef4bf10ae4",
+      "deployed_code_commit": "e5188e7555bd8c706008b7a5e62a856b383a5cb6",
+      "created_at": "2026-09-21T04:04:55.947374+00:00",
+      "description": "Strict local Open-Jev TREC collector and offline adaptive replay, raw JSON response audit hardening, and isolated CPU-verified deployment. Both pinned2B/9B tokenizers have a sufficient13680-token bound for every frozen adaptive20-passage window. Supersedes88c8aef for future provider-quality inference while preserving prior evidence and results. No new GPU/model results, remote API requests, website metric changes or social posts. Real TREC text, qrels, responses, credentials and private operational logs are excluded.",
+      "paths": [
+        "scripts/evaluate_openjev_trec.py",
+        "scripts/summarize_openjev_trec.py",
+        "scripts/run_service_suite.py",
+        "tests/test_openjev_trec.py",
+        "tests/test_openjev_trec_summary.py",
+        "tests/test_service_suite.py",
+        "docs/openjev-trec-followup.md",
+        "docs/openjev-provider-quality-followup.md",
+        "docs/provider-comparison.md",
+        "reports/runtime-checks/openjev-trec-cpu.json",
+        "reports/runtime-checks/openjev-trec-deployment.json",
+        "reports/runtime-checks/openjev-trec-tokenizer.json",
+        "reports/runtime-checks/check_openjev_trec_tokenizer.py"
+      ],
+      "preparation_only": true,
+      "new_model_quality_results": false,
+      "gpu_inference_started": false,
+      "external_api_requests": 0,
+      "verification": {
+        "command": "python3 -m unittest tests.test_openjev_trec tests.test_openjev_trec_summary tests.test_service_suite tests.test_openjev_provider tests.test_provider_quality tests.test_provider_suite -v",
+        "exit_code": 0,
+        "tests": 79,
+        "skipped": 0,
+        "seconds": 16.233,
+        "log_sha256": "8a8f5ab955f84e1f0bd4367049a62404433da758cda768d4fda3248f22da091a"
+      },
+      "tokenizer_sufficient_bound": {
+        "models": [
+          "2b",
+          "9b"
+        ],
+        "frozen_queries": 97,
+        "max_upper_bound_tokens": 13680,
+        "context_limit": 16384,
+        "actual_tokenization_is_sanity_check_only": true
       }
     }
   ]

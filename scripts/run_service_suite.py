@@ -253,7 +253,47 @@ def preflight_provider_inputs(args):
     return evidence
 
 
-def measurement_commands(args, output, model, checkpoint, *, identity=None, provider_inputs=None):
+def preflight_trec_inputs(args):
+    """Bind the complete isolated TREC inputs on CPU; qrels never reach the client."""
+    if "trec" not in args.measurements:
+        return {}
+    from jev.ir_eval import load_external_holdout
+    from scripts.evaluate_trec_provider import load_input
+    from scripts.summarize_trec_provider import INPUT_SHA256, MANIFEST_SHA256
+
+    if args.trec_input is None:
+        raise ValueError("--trec-input is required when trec is selected")
+    paths = [args.trec_input, args.trec_holdout_root]
+    if getattr(args, "output_root", None) is not None:
+        paths.append(args.output_root)
+    for benchmark in MANIFEST_SHA256:
+        paths.extend(args.trec_holdout_root / benchmark / name
+                     for name in ("manifest.json", "candidates.jsonl", "qrels.txt"))
+    if any(Path(path).resolve().is_relative_to((ROOT / name).resolve())
+           for path in paths for name in ("data", "train")):
+        raise ValueError("TREC inputs, qrels and outputs must remain outside data/train")
+    document, raw = load_input(args.trec_input, INPUT_SHA256)
+    holdouts = {}
+    for benchmark, count in (("dl19", 43), ("dl20", 54)):
+        path = args.trec_holdout_root / benchmark / "manifest.json"
+        if hashlib.sha256(path.read_bytes()).hexdigest() != MANIFEST_SHA256[benchmark]:
+            raise ValueError("Frozen TREC external manifest differs")
+        holdout = load_external_holdout(path)
+        prepared = {query["id"]: query for query in document["queries"] if query["benchmark"] == benchmark}
+        if (holdout["manifest"]["benchmark"] != "TREC-" + benchmark.upper() or len(prepared) != count or
+                set(prepared) != set(holdout["queries"]) or set(prepared) != set(holdout["qrels"])):
+            raise ValueError("Full TREC query/qrel coverage differs")
+        for identifier, query in prepared.items():
+            if ([row["id"] for row in query["documents"]] !=
+                    [row["id"] for row in holdout["queries"][identifier]["documents"]]):
+                raise ValueError("TREC candidate IDs or BM25 order differ")
+        holdouts[benchmark] = {"manifest": str(path), "manifest_sha256": MANIFEST_SHA256[benchmark],
+                              "files_sha256": holdout["manifest"]["files_sha256"], "queries": count}
+    return {"input": str(args.trec_input), "input_sha256": INPUT_SHA256, "input_bytes": len(raw),
+            "queries": len(document["queries"]), "planned_max_requests": 873, "holdouts": holdouts}
+
+
+def measurement_commands(args, output, model, checkpoint, *, identity=None, provider_inputs=None, trec_inputs=None):
     common = ["--endpoint", ENDPOINT, "--expected-model", model, "--expected-method", METHOD]
     games = [sys.executable, "-m", "scripts.evaluate_game_service", *common,
              "--seeds", "10001,10002,10003", "--max-steps", "40", "--output-dir", str(output / "games")]
@@ -302,6 +342,15 @@ def measurement_commands(args, output, model, checkpoint, *, identity=None, prov
                              "--expected-code-commit", identity["code_commit"],
                              "--expected-max-length", str(identity["max_length"]),
                              "--output", str(output / "provider_quality" / name)]))
+    if "trec" in args.measurements:
+        commands.append(("trec", [sys.executable, "-m", "scripts.evaluate_openjev_trec", *common,
+                         "--input", trec_inputs["input"], "--input-sha256", trec_inputs["input_sha256"],
+                         "--expected-base-revision", identity["base_revision"],
+                         "--expected-checkpoint-sha256", identity["checkpoint_sha256"],
+                         "--expected-temperature", str(identity["temperature"]),
+                         "--expected-code-commit", identity["code_commit"],
+                         "--expected-max-length", str(identity["max_length"]),
+                         "--output", str(output / "trec")]))
     return [(phase, command) for phase, command in commands
             if phase in args.measurements or ("provider_quality" in args.measurements and phase.startswith("provider_quality_"))]
 
@@ -339,9 +388,12 @@ def summarize_provider_output(output, frozen, expected):
                 type(sample["success"]) is not bool):
             raise ValueError("Provider sample identity or order differs")
         if sample["success"]:
-            if sample["http_status"] != 200 or json.loads(sample["raw_response"]) != sample["response"]:
+            response = client.strict_json(sample["raw_response"])
+            if (sample["http_status"] != 200 or
+                    json.dumps(response, ensure_ascii=False, separators=(",", ":"), allow_nan=False) !=
+                    json.dumps(sample["response"], ensure_ascii=False, separators=(",", ":"), allow_nan=False)):
                 raise ValueError("Provider raw response differs")
-            client.validate_response(workload["request"], sample["response"], expected)
+            client.validate_response(workload["request"], response, expected)
     successful = sum(sample["success"] for sample in samples)
     if report["successful_requests"] != successful or report["failed_requests"] != len(samples) - successful:
         raise ValueError("Provider success counts differ")
@@ -363,6 +415,30 @@ def summarize_provider_output(output, frozen, expected):
     return {"collection_status": report["status"], "quality_path": str(path),
             "quality_sha256": hashlib.sha256(raw).hexdigest(), "quality_status": quality["status"],
             "overall": quality["overall"], "pending_count": quality["pending_count"]}
+
+
+def summarize_trec_output(output, frozen, expected):
+    """Replay settled responses against isolated qrels, then write a new text-free summary."""
+    from scripts.summarize_openjev_trec import summarize
+
+    report_raw = (output / "report.json").read_bytes()
+    report = json.loads(report_raw)
+    if (report.get("status") not in ("complete", "completed_with_query_failures", "stopped_budget",
+                                     "stopped_fatal", "interrupted_or_failed") or
+            report.get("expected_identity") != expected or report.get("input_sha256") != frozen["input_sha256"] or
+            type(report.get("in_flight_requests")) is not int or report["in_flight_requests"] != 0):
+        raise ValueError("TREC collection is in-flight or its status/input/model identity differs")
+    quality = summarize(output, {name: Path(row["manifest"]) for name, row in frozen["holdouts"].items()})
+    if (quality["expected_identity"] != expected or quality["runner_status"] != report["status"] or
+            quality["input_and_raw_sha256"]["report.json"] != hashlib.sha256(report_raw).hexdigest()):
+        raise ValueError("TREC offline summary differs from the settled collection")
+    path = output / "summary.json"
+    raw = (json.dumps(quality, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode()
+    with path.open("xb") as stream:
+        stream.write(raw)
+    return {"collection_status": report["status"], "quality_status": quality["status"],
+            "summary_path": str(path), "summary_sha256": hashlib.sha256(raw).hexdigest(),
+            "qrel_query_denominator": quality["qrel_query_denominator"], "benchmarks": quality["benchmarks"]}
 
 
 def audit_demo_identities(path, expected):
@@ -420,9 +496,13 @@ def main(argv=None):
                         help="Root of frozen email/phone/amount corpora; required only for selected controls")
     parser.add_argument("--provider-data-root", type=Path, default=ROOT / "data",
                         help="Root of the five original frozen provider suites; used only by provider_quality")
+    parser.add_argument("--trec-input", type=Path,
+                        help="Frozen input-only 97-query TREC file; required only by trec")
+    parser.add_argument("--trec-holdout-root", type=Path, default=ROOT / "runs/external/ir-holdout/prepared",
+                        help="Isolated frozen DL19/DL20 manifests and complete qrels for offline TREC scoring")
     parser.add_argument("--output-root", type=Path, required=True)
-    parser.add_argument("--measurements", nargs="+", choices=(*MEASUREMENTS, "browser", "drone", "contact", "amount", "provider_quality"), default=list(MEASUREMENTS),
-                        help="Measurements in standard order; browser/drone, contact/amount and frozen provider_quality suites are opt-in")
+    parser.add_argument("--measurements", nargs="+", choices=(*MEASUREMENTS, "browser", "drone", "contact", "amount", "provider_quality", "trec"), default=list(MEASUREMENTS),
+                        help="Measurements in standard order; browser/drone, contact/amount, provider_quality and trec are opt-in")
     parser.add_argument("--include-doom", action="store_true")
     parser.add_argument("--doom-decision-mode", choices=("combined-v1", "typed-v1"), default="combined-v1",
                         help="Doom only: legacy combined action or the three training-aligned typed questions")
@@ -447,12 +527,16 @@ def main(argv=None):
         parser.error("timeouts must be finite and positive")
     if min(args.max_length, args.batch_size) < 1:
         parser.error("max-length and batch-size must be positive")
+    if "trec" in args.measurements and args.max_length != 16384:
+        parser.error("the frozen TREC follow-up requires --max-length 16384")
     if len(set(args.models)) != len(args.models):
         parser.error("models must be distinct")
     if "{tag}" not in args.checkpoint_template:
         parser.error("checkpoint-template must contain {tag}")
-    for key in ("checkpoint_root", "frontier_source", "workflow_cases", "browser_cases", "drone_cases", "control_data_root", "provider_data_root", "output_root", "latency_request"):
+    for key in ("checkpoint_root", "frontier_source", "workflow_cases", "browser_cases", "drone_cases", "control_data_root", "provider_data_root", "trec_holdout_root", "output_root", "latency_request"):
         setattr(args, key, getattr(args, key).resolve())
+    if args.trec_input is not None:
+        args.trec_input = args.trec_input.resolve()
     if "workflows" in args.measurements and not args.workflow_cases.is_file():
         parser.error("workflow cases must exist when workflows are selected")
     if "browser" in args.measurements and not args.browser_cases.is_file():
@@ -473,6 +557,10 @@ def main(argv=None):
         provider_inputs = preflight_provider_inputs(args)
     except (ImportError, OSError, KeyError, TypeError, ValueError) as error:
         parser.error(f"provider preflight failed: {error}")
+    try:
+        trec_inputs = preflight_trec_inputs(args)
+    except (ImportError, OSError, KeyError, TypeError, ValueError) as error:
+        parser.error(f"TREC preflight failed: {error}")
     commit = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
     args.output_root.mkdir(parents=True, exist_ok=False)
     manifest_path = args.output_root / "manifest.json"
@@ -490,6 +578,8 @@ def main(argv=None):
         manifest["control_inputs"] = control_inputs
     if provider_inputs:
         manifest["provider_inputs"] = provider_inputs
+    if trec_inputs:
+        manifest["trec_inputs"] = trec_inputs
 
     def save():
         manifest["updated_at_utc"] = now()
@@ -549,7 +639,7 @@ def main(argv=None):
                         model_report["gpu_loaded"] = allocated
                         model_report["identity_probe"] = probe_identity(server, expected)
                         for phase, command in measurement_commands(args, output, model, checkpoint, identity=expected,
-                                                                   provider_inputs=provider_inputs):
+                                                                   provider_inputs=provider_inputs, trec_inputs=trec_inputs):
                             manifest["current_phase"] = f"{tag}/{phase}"
                             row = {}
                             model_report["measurements"][phase] = row
@@ -566,6 +656,11 @@ def main(argv=None):
                                 if row["quality"]["collection_status"] not in ("complete", "complete_with_request_failures"):
                                     # A timed-out handler can still be computing: clean up without another probe/request.
                                     raise RuntimeError("Provider collection stopped; retained partial quality before server cleanup")
+                            if phase == "trec":
+                                row["quality"] = summarize_trec_output(output / "trec", trec_inputs, expected)
+                                save()
+                                if row["quality"]["collection_status"] not in ("complete", "completed_with_query_failures"):
+                                    raise RuntimeError("TREC collection stopped; retained partial quality before server cleanup")
                             save()  # Save semantic/schema failures before checking service availability.
                             probe_identity(server, expected)
                     finally:

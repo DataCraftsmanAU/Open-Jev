@@ -185,17 +185,17 @@ class ServiceSuiteTests(unittest.TestCase):
             spawn.assert_not_called()
             command.assert_not_called()
 
-    def provider_fixture(self, *, duplicate=False, wrong_keys=False):
+    def provider_fixture(self, *, duplicate=False, wrong_keys=False, question=None):
         from jev.api import compile_request
         from scripts.benchmark_inference_latency import digest
         directory = self.root / "providers" / "fixture"
         directory.mkdir(parents=True, exist_ok=True)
         request = {"state": "The lamp is on.", "questions": {
-            "decision": {"type": "noul", "instructions": "Is the lamp on?"}}}
+            "decision": question or {"type": "noul", "instructions": "Is the lamp on?"}}}
         compiled = compile_request(request["state"], request["questions"])[0]
         workload = {"id": "case", "request": request, "request_sha256": digest(request)}
         gold = {"request_id": "case", "question_id": "decision", "request_sha256": digest(request),
-                "kind": "noul", "answer_keys": ["wrong"] if wrong_keys else compiled["answer_keys"],
+                "kind": compiled["kind"], "answer_keys": ["wrong"] if wrong_keys else compiled["answer_keys"],
                 "target": 1, "source": "fixture", "split": "test", "group_id": "fixture"}
         workloads, golds = [workload] * (2 if duplicate else 1), [gold]
         files = {}
@@ -311,6 +311,188 @@ class ServiceSuiteTests(unittest.TestCase):
         self.assertEqual(partial["pending_count"], 1)
         self.assertEqual(partial["overall"]["evaluated"], 0)
 
+    def test_provider_raw_binding_preserves_types_order_and_strict_decoding(self):
+        from scripts import evaluate_openjev_provider as client
+        args, spec, workload = self.provider_fixture(question={
+            "type": "choice", "instructions": "Select the lamp state.",
+            "criteria": {"off": "The lamp is off.", "on": "The lamp is on."}})
+        with patch.object(suite, "PROVIDER_SUITES", spec):
+            frozen = suite.preflight_provider_inputs(args)["coverage"]
+        expected = suite.checkpoint_identity(self.checkpoint("2b"), "2b", "commit", max_length=16384)
+        response = {"model": expected["model"], "metadata": {
+            **{k: v for k, v in expected.items() if k != "model"}, "prefix_cache": {"enabled": False}},
+            "usage": {"input_tokens": 10}, "answers": {"decision": {
+                "type": "choice", "choice": "on", "probabilities": {"off": 0.0, "on": 1.0}}}}
+        sample = {"request_id": "case", "request_sha256": workload["request_sha256"], "phase": "measured",
+                  "repetition": 0, "mode": expected["model"], "success": True, "http_status": 200,
+                  "raw_response": json.dumps(response), "response": response}
+        report = {"status": "complete", "expected_identity": expected,
+                  "input_sha256": frozen["files"]["requests.json"]["sha256"], "planned_requests": 1,
+                  "attempted_requests": 1, "successful_requests": 1, "failed_requests": 0, "pending_requests": 0,
+                  "started_requests": 1, "in_flight_requests": 0,
+                  "source_sha256": hashlib.sha256(Path(client.__file__).read_bytes()).hexdigest(),
+                  "concurrency": 1, "warmups": 0, "retries": 0, "prefix_cache": False}
+        output = self.root / "collected"
+        output.mkdir()
+        (output / "requests.json").write_bytes((Path(frozen["directory"]) / "requests.json").read_bytes())
+        (output / "report.json").write_text(json.dumps(report))
+        (output / "attempts.jsonl").write_text(json.dumps({"event": "attempt_started", "request_id": "case",
+            "request_sha256": workload["request_sha256"]}) + "\n")
+        (output / "samples.jsonl").write_text(json.dumps(sample) + "\n")
+        self.assertEqual(suite.summarize_provider_output(output, frozen, expected)["overall"]["hard_correct"], 1)
+        (output / "quality.json").unlink()
+        for probabilities in ({"off": False, "on": 1.0}, {"off": 0, "on": 1.0}, {"on": 1.0, "off": 0.0}):
+            with self.subTest(raw_probabilities=probabilities):
+                raw_response = json.loads(json.dumps(response))
+                raw_response["answers"]["decision"]["probabilities"] = probabilities
+                # All three mutations compare equal as Python dictionaries.
+                self.assertEqual(raw_response, response)
+                sample["raw_response"] = json.dumps(raw_response)
+                (output / "samples.jsonl").write_text(json.dumps(sample) + "\n")
+                with self.assertRaisesRegex(ValueError, "raw response differs"):
+                    suite.summarize_provider_output(output, frozen, expected)
+                self.assertFalse((output / "quality.json").exists())
+        sample["raw_response"] = json.dumps(response).replace('"model":', '"model":"duplicate","model":', 1)
+        (output / "samples.jsonl").write_text(json.dumps(sample) + "\n")
+        with self.assertRaisesRegex(ValueError, "duplicate JSON key"):
+            suite.summarize_provider_output(output, frozen, expected)
+        self.assertFalse((output / "quality.json").exists())
+
+    def trec_fixture(self):
+        from scripts.evaluate_trec_provider import PROTOCOL
+        root = self.root / "external-trec"
+        root.mkdir(exist_ok=True)
+        queries, manifests = [], {}
+        for benchmark, count in (("dl19", 43), ("dl20", 54)):
+            directory = root / benchmark
+            directory.mkdir(exist_ok=True)
+            candidates, qrels = [], []
+            for index in range(count):
+                identifier = str(index)
+                documents = [{"id": str(rank), "text": "A passage."} for rank in range(100)]
+                queries.append({"benchmark": benchmark, "id": identifier, "query": "A query.", "documents": documents})
+                candidates.append({"id": identifier, "query": "A query.", "documents": [
+                    {**document, "bm25_rank": rank, "bm25_score": 100 - rank}
+                    for rank, document in enumerate(documents, 1)]})
+                qrels.extend((f"{identifier} 0 0 3", f"{identifier} 0 outside-top100 2"))
+            (directory / "candidates.jsonl").write_text("\n".join(json.dumps(row) for row in candidates) + "\n")
+            (directory / "qrels.txt").write_text("\n".join(qrels) + "\n")
+            manifest = {"usage": "evaluation_only", "benchmark": "TREC-" + benchmark.upper(),
+                        "retriever": {"name": "BM25", "top_k": 100, "k1": .9, "b": .4},
+                        "files_sha256": {name: hashlib.sha256((directory / name).read_bytes()).hexdigest()
+                                         for name in ("candidates.jsonl", "qrels.txt")}}
+            raw = json.dumps(manifest).encode()
+            (directory / "manifest.json").write_bytes(raw)
+            manifests[benchmark] = hashlib.sha256(raw).hexdigest()
+        input_path = root / "input.json"
+        input_path.write_text(json.dumps({"schema_version": 1, "usage": "evaluation_only", "protocol": PROTOCOL,
+                                         "queries": queries}))
+        args = argparse.Namespace(measurements=["trec"], trec_input=input_path, trec_holdout_root=root,
+                                  output_root=self.root / "output")
+        return args, hashlib.sha256(input_path.read_bytes()).hexdigest(), manifests
+
+    def test_trec_preflight_is_opt_in_and_binds_full_input_and_qrels(self):
+        self.assertEqual(suite.preflight_trec_inputs(argparse.Namespace(measurements=suite.MEASUREMENTS)), {})
+        args, digest, manifests = self.trec_fixture()
+        with patch("scripts.summarize_trec_provider.INPUT_SHA256", digest), \
+                patch("scripts.summarize_trec_provider.MANIFEST_SHA256", manifests):
+            evidence = suite.preflight_trec_inputs(args)
+            self.assertEqual(evidence["queries"], 97)
+            self.assertEqual(evidence["planned_max_requests"], 873)
+            self.assertEqual(evidence["input_sha256"], digest)
+            self.assertEqual([row["queries"] for row in evidence["holdouts"].values()], [43, 54])
+            path = args.trec_holdout_root / "dl20/qrels.txt"
+            path.write_bytes(path.read_bytes() + b" ")
+            with self.assertRaisesRegex(ValueError, "checksum differs"):
+                suite.preflight_trec_inputs(args)
+
+    def test_trec_preflight_bad_hashes_precede_output_gpu_and_children(self):
+        args, digest, manifests = self.trec_fixture()
+        for path in (args.trec_input, args.trec_holdout_root / "dl19/manifest.json"):
+            original = path.read_bytes()
+            path.write_bytes(original + b" ")
+            with patch("scripts.summarize_trec_provider.INPUT_SHA256", digest), \
+                    patch("scripts.summarize_trec_provider.MANIFEST_SHA256", manifests), \
+                    patch.object(suite.socket, "gethostname", return_value="allowed-node"), \
+                    patch.object(suite, "gpu_snapshot") as gpu, patch.object(suite, "require_free_gpu") as free, \
+                    patch.object(suite.subprocess, "Popen") as spawn, patch.object(suite.subprocess, "check_output") as command, \
+                    redirect_stderr(io.StringIO()) as errors, self.assertRaises(SystemExit):
+                suite.main(["--expected-hostname", "allowed-node", "--output-root", str(args.output_root),
+                            "--measurements", "trec", "--max-length", "16384", "--trec-input", str(args.trec_input),
+                            "--trec-holdout-root", str(args.trec_holdout_root)])
+            self.assertIn("TREC preflight failed", errors.getvalue())
+            self.assertFalse(args.output_root.exists())
+            for call in (gpu, free, spawn, command):
+                call.assert_not_called()
+            path.write_bytes(original)
+
+    def test_trec_inputs_and_outputs_cannot_enter_training_tree(self):
+        args, _, _ = self.trec_fixture()
+        for attribute in ("trec_input", "trec_holdout_root", "output_root"):
+            original = getattr(args, attribute)
+            for tree in ("data", "train"):
+                setattr(args, attribute, self.root / tree / "external")
+                with self.assertRaisesRegex(ValueError, "outside data/train"):
+                    suite.preflight_trec_inputs(args)
+            setattr(args, attribute, original)
+        args.trec_input = None
+        with self.assertRaisesRegex(ValueError, "trec-input is required"):
+            suite.preflight_trec_inputs(args)
+
+    def test_trec_commands_pin_identity_and_never_pass_qrels(self):
+        args = argparse.Namespace(include_doom=False, workflow_cases=Path("unused"), frontier_source=Path("unused"),
+                                  measurements=["trec"])
+        identity = suite.checkpoint_identity(self.checkpoint("2b"), "2b", "commit", max_length=16384)
+        inputs = {"input": "/external/input.json", "input_sha256": "a" * 64,
+                  "holdouts": {"dl19": {"manifest": "/private-qrels/manifest.json"}}}
+        commands = suite.measurement_commands(args, Path("output"), suite.MODELS["2b"], Path("checkpoint"),
+                                             identity=identity, trec_inputs=inputs)
+        self.assertEqual(len(commands), 1)
+        phase, command = commands[0]
+        self.assertEqual(phase, "trec")
+        self.assertEqual(command[:3], [sys.executable, "-m", "scripts.evaluate_openjev_trec"])
+        for key, value in identity.items():
+            self.assertEqual(command[command.index("--expected-" + key.replace("_", "-")) + 1], str(value))
+        self.assertEqual(command[command.index("--input") + 1], inputs["input"])
+        self.assertEqual(command[command.index("--input-sha256") + 1], inputs["input_sha256"])
+        self.assertEqual(command[command.index("--output") + 1], "output/trec")
+        self.assertFalse(any("qrel" in value or "gold" in value or "holdout" in value for value in command))
+        self.assertNotIn("--max-requests", command)
+
+    def test_trec_summary_requires_settled_identity_and_offline_audit(self):
+        expected = suite.checkpoint_identity(self.checkpoint("2b"), "2b", "commit", max_length=16384)
+        output = self.root / "trec-output"
+        output.mkdir()
+        frozen = {"input_sha256": "a" * 64, "holdouts": {name: {"manifest": f"/{name}/manifest.json"}
+                                                           for name in ("dl19", "dl20")}}
+        report = {"expected_identity": expected, "input_sha256": frozen["input_sha256"],
+                  "status": "complete", "in_flight_requests": 0}
+        for update in ({"status": "running"}, {"status": "unknown"}, {"in_flight_requests": 1},
+                       {"expected_identity": {}}, {"input_sha256": "b" * 64}):
+            (output / "report.json").write_text(json.dumps({**report, **update}))
+            with patch("scripts.summarize_openjev_trec.summarize") as audit, self.assertRaisesRegex(ValueError, "in-flight"):
+                suite.summarize_trec_output(output, frozen, expected)
+            audit.assert_not_called()
+            self.assertFalse((output / "summary.json").exists())
+        for status in ("complete", "completed_with_query_failures", "stopped_budget", "stopped_fatal", "interrupted_or_failed"):
+            raw = json.dumps({**report, "status": status}).encode()
+            (output / "report.json").write_bytes(raw)
+            quality = {"status": "complete" if status.startswith("complete") else "partial", "runner_status": status,
+                       "expected_identity": expected, "input_and_raw_sha256": {"report.json": hashlib.sha256(raw).hexdigest()},
+                       "qrel_query_denominator": 97, "benchmarks": {}}
+            with patch("scripts.summarize_openjev_trec.summarize", side_effect=ValueError("unsettled journal")), \
+                    self.assertRaisesRegex(ValueError, "unsettled journal"):
+                suite.summarize_trec_output(output, frozen, expected)
+            self.assertFalse((output / "summary.json").exists())
+            with patch("scripts.summarize_openjev_trec.summarize", return_value=quality) as audit:
+                result = suite.summarize_trec_output(output, frozen, expected)
+                self.assertEqual(result["collection_status"], status)
+                self.assertEqual(result["qrel_query_denominator"], 97)
+                audit.assert_called_once_with(output, {name: Path(f"/{name}/manifest.json") for name in ("dl19", "dl20")})
+                with self.assertRaises(FileExistsError):
+                    suite.summarize_trec_output(output, frozen, expected)
+            (output / "summary.json").unlink()
+
     def test_cli_guard_before_gpu_and_children(self):
         for extra in (["--expected-hostname", "different-node"],
                       ["--expected-hostname", "unallocated-node", "--gpu", "0"],
@@ -409,7 +591,8 @@ class ServiceSuiteTests(unittest.TestCase):
         self.assertEqual(path.read_text(), 'keep')
 
     def run_main_mocked(self, *, mismatch=False, capacity=None, measurements=None, include_latency=True, models=None,
-                        control_data_root=None, provider_data_root=None, failure_phases=('workflows',), expected_error=None):
+                        control_data_root=None, provider_data_root=None, trec_input=None,
+                        failure_phases=('workflows',), expected_error=None):
         for tag in suite.MODELS if models is None else models:
             self.checkpoint(tag)
         frontier = self.root / 'frontier'
@@ -496,6 +679,8 @@ class ServiceSuiteTests(unittest.TestCase):
             args.extend(["--control-data-root", str(control_data_root)])
         if provider_data_root is not None:
             args.extend(["--provider-data-root", str(provider_data_root)])
+        if trec_input is not None:
+            args.extend(["--trec-input", str(trec_input)])
         with ExitStack() as stack:
             for name, value in [('require_free_gpu', free), ('gpu_snapshot', loaded), ('require_free_port', Mock()),
                                 ('wait_ready', Mock(return_value={'status': 'ready'})), ('probe_identity', probe), ('run_measurement', measure)]:
@@ -535,6 +720,50 @@ class ServiceSuiteTests(unittest.TestCase):
         self.assertEqual(set(manifest['models']), {'2b', '9b', '27b'})
         self.assertNotIn('control_inputs', manifest)
         self.assertNotIn('provider_inputs', manifest)
+        self.assertNotIn('trec_inputs', manifest)
+
+    def test_trec_models_are_serial_and_failed_queries_keep_cleanup(self):
+        inputs = {"input": "/external/input.json", "input_sha256": "a" * 64}
+        with patch.object(suite, "preflight_trec_inputs", return_value=inputs), \
+                patch.object(suite, "summarize_trec_output", return_value={"collection_status": "completed_with_query_failures"}) as audit:
+            manifest, servers, measurements = self.run_main_mocked(
+                measurements=["trec"], models=["2b", "9b"], include_latency=False, capacity=(16384, 1),
+                trec_input=Path(inputs["input"]), failure_phases=("trec",))
+        self.assertEqual(measurements, ["trec", "trec"])
+        self.assertEqual(len(servers), 2)
+        self.assertEqual(audit.call_count, 2)
+        self.assertEqual(manifest["trec_inputs"], inputs)
+        self.assertEqual(manifest["status"], "complete_with_measurement_failures")
+        for report in manifest["models"].values():
+            self.assertEqual(report["server_exit_code"], -15)
+            self.assertFalse(report["gpu_after_shutdown"]["compute_processes"])
+        self.assertTrue(all("--prefix-cache" not in server.command for server in servers))
+
+    def test_stopped_trec_retains_summary_and_cleans_before_any_next_probe(self):
+        inputs = {"input": "/external/input.json", "input_sha256": "a" * 64}
+        partial = {"collection_status": "stopped_fatal", "quality_status": "partial"}
+        with patch.object(suite, "preflight_trec_inputs", return_value=inputs), \
+                patch.object(suite, "summarize_trec_output", return_value=partial) as audit:
+            manifest, servers, measurements = self.run_main_mocked(
+                measurements=["trec"], models=["2b", "9b"], include_latency=True, capacity=(16384, 1),
+                trec_input=Path(inputs["input"]), expected_error="TREC collection stopped")
+        self.assertEqual(measurements, ["trec"])
+        self.assertEqual(audit.call_count, 1)
+        self.assertEqual(len(servers), 1)
+        self.assertEqual(manifest["status"], "failed")
+        self.assertEqual(manifest["models"]["2b"]["measurements"]["trec"]["quality"], partial)
+        self.assertEqual(manifest["models"]["2b"]["server_exit_code"], -15)
+
+    def test_trec_rejected_audit_cleans_before_any_next_probe(self):
+        inputs = {"input": "/external/input.json", "input_sha256": "a" * 64}
+        with patch.object(suite, "preflight_trec_inputs", return_value=inputs), \
+                patch.object(suite, "summarize_trec_output", side_effect=RuntimeError("unsettled dispatch")):
+            manifest, servers, measurements = self.run_main_mocked(
+                measurements=["trec"], models=["2b", "9b"], include_latency=False, capacity=(16384, 1),
+                trec_input=Path(inputs["input"]), expected_error="unsettled dispatch")
+        self.assertEqual(measurements, ["trec"])
+        self.assertEqual(len(servers), 1)
+        self.assertEqual(manifest["models"]["2b"]["server_exit_code"], -15)
 
     def test_provider_quality_runs_all_five_suites_before_releasing_each_model(self):
         inputs = {name: {"directory": str(self.root / directory), "files": {"requests.json": {"sha256": "a" * 64}}}
