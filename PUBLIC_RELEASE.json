@@ -31,10 +31,11 @@
     {
       "path": "README.md",
       "source_sha256": "e7067bf770aab5a340ed562f42b63151ea7d6f169d692c0789b9296c5b1cd0c2",
-      "sha256": "423dc8d700e36ab5152254c0b254b4ec7a8b6d0c245ea1de27b76ddc8f681c1f",
-      "bytes": 16259,
+      "sha256": "ebd446a6b323c82ad25d8fffcb95ebecc51c7735f581b344277dcf1c45c14f14",
+      "bytes": 17076,
       "changes": [
-        "Preserve custom public README; add broader-data and project-story links and verified initialization status."
+        "Preserve custom public README; add broader-data and project-story links and verified initialization status.",
+        "Preserve custom public README; record verified optimizer updates and prepared v3 data, frozen evaluation panel and unmeasured status."
       ]
     },
     {
@@ -1105,9 +1106,9 @@
     },
     {
       "path": "release/project-story/index.html",
-      "source_sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
-      "sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
-      "bytes": 53809
+      "source_sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
+      "sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
+      "bytes": 54351
     },
     {
       "path": "release/social/README.md",
@@ -7277,9 +7278,9 @@
     },
     {
       "path": "site/index.html",
-      "source_sha256": "aa7c31a048dc2b48ba5f918e942bb43a586da72832b95f377c3d856129968231",
-      "sha256": "aa7c31a048dc2b48ba5f918e942bb43a586da72832b95f377c3d856129968231",
-      "bytes": 32804
+      "source_sha256": "0a6253648ed2d354533110aaae39bfadbdbdc241e082d2326169dffda4095785",
+      "sha256": "0a6253648ed2d354533110aaae39bfadbdbdc241e082d2326169dffda4095785",
+      "bytes": 32939
     },
     {
       "path": "site/jevbench.js",
@@ -8009,9 +8010,9 @@
     },
     {
       "path": "site/story/index.html",
-      "source_sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
-      "sha256": "b4ed1ecdde78f62c12ccbcd615405fb4a2a8bedc7981467a0b041c40ebde8038",
-      "bytes": 53809
+      "source_sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
+      "sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
+      "bytes": 54351
     },
     {
       "path": "site/styles.css",
@@ -8482,6 +8483,222 @@
       "source_sha256": "8d77b0b07ec0e34af6dfa238d05d2f95109926df91b468bfb238276610d1c420",
       "sha256": "8d77b0b07ec0e34af6dfa238d05d2f95109926df91b468bfb238276610d1c420",
       "bytes": 1875
+    },
+    {
+      "path": "docs/community-hard-training-v3.md",
+      "source_sha256": "711f92869df5a41c8998e7746de867c2fc52e018571e51eb18c9fa0e253487db",
+      "sha256": "711f92869df5a41c8998e7746de867c2fc52e018571e51eb18c9fa0e253487db",
+      "bytes": 7188
+    },
+    {
+      "path": "docs/community-routing-v3.md",
+      "source_sha256": "8ed833a5c0bd468159911efc704a192cd91fcc8e3e61770aca95c96c390a95db",
+      "sha256": "8ed833a5c0bd468159911efc704a192cd91fcc8e3e61770aca95c96c390a95db",
+      "bytes": 9354
+    },
+    {
+      "path": "docs/community-workflow-v3.md",
+      "source_sha256": "df842498a04f5893bf578750e1b42ee8505d0ae531c8e2c6576ec96e6850e183",
+      "sha256": "df842498a04f5893bf578750e1b42ee8505d0ae531c8e2c6576ec96e6850e183",
+      "bytes": 7809
+    },
+    {
+      "path": "docs/internal-evaluation.md",
+      "source_sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
+      "sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
+      "bytes": 7363
+    },
+    {
+      "path": "docs/sql-semantics-v3.md",
+      "source_sha256": "ed995257576de0ac3eb3651cdb52bba9410a045f1a531e70c5b540f90d7803a1",
+      "sha256": "ed995257576de0ac3eb3651cdb52bba9410a045f1a531e70c5b540f90d7803a1",
+      "bytes": 6735
+    },
+    {
+      "path": "jev/community_routing_v3.py",
+      "source_sha256": "75dfd7d1742cea78cbb28e1788b8544e526f47727b5c1796c59c5a25c3674bd4",
+      "sha256": "75dfd7d1742cea78cbb28e1788b8544e526f47727b5c1796c59c5a25c3674bd4",
+      "bytes": 19773
+    },
+    {
+      "path": "jev/community_workflow_v3.py",
+      "source_sha256": "e7e4bc911787ff37d3a8c8553f26e6168a4c1cc77fd787de6f17876d467fb4c2",
+      "sha256": "e7e4bc911787ff37d3a8c8553f26e6168a4c1cc77fd787de6f17876d467fb4c2",
+      "bytes": 35140
+    },
+    {
+      "path": "jev/sql_semantics_v3.py",
+      "source_sha256": "9f3cf5436c5fcb94845207967d4b9e1a5f90ffdb221803389bb62db33dc0ced3",
+      "sha256": "9f3cf5436c5fcb94845207967d4b9e1a5f90ffdb221803389bb62db33dc0ced3",
+      "bytes": 33985
+    },
+    {
+      "path": "reports/community-diversity-v3/audit_integration.py",
+      "source_sha256": "d53a7e9d5325edda8036a747ae2ad40c31334bbd1def82f2baf908ea8ac38588",
+      "sha256": "d53a7e9d5325edda8036a747ae2ad40c31334bbd1def82f2baf908ea8ac38588",
+      "bytes": 20918
+    },
+    {
+      "path": "reports/community-diversity-v3/final-overlap-screen.json",
+      "source_sha256": "34abad5ac328e4ae4ebeee69e4c38cca07ca6c56d96a84bffc43c3d4dc60b607",
+      "sha256": "34abad5ac328e4ae4ebeee69e4c38cca07ca6c56d96a84bffc43c3d4dc60b607",
+      "bytes": 1127
+    },
+    {
+      "path": "reports/community-diversity-v3/focus-panel-manifest.json",
+      "source_sha256": "3cd051b48f324cf1d24c6981bed31269a503f12e2e7c0bd203a3391a586c2e8a",
+      "sha256": "3cd051b48f324cf1d24c6981bed31269a503f12e2e7c0bd203a3391a586c2e8a",
+      "bytes": 3938
+    },
+    {
+      "path": "reports/community-diversity-v3/integration-audit.json",
+      "source_sha256": "12e495b31200019f49137c26ca1ea5b78b82e52230e69faf15340596def39505",
+      "sha256": "12e495b31200019f49137c26ca1ea5b78b82e52230e69faf15340596def39505",
+      "bytes": 14768
+    },
+    {
+      "path": "reports/community-diversity-v3/training-mixture-manifest.json",
+      "source_sha256": "0c4abb45b9703a18d6e406013ea1f7d2c1f3d355b951d9f98d1875297d0dda05",
+      "sha256": "0c4abb45b9703a18d6e406013ea1f7d2c1f3d355b951d9f98d1875297d0dda05",
+      "bytes": 19277
+    },
+    {
+      "path": "reports/community-diversity-v3/training-plan.json",
+      "source_sha256": "365375ef024f4b47f2fba311e3a25600704058e8c3ee1d32fcac9e080540c6ad",
+      "sha256": "365375ef024f4b47f2fba311e3a25600704058e8c3ee1d32fcac9e080540c6ad",
+      "bytes": 3227
+    },
+    {
+      "path": "reports/community-diversity-v3/validation.json",
+      "source_sha256": "b2d982156674b9c2b8d486727a40260dc7211ff3ef71d89e2eb8797c67a39fa2",
+      "sha256": "b2d982156674b9c2b8d486727a40260dc7211ff3ef71d89e2eb8797c67a39fa2",
+      "bytes": 755
+    },
+    {
+      "path": "reports/community-routing-v3/cpu-tests.txt",
+      "source_sha256": "4c0f58331c1d0f318a223bc80bf84c1e7afbf430dfa175ddb0dc62e5936c746e",
+      "sha256": "4c0f58331c1d0f318a223bc80bf84c1e7afbf430dfa175ddb0dc62e5936c746e",
+      "bytes": 1478
+    },
+    {
+      "path": "reports/community-routing-v3/data-manifest.json",
+      "source_sha256": "9ec1fdb644fa949e3cc879c335133f18bda3d741eb93183e5154b3616058a57e",
+      "sha256": "9ec1fdb644fa949e3cc879c335133f18bda3d741eb93183e5154b3616058a57e",
+      "bytes": 16862
+    },
+    {
+      "path": "reports/community-routing-v3/full-catalog-eval-only.json",
+      "source_sha256": "5596759515a02c1f7578fb53d58b359bc889534626812b7a40eb337ce1f43d68",
+      "sha256": "5596759515a02c1f7578fb53d58b359bc889534626812b7a40eb337ce1f43d68",
+      "bytes": 181573
+    },
+    {
+      "path": "reports/community-routing-v3/independent_audit.py",
+      "source_sha256": "364a60bed984e9fc969626d78a56431ebaad292c7beee95d144d742ad97ea4d9",
+      "sha256": "364a60bed984e9fc969626d78a56431ebaad292c7beee95d144d742ad97ea4d9",
+      "bytes": 15345
+    },
+    {
+      "path": "reports/community-routing-v3/integrity-audit.json",
+      "source_sha256": "c4571e52c2f640b929e1ccbe7513a959c56ab84d5abb25fd33cbd9be0110801e",
+      "sha256": "c4571e52c2f640b929e1ccbe7513a959c56ab84d5abb25fd33cbd9be0110801e",
+      "bytes": 4929
+    },
+    {
+      "path": "reports/community-routing-v3/source-manifest.json",
+      "source_sha256": "845a0006f8e694fee87c28bada16e26034b3022a344df9c3246a4c93a1726a12",
+      "sha256": "845a0006f8e694fee87c28bada16e26034b3022a344df9c3246a4c93a1726a12",
+      "bytes": 1925
+    },
+    {
+      "path": "reports/community-workflow-v3/README.md",
+      "source_sha256": "711fea29e609a97dd3b813f2fb502075b82058fd64cc61938cd85df3029be29e",
+      "sha256": "711fea29e609a97dd3b813f2fb502075b82058fd64cc61938cd85df3029be29e",
+      "bytes": 1747
+    },
+    {
+      "path": "reports/community-workflow-v3/audit_visible_records.py",
+      "source_sha256": "20006cc94d606994d4e0b0c2bf48931a7a12ed9ae60cb19b3d68d56dd682b78d",
+      "sha256": "20006cc94d606994d4e0b0c2bf48931a7a12ed9ae60cb19b3d68d56dd682b78d",
+      "bytes": 12339
+    },
+    {
+      "path": "reports/community-workflow-v3/independent-audit.json",
+      "source_sha256": "e60e5a3b0a784cae0a6b0344cec44a408653ae22fa993fa509df9fd51afadb83",
+      "sha256": "e60e5a3b0a784cae0a6b0344cec44a408653ae22fa993fa509df9fd51afadb83",
+      "bytes": 1951
+    },
+    {
+      "path": "reports/community-workflow-v3/manifest.json",
+      "source_sha256": "3fc6c0539c1a32325c9d0e0311c308019d4e2afab88d68f12f738ac636572af4",
+      "sha256": "3fc6c0539c1a32325c9d0e0311c308019d4e2afab88d68f12f738ac636572af4",
+      "bytes": 3577
+    },
+    {
+      "path": "reports/community-workflow-v3/validation.json",
+      "source_sha256": "028013dc4faf0096502d3fa698ed0e34aeee5cdfbf658c34e3cc2f9c345585f7",
+      "sha256": "028013dc4faf0096502d3fa698ed0e34aeee5cdfbf658c34e3cc2f9c345585f7",
+      "bytes": 1234
+    },
+    {
+      "path": "reports/community-workflow-v3/visible-input-audit.json",
+      "source_sha256": "86932747737a1e0f83c6645a26b80da1cf0805991cdcf9c05017ac0d0c6277e5",
+      "sha256": "86932747737a1e0f83c6645a26b80da1cf0805991cdcf9c05017ac0d0c6277e5",
+      "bytes": 2482
+    },
+    {
+      "path": "reports/sql-semantics-v3/generation-audit.json",
+      "source_sha256": "2d359ee23dd3b8f712008f56a95be483de14d23e06879807883a91dd06691d62",
+      "sha256": "2d359ee23dd3b8f712008f56a95be483de14d23e06879807883a91dd06691d62",
+      "bytes": 1738
+    },
+    {
+      "path": "reports/sql-semantics-v3/independent-replay-audit.json",
+      "source_sha256": "3406f8a946b1d4177730b7aea24a0dfb1e550759aa8be10ca2818ad3196e3340",
+      "sha256": "3406f8a946b1d4177730b7aea24a0dfb1e550759aa8be10ca2818ad3196e3340",
+      "bytes": 1673
+    },
+    {
+      "path": "reports/sql-semantics-v3/independent_audit.py",
+      "source_sha256": "5fe2e96ddd84b27ee43f40ce743f035e7e04fcc994b57b3fcbfd659f53ee8483",
+      "sha256": "5fe2e96ddd84b27ee43f40ce743f035e7e04fcc994b57b3fcbfd659f53ee8483",
+      "bytes": 12904
+    },
+    {
+      "path": "reports/sql-semantics-v3/manifest.json",
+      "source_sha256": "26aa4e0aab6d30c3bb7f77eda0e36e56c8aaaaa8f04ab9aae5a3ff39022b1f8f",
+      "sha256": "26aa4e0aab6d30c3bb7f77eda0e36e56c8aaaaa8f04ab9aae5a3ff39022b1f8f",
+      "bytes": 5449
+    },
+    {
+      "path": "scripts/evaluate_community_pair.py",
+      "source_sha256": "3895d23ef44657bcca8dc39e2c82487a286b291d5e2c271da5374a0ce654d2cc",
+      "sha256": "3895d23ef44657bcca8dc39e2c82487a286b291d5e2c271da5374a0ce654d2cc",
+      "bytes": 25569
+    },
+    {
+      "path": "tests/test_community_pair.py",
+      "source_sha256": "4034b3ee465c892ab8da88627096f21634399850c60960a73f2e7a7a4a91faa2",
+      "sha256": "4034b3ee465c892ab8da88627096f21634399850c60960a73f2e7a7a4a91faa2",
+      "bytes": 18396
+    },
+    {
+      "path": "tests/test_community_routing_v3.py",
+      "source_sha256": "46547b7c484e61d2ac6012c5e663558e9e259871d6814b5b8e053c9403a1557e",
+      "sha256": "46547b7c484e61d2ac6012c5e663558e9e259871d6814b5b8e053c9403a1557e",
+      "bytes": 8793
+    },
+    {
+      "path": "tests/test_community_workflow_v3.py",
+      "source_sha256": "f9997f8fb2c851fe2ca0936143b38f15a1cb05613583859e40d6129c4a79ffb2",
+      "sha256": "f9997f8fb2c851fe2ca0936143b38f15a1cb05613583859e40d6129c4a79ffb2",
+      "bytes": 13071
+    },
+    {
+      "path": "tests/test_sql_semantics_v3.py",
+      "source_sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
+      "sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
+      "bytes": 11729
     }
   ],
   "excluded_development_files": [
@@ -8967,7 +9184,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "bae5ec7502226d50aeff0cc3e559715095bcad89",
+  "current_source_commit": "8f93bb5d4ee980b3c722664b110ab12c0af8a1f3",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -9536,6 +9753,82 @@
         "story_offline_external_requests": 0,
         "tokenizer_rows": 328672,
         "max_tokens": 1756
+      }
+    },
+    {
+      "id": "community-routing-sql-workflow-v3-20260921",
+      "source_commit": "8f93bb5d4ee980b3c722664b110ab12c0af8a1f3",
+      "created_at": "2026-09-21T07:21:47.807553+00:00",
+      "description": "Publish natural-intent routing, original SQL business semantics and approval/CMS controls with independent data audits, a frozen 96,849-row training recipe and a 1,280-row/840-group held-out paired evaluator. Document verified v2 optimizer updates. V3 data are staged; its queue has not launched and no new model quality result is claimed.",
+      "paths": [
+        "README.md",
+        "docs/community-hard-training-v3.md",
+        "docs/community-routing-v3.md",
+        "docs/community-workflow-v3.md",
+        "docs/internal-evaluation.md",
+        "docs/sql-semantics-v3.md",
+        "jev/community_routing_v3.py",
+        "jev/community_workflow_v3.py",
+        "jev/sql_semantics_v3.py",
+        "release/project-story/index.html",
+        "reports/community-diversity-v3/audit_integration.py",
+        "reports/community-diversity-v3/final-overlap-screen.json",
+        "reports/community-diversity-v3/focus-panel-manifest.json",
+        "reports/community-diversity-v3/integration-audit.json",
+        "reports/community-diversity-v3/training-mixture-manifest.json",
+        "reports/community-diversity-v3/training-plan.json",
+        "reports/community-diversity-v3/validation.json",
+        "reports/community-routing-v3/cpu-tests.txt",
+        "reports/community-routing-v3/data-manifest.json",
+        "reports/community-routing-v3/full-catalog-eval-only.json",
+        "reports/community-routing-v3/independent_audit.py",
+        "reports/community-routing-v3/integrity-audit.json",
+        "reports/community-routing-v3/source-manifest.json",
+        "reports/community-workflow-v3/README.md",
+        "reports/community-workflow-v3/audit_visible_records.py",
+        "reports/community-workflow-v3/independent-audit.json",
+        "reports/community-workflow-v3/manifest.json",
+        "reports/community-workflow-v3/validation.json",
+        "reports/community-workflow-v3/visible-input-audit.json",
+        "reports/sql-semantics-v3/generation-audit.json",
+        "reports/sql-semantics-v3/independent-replay-audit.json",
+        "reports/sql-semantics-v3/independent_audit.py",
+        "reports/sql-semantics-v3/manifest.json",
+        "scripts/evaluate_community_pair.py",
+        "site/index.html",
+        "site/story/index.html",
+        "tests/test_community_pair.py",
+        "tests/test_community_routing_v3.py",
+        "tests/test_community_workflow_v3.py",
+        "tests/test_sql_semantics_v3.py"
+      ],
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "raw_training_data_included": false,
+      "private_operational_files_included": false,
+      "social_posts_published": false,
+      "verification": {
+        "tests": 52,
+        "skipped": 0,
+        "exit_code": 0,
+        "test_log_sha256": "5a000eba24d0a4b06c0c62192ea1c3d2ab1f766a23d3d34df61f6da673ec17ad",
+        "exact_source_files": 39,
+        "local_markdown_links_verified": 68,
+        "prior_payloads_checked": 1251,
+        "prior_json_files_unchanged": 654,
+        "prior_media_files_unchanged": 89,
+        "responsive_widths_checked": [
+          1440,
+          900,
+          390,
+          320
+        ],
+        "javascript_errors": 0,
+        "http_errors": 0,
+        "external_requests": 0,
+        "story_overflow": false,
+        "main_320px_overflow": "Pre-existing 16px header overflow reproduced identically with baseline and updated HTML; no new overflow introduced.",
+        "browser_qa_sha256": "c05c53f9c5313a96b6f8c1c20cbedbc9c82b34db54f65b57c4515bc4992d6040"
       }
     }
   ]

@@ -15,8 +15,10 @@ at the links above. The 2B/9B artifacts are LoRA adapters plus a trained scalar 
 head and calibration temperature. They require the pinned upstream Qwen
 weights and the Open-Jev loader; they are not merged base models or ordinary
 text-generation checkpoints. The dedicated public JevBench evaluation is
-complete. A new 27B training iteration with more diverse training data is
-now running initialization evaluation on four H100 GPUs; new optimizer updates and final checkpoint evaluation remain pending.
+complete. A new 27B training iteration with more diverse training data
+is training on four H100 GPUs, with optimizer updates verified at step 107
+on September 21, 2026 at 07:14 UTC. Final checkpoint evaluation remains pending;
+finite training loss does not establish a quality improvement.
 
 Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
 not reproduce proprietary RLCD, private weights or training data, and does not
@@ -34,6 +36,16 @@ probability validation and timing diagnostics, with candidate-order and
 hardware/network limitations. See the [dedicated website table](https://zefan-cai.github.io/open-jev/#jevbench).
 
 **Broader data iteration:** [new community cases](docs/community-research-broadening-20260921.md), [the frozen 148,639-row training mixture](docs/community-hard-training-v2.md), and the [Chinese project story](https://zefan-cai.github.io/open-jev/story/) document the sources, construction, controls and limitations. New model gains have not been measured.
+
+**V3 data prepared:** [natural intent routing](docs/community-routing-v3.md),
+[executable SQL](docs/sql-semantics-v3.md) and [approval/CMS controls](docs/community-workflow-v3.md)
+add 129,288 decision rows, including 74,921 training rows. The frozen next-stage
+mixture combines those training rows with 21,928 earlier replay rows for 96,849
+training rows. The data are staged; the next training queue has not launched.
+The [training recipe](docs/community-hard-training-v3.md) and
+[internal evaluation guide](docs/internal-evaluation.md) explain held-out splits,
+the fixed 1,280-row / 840-group comparison panel and equal-group reporting.
+These are preparation and audit results; the released-model scores below are unchanged.
 
 ## Inference latency
 

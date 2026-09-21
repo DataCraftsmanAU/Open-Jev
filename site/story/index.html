@@ -190,13 +190,14 @@
           <p class="small" style="margin-top:20px"><strong>下一轮线索还在扩充：</strong>已核验的社区方向还包括 skills / model routing、SQL 审计、CMS 多标签分类，以及是否需要审批的判断。我们正在继续整理这些用例与来源，准备相应的数据和留出评测；它们尚不代表已训练能力，也没有新增模型成绩。</p>
 
           <!-- ROOT_UPDATE_TRAINING_STATUS_START: update this block when live status changes. -->
-          <section class="training-box" id="training-status" data-status="initializing" data-planned-steps="37160" aria-labelledby="training-status-title">
-            <div class="training-header"><div><h3 id="training-status-title">新 27B 训练阶段</h3><p class="small" id="training-status-detail" style="margin:0">数据与配方已冻结，已在 N1-1 前四张 H100 启动作业，当前执行初始化权重的留出集评测；尚未记录新的 optimizer step，也没有新模型改进结果。</p></div><span class="training-state"><i class="status-dot" id="training-status-dot" aria-hidden="true"></i><span id="training-status-label">初始化评测</span></span></div>
+          <section class="training-box" id="training-status" data-status="training" data-planned-steps="37160" aria-labelledby="training-status-title">
+            <div class="training-header"><div><h3 id="training-status-title">新 27B 训练阶段</h3><p class="small" id="training-status-detail" style="margin:0">已在 N1-1 前四张 H100 开始参数更新；2026-09-21 07:14 UTC 核验到第 107 步，loss 与梯度均为有限值。训练过程正常不代表效果提升，最终评测尚未完成。</p></div><span class="training-state"><i class="status-dot" id="training-status-dot" aria-hidden="true"></i><span id="training-status-label">训练中</span></span></div>
             <dl class="training-config"><div><dt>初始化</dt><dd>旧阶段第 26,500 步权重</dd></div><div><dt>训练数据</dt><dd>148,639 行</dd></div><div><dt>计划步数</dt><dd>37,160 steps</dd></div><div><dt>训练资源</dt><dd>4 × H100 · GPU 0–3</dd></div></dl>
             <p class="training-next" id="training-status-next">从旧 LoRA / head 权重初始化，新建 optimizer、随机流与数据游标。完成后依次校准、重载验证，再使用同一套 231 道公开 JevBench 任务评估最终 checkpoint。</p>
           </section>
           <!-- ROOT_UPDATE_TRAINING_STATUS_END -->
           <p class="table-note">JevBench 与 JF100 保持评测用途，没有作为本轮生成器的素材。词法重叠检查未发现匹配，但不能排除语义改写或基座预训练接触。未来的新 27B 与发布版 9B 比较还同时改变了模型规模和早期训练经历，不能单独归因于这一批新数据。</p>
+          <p class="table-note">下一版社区数据已冻结：真实意图路由、可执行 SQL、审批与 CMS 共 129,288 条新决策，其中 74,921 条用于训练；加上 21,928 条旧任务回放，训练集为 96,849 条。另设 1,280 条专项 test / OOD 评测，含 840 个原始分组，与训练、校准和验证集隔离。相同合成规则下的保留集仍可能偏乐观，需结合外部 JevBench 判断。<a href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/internal-evaluation.md">内部评测方法</a></p>
         </div>
       </section>
 
