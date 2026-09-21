@@ -28,6 +28,13 @@ BASE = "http://127.0.0.1:8791"
 ENDPOINT = BASE + "/v1/systemone"
 METHOD = "lora_decision_head"
 MEASUREMENTS = ("demo_requests", "workflows", "frontier_100", "games")
+PROVIDER_SUITES = (
+    ("coverage", "provider-comparison-v1", 189, 146, "f03b181d6470732dea6818df75c18ee80cb9401281bfe4fad410ed0829bac727"),
+    ("jf100", "provider-comparison-jf100-v1", 300, 300, "03b5c41c198e04614a0add36c717c326570ed7b2982be0515fb7dca65efbb2ca"),
+    ("ir-pilot", "provider-ir-pilot-v1", 132, 174, "519da8ff5432093fa88d79aaa9a101529f66692c6393a8e8f2e8996eeab279f3"),
+    ("fizzbuzz", "provider-fizzbuzz-control-v1", 100, 300, "92809c48f5cfd0d8db9f764233be38f9902c15036cbf5be57f050cdbc5c458a0"),
+    ("mailroom", "provider-mailroom-probe-v1", 87, 921, "25d00d67e4e31ec791d3ae1c67f69bbd15a0c778ca7c8746b7a8838506b63df3"),
+)
 
 
 def now():
@@ -196,7 +203,57 @@ def preflight_control_inputs(args):
     return evidence
 
 
-def measurement_commands(args, output, model, checkpoint, *, identity=None):
+def preflight_provider_inputs(args):
+    """Bind the original five suites without reading model answers or using a GPU."""
+    if "provider_quality" not in args.measurements:
+        return {}
+    from jev.api import compile_request
+    from scripts.benchmark_inference_latency import digest
+
+    evidence = {}
+    for name, directory, request_count, gold_count, manifest_sha256 in PROVIDER_SUITES:
+        root = args.provider_data_root / directory
+        manifest_raw = (root / "manifest.json").read_bytes()
+        if hashlib.sha256(manifest_raw).hexdigest() != manifest_sha256:
+            raise ValueError(f"{name}: frozen provider manifest differs")
+        manifest = json.loads(manifest_raw)
+        files, documents = {}, {}
+        for filename in ("requests.json", "gold.json"):
+            raw = (root / filename).read_bytes()
+            expected = manifest["files"][filename]
+            expected = expected["sha256"] if isinstance(expected, dict) else expected
+            actual = hashlib.sha256(raw).hexdigest()
+            if actual != expected:
+                raise ValueError(f"{name}: frozen {filename} differs")
+            files[filename] = {"sha256": actual, "bytes": len(raw)}
+            documents[filename] = json.loads(raw)
+        workloads, golds = documents["requests.json"]["workloads"], documents["gold.json"]["rows"]
+        if len(workloads) != request_count or len(golds) != gold_count:
+            raise ValueError(f"{name}: frozen provider counts differ")
+        by_id, questions = {}, {}
+        for workload in workloads:
+            identifier, request = workload["id"], workload["request"]
+            if identifier in by_id or workload["request_sha256"] != digest(request):
+                raise ValueError(f"{name}: duplicate request or changed request hash")
+            by_id[identifier] = workload
+            questions[identifier] = {row["id"]: row for row in compile_request(request["state"], request["questions"])}
+        identities = set()
+        for gold in golds:
+            identifier, question = gold["request_id"], gold.get("question_id", "decision")
+            if ((identifier, question) in identities or identifier not in by_id or
+                    gold["request_sha256"] != by_id[identifier]["request_sha256"] or
+                    question not in questions[identifier]):
+                raise ValueError(f"{name}: duplicate or unbound gold question")
+            identities.add((identifier, question))
+            compiled = questions[identifier][question]
+            if gold["kind"] != compiled["kind"] or gold["answer_keys"] != compiled["answer_keys"]:
+                raise ValueError(f"{name}: gold kind or candidate order differs")
+        evidence[name] = {"directory": str(root), "manifest_sha256": manifest_sha256,
+                          "requests": request_count, "labelled_decisions": gold_count, "files": files}
+    return evidence
+
+
+def measurement_commands(args, output, model, checkpoint, *, identity=None, provider_inputs=None):
     common = ["--endpoint", ENDPOINT, "--expected-model", model, "--expected-method", METHOD]
     games = [sys.executable, "-m", "scripts.evaluate_game_service", *common,
              "--seeds", "10001,10002,10003", "--max-steps", "40", "--output-dir", str(output / "games")]
@@ -233,7 +290,79 @@ def measurement_commands(args, output, model, checkpoint, *, identity=None):
         if task == "contact":
             command.extend(["--corpora", "email", "phone"])
         commands.append((task, command))
-    return [(phase, command) for phase, command in commands if phase in args.measurements]
+    if "provider_quality" in args.measurements:
+        for name, _, _, _, _ in PROVIDER_SUITES:
+            frozen = provider_inputs[name]
+            commands.append(("provider_quality_" + name, [sys.executable, "-m", "scripts.evaluate_openjev_provider", *common,
+                             "--requests", str(Path(frozen["directory"]) / "requests.json"),
+                             "--input-sha256", frozen["files"]["requests.json"]["sha256"],
+                             "--expected-base-revision", identity["base_revision"],
+                             "--expected-checkpoint-sha256", identity["checkpoint_sha256"],
+                             "--expected-temperature", str(identity["temperature"]),
+                             "--expected-code-commit", identity["code_commit"],
+                             "--expected-max-length", str(identity["max_length"]),
+                             "--output", str(output / "provider_quality" / name)]))
+    return [(phase, command) for phase, command in commands
+            if phase in args.measurements or ("provider_quality" in args.measurements and phase.startswith("provider_quality_"))]
+
+
+def summarize_provider_output(output, frozen, expected):
+    """Score retained responses locally; the inference client never receives gold."""
+    from scripts import evaluate_openjev_provider as client
+    from scripts.summarize_provider_quality import summarize
+
+    gold_raw = (Path(frozen["directory"]) / "gold.json").read_bytes()
+    if hashlib.sha256(gold_raw).hexdigest() != frozen["files"]["gold.json"]["sha256"]:
+        raise ValueError("Frozen provider gold changed after preflight")
+    workloads, _ = client.load_workloads(output / "requests.json", frozen["files"]["requests.json"]["sha256"])
+    report_raw = (output / "report.json").read_bytes()
+    report = json.loads(report_raw)
+    samples_raw = (output / "samples.jsonl").read_bytes()
+    samples = [json.loads(line) for line in samples_raw.splitlines() if line.strip()]
+    attempts_raw = (output / "attempts.jsonl").read_bytes()
+    attempts = [json.loads(line) for line in attempts_raw.splitlines() if line.strip()]
+    if (len(attempts) != len(samples) or report["started_requests"] != len(samples) or report["in_flight_requests"] != 0 or
+            any(attempt.get("event") != "attempt_started" or
+                attempt.get("request_id") != sample["request_id"] or
+                attempt.get("request_sha256") != sample["request_sha256"]
+                for attempt, sample in zip(attempts, samples))):
+        raise ValueError("Provider dispatch journal has an unmatched or changed attempt; do not score or retry")
+    if (report["expected_identity"] != expected or report["input_sha256"] != frozen["files"]["requests.json"]["sha256"] or
+            report["planned_requests"] != len(workloads) or report["attempted_requests"] != len(samples) or
+            report["pending_requests"] != len(workloads) - len(samples) or len(samples) > len(workloads) or
+            report["source_sha256"] != hashlib.sha256(Path(client.__file__).read_bytes()).hexdigest() or
+            any(report[key] != value for key, value in (("concurrency", 1), ("warmups", 0), ("retries", 0), ("prefix_cache", False)))):
+        raise ValueError("Provider collection identity, counts or protocol differ")
+    for workload, sample in zip(workloads, samples):
+        if (sample["request_id"] != workload["id"] or sample["request_sha256"] != workload["request_sha256"] or
+                sample["mode"] != expected["model"] or sample["phase"] != "measured" or sample["repetition"] != 0 or
+                type(sample["success"]) is not bool):
+            raise ValueError("Provider sample identity or order differs")
+        if sample["success"]:
+            if sample["http_status"] != 200 or json.loads(sample["raw_response"]) != sample["response"]:
+                raise ValueError("Provider raw response differs")
+            client.validate_response(workload["request"], sample["response"], expected)
+    successful = sum(sample["success"] for sample in samples)
+    if report["successful_requests"] != successful or report["failed_requests"] != len(samples) - successful:
+        raise ValueError("Provider success counts differ")
+    complete = report["status"] in ("complete", "complete_with_request_failures")
+    if complete and (len(samples) != len(workloads) or any(sample.get("fatal") for sample in samples)):
+        raise ValueError("Provider completion has missing or fatal requests")
+    if complete and (report["status"] == "complete") != (successful == len(samples)):
+        raise ValueError("Provider completion status differs from request failures")
+    quality = summarize(json.loads(gold_raw)["rows"], samples)
+    quality.update(provider=expected["model"], expected_identity=expected, collection_status=report["status"],
+                   gold_sha256=hashlib.sha256(gold_raw).hexdigest(), samples_sha256=hashlib.sha256(samples_raw).hexdigest(),
+                   journal_sha256=hashlib.sha256(attempts_raw).hexdigest(),
+                   collection_report_sha256=hashlib.sha256(report_raw).hexdigest(),
+                   input_sha256=report["input_sha256"])
+    path = output / "quality.json"
+    raw = (json.dumps(quality, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode()
+    with path.open("xb") as stream:
+        stream.write(raw)
+    return {"collection_status": report["status"], "quality_path": str(path),
+            "quality_sha256": hashlib.sha256(raw).hexdigest(), "quality_status": quality["status"],
+            "overall": quality["overall"], "pending_count": quality["pending_count"]}
 
 
 def audit_demo_identities(path, expected):
@@ -289,9 +418,11 @@ def main(argv=None):
     parser.add_argument("--drone-cases", type=Path, default=Path("data/drone-control-v1/cases.jsonl"))
     parser.add_argument("--control-data-root", type=Path, default=ROOT / "data",
                         help="Root of frozen email/phone/amount corpora; required only for selected controls")
+    parser.add_argument("--provider-data-root", type=Path, default=ROOT / "data",
+                        help="Root of the five original frozen provider suites; used only by provider_quality")
     parser.add_argument("--output-root", type=Path, required=True)
-    parser.add_argument("--measurements", nargs="+", choices=(*MEASUREMENTS, "browser", "drone", "contact", "amount"), default=list(MEASUREMENTS),
-                        help="Measurements in standard order; browser/drone snapshots and full test/OOD contact/amount controls are opt-in")
+    parser.add_argument("--measurements", nargs="+", choices=(*MEASUREMENTS, "browser", "drone", "contact", "amount", "provider_quality"), default=list(MEASUREMENTS),
+                        help="Measurements in standard order; browser/drone, contact/amount and frozen provider_quality suites are opt-in")
     parser.add_argument("--include-doom", action="store_true")
     parser.add_argument("--doom-decision-mode", choices=("combined-v1", "typed-v1"), default="combined-v1",
                         help="Doom only: legacy combined action or the three training-aligned typed questions")
@@ -320,7 +451,7 @@ def main(argv=None):
         parser.error("models must be distinct")
     if "{tag}" not in args.checkpoint_template:
         parser.error("checkpoint-template must contain {tag}")
-    for key in ("checkpoint_root", "frontier_source", "workflow_cases", "browser_cases", "drone_cases", "control_data_root", "output_root", "latency_request"):
+    for key in ("checkpoint_root", "frontier_source", "workflow_cases", "browser_cases", "drone_cases", "control_data_root", "provider_data_root", "output_root", "latency_request"):
         setattr(args, key, getattr(args, key).resolve())
     if "workflows" in args.measurements and not args.workflow_cases.is_file():
         parser.error("workflow cases must exist when workflows are selected")
@@ -338,6 +469,10 @@ def main(argv=None):
         control_inputs = preflight_control_inputs(args)
     except (ImportError, OSError, RuntimeError, ValueError) as error:
         parser.error(f"control preflight failed: {error}")
+    try:
+        provider_inputs = preflight_provider_inputs(args)
+    except (ImportError, OSError, KeyError, TypeError, ValueError) as error:
+        parser.error(f"provider preflight failed: {error}")
     commit = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
     args.output_root.mkdir(parents=True, exist_ok=False)
     manifest_path = args.output_root / "manifest.json"
@@ -353,6 +488,8 @@ def main(argv=None):
                 "models": {}, "current_phase": "preflight", "suite_pid": os.getpid()}
     if control_inputs:
         manifest["control_inputs"] = control_inputs
+    if provider_inputs:
+        manifest["provider_inputs"] = provider_inputs
 
     def save():
         manifest["updated_at_utc"] = now()
@@ -411,7 +548,8 @@ def main(argv=None):
                             raise RuntimeError("own server was not observed on the selected physical GPU")
                         model_report["gpu_loaded"] = allocated
                         model_report["identity_probe"] = probe_identity(server, expected)
-                        for phase, command in measurement_commands(args, output, model, checkpoint, identity=expected):
+                        for phase, command in measurement_commands(args, output, model, checkpoint, identity=expected,
+                                                                   provider_inputs=provider_inputs):
                             manifest["current_phase"] = f"{tag}/{phase}"
                             row = {}
                             model_report["measurements"][phase] = row
@@ -420,6 +558,14 @@ def main(argv=None):
                                             record=row, update=save)
                             if phase == "demo_requests" and (output / "demo_requests.jsonl").exists():
                                 audit_demo_identities(output / "demo_requests.jsonl", expected)
+                            if phase.startswith("provider_quality_"):
+                                name = phase.removeprefix("provider_quality_")
+                                row["quality"] = summarize_provider_output(output / "provider_quality" / name,
+                                                                           provider_inputs[name], expected)
+                                save()
+                                if row["quality"]["collection_status"] not in ("complete", "complete_with_request_failures"):
+                                    # A timed-out handler can still be computing: clean up without another probe/request.
+                                    raise RuntimeError("Provider collection stopped; retained partial quality before server cleanup")
                             save()  # Save semantic/schema failures before checking service availability.
                             probe_identity(server, expected)
                     finally:

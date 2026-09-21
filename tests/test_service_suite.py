@@ -185,6 +185,132 @@ class ServiceSuiteTests(unittest.TestCase):
             spawn.assert_not_called()
             command.assert_not_called()
 
+    def provider_fixture(self, *, duplicate=False, wrong_keys=False):
+        from jev.api import compile_request
+        from scripts.benchmark_inference_latency import digest
+        directory = self.root / "providers" / "fixture"
+        directory.mkdir(parents=True, exist_ok=True)
+        request = {"state": "The lamp is on.", "questions": {
+            "decision": {"type": "noul", "instructions": "Is the lamp on?"}}}
+        compiled = compile_request(request["state"], request["questions"])[0]
+        workload = {"id": "case", "request": request, "request_sha256": digest(request)}
+        gold = {"request_id": "case", "question_id": "decision", "request_sha256": digest(request),
+                "kind": "noul", "answer_keys": ["wrong"] if wrong_keys else compiled["answer_keys"],
+                "target": 1, "source": "fixture", "split": "test", "group_id": "fixture"}
+        workloads, golds = [workload] * (2 if duplicate else 1), [gold]
+        files = {}
+        for filename, document in (("requests.json", {"schema_version": 1, "workloads": workloads}),
+                                   ("gold.json", {"rows": golds})):
+            raw = json.dumps(document).encode()
+            (directory / filename).write_bytes(raw)
+            files[filename] = hashlib.sha256(raw).hexdigest()
+        raw = json.dumps({"files": files}).encode()
+        (directory / "manifest.json").write_bytes(raw)
+        spec = (("coverage", "fixture", len(workloads), 1, hashlib.sha256(raw).hexdigest()),)
+        args = argparse.Namespace(measurements=["provider_quality"], provider_data_root=directory.parent)
+        return args, spec, workload
+
+    def test_provider_preflight_pins_manifests_files_and_gold_alignment(self):
+        self.assertEqual(suite.preflight_provider_inputs(argparse.Namespace(measurements=suite.MEASUREMENTS)), {})
+        args, spec, _ = self.provider_fixture()
+        with patch.object(suite, "PROVIDER_SUITES", spec):
+            evidence = suite.preflight_provider_inputs(args)
+            self.assertEqual(evidence["coverage"]["requests"], 1)
+            self.assertEqual(evidence["coverage"]["labelled_decisions"], 1)
+            path = args.provider_data_root / "fixture" / "gold.json"
+            path.write_bytes(path.read_bytes() + b" ")
+            with self.assertRaisesRegex(ValueError, "frozen gold.json differs"):
+                suite.preflight_provider_inputs(args)
+        for kwargs, message in (({"duplicate": True}, "duplicate request"), ({"wrong_keys": True}, "candidate order")):
+            args, spec, _ = self.provider_fixture(**kwargs)
+            with patch.object(suite, "PROVIDER_SUITES", spec), self.assertRaisesRegex(ValueError, message):
+                suite.preflight_provider_inputs(args)
+
+    def test_provider_preflight_rejection_precedes_output_gpu_and_children(self):
+        args, spec, _ = self.provider_fixture()
+        (args.provider_data_root / "fixture" / "manifest.json").write_text("{}")
+        with patch.object(suite, "PROVIDER_SUITES", spec), \
+                patch.object(suite.socket, "gethostname", return_value="allowed-node"), \
+                patch.object(suite, "gpu_snapshot") as gpu, patch.object(suite, "require_free_gpu") as free, \
+                patch.object(suite.subprocess, "Popen") as spawn, patch.object(suite.subprocess, "check_output") as command, \
+                redirect_stderr(io.StringIO()) as errors, self.assertRaises(SystemExit):
+            suite.main(["--expected-hostname", "allowed-node", "--output-root", str(self.root / "output"),
+                        "--measurements", "provider_quality", "--provider-data-root", str(args.provider_data_root)])
+        self.assertIn("provider preflight failed", errors.getvalue())
+        self.assertFalse((self.root / "output").exists())
+        for call in (gpu, free, spawn, command):
+            call.assert_not_called()
+
+    def test_provider_commands_keep_gold_out_of_inference_and_pin_identity(self):
+        args, spec, _ = self.provider_fixture()
+        args.include_doom, args.workflow_cases, args.frontier_source = False, Path("unused"), Path("unused")
+        identity = suite.checkpoint_identity(self.checkpoint("2b"), "2b", "commit", max_length=16384)
+        with patch.object(suite, "PROVIDER_SUITES", spec):
+            inputs = suite.preflight_provider_inputs(args)
+            commands = suite.measurement_commands(args, Path("output"), suite.MODELS["2b"], Path("checkpoint"),
+                                                  identity=identity, provider_inputs=inputs)
+        self.assertEqual(len(commands), 1)
+        phase, command = commands[0]
+        self.assertEqual(phase, "provider_quality_coverage")
+        self.assertEqual(command[:3], [sys.executable, "-m", "scripts.evaluate_openjev_provider"])
+        for key in ("model", "method", "base_revision", "checkpoint_sha256", "temperature", "code_commit", "max_length"):
+            flag = "--expected-" + key.replace("_", "-")
+            self.assertEqual(command[command.index(flag) + 1], str(identity[key]))
+        self.assertEqual(command[command.index("--input-sha256") + 1], inputs["coverage"]["files"]["requests.json"]["sha256"])
+        self.assertFalse(any("gold" in value for value in command))
+        self.assertNotIn("--warmup", command)
+
+    def test_provider_summary_rechecks_raw_identity_and_retains_partial_denominator(self):
+        from scripts import evaluate_openjev_provider as client
+        args, spec, workload = self.provider_fixture()
+        with patch.object(suite, "PROVIDER_SUITES", spec):
+            frozen = suite.preflight_provider_inputs(args)["coverage"]
+        expected = suite.checkpoint_identity(self.checkpoint("2b"), "2b", "commit", max_length=16384)
+        response = {"model": expected["model"], "metadata": {**{k: v for k, v in expected.items() if k != "model"},
+                    "prefix_cache": {"enabled": False}}, "usage": {"input_tokens": 10},
+                    "answers": {"decision": {"type": "noul", "noul": .9}}}
+        sample = {"request_id": "case", "request_sha256": workload["request_sha256"], "phase": "measured",
+                  "repetition": 0, "mode": expected["model"], "success": True, "http_status": 200,
+                  "raw_response": json.dumps(response), "response": response}
+        report = {"status": "complete", "expected_identity": expected,
+                  "input_sha256": frozen["files"]["requests.json"]["sha256"], "planned_requests": 1,
+                  "attempted_requests": 1, "successful_requests": 1, "failed_requests": 0, "pending_requests": 0,
+                  "started_requests": 1, "in_flight_requests": 0,
+                  "source_sha256": hashlib.sha256(Path(client.__file__).read_bytes()).hexdigest(),
+                  "concurrency": 1, "warmups": 0, "retries": 0, "prefix_cache": False}
+        output = self.root / "collected"
+        output.mkdir()
+        (output / "requests.json").write_bytes((Path(frozen["directory"]) / "requests.json").read_bytes())
+        (output / "report.json").write_text(json.dumps(report))
+        (output / "samples.jsonl").write_text(json.dumps(sample) + "\n")
+        attempt = {"event": "attempt_started", "request_id": "case", "request_sha256": workload["request_sha256"],
+                   "started_at": "2026-09-21T00:00:00+00:00"}
+        (output / "attempts.jsonl").write_text(json.dumps(attempt) + "\n")
+        actual = suite.summarize_provider_output(output, frozen, expected)
+        self.assertEqual(actual["overall"]["hard_correct"], 1)
+        self.assertEqual(actual["pending_count"], 0)
+        self.assertEqual(json.loads((output / "quality.json").read_bytes())["journal_sha256"],
+                         hashlib.sha256((output / "attempts.jsonl").read_bytes()).hexdigest())
+        with self.assertRaises(FileExistsError):
+            suite.summarize_provider_output(output, frozen, expected)
+        (output / "quality.json").unlink()
+        sample["response"]["metadata"]["temperature"] = 2
+        (output / "samples.jsonl").write_text(json.dumps(sample) + "\n")
+        with self.assertRaisesRegex(ValueError, "raw response differs"):
+            suite.summarize_provider_output(output, frozen, expected)
+        report.update(status="stopped_budget", attempted_requests=0, successful_requests=0, pending_requests=1,
+                      started_requests=0)
+        (output / "report.json").write_text(json.dumps(report))
+        (output / "samples.jsonl").write_bytes(b"")
+        with self.assertRaisesRegex(ValueError, "dispatch journal"):
+            suite.summarize_provider_output(output, frozen, expected)
+        self.assertFalse((output / "quality.json").exists())
+        (output / "attempts.jsonl").write_bytes(b"")
+        partial = suite.summarize_provider_output(output, frozen, expected)
+        self.assertEqual(partial["quality_status"], "partial")
+        self.assertEqual(partial["pending_count"], 1)
+        self.assertEqual(partial["overall"]["evaluated"], 0)
+
     def test_cli_guard_before_gpu_and_children(self):
         for extra in (["--expected-hostname", "different-node"],
                       ["--expected-hostname", "unallocated-node", "--gpu", "0"],
@@ -283,7 +409,7 @@ class ServiceSuiteTests(unittest.TestCase):
         self.assertEqual(path.read_text(), 'keep')
 
     def run_main_mocked(self, *, mismatch=False, capacity=None, measurements=None, include_latency=True, models=None,
-                        control_data_root=None, failure_phases=('workflows',)):
+                        control_data_root=None, provider_data_root=None, failure_phases=('workflows',), expected_error=None):
         for tag in suite.MODELS if models is None else models:
             self.checkpoint(tag)
         frontier = self.root / 'frontier'
@@ -334,6 +460,8 @@ class ServiceSuiteTests(unittest.TestCase):
         def probe(server, identity):
             self.assertIn(server, active)
             probe_count[0] += 1
+            if expected_error and phases:
+                raise AssertionError('stopped provider collection must not probe the server again')
             if mismatch and probe_count[0] == 2:
                 raise RuntimeError('test identity mismatch')
             expected.clear()
@@ -366,6 +494,8 @@ class ServiceSuiteTests(unittest.TestCase):
             args.extend(["--models", *models])
         if control_data_root is not None:
             args.extend(["--control-data-root", str(control_data_root)])
+        if provider_data_root is not None:
+            args.extend(["--provider-data-root", str(provider_data_root)])
         with ExitStack() as stack:
             for name, value in [('require_free_gpu', free), ('gpu_snapshot', loaded), ('require_free_port', Mock()),
                                 ('wait_ready', Mock(return_value={'status': 'ready'})), ('probe_identity', probe), ('run_measurement', measure)]:
@@ -378,12 +508,12 @@ class ServiceSuiteTests(unittest.TestCase):
                                             side_effect=lambda *args, **kwargs: (self.root / "suite.lock").open("a+")))
             stack.enter_context(patch.object(suite.signal, 'signal'))
             stack.enter_context(redirect_stdout(io.StringIO()))
-            if mismatch:
-                with self.assertRaisesRegex(RuntimeError, 'test identity mismatch'):
+            if mismatch or expected_error:
+                with self.assertRaisesRegex(RuntimeError, expected_error or 'test identity mismatch'):
                     suite.main(args)
             else:
-                expected_failure = bool(set(suite.MEASUREMENTS if measurements is None else measurements) & set(failure_phases))
-                self.assertEqual(suite.main(args), int(expected_failure))
+                result = suite.main(args)
+                self.assertEqual(result, int(bool(set(phases) & set(failure_phases))))
             manifest = json.loads((output / 'manifest.json').read_text())
             count = len(servers)
             with self.assertRaises(FileExistsError):
@@ -404,6 +534,43 @@ class ServiceSuiteTests(unittest.TestCase):
         self.assertEqual(manifest['child_cuda_visible_devices'], 'GPU-physical-three')
         self.assertEqual(set(manifest['models']), {'2b', '9b', '27b'})
         self.assertNotIn('control_inputs', manifest)
+        self.assertNotIn('provider_inputs', manifest)
+
+    def test_provider_quality_runs_all_five_suites_before_releasing_each_model(self):
+        inputs = {name: {"directory": str(self.root / directory), "files": {"requests.json": {"sha256": "a" * 64}}}
+                  for name, directory, _, _, _ in suite.PROVIDER_SUITES}
+        with patch.object(suite, 'preflight_provider_inputs', return_value=inputs), \
+                patch.object(suite, 'summarize_provider_output', return_value={"collection_status": "complete_with_request_failures"}) as summaries:
+            manifest, servers, measurements = self.run_main_mocked(
+                measurements=['provider_quality'], models=['2b', '9b'], include_latency=False, capacity=(16384, 1),
+                provider_data_root=self.root / 'providers', failure_phases=('provider_quality_jf100',))
+        expected = ['provider_quality_' + name for name, _, _, _, _ in suite.PROVIDER_SUITES]
+        self.assertEqual(measurements, expected * 2)
+        self.assertEqual(len(servers), 2)
+        self.assertEqual(summaries.call_count, 10)
+        self.assertEqual(manifest['status'], 'complete_with_measurement_failures')
+        self.assertEqual(manifest['provider_inputs'], inputs)
+        for report in manifest['models'].values():
+            self.assertEqual(list(report['measurements']), expected)
+            self.assertFalse(report['gpu_after_shutdown']['compute_processes'])
+        for server in servers:
+            self.assertNotIn('--prefix-cache', server.command)
+
+    def test_fatal_provider_collection_retains_summary_then_cleans_without_probe(self):
+        inputs = {name: {"directory": str(self.root / directory), "files": {"requests.json": {"sha256": "a" * 64}}}
+                  for name, directory, _, _, _ in suite.PROVIDER_SUITES}
+        partial = {"collection_status": "stopped_fatal", "quality_status": "partial", "pending_count": 145}
+        with patch.object(suite, 'preflight_provider_inputs', return_value=inputs), \
+                patch.object(suite, 'summarize_provider_output', return_value=partial) as summaries:
+            manifest, servers, measurements = self.run_main_mocked(
+                measurements=['provider_quality'], models=['2b', '9b'], include_latency=False,
+                expected_error='Provider collection stopped')
+        self.assertEqual(measurements, ['provider_quality_coverage'])
+        self.assertEqual(summaries.call_count, 1)
+        self.assertEqual(len(servers), 1)
+        self.assertEqual(manifest['status'], 'failed')
+        self.assertEqual(manifest['models']['2b']['measurements']['provider_quality_coverage']['quality'], partial)
+        self.assertEqual(manifest['models']['2b']['server_exit_code'], -15)
 
     def test_identity_mismatch_stops_and_cleans_server(self):
         manifest, servers, measurements = self.run_main_mocked(mismatch=True)

@@ -283,6 +283,16 @@
       "bytes": 18844
     },
     {
+      "path": "docs/openjev-provider-quality-followup.md",
+      "sha256": "43efa9937a8bfa4ad251c9f026cb48b80ffdd7e9c20c4cf91eb9be054c940bc2",
+      "bytes": 9220,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "43efa9937a8bfa4ad251c9f026cb48b80ffdd7e9c20c4cf91eb9be054c940bc2",
+      "changes": [
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+      ]
+    },
+    {
       "path": "docs/painting.md",
       "source_sha256": "3164470c0a145dd915a3099833e8edf55cb07a22fcf9210c39abb737fe9c0285",
       "sha256": "3164470c0a145dd915a3099833e8edf55cb07a22fcf9210c39abb737fe9c0285",
@@ -322,12 +332,13 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "e83c605b22a19ecb500e235104466b0209b2d347c5490589e27e2a52e661f9c5",
-      "bytes": 14703,
-      "source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
-      "source_sha256": "e83c605b22a19ecb500e235104466b0209b2d347c5490589e27e2a52e661f9c5",
+      "sha256": "1df973988d06d691d9eeeecdd44622a0704f2cab67f09aa0691e6f9892a8ecbe",
+      "bytes": 15042,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "1df973988d06d691d9eeeecdd44622a0704f2cab67f09aa0691e6f9892a8ecbe",
       "changes": [
-        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved."
+        "Completed independently audited Astra TREC results, usage estimate and publication; prior provider metrics preserved.",
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
       ]
     },
     {
@@ -6080,6 +6091,36 @@
       "bytes": 1452
     },
     {
+      "path": "reports/runtime-checks/openjev-provider-quality-cpu.json",
+      "sha256": "7a924683ec5b13fb43813cc37cf27b0104b5c4820a325df8334b18fb7a8e1a8a",
+      "bytes": 4991,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "7a924683ec5b13fb43813cc37cf27b0104b5c4820a325df8334b18fb7a8e1a8a",
+      "changes": [
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+      ]
+    },
+    {
+      "path": "reports/runtime-checks/openjev-provider-quality-deployment.json",
+      "sha256": "10dd371b9418b920880d8b8715e6e3734a3ed90a65e8248eebb2f7ab4a002621",
+      "bytes": 3938,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "10dd371b9418b920880d8b8715e6e3734a3ed90a65e8248eebb2f7ab4a002621",
+      "changes": [
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+      ]
+    },
+    {
+      "path": "reports/runtime-checks/openjev-provider-quality-tokenizer.json",
+      "sha256": "9ea3ae3757b532a18ab0fc86c052e340472192aa5a709f79e8ff88cd6a5bf694",
+      "bytes": 6256,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "9ea3ae3757b532a18ab0fc86c052e340472192aa5a709f79e8ff88cd6a5bf694",
+      "changes": [
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+      ]
+    },
+    {
       "path": "reports/runtime-checks/painting-release-rebuild-20260920.json",
       "source_sha256": "8b7a3e27ee94d256becb04b772ac5acb790f2cf434bf4d9bfc36f8091cce3567",
       "sha256": "8b7a3e27ee94d256becb04b772ac5acb790f2cf434bf4d9bfc36f8091cce3567",
@@ -6662,6 +6703,16 @@
       "bytes": 15453
     },
     {
+      "path": "scripts/evaluate_openjev_provider.py",
+      "sha256": "dd392e97aad48451f0f707b5335e42c3cdd956dd778adee1e15d3a9a9d193f0c",
+      "bytes": 12996,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "dd392e97aad48451f0f707b5335e42c3cdd956dd778adee1e15d3a9a9d193f0c",
+      "changes": [
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+      ]
+    },
+    {
       "path": "scripts/evaluate_trec_provider.py",
       "sha256": "b618ea6f09ef1d964e45a4471f48dfa72537461da48e686f2984941400db669d",
       "bytes": 22073,
@@ -6767,12 +6818,13 @@
     },
     {
       "path": "scripts/run_service_suite.py",
-      "source_sha256": "f234faeda325409ae727895a07beba0006b78f38c6a3e3cfc5501f51ab54f348",
-      "sha256": "f234faeda325409ae727895a07beba0006b78f38c6a3e3cfc5501f51ab54f348",
-      "bytes": 26054,
-      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "3ad2edd5d3539edeab746f373ec8c07dc3a959201dd3efe41b4ef1e5575b6977",
+      "sha256": "3ad2edd5d3539edeab746f373ec8c07dc3a959201dd3efe41b4ef1e5575b6977",
+      "bytes": 36597,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
       "changes": [
-        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending.",
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
       ]
     },
     {
@@ -7780,6 +7832,16 @@
       ]
     },
     {
+      "path": "tests/test_openjev_provider.py",
+      "sha256": "caf1f8aac915cf966a298b46c6a4d8f4be60c9ad6d1813170a777f9488fc2b4c",
+      "bytes": 15297,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "source_sha256": "caf1f8aac915cf966a298b46c6a4d8f4be60c9ad6d1813170a777f9488fc2b4c",
+      "changes": [
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
+      ]
+    },
+    {
       "path": "tests/test_painting.py",
       "source_sha256": "471d289a6d5e4bc7ed0466bae268282d76b666551d524045ab42ba2496259fe5",
       "sha256": "471d289a6d5e4bc7ed0466bae268282d76b666551d524045ab42ba2496259fe5",
@@ -7847,12 +7909,13 @@
     },
     {
       "path": "tests/test_service_suite.py",
-      "source_sha256": "a77082633febe12dd4254e0ee294b48594b4a7d5db8100472063033d2aa1cc4d",
-      "sha256": "a77082633febe12dd4254e0ee294b48594b4a7d5db8100472063033d2aa1cc4d",
-      "bytes": 34160,
-      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "7be2aaf3a9a07aeaabc764064d29502de646375e734a613796310895e1a29049",
+      "sha256": "7be2aaf3a9a07aeaabc764064d29502de646375e734a613796310895e1a29049",
+      "bytes": 46157,
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
       "changes": [
-        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending.",
+        "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes."
       ]
     },
     {
@@ -8412,7 +8475,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+  "current_source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8752,6 +8815,36 @@
         "release/social/comparison-update-20260921/alt-text.txt",
         "release/social/comparison-update-20260921/publication.json"
       ]
+    },
+    {
+      "id": "openjev-provider-quality-preparation-20260921",
+      "source_commit": "31c5b9be49eb3b22d1007243581a10082e22f214",
+      "deployed_code_commit": "88c8aef9cdb1ced5d557fc1be2a4e3128614588b",
+      "created_at": "2026-09-21T02:49:57.530796+00:00",
+      "description": "Prepare isolated, CPU-validated collection for the five frozen Open-Jev provider suites; no model inference results or metric changes. Existing historical provider reports, website data and social posts are preserved. Raw inputs, request journals, model responses, credentials and operational logs are excluded.",
+      "paths": [
+        "scripts/evaluate_openjev_provider.py",
+        "scripts/run_service_suite.py",
+        "tests/test_openjev_provider.py",
+        "tests/test_service_suite.py",
+        "docs/openjev-provider-quality-followup.md",
+        "reports/runtime-checks/openjev-provider-quality-cpu.json",
+        "reports/runtime-checks/openjev-provider-quality-deployment.json",
+        "reports/runtime-checks/openjev-provider-quality-tokenizer.json",
+        "docs/provider-comparison.md"
+      ],
+      "preparation_only": true,
+      "new_model_quality_results": false,
+      "gpu_inference_started": false,
+      "external_api_requests": 0,
+      "verification": {
+        "command": "python3 -m unittest tests.test_openjev_provider tests.test_service_suite tests.test_provider_quality tests.test_provider_suite -v",
+        "exit_code": 0,
+        "tests": 48,
+        "skipped": 0,
+        "seconds": 3.737,
+        "log_sha256": "ffa5a32cc45bd6e63ac003c3f02446cbe348d71cb1b7ee079eac3caaaf38314a"
+      }
     }
   ]
 }

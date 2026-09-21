@@ -163,8 +163,12 @@ The five earlier small quality suites and their costs above are unchanged.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates
 completed counts from unattempted decisions. New Open-Jev GPU inference remains
-scheduled after the active training allocation is released. These first-pass
-results do not complete the 73,333-row frozen test/OOD registry. A separate
+scheduled after the active training allocation is released. A
+[reviewed five-suite service runner](openjev-provider-quality-followup.md) is now provisioned:
+808 requests and 1,841 labelled decisions per model, with frozen inputs and
+per-response checkpoint identity checks. Its local and N1 CPU tests pass; it has not yet
+produced new model results and must wait for the core and contact/amount queues.
+The existing results do not complete the 73,333-row frozen test/OOD registry. A separate
 additive v2 registry includes the new IR and mailroom corpora: **107,922 held-out
 rows across 25 source identifiers**. Its 209-request selection contains 166
 labelled requests and the same 43 examples; it has not been evaluated.
