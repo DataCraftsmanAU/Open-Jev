@@ -90,10 +90,10 @@ without modifying probabilities. The query-weighted combined values are
 therefore reflects response validity as well as ranking quality; the scalar
 score does not validate Jev's probability vectors.
 
-OpenAI Luna/Astra are in the sequential collection queue. Open-Jev TREC
-inference remains pending until the authorized GPU allocation is available.
-No score is published for these providers yet. Jev API cost is unknown, not
-zero; the collection has no transport errors or retries.
+Luna's completed collection is reported below; Astra is still running.
+Open-Jev TREC inference remains pending until the authorized GPU allocation
+is available. Jev API cost is unknown, not zero; its collection has no
+transport errors or retries.
 
 The collector used Python 3.10 and local replay uses Python 3.14. Compensated
 float summation introduced in Python 3.12 changes 25 derived diagnostic records
@@ -115,3 +115,33 @@ The [independent audit](jev-result-independent-audit.json) reconstructs all
 873 windows and 17,460 Score heads without importing the runner, reranker or
 scorer, and independently recomputes the metrics from the full qrels. Its
 [verification source](verify_jev_result.py) is included for inspection.
+
+## Completed Luna collection
+
+[GPT-5.6 Luna with reasoning `none`](luna-listwise-summary.json) completed
+all 873 requests and all 97 queries, with no transport or strict-validation
+failures and no retries. It uses the same frozen initial candidates, token
+prefixes and adaptive window algorithm. Later window payloads depend on the
+provider's earlier rankings; Luna returns integer grades while Jev returns
+expected scalar scores.
+
+| Benchmark | Full query denominator | Luna strict nDCG@10 | Strict-complete queries |
+| --- | ---: | ---: | ---: |
+| DL19 | 43 | 0.729911 | 43/43 |
+| DL20 | 54 | 0.702082 | 54/54 |
+
+The combined query-weighted nDCG@10 is **0.714419**. The
+[independent audit](luna-result-independent-audit.json) reconstructs all
+17,460 raw integer grades and all 873 adaptive windows without importing the
+runner, provider adapter, reranker or scorer. Every per-query score matches
+the offline summary exactly. [Audit source](verify_openai_results.py) also
+checks request/response identities, saved JSON schema and reasoning settings.
+
+Returned usage totals 3,200,189 input tokens and 132,696 output tokens, with
+zero cached or reasoning tokens and no unknown-cost requests. An independent
+Decimal calculation gives a **$0.799273 standard-list usage estimate**, not
+an invoice amount. This is separate from the earlier five small quality suites.
+
+Astra and Open-Jev have no published TREC score in this snapshot. These
+results do not establish an overall provider winner or reproduce the
+community demo's exact prompts, model revision or gateway.

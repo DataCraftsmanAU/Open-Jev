@@ -126,6 +126,65 @@ class ServiceSuiteTests(unittest.TestCase):
         command = dict(suite.measurement_commands(args, Path('output'), suite.MODELS['2b'], Path('checkpoint')))['games']
         self.assertEqual(command[command.index('--doom-decision-mode') + 1], 'typed-v1')
 
+    def test_control_commands_pin_full_identity_and_complete_splits(self):
+        args = argparse.Namespace(include_doom=False, workflow_cases=Path('unused'), frontier_source=Path('unused'),
+                                  control_data_root=Path('frozen-controls'), measurements=['amount', 'contact'])
+        identity = {'base_revision': 'base-revision', 'checkpoint_sha256': 'checkpoint-digest', 'temperature': 1.25}
+        commands = dict(suite.measurement_commands(args, Path('output'), suite.MODELS['2b'], Path('checkpoint'), identity=identity))
+        self.assertEqual(list(commands), ['contact', 'amount'])
+        for name, command in commands.items():
+            self.assertEqual(command[:3], [sys.executable, '-m', f'scripts.evaluate_{name}_service'])
+            for flag, value in (('--endpoint', suite.ENDPOINT), ('--expected-model', suite.MODELS['2b']),
+                                ('--expected-method', suite.METHOD), ('--expected-revision', 'base-revision'),
+                                ('--expected-checkpoint-sha256', 'checkpoint-digest'), ('--expected-temperature', '1.25'),
+                                ('--data-root', 'frozen-controls'), ('--output-dir', str(Path('output') / name))):
+                self.assertEqual(command[command.index(flag) + 1], value)
+            self.assertEqual(command[command.index('--splits') + 1:command.index('--splits') + 3], ['test', 'ood'])
+            self.assertNotIn('--limit', command)
+        contact = commands['contact']
+        self.assertEqual(contact[contact.index('--corpora') + 1:contact.index('--corpora') + 3], ['email', 'phone'])
+        self.assertNotIn('--corpora', commands['amount'])
+
+    def test_control_preflight_is_opt_in_and_uses_existing_frozen_loaders(self):
+        with patch('scripts.evaluate_contact_service.phone_library') as phone, \
+                patch('scripts.evaluate_contact_service.load_cases', return_value=([{}, {}], {'email': 'evidence'})) as contact, \
+                patch('scripts.evaluate_amount_service.load_cases', return_value=([{}], {'amount': 'evidence'})) as amount:
+            self.assertEqual(suite.preflight_control_inputs(argparse.Namespace(measurements=suite.MEASUREMENTS)), {})
+            phone.assert_not_called()
+            contact.assert_not_called()
+            amount.assert_not_called()
+            args = argparse.Namespace(measurements=['amount'], control_data_root=self.root)
+            self.assertEqual(suite.preflight_control_inputs(args), {'amount': {'selected_cases': 1, 'inputs': {'amount': 'evidence'}}})
+            phone.assert_not_called()
+            contact.assert_not_called()
+            amount.assert_called_once_with(self.root, ('test', 'ood'))
+            args.measurements = ['contact']
+            self.assertEqual(suite.preflight_control_inputs(args), {'contact': {'selected_cases': 2, 'inputs': {'email': 'evidence'}}})
+            phone.assert_called_once_with()
+            contact.assert_called_once_with(self.root, ('email', 'phone'), ('test', 'ood'))
+
+    def test_control_preflight_failure_precedes_output_gpu_and_subprocesses(self):
+        for measurement, phone_error in (('contact', RuntimeError('pinned phone library missing')), ('contact', None), ('amount', None)):
+            with patch.object(suite.socket, 'gethostname', return_value='allowed-node'), \
+                    patch.object(suite, 'gpu_snapshot') as gpu, \
+                    patch.object(suite, 'require_free_gpu') as free, \
+                    patch.object(suite.subprocess, 'Popen') as spawn, \
+                    patch.object(suite.subprocess, 'check_output') as command, \
+                    patch('scripts.evaluate_contact_service.phone_library', side_effect=phone_error), \
+                    patch('scripts.evaluate_contact_service.load_cases', side_effect=ValueError('changed frozen contact input')), \
+                    patch('scripts.evaluate_amount_service.load_cases', side_effect=ValueError('changed frozen amount input')), \
+                    redirect_stderr(io.StringIO()) as errors:
+                with self.assertRaises(SystemExit) as raised:
+                    suite.main(['--expected-hostname', 'allowed-node', '--output-root', str(self.root / 'output'),
+                                '--measurements', measurement, '--control-data-root', str(self.root / 'controls')])
+                self.assertEqual(raised.exception.code, 2)
+                self.assertIn('control preflight failed', errors.getvalue())
+            self.assertFalse((self.root / 'output').exists())
+            gpu.assert_not_called()
+            free.assert_not_called()
+            spawn.assert_not_called()
+            command.assert_not_called()
+
     def test_cli_guard_before_gpu_and_children(self):
         for extra in (["--expected-hostname", "different-node"],
                       ["--expected-hostname", "unallocated-node", "--gpu", "0"],
@@ -223,11 +282,13 @@ class ServiceSuiteTests(unittest.TestCase):
         spawn.assert_not_called()
         self.assertEqual(path.read_text(), 'keep')
 
-    def run_main_mocked(self, *, mismatch=False, capacity=None, measurements=None, include_latency=True, models=None):
+    def run_main_mocked(self, *, mismatch=False, capacity=None, measurements=None, include_latency=True, models=None,
+                        control_data_root=None, failure_phases=('workflows',)):
         for tag in suite.MODELS if models is None else models:
             self.checkpoint(tag)
         frontier = self.root / 'frontier'
-        frontier.mkdir()
+        if measurements is None or 'frontier_100' in measurements:
+            frontier.mkdir()
         cases = self.root / 'cases.jsonl'
         if measurements is None or "workflows" in measurements:
             cases.write_text('{}\n')
@@ -286,7 +347,7 @@ class ServiceSuiteTests(unittest.TestCase):
                 self.assertEqual(len(active), 1)
             self.assertEqual(env['CUDA_VISIBLE_DEVICES'], 'GPU-physical-three')
             phases.append(phase)
-            record.update(command=command, pid=2000 + len(phases), exit_code=7 if phase == 'workflows' else 0)
+            record.update(command=command, pid=2000 + len(phases), exit_code=7 if phase in failure_phases else 0)
             update()
             if phase == 'demo_requests':
                 response = {'model': expected['model'], 'metadata': {k: v for k, v in expected.items() if k != 'model'}}
@@ -303,6 +364,8 @@ class ServiceSuiteTests(unittest.TestCase):
             args.extend(["--measurements", *measurements])
         if models is not None:
             args.extend(["--models", *models])
+        if control_data_root is not None:
+            args.extend(["--control-data-root", str(control_data_root)])
         with ExitStack() as stack:
             for name, value in [('require_free_gpu', free), ('gpu_snapshot', loaded), ('require_free_port', Mock()),
                                 ('wait_ready', Mock(return_value={'status': 'ready'})), ('probe_identity', probe), ('run_measurement', measure)]:
@@ -319,7 +382,7 @@ class ServiceSuiteTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError, 'test identity mismatch'):
                     suite.main(args)
             else:
-                expected_failure = measurements is None or "workflows" in measurements
+                expected_failure = bool(set(suite.MEASUREMENTS if measurements is None else measurements) & set(failure_phases))
                 self.assertEqual(suite.main(args), int(expected_failure))
             manifest = json.loads((output / 'manifest.json').read_text())
             count = len(servers)
@@ -340,6 +403,7 @@ class ServiceSuiteTests(unittest.TestCase):
         self.assertEqual(manifest['current_phase'], 'finished')
         self.assertEqual(manifest['child_cuda_visible_devices'], 'GPU-physical-three')
         self.assertEqual(set(manifest['models']), {'2b', '9b', '27b'})
+        self.assertNotIn('control_inputs', manifest)
 
     def test_identity_mismatch_stops_and_cleans_server(self):
         manifest, servers, measurements = self.run_main_mocked(mismatch=True)
@@ -452,6 +516,44 @@ class ServiceSuiteTests(unittest.TestCase):
             self.assertEqual(raised.exception.code, 2)
         gpu.assert_not_called()
         spawn.assert_not_called()
+
+    def test_controls_run_serially_retain_failures_and_clean_each_server(self):
+        data_root = self.root / 'controls'
+        with patch('scripts.evaluate_contact_service.phone_library'), \
+                patch('scripts.evaluate_contact_service.load_cases', return_value=([{}, {}], {'email': 'evidence'})) as contact, \
+                patch('scripts.evaluate_amount_service.load_cases', return_value=([{}], {'amount': 'evidence'})) as amount:
+            manifest, servers, measurements = self.run_main_mocked(
+                measurements=['amount', 'contact'], include_latency=False, capacity=(16384, 1),
+                control_data_root=data_root, failure_phases=('contact',))
+        # The helper also retries the same output to verify overwrite refusal.
+        self.assertEqual(contact.call_count, 2)
+        self.assertEqual(amount.call_count, 2)
+        contact.assert_called_with(data_root.resolve(), ('email', 'phone'), ('test', 'ood'))
+        amount.assert_called_with(data_root.resolve(), ('test', 'ood'))
+        self.assertEqual(len(servers), 3)
+        self.assertEqual(measurements, ['contact', 'amount'] * 3)
+        self.assertEqual(manifest['status'], 'complete_with_measurement_failures')
+        self.assertEqual(manifest['control_inputs']['contact']['selected_cases'], 2)
+        self.assertEqual(manifest['control_inputs']['amount']['selected_cases'], 1)
+        self.assertEqual(manifest['configuration']['control_data_root'], str(data_root.resolve()))
+        self.assertNotIn('latency', manifest)
+        for path in ('cases.jsonl', 'frontier', 'browser_cases.jsonl', 'drone_cases.jsonl'):
+            self.assertFalse((self.root / path).exists())
+        for report in manifest['models'].values():
+            self.assertEqual(list(report['measurements']), ['contact', 'amount'])
+            self.assertEqual(report['measurements']['contact']['exit_code'], 7)
+            self.assertEqual(report['measurements']['amount']['exit_code'], 0)
+            self.assertEqual(report['server_exit_code'], -15)
+            self.assertFalse(report['gpu_after_shutdown']['compute_processes'])
+            self.assertEqual(report['expected_identity']['max_length'], 16384)
+            for result in report['measurements'].values():
+                command = result['command']
+                for flag, key in (('--expected-model', 'model'), ('--expected-method', 'method'),
+                                  ('--expected-revision', 'base_revision'), ('--expected-checkpoint-sha256', 'checkpoint_sha256'),
+                                  ('--expected-temperature', 'temperature')):
+                    self.assertEqual(command[command.index(flag) + 1], str(report['expected_identity'][key]))
+        for server in servers:
+            self.assertEqual(server.command[server.command.index('--batch-size') + 1], '1')
 
 
 if __name__ == '__main__':

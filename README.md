@@ -192,7 +192,9 @@ The separate [TREC-DL evaluation](reports/ir-control-v1/trec-holdout/README.md)
 has completed Jev's 97 queries / 873 requests. DL19/DL20 nDCG@10 is
 0.275836/0.190667 under strict validation and 0.728218/0.715734 in the
 predeclared supplementary scalar analysis. Probability-mass failures affect
-66 queries and remain zero in the strict metric. OpenAI collection continues;
+66 queries and remain zero in the strict metric. Luna also completed all 97
+queries with strict nDCG@10 of 0.729911/0.702082, zero request errors and an
+independently checked $0.799273 usage estimate. Astra collection continues;
 Open-Jev TREC results remain pending.
 
 The frozen counts are reference matches. A subsequent game-label audit found

@@ -30,12 +30,12 @@
     },
     {
       "path": "README.md",
-      "sha256": "1ec4fbb453b2e01c9e311309c1f41120dcb4e61aaa4611e74b74bf40ce93ec2b",
-      "bytes": 14748,
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
-      "source_sha256": "b694749a38b9e049e5ee30ef6e747f3eb5a37f9896853b612bcf11fc3c27d3fa",
+      "sha256": "182c15c1331bfd4c2cdab1ba78f5f99187972daf536cd97ab7653fddbc4ae110",
+      "bytes": 14899,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "811552f5ed44c7a8621e548f1bf293d4f7ce384d5c2a2e1f3de0268969e5d913",
       "changes": [
-        "Preserve custom public README; add audited real TREC result paragraph."
+        "Preserve custom public README; update only the audited TREC result paragraph with completed Luna metrics."
       ]
     },
     {
@@ -123,6 +123,16 @@
       "source_sha256": "f582a794a047508a99e957181fa4888b3ecf7abe7aeba7a5f0bf25df3ee0188c",
       "sha256": "f582a794a047508a99e957181fa4888b3ecf7abe7aeba7a5f0bf25df3ee0188c",
       "bytes": 7531
+    },
+    {
+      "path": "docs/contact-amount-service-followup.md",
+      "sha256": "51dc59622e778ec3f97c14557fca86559daf78dcb2b40df07480c9d30a64ce56",
+      "bytes": 8329,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "51dc59622e778ec3f97c14557fca86559daf78dcb2b40df07480c9d30a64ce56",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
     },
     {
       "path": "docs/contact-service-evaluation.md",
@@ -292,12 +302,12 @@
     },
     {
       "path": "docs/posttraining-evaluation-supervisor.md",
-      "sha256": "dcfa60e43cb7a7a436ffc283c66912a3f2f25a88a7f50c298ac7abcf654d0a27",
-      "bytes": 8156,
-      "source_sha256": "dcfa60e43cb7a7a436ffc283c66912a3f2f25a88a7f50c298ac7abcf654d0a27",
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "sha256": "e88440b1cec7336da0e6897a7b4b91ea72b42111e947233334e0fefb47976359",
+      "bytes": 8227,
+      "source_sha256": "e88440b1cec7336da0e6897a7b4b91ea72b42111e947233334e0fefb47976359",
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
       "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
       ]
     },
     {
@@ -312,12 +322,12 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "fdac6cdad789ff95826a38de37a2f48f8a25afd9adeee7d613fef198deffad93",
-      "bytes": 14089,
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
-      "source_sha256": "fdac6cdad789ff95826a38de37a2f48f8a25afd9adeee7d613fef198deffad93",
+      "sha256": "95e07dd9eea2f08392e09382e6b94110ca14c5873c423cfe3db91a90b38cf8a9",
+      "bytes": 14406,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "95e07dd9eea2f08392e09382e6b94110ca14c5873c423cfe3db91a90b38cf8a9",
       "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
       ]
     },
     {
@@ -3338,12 +3348,12 @@
     },
     {
       "path": "reports/ir-control-v1/trec-holdout/README.md",
-      "sha256": "c744e3c3c34bbb011772d5a825ed4b55bb8bb7e85d153209b3c8d1f561015a71",
-      "bytes": 7348,
-      "source_sha256": "c744e3c3c34bbb011772d5a825ed4b55bb8bb7e85d153209b3c8d1f561015a71",
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+      "sha256": "7c52ed98c6c937aafadf3cf07558063354c22f6f48732c17747994c042b172f3",
+      "bytes": 8878,
+      "source_sha256": "7c52ed98c6c937aafadf3cf07558063354c22f6f48732c17747994c042b172f3",
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
       "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
       ]
     },
     {
@@ -3404,6 +3414,46 @@
       "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
       "changes": [
         "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/luna-listwise-summary.json",
+      "sha256": "c3fdd38e5566a9593713be0e102953007c7ab6f551201dc380ca1f4d7d839684",
+      "bytes": 12930,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "c3fdd38e5566a9593713be0e102953007c7ab6f551201dc380ca1f4d7d839684",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/luna-publication-review.json",
+      "sha256": "ae29a531246c8acb7811e688544ba4a59c23a3d580de1c5ef05a3675c7add988",
+      "bytes": 10331,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "ae29a531246c8acb7811e688544ba4a59c23a3d580de1c5ef05a3675c7add988",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/luna-result-independent-audit.json",
+      "sha256": "531ef6876461df94db4eb68dabaf31c61577a37b07062cee333329f680f0850f",
+      "bytes": 3946,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "531ef6876461df94db4eb68dabaf31c61577a37b07062cee333329f680f0850f",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/luna-site-verification.json",
+      "sha256": "bec53e4a1eaa3ff262845d0bcff2696d95b3aeaf4c143ff83b04780e71f84447",
+      "bytes": 5094,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "bec53e4a1eaa3ff262845d0bcff2696d95b3aeaf4c143ff83b04780e71f84447",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
       ]
     },
     {
@@ -3481,6 +3531,16 @@
       "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
       "changes": [
         "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "reports/ir-control-v1/trec-holdout/verify_openai_results.py",
+      "sha256": "39d9d582f0c01ed37abdc6a8e8906925c7a9e1c1b37962f38c9e3bec81e3ab37",
+      "bytes": 22985,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "39d9d582f0c01ed37abdc6a8e8906925c7a9e1c1b37962f38c9e3bec81e3ab37",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
       ]
     },
     {
@@ -5892,6 +5952,36 @@
       "bytes": 492
     },
     {
+      "path": "reports/runtime-checks/contact-amount-service-followup-cpu.json",
+      "sha256": "c0c4f4e62f8f5ab1c86a2ba62f3f3e239c1ef0f5e860032b1bb85dcd5f415920",
+      "bytes": 5484,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "c0c4f4e62f8f5ab1c86a2ba62f3f3e239c1ef0f5e860032b1bb85dcd5f415920",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
+    },
+    {
+      "path": "reports/runtime-checks/contact-amount-service-followup-deployment.json",
+      "sha256": "59ff0ea86bcaddfc914a0563875f1e71873499c799fe6dea7dc4e6a71980e14f",
+      "bytes": 1953,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "59ff0ea86bcaddfc914a0563875f1e71873499c799fe6dea7dc4e6a71980e14f",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
+    },
+    {
+      "path": "reports/runtime-checks/contact-amount-service-followup-review.json",
+      "sha256": "b7cb31ec4ffe1c1b35aaf3177f7c782af84b3faf2fec56b4584f6da227d42a7a",
+      "bytes": 3717,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "b7cb31ec4ffe1c1b35aaf3177f7c782af84b3faf2fec56b4584f6da227d42a7a",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
+    },
+    {
       "path": "reports/runtime-checks/contact-controls-frozen-inputs-20260920.json",
       "source_sha256": "3acfb00f314ed30adb4f4ad3db9587c03389445e3434d3ca1d4b4c78e42e7094",
       "sha256": "3acfb00f314ed30adb4f4ad3db9587c03389445e3434d3ca1d4b4c78e42e7094",
@@ -6615,9 +6705,13 @@
     },
     {
       "path": "scripts/run_service_suite.py",
-      "source_sha256": "58bacf0ffa79946cee3ecf376fb8379008dd09796df3c20ac5289a27aba9b356",
-      "sha256": "58bacf0ffa79946cee3ecf376fb8379008dd09796df3c20ac5289a27aba9b356",
-      "bytes": 24124
+      "source_sha256": "f234faeda325409ae727895a07beba0006b78f38c6a3e3cfc5501f51ab54f348",
+      "sha256": "f234faeda325409ae727895a07beba0006b78f38c6a3e3cfc5501f51ab54f348",
+      "bytes": 26054,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
     },
     {
       "path": "scripts/summarize_provider_quality.py",
@@ -7365,12 +7459,12 @@
     },
     {
       "path": "site/provider-quality.json",
-      "sha256": "cfc06975fe5992d52751de2795cb5fa22f7796b4e0aa50cb96460df33ba2932e",
-      "bytes": 96440,
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
-      "source_sha256": "cfc06975fe5992d52751de2795cb5fa22f7796b4e0aa50cb96460df33ba2932e",
+      "sha256": "1340fb3c79717da959974f859441bfcd41a63ca60bbd458f22886f7265c3fd89",
+      "bytes": 97231,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "source_sha256": "1340fb3c79717da959974f859441bfcd41a63ca60bbd458f22886f7265c3fd89",
       "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
       ]
     },
     {
@@ -7691,9 +7785,13 @@
     },
     {
       "path": "tests/test_service_suite.py",
-      "source_sha256": "157f2764dff770b5ff94748da4f2d3a4ef23c2cbdb0d5da697029a72c2756702",
-      "sha256": "157f2764dff770b5ff94748da4f2d3a4ef23c2cbdb0d5da697029a72c2756702",
-      "bytes": 26262
+      "source_sha256": "a77082633febe12dd4254e0ee294b48594b4a7d5db8100472063033d2aa1cc4d",
+      "sha256": "a77082633febe12dd4254e0ee294b48594b4a7d5db8100472063033d2aa1cc4d",
+      "bytes": 34160,
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "changes": [
+        "Audited Luna TREC results and publication evidence; isolated contact/amount lifecycle and CPU-verified preparation with GPU inference pending."
+      ]
     },
     {
       "path": "tests/test_serving.py",
@@ -8252,7 +8350,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
+  "current_source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8542,6 +8640,29 @@
         "reports/ir-control-v1/trec-holdout/scorer-validation.json",
         "reports/ir-control-v1/trec-holdout/site-verification.json",
         "reports/ir-control-v1/trec-holdout/publication-review.json"
+      ]
+    },
+    {
+      "source_commit": "c3b91436a3f3cb66fd65875b65c2e23e797ecb4f",
+      "created_at": "2026-09-21T00:41:33.993842+00:00",
+      "description": "Completed Luna TREC collection independently audited, with strict full-denominator metrics and usage estimate. Contact/amount lifecycle prepared and CPU-verified in isolation; GPU inference remains pending behind the existing supervisor/audit gates. Prior strict/scalar and categorical results unchanged; raw TREC inputs, responses and credentials excluded.",
+      "paths": [
+        "README.md",
+        "docs/provider-comparison.md",
+        "docs/posttraining-evaluation-supervisor.md",
+        "docs/contact-amount-service-followup.md",
+        "scripts/run_service_suite.py",
+        "tests/test_service_suite.py",
+        "site/provider-quality.json",
+        "reports/runtime-checks/contact-amount-service-followup-cpu.json",
+        "reports/runtime-checks/contact-amount-service-followup-review.json",
+        "reports/runtime-checks/contact-amount-service-followup-deployment.json",
+        "reports/ir-control-v1/trec-holdout/README.md",
+        "reports/ir-control-v1/trec-holdout/luna-listwise-summary.json",
+        "reports/ir-control-v1/trec-holdout/luna-result-independent-audit.json",
+        "reports/ir-control-v1/trec-holdout/verify_openai_results.py",
+        "reports/ir-control-v1/trec-holdout/luna-site-verification.json",
+        "reports/ir-control-v1/trec-holdout/luna-publication-review.json"
       ]
     }
   ]

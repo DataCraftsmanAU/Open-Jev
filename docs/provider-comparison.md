@@ -150,8 +150,12 @@ zero under the predeclared strict metric. DL19/DL20 nDCG@10 is
 actual-scalar analysis. Downloaded BM25 is 0.505831/0.479637. All metrics use
 full official qrels and the full 43/54 query denominators. This independently
 authored listwise Score protocol is not an exact community-demo reproduction.
-OpenAI collection continues; Open-Jev and their published TREC scores remain
-pending. The five earlier small quality suites and their costs above are unchanged.
+Luna also completed all 97 TREC queries and 873 requests, with no transport or
+strict-validation failures. Its DL19/DL20 nDCG@10 is **0.729911/0.702082**;
+the [independent audit](../reports/ir-control-v1/trec-holdout/luna-result-independent-audit.json)
+reproduces every query score and the **$0.799273** usage-based cost estimate.
+Astra collection continues and Open-Jev TREC inference remains pending.
+The five earlier small quality suites and their costs above are unchanged.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates
 completed counts from unattempted decisions. New Open-Jev GPU inference remains

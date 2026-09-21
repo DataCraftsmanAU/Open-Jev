@@ -181,6 +181,21 @@ def probe_identity(process, expected):
     return result
 
 
+def preflight_control_inputs(args):
+    """Validate selected frozen controls on CPU, before acquiring a GPU lease."""
+    evidence = {}
+    if "contact" in args.measurements:
+        from scripts.evaluate_contact_service import load_cases, phone_library
+        phone_library()
+        cases, inputs = load_cases(args.control_data_root, ("email", "phone"), ("test", "ood"))
+        evidence["contact"] = {"selected_cases": len(cases), "inputs": inputs}
+    if "amount" in args.measurements:
+        from scripts.evaluate_amount_service import load_cases
+        cases, inputs = load_cases(args.control_data_root, ("test", "ood"))
+        evidence["amount"] = {"selected_cases": len(cases), "inputs": inputs}
+    return evidence
+
+
 def measurement_commands(args, output, model, checkpoint, *, identity=None):
     common = ["--endpoint", ENDPOINT, "--expected-model", model, "--expected-method", METHOD]
     games = [sys.executable, "-m", "scripts.evaluate_game_service", *common,
@@ -206,6 +221,18 @@ def measurement_commands(args, output, model, checkpoint, *, identity=None):
                          "--expected-revision", identity["base_revision"],
                          "--expected-checkpoint-sha256", identity["checkpoint_sha256"],
                          "--output-dir", str(output / task)]))
+    for task in ("contact", "amount"):
+        if task not in args.measurements:
+            continue
+        command = [sys.executable, "-m", f"scripts.evaluate_{task}_service", *common,
+                   "--data-root", str(args.control_data_root), "--splits", "test", "ood",
+                   "--expected-revision", identity["base_revision"],
+                   "--expected-checkpoint-sha256", identity["checkpoint_sha256"],
+                   "--expected-temperature", str(identity["temperature"]),
+                   "--output-dir", str(output / task)]
+        if task == "contact":
+            command.extend(["--corpora", "email", "phone"])
+        commands.append((task, command))
     return [(phase, command) for phase, command in commands if phase in args.measurements]
 
 
@@ -260,9 +287,11 @@ def main(argv=None):
     parser.add_argument("--workflow-cases", type=Path, default=Path("data/workflows-v1/workflow_cases.jsonl"))
     parser.add_argument("--browser-cases", type=Path, default=Path("data/browser-v1/cases.jsonl"))
     parser.add_argument("--drone-cases", type=Path, default=Path("data/drone-control-v1/cases.jsonl"))
+    parser.add_argument("--control-data-root", type=Path, default=ROOT / "data",
+                        help="Root of frozen email/phone/amount corpora; required only for selected controls")
     parser.add_argument("--output-root", type=Path, required=True)
-    parser.add_argument("--measurements", nargs="+", choices=(*MEASUREMENTS, "browser", "drone"), default=list(MEASUREMENTS),
-                        help="Measurements in standard order; browser/drone snapshots are opt-in with 20 parents per test/OOD split")
+    parser.add_argument("--measurements", nargs="+", choices=(*MEASUREMENTS, "browser", "drone", "contact", "amount"), default=list(MEASUREMENTS),
+                        help="Measurements in standard order; browser/drone snapshots and full test/OOD contact/amount controls are opt-in")
     parser.add_argument("--include-doom", action="store_true")
     parser.add_argument("--doom-decision-mode", choices=("combined-v1", "typed-v1"), default="combined-v1",
                         help="Doom only: legacy combined action or the three training-aligned typed questions")
@@ -291,7 +320,7 @@ def main(argv=None):
         parser.error("models must be distinct")
     if "{tag}" not in args.checkpoint_template:
         parser.error("checkpoint-template must contain {tag}")
-    for key in ("checkpoint_root", "frontier_source", "workflow_cases", "browser_cases", "drone_cases", "output_root", "latency_request"):
+    for key in ("checkpoint_root", "frontier_source", "workflow_cases", "browser_cases", "drone_cases", "control_data_root", "output_root", "latency_request"):
         setattr(args, key, getattr(args, key).resolve())
     if "workflows" in args.measurements and not args.workflow_cases.is_file():
         parser.error("workflow cases must exist when workflows are selected")
@@ -305,6 +334,10 @@ def main(argv=None):
         parser.error("--include-doom requires ViZDoom in this runtime; no substitute will be used")
     if args.include_latency and not args.latency_request.is_file():
         parser.error("latency request file does not exist")
+    try:
+        control_inputs = preflight_control_inputs(args)
+    except (ImportError, OSError, RuntimeError, ValueError) as error:
+        parser.error(f"control preflight failed: {error}")
     commit = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
     args.output_root.mkdir(parents=True, exist_ok=False)
     manifest_path = args.output_root / "manifest.json"
@@ -318,6 +351,8 @@ def main(argv=None):
                 "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                 "configuration": {key: str(value) if isinstance(value, Path) else value for key, value in vars(args).items()},
                 "models": {}, "current_phase": "preflight", "suite_pid": os.getpid()}
+    if control_inputs:
+        manifest["control_inputs"] = control_inputs
 
     def save():
         manifest["updated_at_utc"] = now()

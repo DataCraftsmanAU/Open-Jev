@@ -90,20 +90,20 @@ identical checkpoint/calibration/data identities, the full captured file set,
 and unchanged current training/evaluation/controller bytes. A failed or
 mismatched report aborts; a missing report keeps the CPU supervisor waiting.
 
-Contact/amount have tested HTTP evaluator entry points but no reviewed pinned
-per-model service-lifecycle commands in this plan. Their outputs cannot be
-claimed complete when the prepared stages end.
+Contact/amount are not included in this pinned plan. A separate reviewed
+service follow-up is now provisioned and CPU-verified, as described below.
+Its model outputs remain pending when the core stages end.
 
 ## Bounded contact/amount follow-up
 
-The smallest follow-up reuses `scripts.run_service_suite.py` for its existing
-GPU-3 lease, owned server startup, readiness/identity probe, measurement logs and
-server cleanup. Commit `15e81b989eddb64ec68333feb27e382719a1ab81` contains both
-`scripts.evaluate_contact_service` and `scripts.evaluate_amount_service` plus
-the existing lifecycle helper. A new reviewed revision would add two
-measurement choices and a control-data-root argument to that helper, with
-commands wired to its verified model/revision/checkpoint/temperature identity.
-The deployed supervisor and its three frozen stage commands stay pinned.
+The [contact/amount follow-up](contact-amount-service-followup.md) reuses
+`scripts.run_service_suite.py` for its existing GPU-3 lease, owned server
+startup, readiness/identity probe, measurement logs and cleanup. Source commit
+`9cdf6711d2af3cf7bca0763e0c859b46606c12d3` adds the two optional measurements,
+full identity/temperature arguments and frozen-data preflight. It is provisioned
+in a separate N1 checkout with isolated phone dependencies and all 24 frozen
+data files; 76 remote CPU tests and the real 1,924/864-document preflight pass.
+The deployed core supervisor and its three stage commands stay pinned.
 
 Before that separate follow-up can run:
 
@@ -123,8 +123,9 @@ Before that separate follow-up can run:
    model. These corpora are transfer tests for the existing checkpoints; they
    were not included in the active training mixture.
 
-This follow-up is a reviewed path forward, not an implemented or deployed
-contact/amount lifecycle. The current queue continues to report both as pending.
+The separate follow-up is implemented and provisioned, but model inference
+has not started. The current core queue continues to report both as pending;
+they must run after that queue and its independent audit finish.
 
 Local CPU checks:
 
