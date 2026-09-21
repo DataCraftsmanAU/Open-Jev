@@ -4,11 +4,16 @@
 Supply a context, questions and candidates; get typed probabilities directly,
 without autoregressive answer generation or parsing generated JSON.
 
-[Website and successful demos](https://zefan-cai.github.io/open-jev/) ·
-[Code](https://github.com/Zefan-Cai/Open-Jev) ·
-[Dataset](https://huggingface.co/datasets/ZefanCai/Open-Jev) ·
-[2B checkpoint](https://huggingface.co/ZefanCai/Open-Jev-2B) ·
-[9B checkpoint](https://huggingface.co/ZefanCai/Open-Jev-9B)
+**Project website:** [zefan-cai.github.io/open-jev](https://zefan-cai.github.io/open-jev/) — demos, measured results and project background.
+
+**Hugging Face:** [Collection](https://huggingface.co/collections/ZefanCai/open-jev) ·
+[2B model](https://huggingface.co/ZefanCai/Open-Jev-2B) ·
+[9B model](https://huggingface.co/ZefanCai/Open-Jev-9B) ·
+[Dataset](https://huggingface.co/datasets/ZefanCai/Open-Jev)
+
+**Benchmarks:** [Results and scope](docs/benchmarks.md) ·
+[Website tables](https://zefan-cai.github.io/open-jev/benchmarks/) ·
+[Source code](https://github.com/Zefan-Cai/Open-Jev)
 
 **Public releases:** the dataset and completed 2B/9B checkpoints are available
 at the links above. The 2B/9B artifacts are LoRA adapters plus a trained scalar decision
@@ -16,8 +21,8 @@ head and calibration temperature. They require the pinned upstream Qwen
 weights and the Open-Jev loader; they are not merged base models or ordinary
 text-generation checkpoints. The dedicated public JevBench evaluation is
 complete. A new 27B training iteration with more diverse training data
-is training on four H100 GPUs, with optimizer updates verified at step 107
-on September 21, 2026 at 07:14 UTC. Final checkpoint evaluation remains pending;
+is training on four H100 GPUs, with optimizer updates verified at step 616
+on September 21, 2026 at 07:31 UTC. Final checkpoint evaluation remains pending;
 finite training loss does not establish a quality improvement.
 
 Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
@@ -41,7 +46,8 @@ hardware/network limitations. See the [dedicated website table](https://zefan-ca
 [executable SQL](docs/sql-semantics-v3.md) and [approval/CMS controls](docs/community-workflow-v3.md)
 add 129,288 decision rows, including 74,921 training rows. The frozen next-stage
 mixture combines those training rows with 21,928 earlier replay rows for 96,849
-training rows. The data are staged; the next training queue has not launched.
+training rows. The data are staged and tokenizer-checked; the next stage is
+queued behind completion and evaluation of the current 27B run.
 The [training recipe](docs/community-hard-training-v3.md) and
 [internal evaluation guide](docs/internal-evaluation.md) explain held-out splits,
 the fixed 1,280-row / 840-group comparison panel and equal-group reporting.

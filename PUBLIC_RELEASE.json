@@ -31,11 +31,12 @@
     {
       "path": "README.md",
       "source_sha256": "e7067bf770aab5a340ed562f42b63151ea7d6f169d692c0789b9296c5b1cd0c2",
-      "sha256": "ebd446a6b323c82ad25d8fffcb95ebecc51c7735f581b344277dcf1c45c14f14",
-      "bytes": 17076,
+      "sha256": "d23ae0946c01e25e3d591a8a711eed0c2e7c9447348d3fbb5e1dbfab849ae363",
+      "bytes": 17421,
       "changes": [
         "Preserve custom public README; add broader-data and project-story links and verified initialization status.",
-        "Preserve custom public README; record verified optimizer updates and prepared v3 data, frozen evaluation panel and unmeasured status."
+        "Preserve custom public README; record verified optimizer updates and prepared v3 data, frozen evaluation panel and unmeasured status.",
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
       ]
     },
     {
@@ -374,13 +375,14 @@
     },
     {
       "path": "docs/provider-comparison.md",
-      "sha256": "8de9ab9bd61ebf8df21cae6f258359f038fe507ad6c712ac4d43b842f1989ba0",
-      "bytes": 15857,
+      "sha256": "f11727603505bb5bc88424e18957d7846f9ca1a1561711585f5933ed91d71f06",
+      "bytes": 16014,
       "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506",
       "source_sha256": "3215b8472aba5a2576888bead2b5bb5362b2be6828c2b2bdceebd1da8b55ee87",
       "changes": [
         "Strict local TREC collection, offline adaptive replay, isolated deployment and frozen-corpus context proof; no model inference or metric changes.",
-        "Preserve the public method document without unpublished full-registry links; update publication/research links and scheduling status only."
+        "Preserve the public method document without unpublished full-registry links; update publication/research links and scheduling status only.",
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
       ]
     },
     {
@@ -1107,8 +1109,11 @@
     {
       "path": "release/project-story/index.html",
       "source_sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
-      "sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
-      "bytes": 54351
+      "sha256": "ee04a16654a9c81069e941fd0b285872eed46bbe78af26c49790311d7ca5949f",
+      "bytes": 57791,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
     },
     {
       "path": "release/social/README.md",
@@ -3506,12 +3511,13 @@
     },
     {
       "path": "reports/ir-control-v1/README.md",
-      "sha256": "8f71fd4f8b7e70ce405dfc5a36eae4c6cb9ba70845b9446990d9471b1dba0c0a",
-      "bytes": 3000,
+      "sha256": "ec6b1c3c3fb82b70ef6e537b7e1d6de9f629757cbf75b212a3b6aa9f787b260b",
+      "bytes": 3249,
       "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
       "source_sha256": "8f71fd4f8b7e70ce405dfc5a36eae4c6cb9ba70845b9446990d9471b1dba0c0a",
       "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+        "Verified provider reference-match comparison, label audit, data publication and website follow-up.",
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
       ]
     },
     {
@@ -7279,8 +7285,11 @@
     {
       "path": "site/index.html",
       "source_sha256": "0a6253648ed2d354533110aaae39bfadbdbdc241e082d2326169dffda4095785",
-      "sha256": "0a6253648ed2d354533110aaae39bfadbdbdc241e082d2326169dffda4095785",
-      "bytes": 32939
+      "sha256": "a771bc362972a437089fc69d0adda431b1383a9cb43694eeaf43e3835fc6ca43",
+      "bytes": 33595,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
     },
     {
       "path": "site/jevbench.js",
@@ -8011,17 +8020,21 @@
     {
       "path": "site/story/index.html",
       "source_sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
-      "sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
-      "bytes": 54351
+      "sha256": "ee04a16654a9c81069e941fd0b285872eed46bbe78af26c49790311d7ca5949f",
+      "bytes": 57791,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
     },
     {
       "path": "site/styles.css",
-      "sha256": "a11949cb34f953e17e10becbae514d13b79f708e3c3e63a2b1e1d9d91af11bb9",
-      "bytes": 42595,
+      "sha256": "c94f92913f1a8eabfb4e303c51270ef7c7353b57440a39f7d5db9df4fe037478",
+      "bytes": 31638,
       "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
       "source_sha256": "a11949cb34f953e17e10becbae514d13b79f708e3c3e63a2b1e1d9d91af11bb9",
       "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code.",
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
       ]
     },
     {
@@ -8699,6 +8712,48 @@
       "source_sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
       "sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
       "bytes": 11729
+    },
+    {
+      "path": "docs/benchmarks.md",
+      "source_sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
+      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
+      "sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
+      "bytes": 10065,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
+    },
+    {
+      "path": "reports/community-diversity-v3/queue-status.json",
+      "source_sha256": "03288db9e9d95f54abc5d000a733b8ab415869cf974ec6a74f02508c5ee35c58",
+      "sha256": "03288db9e9d95f54abc5d000a733b8ab415869cf974ec6a74f02508c5ee35c58",
+      "bytes": 976
+    },
+    {
+      "path": "reports/community-diversity-v3/tokenizer-preflight.json",
+      "source_sha256": "bbb318bde010d18392c8c7ea085c9f60c91438ef6999850c67ff20a10c8662d6",
+      "sha256": "bbb318bde010d18392c8c7ea085c9f60c91438ef6999850c67ff20a10c8662d6",
+      "bytes": 10758
+    },
+    {
+      "path": "reports/site/benchmark-redesign-validation.json",
+      "source_sha256": "eaba74b5dadd463c0153e5ca5ae6fdd16da75a144182347e61a3ef52e50c6689",
+      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
+      "sha256": "eaba74b5dadd463c0153e5ca5ae6fdd16da75a144182347e61a3ef52e50c6689",
+      "bytes": 5469,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
+    },
+    {
+      "path": "site/benchmarks/index.html",
+      "source_sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
+      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
+      "sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
+      "bytes": 15647,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
     }
   ],
   "excluded_development_files": [
@@ -9184,7 +9239,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "8f93bb5d4ee980b3c722664b110ab12c0af8a1f3",
+  "current_source_commit": "529443b42684f625e542e14987b0e8cb7e89e9e6",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -9829,6 +9884,65 @@
         "story_overflow": false,
         "main_320px_overflow": "Pre-existing 16px header overflow reproduced identically with baseline and updated HTML; no new overflow introduced.",
         "browser_qa_sha256": "c05c53f9c5313a96b6f8c1c20cbedbc9c82b34db54f65b57c4515bc4992d6040"
+      }
+    },
+    {
+      "id": "readable-site-and-unified-benchmarks-20260921",
+      "source_commit": "529443b42684f625e542e14987b0e8cb7e89e9e6",
+      "source_scope": "Baseline private source plus exact tokenizer/queue reports. Listed presentation files are authored in the public checkout and mirrored separately.",
+      "public_authored_paths": [
+        "README.md",
+        "docs/benchmarks.md",
+        "docs/provider-comparison.md",
+        "release/project-story/index.html",
+        "reports/ir-control-v1/README.md",
+        "reports/site/benchmark-redesign-validation.json",
+        "site/benchmarks/index.html",
+        "site/index.html",
+        "site/story/index.html",
+        "site/styles.css"
+      ],
+      "created_at": "2026-09-21T07:40:08.983879+00:00",
+      "description": "Replace the website template with readable dark text on white, clear project/model/data links and a unified benchmark index. Keep released-model JevBench, JF100, TREC, prepared controls and latency scopes explicit; preserve all original numeric artifacts and media. Publish the complete v3 CPU tokenizer audit and waiting queue snapshot without claiming new model quality.",
+      "paths": [
+        "README.md",
+        "docs/benchmarks.md",
+        "docs/provider-comparison.md",
+        "release/project-story/index.html",
+        "reports/community-diversity-v3/queue-status.json",
+        "reports/community-diversity-v3/tokenizer-preflight.json",
+        "reports/ir-control-v1/README.md",
+        "reports/site/benchmark-redesign-validation.json",
+        "site/benchmarks/index.html",
+        "site/index.html",
+        "site/story/index.html",
+        "site/styles.css"
+      ],
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "raw_training_data_included": false,
+      "private_operational_files_included": false,
+      "social_posts_published": false,
+      "verification": {
+        "browser_pages": 12,
+        "responsive_widths": [
+          320,
+          390,
+          900,
+          1440
+        ],
+        "document_overflow": false,
+        "minimum_html_text_contrast": 5.888615780397116,
+        "minimum_html_text_size_px": 14,
+        "javascript_errors": 0,
+        "http_errors": 0,
+        "local_links_verified": 164,
+        "readme_external_links_anonymously_verified": 5,
+        "existing_json_payloads_preserved": 671,
+        "existing_media_payloads_preserved": 89,
+        "benchmark_values_independently_reviewed": true,
+        "stylesheet_cache_version": "readable-20260921",
+        "report": "reports/site/benchmark-redesign-validation.json"
       }
     }
   ]

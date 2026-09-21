@@ -4,7 +4,10 @@ The full original corpus has 200 families, 400 queries, 8,800 request cases and
 11,600 typed records. The independent body audit passes. Six complete runtime
 algorithms and the graded metric/holdout loader are implemented. The independent
 IR config is [published and anonymously verified](../ir-data-release-20260920/README.md).
-**External TREC evaluation remains pending.** No training on this corpus is claimed.
+**Hosted TREC evaluation is complete:** Jev 1.13.0, GPT-5.6 Luna and GPT-6 Astra
+have audited results on all 97 DL19/DL20 queries. Released Open-Jev TREC results
+remain pending. See the [TREC protocol and results](trec-holdout/README.md) and
+[unified benchmark index](../../docs/benchmarks.md). No training on this corpus is claimed.
 
 | Evidence | File |
 | --- | --- |

@@ -162,9 +162,10 @@ Open-Jev TREC inference remains pending. A separate
 [local collector and offline replayer](openjev-trec-followup.md) now supports
 the frozen 97-query protocol, with strict probability and identity validation,
 unrounded expected Scores, full official qrels and failure-preserving journals.
-Its CPU checks do not constitute new model results. These TREC follow-up
-evaluations remain pending. The dedicated JevBench evaluation now has priority,
-with 27B training to resume afterward.
+Its CPU checks do not constitute new model results. These Open-Jev TREC follow-up
+evaluations remain pending. The separate [JevBench public-subset evaluation](jevbench-public.md)
+is complete for all five model streams; it does not complete the pending Open-Jev
+TREC run. The [benchmark index](benchmarks.md) keeps these scopes and results together.
 The five earlier small quality suites and their costs above are unchanged.
 
 The [live comparison](https://zefan-cai.github.io/open-jev/#comparison) separates
