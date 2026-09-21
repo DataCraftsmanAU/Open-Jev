@@ -1056,6 +1056,48 @@
       "bytes": 7423
     },
     {
+      "path": "release/social/comparison-update-20260921/README.md",
+      "source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+      "source_sha256": "47859c380f57388b0546ada69dcece4c53293c7b3be7e31d5094bf1ec822f93a",
+      "sha256": "47859c380f57388b0546ada69dcece4c53293c7b3be7e31d5094bf1ec822f93a",
+      "bytes": 1719
+    },
+    {
+      "path": "release/social/comparison-update-20260921/alt-text.txt",
+      "source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+      "source_sha256": "4a9251777b51386745356bc2a57337e099c125b73bc43e501f45cf0ad9d00ed4",
+      "sha256": "4a9251777b51386745356bc2a57337e099c125b73bc43e501f45cf0ad9d00ed4",
+      "bytes": 762
+    },
+    {
+      "path": "release/social/comparison-update-20260921/latency-comparison.png",
+      "source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+      "source_sha256": "05f6409c2d9ca4920d0512d511962e2cd5135ba5884ffab4c311b7a5ca19cac4",
+      "sha256": "05f6409c2d9ca4920d0512d511962e2cd5135ba5884ffab4c311b7a5ca19cac4",
+      "bytes": 206625
+    },
+    {
+      "path": "release/social/comparison-update-20260921/publication.json",
+      "source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+      "source_sha256": "1835c4371326576fb876a0d241d74eb1ec1699c19e8165452d80bd15900dfc41",
+      "sha256": "1835c4371326576fb876a0d241d74eb1ec1699c19e8165452d80bd15900dfc41",
+      "bytes": 10690
+    },
+    {
+      "path": "release/social/comparison-update-20260921/render_latency.py",
+      "source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+      "source_sha256": "4189a0444dedfa5fa8100a650e3f70fc5eafd245b696c5ddf8febe9168013eca",
+      "sha256": "4189a0444dedfa5fa8100a650e3f70fc5eafd245b696c5ddf8febe9168013eca",
+      "bytes": 9698
+    },
+    {
+      "path": "release/social/comparison-update-20260921/thread.md",
+      "source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+      "source_sha256": "ddb53b96edd8559fd83356c86656b7f40062ce7beba34479beb39ad1601dec56",
+      "sha256": "ddb53b96edd8559fd83356c86656b7f40062ce7beba34479beb39ad1601dec56",
+      "bytes": 3627
+    },
+    {
       "path": "release/social/index.html",
       "sha256": "a15992d14a8a6ba71ef119e3159c4d4716048d5dbb95899125ff48b445b86827",
       "bytes": 3743,
@@ -8370,7 +8412,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "f3edad3dfd2bd25a88c1c5f1bdd126659484cb31",
+  "current_source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -8696,6 +8738,19 @@
         "reports/ir-control-v1/trec-holdout/astra-listwise-summary.json",
         "reports/ir-control-v1/trec-holdout/astra-result-independent-audit.json",
         "site/provider-quality.json"
+      ]
+    },
+    {
+      "source_commit": "eb6e5932133d80f315d294f9e581d09dd8332207",
+      "created_at": "2026-09-21T01:32:48.260891+00:00",
+      "description": "Archive the already-published and publicly verified 13-post benchmark update with its latency chart, image description, portable renderer and publication record. Existing scientific metrics and release payload are unchanged; this repository release does not publish social posts. Private drafts, submission records and operational evidence are excluded.",
+      "paths": [
+        "release/social/comparison-update-20260921/README.md",
+        "release/social/comparison-update-20260921/thread.md",
+        "release/social/comparison-update-20260921/latency-comparison.png",
+        "release/social/comparison-update-20260921/render_latency.py",
+        "release/social/comparison-update-20260921/alt-text.txt",
+        "release/social/comparison-update-20260921/publication.json"
       ]
     }
   ]
