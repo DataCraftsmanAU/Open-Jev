@@ -121,6 +121,28 @@ This base-model initialization is distinct from the trained checkpoint above.
 Optional extras are `.[phone]` for phone-number controls and `.[doom]` for
 ViZDoom. Video rendering additionally needs Pillow, ffmpeg and ffprobe.
 
+## Run with Docker
+
+[`Dockerfile`](Dockerfile) builds a self-contained 2B service. The published
+checkpoint package and the pinned upstream base revision it requires are baked
+into the image, so a started container loads the model and serves on port 8791
+with no network access, no volumes and no download step.
+
+```bash
+docker compose up -d --build                  # NVIDIA GPU
+docker compose up -d --build open-jev-cpu     # CPU only, much slower
+
+curl -s -X POST http://127.0.0.1:8791/v1/systemone \
+  -H 'Content-Type: application/json' \
+  --data-binary @configs/example-request.json
+```
+
+The port is bound only after the checkpoint is loaded, so a healthy container is
+a ready model. The build verifies each package file against the published
+manifest and refuses a checkpoint whose recorded base revision differs from the
+one being baked in. [`docker/README.md`](docker/README.md) documents the
+settings, the CPU and 9B variants and the limits.
+
 ## Project videos
 
 The [introduction video](release/social/open-jev-introduction.mp4) introduces
