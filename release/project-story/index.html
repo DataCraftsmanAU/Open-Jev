@@ -61,7 +61,7 @@
           <div class="eyebrow">A project in the making · 开放研究记录</div>
           <h1 id="story-title">Open-Jev<span>是怎样做出来的</span></h1>
           <p class="hero-lead">从 Jev 的一条发布帖和几段演示出发，我们把“小模型直接做决策”变成了可以训练、检查、评测和复现的开放项目。这一页记录它的起点、设计选择，以及下一轮正在解决的问题。</p>
-          <div class="hero-links"><a class="button" href="https://zefan-cai.github.io/open-jev/benchmarks/">全部 benchmark 结果 ↗</a><a class="button primary" href="#origin">从起点读起 <span aria-hidden="true">↓</span></a><a class="button" href="https://zefan-cai.github.io/open-jev/#jevbench">看 JevBench 评测 ↗</a></div>
+          <div class="hero-links"><a class="button" href="https://zefan-cai.github.io/open-jev/workbench/">在线表格分类工作台 ↗</a><a class="button" href="https://zefan-cai.github.io/open-jev/benchmarks/">全部 benchmark 结果 ↗</a><a class="button primary" href="#origin">从起点读起 <span aria-hidden="true">↓</span></a><a class="button" href="https://zefan-cai.github.io/open-jev/#jevbench">看 JevBench 评测 ↗</a></div>
         </div>
         <div class="hero-art" aria-label="从共享上下文分出候选，再得到决策分布的示意图">
           <div class="diagram-paper">
@@ -83,9 +83,9 @@
         </div>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><strong>2B / 9B</strong><span>已公开 LoRA、决策头与校准参数</span></div>
+        <div class="hero-stat"><strong>2B / 9B / 27B</strong><span>LoRA、决策头与校准参数；27B 为 v1.1</span></div>
         <div class="hero-stat"><strong>3 种接口</strong><span>Choice · Noul · Score</span></div>
-        <div class="hero-stat"><strong>231 × 5</strong><span>五路公开 JevBench 基线，全部完成</span></div>
+        <div class="hero-stat"><strong>231 × 6</strong><span>六路公开 JevBench，全部完成并审计</span></div>
       </div>
     </section>
 
@@ -173,25 +173,26 @@
         <div class="chapter-content">
           <h2 id="evaluation-title">外部难题，把下一步变得更明确</h2>
           <p class="section-intro">我们先做了固定工作负载的质量与延迟对比，再加入 JevBench 的全部可用公开任务。结果说明：开放小模型已经能做不少决策，更难的推理仍有明显差距。</p>
-          <div class="result-banner"><strong>JevBench 公开子集 · 五路均已完成并审计</strong><span>72 original + 48 easy + 111 hard = 231</span></div>
-          <div class="table-scroll" role="region" aria-label="五模型JevBench公开子集结果，窄屏可横向滚动" tabindex="0">
+          <div class="result-banner"><strong>JevBench 公开子集 · 六路均已完成并审计</strong><span>72 original + 48 easy + 111 hard = 231</span></div>
+          <div class="table-scroll" role="region" aria-label="六模型JevBench公开子集结果，窄屏可横向滚动" tabindex="0">
             <table><thead><tr><th scope="col">模型</th><th scope="col">总体正确 / 231</th><th scope="col">总体准确率</th><th scope="col">Hard 正确 / 111</th><th scope="col">Hard 准确率</th></tr></thead><tbody>
               <tr class="our-row"><td class="model-cell">Open-Jev 2B<small>已发布 checkpoint</small></td><td>150 / 231</td><td class="metric-main result-percent">64.94%</td><td>46 / 111</td><td>41.44%</td></tr>
               <tr class="our-row"><td class="model-cell">Open-Jev 9B<small>已发布 checkpoint</small></td><td>179 / 231</td><td class="metric-main result-percent">77.49%</td><td>66 / 111</td><td>59.46%</td></tr>
+              <tr class="our-row"><td class="model-cell">Open-Jev 27B v1.1<small>新训练、独立审计的 checkpoint</small></td><td>197 / 231</td><td class="metric-main result-percent">85.28%</td><td>80 / 111</td><td>72.07%</td></tr>
               <tr><td class="model-cell">Jev 1.13.0<small>原生概率 API</small></td><td>200 / 231</td><td class="result-percent">86.58%</td><td>81 / 111</td><td>72.97%</td></tr>
               <tr><td class="model-cell">GPT-5.6 Luna<small>reasoning: none</small></td><td>206 / 231</td><td class="result-percent">89.18%</td><td>89 / 111</td><td>80.18%</td></tr>
               <tr><td class="model-cell">GPT-6 Astra<small>reasoning: low</small></td><td>231 / 231</td><td class="result-percent">100.00%</td><td>111 / 111</td><td>100.00%</td></tr>
             </tbody></table>
           </div>
           <p class="table-note">窄屏可横向滑动表格。这是 231 道<strong>公开题</strong>的成绩，不是完整 534 题 benchmark。Open-Jev 与 Jev 返回原生概率，GPT 按约束 JSON 输出口述概率。上游两类适配器在 139 道 Choice 中有 119 道候选顺序不同，因此它们采用相同任务和评分协议，但并非完全同序、同请求字节的对照。</p>
-          <div class="result-reading"><div><h3>为什么单独看 Hard？</h3><p>2B 和 9B 在 48 道 easy 题上都全对，但在 hard 上分别为 46 / 111 和 66 / 111。下一轮因此集中补多条件组合、否定与例外、冲突证据、时间范围和缺证据时的弃权。</p></div><div><h3>结果如何确认？</h3><p>五路各 231 次请求均成功完成。审计重放原始响应、请求记录和评分，并校验模型身份。Jev 有 1 个向量采用上游允许的舍入归一化；其余四路均通过严格概率校验。</p></div></div>
+          <div class="result-reading"><div><h3>为什么单独看 Hard？</h3><p>已发布 2B / 9B 的 Hard 成绩为 46 / 111 和 66 / 111；27B v1.1 提高到 80 / 111。27B 总体 197 / 231，仍比 Jev 少 3 题、Hard 少 1 题。模型规模、数据和先前训练经历同时变化，不能把差异单独归因于新数据。</p></div><div><h3>结果如何确认？</h3><p>六路各 231 次请求均成功完成。审计重放原始响应、请求记录和评分，并校验模型身份。Jev 有 1 个向量采用上游允许的舍入归一化；其余五路均通过严格概率校验。</p></div></div>
           <h3 class="comparison-title">效率也取决于问题的形状</h3>
           <p class="small">下面来自另一组重复延迟实验：完整响应 P50，单位 ms。每条路径先预热 3 次，再测量 20 次，并发为 1。</p>
           <div class="latency-grid">
             <div class="latency-card"><h3>客服请求 · 8 个 Noul 问题</h3><p class="small">短决策的部署延迟</p><div class="bar-row ours"><span>Open 2B</span><div class="bar"><i style="width:4.39%"></i></div><b>85</b></div><div class="bar-row"><span>Jev</span><div class="bar"><i style="width:15.23%"></i></div><b>295</b></div><div class="bar-row"><span>Luna</span><div class="bar"><i style="width:47.37%"></i></div><b>918</b></div><div class="bar-row"><span>Astra</span><div class="bar"><i style="width:100%"></i></div><b>1,938</b></div></div>
             <div class="latency-card"><h3>1,024 state tokens · 32 候选</h3><p class="small">候选规模扩大后的部署延迟</p><div class="bar-row ours"><span>Open 2B</span><div class="bar"><i style="width:73.20%"></i></div><b>1,016</b></div><div class="bar-row"><span>Jev</span><div class="bar"><i style="width:21.71%"></i></div><b>301</b></div><div class="bar-row"><span>Luna</span><div class="bar"><i style="width:49.71%"></i></div><b>690</b></div><div class="bar-row"><span>Astra</span><div class="bar"><i style="width:100%"></i></div><b>1,388</b></div></div>
           </div>
-          <p class="table-note">2B 使用本地单张 H100 与 loopback HTTP，其他模型走托管 HTTPS API；硬件和网络不同。85 ms 不能外推为所有任务的速度，也不能解释为同硬件加速比。上述重复延迟实验与 JevBench 的异质任务单次计时分开记录，前缀缓存均未用于这些 Open-Jev 对照。</p>
+          <p class="table-note">上面两张延迟图中，2B 使用本地单张 H100 与 loopback HTTP，其他模型走托管 HTTPS API；硬件和网络不同。新 27B 的 JevBench 使用共享机器上的四卡直接执行，其时间未放入这些图表，不能解释成单卡或 HTTP/API 延迟。85 ms 不能外推为所有任务的速度，也不能解释为同硬件加速比。上述重复延迟实验与 JevBench 的异质任务单次计时分开记录，前缀缓存均未用于这些 Open-Jev 对照。</p>
           <details class="protocol-details"><summary>再看一点评分与概率的细节</summary><p>采用锁定版本的上游 JevBench scorer：严格概率和容差为 0.001，舍入容差为 0.02；并列最大值按标签字典序处理。Score 准确率比较 argmax 等级与参考等级，期望值的 ordinal MAE 单独报告。原生概率与 GPT 口述概率的校准指标只描述此协议下返回的分布。完整方法、各子集与审计链接都保留在公开报告。</p></details>
           <div class="source-row"><a class="source-pill" href="https://zefan-cai.github.io/open-jev/#jevbench">JevBench 完整结果 ↗</a><a class="source-pill" href="https://zefan-cai.github.io/open-jev/#comparison">更广的质量与效率对比 ↗</a><a class="source-pill" href="https://github.com/fstandhartinger/jevbench/tree/f8ce71361165846101d02ebc83ad44e47ae44fc3">锁定的上游基准 ↗</a></div>
         </div>
@@ -207,27 +208,31 @@
           <p>为补充结构化规则数据，另引入 <a class="text-link" href="https://huggingface.co/datasets/alisawuffles/WANLI">WANLI</a> 的自然语言推断：保留原始 premise、hypothesis 与人工审核标签，转换为支持、矛盾、未知三个候选。转换后保留 101,207 行，其中 82,045 行进入训练；官方 test 的相连 seed / premise 组提前隔离。</p>
           <div class="mix-bar" role="img" aria-label="新训练混合：社区控制30720行，WANLI82045行，旧任务回放35874行，共148639行"><span></span><span></span><span></span></div>
           <div class="mix-legend"><div><div class="legend-label"><i></i>新社区控制</div><strong>30,720</strong><p>完整 family 留出；新数据全 split 共 51,200 行。</p></div><div><div class="legend-label"><i></i>WANLI 推断</div><strong>82,045</strong><p>一个英文自然语言来源，保留 CC BY 4.0 归属。</p></div><div><div class="legend-label"><i></i>旧任务回放</div><strong>35,874</strong><p>每个旧来源至多选 1,500 训练行，保留既有能力。</p></div></div>
-          <p class="small" style="margin-top:19px">训练合计 148,639 行；保留各来源 holdout 后，整个混合数据全 split 共 328,672 行。社区原始数据为 CC0，WANLI 为 CC BY 4.0，混合数据保留各自许可。数据中的不同任务视角仍然相关。</p>
-          <div class="note">这些新社区数据是显式规则与结构化属性控制。它们不等同于 CUAD 标注、自然合同审阅、人类偏好数据或真实赛车/UT99 轨迹；中、日、韩部分是配合英文规则的混合语言问题。它们用于训练新的判断模式，效果要由随后独立的外部评测回答。</div>
-          <p class="small" style="margin-top:20px"><strong>下一轮线索还在扩充：</strong>已核验的社区方向还包括 skills / model routing、SQL 审计、CMS 多标签分类，以及是否需要审批的判断。我们正在继续整理这些用例与来源，准备相应的数据和留出评测；它们尚不代表已训练能力，也没有新增模型成绩。</p>
+          <p class="small" style="margin-top:19px">训练合计 148,639 行；保留各来源 holdout 后，整个混合数据全 split 共 328,672 行。社区原始数据为 CC0，WANLI 为 CC BY 4.0，混合数据保留各自许可。数据中的不同任务视角仍然相关。公开 v1.1 是 326,619 行的可再分发投影，其中训练 147,139 行；排除了 2,053 条 Wiki，并不等于完整训练或评测语料。TypeSafe 短问题保留来源许可限定。</p>
+          <div class="note">这些新社区数据是显式规则与结构化属性控制。它们不等同于 CUAD 标注、自然合同审阅、人类偏好数据或真实赛车/UT99 轨迹；中、日、韩部分是配合英文规则的混合语言问题。它们用于训练新的判断模式；上面的独立 JevBench 和下面的全量内部评测记录了最终成绩。</div>
+          <p class="small" style="margin-top:20px"><strong>下一轮线索还在扩充：</strong>已核验的社区方向还包括 skills / model routing、SQL 审计、CMS 多标签分类，以及是否需要审批的判断。这些方向的数据和留出评测已准备；它们仍需单独训练和审计，不能视作 v1.1 的已验证能力。</p>
 
-          <!-- ROOT_UPDATE_TRAINING_STATUS_START: update this block when live status changes. -->
-          <section class="training-box" id="training-status" data-status="training" data-planned-steps="37160" aria-labelledby="training-status-title">
-            <div class="training-header"><div><h3 id="training-status-title">新 27B 训练阶段</h3><p class="small" id="training-status-detail" style="margin:0">已在 N1-1 前四张 H100 开始参数更新；2026-09-21 07:31 UTC 核验到第 616 步，loss 与梯度均为有限值。训练过程正常不代表效果提升，最终评测尚未完成。</p></div><span class="training-state"><i class="status-dot" id="training-status-dot" aria-hidden="true"></i><span id="training-status-label">训练中</span></span></div>
-            <dl class="training-config"><div><dt>初始化</dt><dd>旧阶段第 26,500 步权重</dd></div><div><dt>训练数据</dt><dd>148,639 行</dd></div><div><dt>计划步数</dt><dd>37,160 steps</dd></div><div><dt>训练资源</dt><dd>4 × H100 · GPU 0–3</dd></div></dl>
-            <p class="training-next" id="training-status-next">从旧 LoRA / head 权重初始化，新建 optimizer、随机流与数据游标。完成后依次校准、重载验证，再使用同一套 231 道公开 JevBench 任务评估最终 checkpoint。</p>
+          <!-- ROOT_UPDATE_TRAINING_STATUS_START: completed audited v1.1 snapshot. -->
+          <section class="training-box" id="training-status" data-status="completed" data-planned-steps="37160" aria-labelledby="training-status-title">
+            <div class="training-header"><div><h3 id="training-status-title">27B v1.1：全量评测与独立审计完成</h3><p class="small" id="training-status-detail" style="margin:0">127,787 条 Test / OOD 预测完整，失败、遗漏、重复均为零。六组执行成功退出，所属 GPU 进程清理已确认；完整捕获的原始字节、模型身份和指标均通过独立重算。</p></div><span class="training-state"><span id="training-status-label">审计通过</span></span></div>
+            <dl class="training-config"><div><dt>最终训练步数</dt><dd>37,160 steps</dd></div><div><dt>原始训练集</dt><dd>148,639 行</dd></div><div><dt>全量内部评测</dt><dd>127,787 行</dd></div><div><dt>外部公开 JevBench</dt><dd>197 / 231</dd></div></dl>
+            <p class="training-next" id="training-status-next">使用固定 Qwen3.8-27B 基座、LoRA rank 8、FP32 决策头和已保存温度；包内不包含合并的基座权重。新 2B 训练已停止，新 9B 未启动；它们没有 v1.1 成绩。在线分类工作台继续使用已发布的 2B。</p>
           </section>
           <!-- ROOT_UPDATE_TRAINING_STATUS_END -->
-          <p class="table-note">JevBench 与 JF100 保持评测用途，没有作为本轮生成器的素材。词法重叠检查未发现匹配，但不能排除语义改写或基座预训练接触。未来的新 27B 与发布版 9B 比较还同时改变了模型规模和早期训练经历，不能单独归因于这一批新数据。</p>
-          <p class="table-note">下一版社区数据已冻结并通过完整 tokenizer 检查，队列正等待当前训练与评测结束：真实意图路由、可执行 SQL、审批与 CMS 共 129,288 条新决策，其中 74,921 条用于训练；加上 21,928 条旧任务回放，训练集为 96,849 条。另设 1,280 条专项 test / OOD 评测，含 840 个原始分组，与训练、校准和验证集隔离。相同合成规则下的保留集仍可能偏乐观，需结合外部 JevBench 判断。<a href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/internal-evaluation.md">内部评测方法</a></p>
+          <h3>旧版与扩展后的完整留出集</h3>
+          <div class="table-scroll" role="region" aria-label="四列完整内部评测，窄屏可横向滚动" tabindex="0"><table><caption>硬标签正确数 / 硬标签总数（准确率）；旧版集合包含在扩展集合中。</caption><thead><tr><th scope="col">模型</th><th scope="col">Old Test</th><th scope="col">Old OOD</th><th scope="col">Expanded Test</th><th scope="col">Expanded OOD</th></tr></thead><tbody><tr><th scope="row">已发布 2B</th><td>9,515 / 10,046<br>94.71%</td><td>13,287 / 15,446<br>86.02%</td><td>未评测</td><td>未评测</td></tr><tr><th scope="row">已发布 9B</th><td>9,799 / 10,046<br>97.54%</td><td>14,205 / 15,446<br>91.97%</td><td>未评测</td><td>未评测</td></tr><tr><th scope="row">27B v1.1</th><td>9,876 / 10,046<br>98.31%</td><td>14,825 / 15,446<br>95.98%</td><td>41,357 / 42,789<br>96.65%</td><td>80,934 / 83,924<br>96.44%</td></tr></tbody></table></div>
+          <p class="table-note">Old Test / OOD 全量为 10,532 / 15,920 行，Expanded Test / OOD 全量为 43,301 / 84,486 行。对应 486 / 474 / 512 / 562 条软标签不计入硬准确率，仍参与概率指标。旧版行的输入、候选顺序与标签完全保留在扩展集内，四列有重叠，不能相加。内部最大长度 4,096、不截断；外部 JevBench 为独立的 16,384-token 协议。</p>
+          <div class="release-links"><a class="release-link" href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/internal-full-evaluation.md"><b>完整内部评测与审计</b><span>ALL 127,787 ROWS</span></a><a class="release-link" href="https://huggingface.co/ZefanCai/Open-Jev-27B-v1.1"><b>27B v1.1 模型</b><span>ADAPTER · HEAD · CALIBRATION</span></a><a class="release-link" href="https://huggingface.co/datasets/ZefanCai/Open-Jev-v1.1"><b>v1.1 可再分发数据</b><span>326,619 ROWS · SOURCE LICENSES RETAINED</span></a></div>
+          <p class="table-note">JevBench 与 JF100 保持评测用途，没有作为本轮生成器的素材。词法重叠检查未发现匹配，但不能排除语义改写或基座预训练接触。27B v1.1 与发布版 9B 的比较同时改变了模型规模和早期训练经历，不能单独归因于这一批新数据。</p>
+          <p class="table-note">下一版社区数据已冻结并通过完整 tokenizer 检查，这些准备尚无新模型成绩：真实意图路由、可执行 SQL、审批与 CMS 共 129,288 条新决策，其中 74,921 条用于训练；加上 21,928 条旧任务回放，训练集为 96,849 条。另设 1,280 条专项 test / OOD 评测，含 840 个原始分组，与训练、校准和验证集隔离。相同合成规则下的保留集仍可能偏乐观，需结合外部 JevBench 判断。<a href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/internal-evaluation.md">内部评测方法</a></p>
         </div>
       </section>
 
-      <div class="closing"><p>从演示里发现问题，<br>用开放的数据、模型和证据继续回答。</p><span>Open-Jev 的故事还在继续。下一次更新，应当带着新的可复核结果。</span></div>
+      <div class="closing"><p>从演示里发现问题，<br>用开放的数据、模型和证据继续回答。</p><span>27B v1.1 的全量内部与公开 JevBench 结果已可复核。下一步，继续用真实使用和新的独立评测检验它。</span></div>
       <footer class="source-footer">
         <div class="source-footer-top"><h2>继续查看 · 项目与来源</h2><span class="small">章节按开发阶段整理；不据提交时间推断具体实验耗时。</span></div>
         <div class="reference-grid"><a href="https://github.com/Zefan-Cai/Open-Jev">公开代码与历史 ↗</a><a href="https://huggingface.co/collections/ZefanCai/open-jev-6ab049b9d43a267bae4dedc8">Hugging Face 合集 ↗</a><a href="https://zefan-cai.github.io/open-jev/#demos">演示与证据 ↗</a><a href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/website-and-videos.md">视频来源与回放方法 ↗</a><a href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/jevbench-public.md">JevBench 公开子集方法 ↗</a><a href="https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/inference-latency.md">延迟测量方法 ↗</a><a href="https://x.com/ShengyaoZhuang/status/2101212268440723895">社区 IR 场景 ↗</a><a href="https://x.com/matu79go/status/2101878714917429488">社区合同审阅场景 ↗</a><a href="https://x.com/Zefan_Cai/status/2101845509170417784">已发布项目长帖 ↗</a></div>
-        <div class="footer-bottom"><span>OPEN-JEV / PROJECT STORY<br>内容快照：2026-09-21 UTC · 结果来自仓库文档、冻结清单与独立审计。</span><a href="#story-title">回到开头 ↑</a></div>
+        <div class="footer-bottom"><span>OPEN-JEV / PROJECT STORY<br>内容快照：2026-09-23 UTC · 结果来自仓库文档、冻结清单与独立审计。</span><a href="#story-title">回到开头 ↑</a></div>
       </footer>
     </div>
   </main>

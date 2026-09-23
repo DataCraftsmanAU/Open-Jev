@@ -1,20 +1,34 @@
 # Benchmark results and scope
 
-This index consolidates completed measurements from the published reports. Each table keeps its own metric and denominator. The Open-Jev columns refer to the released 2B/9B LoRA adapters, scalar decision heads and saved calibration. No new 27B result is available.
+This index consolidates completed measurements from the published reports. Each table keeps its own metric and denominator. Tables label each checkpoint. Open-Jev 27B v1.1 has audited full internal and JevBench public-subset results; the historical provider-control and latency tables retain their released 2B/9B identities.
 
 [Project website](https://zefan-cai.github.io/open-jev/) · [Website benchmark tables](https://zefan-cai.github.io/open-jev/benchmarks/) · [Hugging Face collection](https://huggingface.co/collections/ZefanCai/open-jev)
 
+## Full internal evaluation
+
+| Model | Old Test | Old OOD | Expanded Test | Expanded OOD |
+|---|---:|---:|---:|---:|
+| Released Open-Jev 2B | 9,515 / 10,046 (94.71%) | 13,287 / 15,446 (86.02%) | Not evaluated | Not evaluated |
+| Released Open-Jev 9B | 9,799 / 10,046 (97.54%) | 14,205 / 15,446 (91.97%) | Not evaluated | Not evaluated |
+| Open-Jev 27B v1.1 | 9,876 / 10,046 (98.31%) | 14,825 / 15,446 (95.98%) | 41,357 / 42,789 (96.65%) | 80,934 / 83,924 (96.44%) |
+
+All 127,787 expanded held-out rows were independently audited for 27B v1.1, with zero failures, missing rows or duplicates. Old Test/OOD cover all 10,532 / 15,920 rows; expanded Test/OOD cover all 43,301 / 84,486. The cells use exact hard-label denominators. Their 486 / 474 / 512 / 562 soft-target rows remain in probability metrics. Old panels are unchanged-content subsets of expanded panels and overlap with them. Released 2B/9B expanded evaluations have not run; new 2B training stopped and new 9B did not start.
+
+Source: [complete full internal method and results](internal-full-evaluation.md), [audited aggregate](../reports/new27b-internal-full-20260923/report.json). Internal max length is 4,096 without truncation; JevBench uses a separate 16,384-token protocol. Shared multi-GPU timing is not single-GPU or HTTP/API latency.
+
 ## External decision benchmarks
 
-| Evaluation / metric | Released Open-Jev 2B | Released Open-Jev 9B | Jev 1.13.0 | GPT-5.6 Luna (none) | GPT-6 Astra (low) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| JevBench public · correct / 231 | 150/231 · 64.94% | 179/231 · 77.49% | 200/231 · 86.58% | 206/231 · 89.18% | 231/231 · 100.00% |
-| JevBench original · correct / 72 | 56/72 | 65/72 | 71/72 | 69/72 | 72/72 |
-| JevBench easy · correct / 48 | 48/48 | 48/48 | 48/48 | 48/48 | 48/48 |
-| JevBench hard · correct / 111 | 46/111 | 66/111 | 81/111 | 89/111 | 111/111 |
-| JF100 · correct / 300 rotations | Pending | Pending | 232/300 | 227/300 | 300/300 |
+| Evaluation / metric | Released Open-Jev 2B | Released Open-Jev 9B | Open-Jev 27B v1.1 | Jev 1.13.0 | GPT-5.6 Luna (none) | GPT-6 Astra (low) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| JevBench public · correct / 231 | 150/231 · 64.94% | 179/231 · 77.49% | 197/231 · 85.28% | 200/231 · 86.58% | 206/231 · 89.18% | 231/231 · 100.00% |
+| JevBench original · correct / 72 | 56/72 | 65/72 | 69/72 | 71/72 | 69/72 | 72/72 |
+| JevBench easy · correct / 48 | 48/48 | 48/48 | 48/48 | 48/48 | 48/48 | 48/48 |
+| JevBench hard · correct / 111 | 46/111 | 66/111 | 80/111 | 81/111 | 89/111 | 111/111 |
+| JF100 · correct / 300 rotations | Pending | Pending | Not evaluated | 232/300 | 227/300 | 300/300 |
 
-JevBench covers all 231 available public tasks out of 534 total: 72 original, 48 easy and 111 hard. The other 303 private/judge tasks were unavailable. All five streams completed and passed independent replay audits. Native and GPT adapters use different candidate orders on 119 of 139 Choice tasks. Open-Jev and Jev return native probabilities; GPT returns verbalized probability vectors in constrained JSON, not token logprobs. Jev had one vector normalized under the upstream rounding policy (230/231 strict-valid); the other four streams had 231/231 strict-valid vectors.
+JevBench covers all 231 available public tasks out of 534 total: 72 original, 48 easy and 111 hard. The other 303 private/judge tasks were unavailable. All six streams completed and passed independent replay audits. Native and GPT adapters use different candidate orders on 119 of 139 Choice tasks. Open-Jev and Jev return native probabilities; GPT returns verbalized probability vectors in constrained JSON, not token logprobs. Jev had one vector normalized under the upstream rounding policy (230/231 strict-valid); the other five streams had 231/231 strict-valid vectors.
+
+27B v1.1 scores 197/231 overall and 80/111 Hard, improving over released 2B/9B while remaining three overall and one Hard answer behind Jev. Its four-rank direct-execution timings are not included in the HTTP/HTTPS latency comparison.
 
 JF100 has 100 external items in three option rotations: 300 correlated decisions, not 300 independent problems. Jev’s 232/300 is categorical-only accounting and retains two probability-mass flags. The earlier Open-Jev pilot checkpoints are different from the released models; their archived scores do not fill the pending released-model cells.
 
@@ -86,12 +100,13 @@ JevBench timing is a separate diagnostic: one full-response observation per hete
 | --- | ---: | ---: |
 | Released Open-Jev 2B | Qwen/Qwen3.5-2B | LoRA + scalar head + saved calibration; base revision 15852e8c16360a2fea060d615a32b45270f8a8fc |
 | Released Open-Jev 9B | Qwen/Qwen3.5-9B | LoRA + scalar head + saved calibration; base revision c202236235762e1c871ad0ccb60c8ee5ba337b9a |
+| Open-Jev 27B v1.1 | Qwen/Qwen3.8-27B | LoRA rank 8 + FP32 scalar head + saved temperature 2.5343690298472983; base revision 1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0 |
 | Jev | jev-1.13.0 | Recorded hosted version |
 | GPT-5.6 Luna | gpt-5.6-luna | Reasoning none; recorded alias, no dated snapshot available |
 | GPT-6 Astra | gpt-6-astra | Reasoning low; recorded alias, no dated snapshot available |
 
-The released HF package revisions are `0c7aa498b1627be8da4acf34c863ff0ee0a92785` (2B) and `47e966881e489511c0c7f5633a9e1960a676a551` (9B). They require upstream base weights and the Open-Jev loader. Model settings differ between providers; these are not equal reasoning budgets. Exact request options, checkpoints and hashes are retained in the linked experiment reports.
+The [27B v1.1 package](https://huggingface.co/ZefanCai/Open-Jev-27B-v1.1) uses checkpoint tree SHA-256 `c49994563c3c4f04a99d9130203c4e526f4ae5086c84deec57698d18cb652e71`. The original released HF package revisions are `0c7aa498b1627be8da4acf34c863ff0ee0a92785` (2B) and `47e966881e489511c0c7f5633a9e1960a676a551` (9B). They require upstream base weights and the Open-Jev loader. Model settings differ between providers; these are not equal reasoning budgets. Exact request options, checkpoints and hashes are retained in the linked experiment reports.
 
-Released Open-Jev JF100, TREC and the remaining provider-control suites are pending. New 27B training and v3 data preparation have no audited final quality result. The prepared 107,922-row broader held-out registry and the fixed 1,280-row / 840-group v2–v3 panel are evaluation plans, not completed results. Historical pilots remain archived under their original identities.
+Released Open-Jev JF100, TREC and the remaining provider-control suites are pending. 27B v1.1 has completed full internal and public JevBench audits. Prepared V3 data has no completed new-model result. The prepared 107,922-row broader held-out registry and the fixed 1,280-row / 840-group v2–v3 panel are evaluation plans, not completed results. Historical pilots remain archived under their original identities.
 
 See [internal evaluation](internal-evaluation.md) for split roles, calibration and group weighting. Archived pilots: [4K suite](../reports/pilot-suite-n1-4k/) and [16K JF100](../reports/pilot-frontier-n1-16k/). No pilot score is presented here as a released-model or new 27B result.

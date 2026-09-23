@@ -161,6 +161,10 @@ h1 > span { color: var(--accent); }
 .results-table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }.results-table th, .results-table td { padding: 22px 12px; border-bottom: 1px solid #b6c7df; text-align: right; }
 .results-table th:first-child { text-align: left; padding-left: 0; }.results-table thead th { font-size: 15px; color: #354c68; font-weight: 650; }.results-table tbody th { font-size: 17px; font-weight: 650; }.results-table tbody th > span { display: block; font-size: 15px; color: #435a77; }
 .results-table tbody td { font-size: 31px; font-weight: 700; line-height: 1.4; letter-spacing: -.05em; }.results-table tbody td > span:not(.table-status) { font-size: 18px; margin-left: 2px; }
+.results-table.full-internal { min-width: 730px; }
+.results-table.full-internal tbody td { font-size: 20px; letter-spacing: -.02em; }
+.results-table.full-internal td small { display: block; margin-top: 5px; font-size: 13px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
+.results-table.full-internal tbody td.not-evaluated { font-size: 14px; font-weight: 500; letter-spacing: 0; }
 .table-status { display: inline-block; font-size: 14px; line-height: 1.5; font-weight: 600; letter-spacing: 0; padding: 4px 8px; border-radius: 5px; background: #dfeee5; color: #145a36; }.pending-result .table-status { background: #e0e8f6; color: #284d7b; }
 .highlight-result > * { color: #174b99; }.result-notes { font-size: 16px; line-height: 1.8; color: #364b65; margin-top: 24px; }.result-notes p { margin-bottom: 16px; }
 .start-section { display: grid; grid-template-columns: 1fr 1.45fr; gap: 64px; padding-block: 78px; }.start-section h2 { font-size: 44px; margin: 20px 0 26px; }.start-section > div > p { font-size: 18px; color: var(--muted); }

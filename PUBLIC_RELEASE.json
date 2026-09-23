@@ -30,12 +30,13 @@
     },
     {
       "path": "README.md",
-      "source_sha256": "576434924a1e0d63c1a3c2e08e35ce40dd94715c3d77e526e3768ad102b224e4",
-      "sha256": "3a2e4e0e31a10a816a2ba666cd7578a5bdf3f9d766bdba18bdeb321a2bec508e",
-      "bytes": 18101,
+      "source_sha256": "4e37974fe578602dfc825a07bd8698bdcfa9056f0e7107835560db5842e3f46d",
+      "sha256": "4e37974fe578602dfc825a07bd8698bdcfa9056f0e7107835560db5842e3f46d",
+      "bytes": 24087,
       "changes": [
-        "Hosted workbench links and verified CPU deployment."
-      ]
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ],
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -106,13 +107,14 @@
     },
     {
       "path": "docs/benchmarks.md",
-      "source_sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
+      "source_sha256": "96fa8c556b2175beba350965a60e0a6e6f6fa0ea337a2aa6c6dce18cc9efc208",
       "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
-      "sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
-      "bytes": 10065,
+      "sha256": "96fa8c556b2175beba350965a60e0a6e6f6fa0ea337a2aa6c6dce18cc9efc208",
+      "bytes": 12139,
       "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
-      ]
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ],
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
     },
     {
       "path": "docs/browser-data.md",
@@ -322,9 +324,23 @@
     },
     {
       "path": "docs/internal-evaluation.md",
-      "source_sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
-      "sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
-      "bytes": 7363
+      "source_sha256": "a2ddcf7d14b28edfd83ff205b5c3091c0e63fde155c33a28784d8a9d306225f1",
+      "sha256": "a2ddcf7d14b28edfd83ff205b5c3091c0e63fde155c33a28784d8a9d306225f1",
+      "bytes": 8336,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "docs/internal-full-evaluation.md",
+      "source_sha256": "05e9546c47edfd84bab6732d7940b97db9f84709e4ea75cc0cdd9037fd16c7f9",
+      "sha256": "05e9546c47edfd84bab6732d7940b97db9f84709e4ea75cc0cdd9037fd16c7f9",
+      "bytes": 5627,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "docs/ir-control-data.md",
@@ -338,10 +354,13 @@
     },
     {
       "path": "docs/jevbench-public.md",
-      "sha256": "accf5d503bea826bd264b17c4ea8af98ef7f8649f371b3bacbf22f3b7db49f2d",
-      "bytes": 8610,
-      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
-      "source_sha256": "accf5d503bea826bd264b17c4ea8af98ef7f8649f371b3bacbf22f3b7db49f2d"
+      "sha256": "783fd3a95669d7a35c8e2f238cab21ffcf8d956270e34ff5f189ec9a7beae25e",
+      "bytes": 10213,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "source_sha256": "783fd3a95669d7a35c8e2f238cab21ffcf8d956270e34ff5f189ec9a7beae25e",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "docs/latency.md",
@@ -1061,6 +1080,16 @@
       "bytes": 24603
     },
     {
+      "path": "jev/eval_resources.py",
+      "source_sha256": "eb0f03370963a620aa6a706815cfb1b6f62ff07891415d02539520208be6c803",
+      "sha256": "e4cc82d948d4363b36c2d890fc78442f5aa677895a774cbd2a7301cff4466521",
+      "bytes": 17849,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Private hardware identities replaced by inert explicit-configuration placeholders; original frozen source SHA retained."
+      ]
+    },
+    {
       "path": "jev/game_cli.py",
       "source_sha256": "6c1d98c14944396236709ddf3f72c8957bd5ac1964e222a804eb0af9393588f4",
       "sha256": "6c1d98c14944396236709ddf3f72c8957bd5ac1964e222a804eb0af9393588f4",
@@ -1071,6 +1100,16 @@
       "source_sha256": "5b7ac9f459bd86a724b39c7c2f87f8e8d7441a28aa7a7f14ef0fe94366544afe",
       "sha256": "5b7ac9f459bd86a724b39c7c2f87f8e8d7441a28aa7a7f14ef0fe94366544afe",
       "bytes": 50657
+    },
+    {
+      "path": "jev/inference_initialization.py",
+      "source_sha256": "fd17e3c8b786c79dc290255dd3f6f8a37d1c244cd1805e97e2483dc1225f4f1d",
+      "sha256": "fd17e3c8b786c79dc290255dd3f6f8a37d1c244cd1805e97e2483dc1225f4f1d",
+      "bytes": 9798,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "jev/ir_data.py",
@@ -1186,6 +1225,26 @@
       "bytes": 7823
     },
     {
+      "path": "jev/sharded_model.py",
+      "source_sha256": "203ccce480104a3741058ad069ea243688d1e34aafdf6af214e64db7b6fb178b",
+      "sha256": "203ccce480104a3741058ad069ea243688d1e34aafdf6af214e64db7b6fb178b",
+      "bytes": 13702,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "jev/shared_resources.py",
+      "source_sha256": "e910e6e556c8a4e1f6f404f7ae19ed8d5ad8bceb82e792f2b137498c4a989b48",
+      "sha256": "0386cb2988be1a8fcf937bc8b8de7a11b4f2d865724c7e68ef5e4e136514986d",
+      "bytes": 24680,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Private hardware identities replaced by inert explicit-configuration placeholders; original frozen source SHA retained."
+      ]
+    },
+    {
       "path": "jev/silent_failure_data.py",
       "sha256": "f0127220b61a2b9eb913b60f99ebe84f9948b999c9f1bf813ffd35dfd13bf4a7",
       "bytes": 15943,
@@ -1209,9 +1268,13 @@
     },
     {
       "path": "jev/train_distributed.py",
-      "source_sha256": "faf7e1869d33608af8f32103c174cab2bdb7bc8ce304e18fc561f21a3626dbfc",
-      "sha256": "faf7e1869d33608af8f32103c174cab2bdb7bc8ce304e18fc561f21a3626dbfc",
-      "bytes": 35934
+      "source_sha256": "f730dff37d9eddb452541078afbd8070414757c1bd03eb6c6c2ab3d5797f32c2",
+      "sha256": "f730dff37d9eddb452541078afbd8070414757c1bd03eb6c6c2ab3d5797f32c2",
+      "bytes": 37903,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "jev/wanli_data.py",
@@ -1242,12 +1305,13 @@
     },
     {
       "path": "release/project-story/index.html",
-      "source_sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
-      "sha256": "ee04a16654a9c81069e941fd0b285872eed46bbe78af26c49790311d7ca5949f",
-      "bytes": 57791,
+      "source_sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
+      "sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
+      "bytes": 60527,
       "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
-      ]
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ],
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
     },
     {
       "path": "release/social/README.md",
@@ -3465,6 +3529,16 @@
       "bytes": 1455
     },
     {
+      "path": "reports/huggingface-data-v1.1/publication.json",
+      "source_sha256": "5ac88a71cdba8049109276e174aca16001f3d4bfe6360d92bbc360f4880af7d3",
+      "sha256": "5ac88a71cdba8049109276e174aca16001f3d4bfe6360d92bbc360f4880af7d3",
+      "bytes": 7986,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
       "path": "reports/huggingface-model-release/2b/README.md",
       "source_sha256": "2e0005c57ee7e3fe0f6fff57071314d260fd7978bf72dba70237865bcb4f9538",
       "sha256": "2e0005c57ee7e3fe0f6fff57071314d260fd7978bf72dba70237865bcb4f9538",
@@ -3532,6 +3606,16 @@
       "source_sha256": "6fb4aa69fbb59395a1555deb11b57e8b2c1017e14e6ee24afc2a3bd6f38ad5d4",
       "sha256": "6fb4aa69fbb59395a1555deb11b57e8b2c1017e14e6ee24afc2a3bd6f38ad5d4",
       "bytes": 926
+    },
+    {
+      "path": "reports/huggingface-v1.1/model/publication.json",
+      "source_sha256": "2279c9f9fabb55d2925c511590ba58f8b28f64a80867e8295b54540da225d9b1",
+      "sha256": "2279c9f9fabb55d2925c511590ba58f8b28f64a80867e8295b54540da225d9b1",
+      "bytes": 5835,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "reports/inference-latency/presentation-qa-20260920/live-publication-verification.json",
@@ -4410,6 +4494,86 @@
       "bytes": 5863,
       "changes": [
         "private network locator replaced with reserved documentation address"
+      ]
+    },
+    {
+      "path": "reports/new27b-internal-full-20260923/README.md",
+      "source_sha256": "c041e774c10b70314a770df8d9e593ad83add5c2f68ef6886315b82d4bafb76c",
+      "sha256": "c041e774c10b70314a770df8d9e593ad83add5c2f68ef6886315b82d4bafb76c",
+      "bytes": 5757,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "reports/new27b-internal-full-20260923/report.json",
+      "source_sha256": "19a154c1a6ed3935bac266ab04b8a395bc180739540127b4b3802190e3c34f97",
+      "sha256": "19a154c1a6ed3935bac266ab04b8a395bc180739540127b4b3802190e3c34f97",
+      "bytes": 4881,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "reports/new27b-internal-full-20260923/source-identities.json",
+      "source_sha256": "9865d448b13ae8079bfaa33bf08744c205dbd683ab3f794eda33d3281d954db1",
+      "sha256": "9865d448b13ae8079bfaa33bf08744c205dbd683ab3f794eda33d3281d954db1",
+      "bytes": 3654,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "reports/new27b-internal-full-20260923/verify.py",
+      "source_sha256": "2eefd11d5010bbe705641f397eec0912992984ca3047631e8a8578eae5d34801",
+      "sha256": "2eefd11d5010bbe705641f397eec0912992984ca3047631e8a8578eae5d34801",
+      "bytes": 25409,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "reports/new27b-internal-full-20260923/verify_campaign.py",
+      "source_sha256": "c573ff8620e706197008170dc464e4e7a3de6da37fd93df58cc20ae020e8c393",
+      "sha256": "c573ff8620e706197008170dc464e4e7a3de6da37fd93df58cc20ae020e8c393",
+      "bytes": 39499,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "reports/new27b-jevbench-20260922/README.md",
+      "source_sha256": "cea2c4152708b5039ac577683ca1eaee271819ce79c2711e7b41d5ec8d1706d4",
+      "sha256": "cea2c4152708b5039ac577683ca1eaee271819ce79c2711e7b41d5ec8d1706d4",
+      "bytes": 1703,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "reports/new27b-jevbench-20260922/audit.json",
+      "source_sha256": "0759d6d9d457e0b823f823d8d9e7b7c9f0f4f3a9278f6cd32aac1e7b442392fc",
+      "sha256": "0759d6d9d457e0b823f823d8d9e7b7c9f0f4f3a9278f6cd32aac1e7b442392fc",
+      "bytes": 5183,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "reports/new27b-jevbench-20260922/report.json",
+      "source_sha256": "9a78ffb3aecb113e26bf4d83fd5ad7467141e3bdf84535e90ba71d634ec2a85d",
+      "sha256": "9a78ffb3aecb113e26bf4d83fd5ad7467141e3bdf84535e90ba71d634ec2a85d",
+      "bytes": 6685,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
       ]
     },
     {
@@ -7301,12 +7465,12 @@
     },
     {
       "path": "scripts/build_site_results.py",
-      "sha256": "80a5b2e961fbe079325650fe2aeadfb60f7973e91a08d119881fdd02755e3525",
-      "bytes": 3872,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "80a5b2e961fbe079325650fe2aeadfb60f7973e91a08d119881fdd02755e3525",
+      "sha256": "19d824c8593d7a8aa179da8c651307962cb0c0cba87f98e2206364d450a26d71",
+      "bytes": 12244,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "source_sha256": "19d824c8593d7a8aa179da8c651307962cb0c0cba87f98e2206364d450a26d71",
       "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
       ]
     },
     {
@@ -7388,6 +7552,26 @@
       "bytes": 15453
     },
     {
+      "path": "scripts/evaluate_internal_full.py",
+      "source_sha256": "b436e8f6060acd43c90d53800c9127794ee9546c574d4344c27824f2406612bb",
+      "sha256": "b436e8f6060acd43c90d53800c9127794ee9546c574d4344c27824f2406612bb",
+      "bytes": 23392,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
+      "path": "scripts/evaluate_internal_shard.py",
+      "source_sha256": "faf8abcf721980ec224b56efa15e422041c19a17ca47e3f0494557e2997cca56",
+      "sha256": "faf8abcf721980ec224b56efa15e422041c19a17ca47e3f0494557e2997cca56",
+      "bytes": 18813,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
+    },
+    {
       "path": "scripts/evaluate_openjev_provider.py",
       "sha256": "dd392e97aad48451f0f707b5335e42c3cdd956dd778adee1e15d3a9a9d193f0c",
       "bytes": 12996,
@@ -7435,6 +7619,16 @@
       "source_sha256": "1736e0c1049b37350808ab8e3599b5b0b482c1c06d63e90bb52dc1bc1ca01bcd",
       "sha256": "1736e0c1049b37350808ab8e3599b5b0b482c1c06d63e90bb52dc1bc1ca01bcd",
       "bytes": 3066
+    },
+    {
+      "path": "scripts/internal_eval_campaign.py",
+      "source_sha256": "75d259c1788c5302f752adfda767e028a84f5b74dbe36cf4837b50251c09a107",
+      "sha256": "75d259c1788c5302f752adfda767e028a84f5b74dbe36cf4837b50251c09a107",
+      "bytes": 35614,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "scripts/jevbench_openjev.py",
@@ -7596,13 +7790,14 @@
     },
     {
       "path": "site/benchmarks/index.html",
-      "source_sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
+      "source_sha256": "0c5cb6aa634086934f30a90fd294f93038d1da029f988d8c9e32bf562c51cdbf",
       "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
-      "sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
-      "bytes": 15647,
+      "sha256": "0c5cb6aa634086934f30a90fd294f93038d1da029f988d8c9e32bf562c51cdbf",
+      "bytes": 18718,
       "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
-      ]
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ],
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
     },
     {
       "path": "site/catalog.json",
@@ -7612,26 +7807,33 @@
     },
     {
       "path": "site/index.html",
-      "source_sha256": "f81fba2469aaed37139094e5cd7da327fdaf8d58e7819c9ba3794294c39765dd",
-      "sha256": "f81fba2469aaed37139094e5cd7da327fdaf8d58e7819c9ba3794294c39765dd",
-      "bytes": 35313,
+      "source_sha256": "3a0ad621d79d07efb8f4cf98651f2b5997dc0f6519973df7274016614ac9045c",
+      "sha256": "3a0ad621d79d07efb8f4cf98651f2b5997dc0f6519973df7274016614ac9045c",
+      "bytes": 37462,
       "changes": [
-        "Hosted workbench links and verified CPU deployment."
-      ]
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ],
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
     },
     {
       "path": "site/jevbench.js",
-      "sha256": "0554ba2ebbc7ca0365b6d86f643615981fe523b2f4c8fbf1888b35385a45fe28",
-      "bytes": 3329,
-      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
-      "source_sha256": "0554ba2ebbc7ca0365b6d86f643615981fe523b2f4c8fbf1888b35385a45fe28"
+      "sha256": "135e8c1dcb414ea7536f9e78cc55b8d14c7bfaa0b4231e76d3b881b6115bc0f5",
+      "bytes": 4992,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "source_sha256": "135e8c1dcb414ea7536f9e78cc55b8d14c7bfaa0b4231e76d3b881b6115bc0f5",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "site/jevbench.json",
-      "sha256": "7b11216fbb1d88213c85dccd36d275e7359b53b27a2720ca551dce8a29085cc2",
-      "bytes": 84623,
-      "source_commit": "43a29babd7e6aa25bef17e690a45325bed6b4ec1",
-      "source_sha256": "7b11216fbb1d88213c85dccd36d275e7359b53b27a2720ca551dce8a29085cc2"
+      "sha256": "1464014d2ff0ccc4b62743fa33592612e1b8e5b6cdb1867242689d11dd8af4d0",
+      "bytes": 91153,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "source_sha256": "1464014d2ff0ccc4b62743fa33592612e1b8e5b6cdb1867242689d11dd8af4d0",
+      "changes": [
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ]
     },
     {
       "path": "site/latency-media/open-jev-2b-latency-comparison.jpg",
@@ -8337,31 +8539,32 @@
     },
     {
       "path": "site/results.json",
-      "sha256": "c8e8c635ccbaeaea028f79646c7e5f1895cb8d56fd4f1e7cd4ac23323e068acf",
-      "bytes": 31820,
-      "source_commit": "fa5af88462e6096b5a84d57885eedeac244fee00",
-      "source_sha256": "c8e8c635ccbaeaea028f79646c7e5f1895cb8d56fd4f1e7cd4ac23323e068acf",
+      "sha256": "1e3a695428a8fca4db94f9355b04dd99038ce2ac7754210526d0e571c4a945db",
+      "bytes": 34867,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "source_sha256": "1e3a695428a8fca4db94f9355b04dd99038ce2ac7754210526d0e571c4a945db",
       "changes": [
-        "Verified provider reference-match comparison, label audit, data publication and website follow-up."
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
       ]
     },
     {
       "path": "site/story/index.html",
-      "source_sha256": "3ffeeccad07a87aa10c273757332d749408fe37eae099d5471ba95f4469f8a3d",
-      "sha256": "ee04a16654a9c81069e941fd0b285872eed46bbe78af26c49790311d7ca5949f",
-      "bytes": 57791,
+      "source_sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
+      "sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
+      "bytes": 60527,
       "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
-      ]
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+      ],
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
     },
     {
       "path": "site/styles.css",
-      "sha256": "30e66333dfe9b67fef96a787973df20f4f52c2abbefd023d42f3891439e53bb8",
-      "bytes": 36728,
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
-      "source_sha256": "30e66333dfe9b67fef96a787973df20f4f52c2abbefd023d42f3891439e53bb8",
+      "sha256": "58fda778d34ca65005ee23817220b5b7e6a7cae9887e28393bdfe154cda51ce8",
+      "bytes": 37122,
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "source_sha256": "58fda778d34ca65005ee23817220b5b7e6a7cae9887e28393bdfe154cda51ce8",
       "changes": [
-        "Hosted workbench links and verified CPU deployment."
+        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
       ]
     },
     {
@@ -9362,7 +9565,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "ea4455fa98ddd435a70b1ac0bc848af02a683ccc",
+  "current_source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -10130,6 +10333,56 @@
         "gpu_jobs_started": false,
         "record": "reports/workbench/validation.json"
       }
+    },
+    {
+      "id": "audited-27b-v1.1-20260923",
+      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+      "created_at": "2026-09-23T07:52:32.103680+00:00",
+      "paths": [
+        "README.md",
+        "docs/benchmarks.md",
+        "docs/internal-evaluation.md",
+        "docs/internal-full-evaluation.md",
+        "docs/jevbench-public.md",
+        "site/index.html",
+        "site/benchmarks/index.html",
+        "site/story/index.html",
+        "release/project-story/index.html",
+        "site/results.json",
+        "site/jevbench.json",
+        "site/jevbench.js",
+        "scripts/build_site_results.py",
+        "reports/new27b-internal-full-20260923/README.md",
+        "reports/new27b-internal-full-20260923/report.json",
+        "reports/new27b-internal-full-20260923/source-identities.json",
+        "reports/new27b-internal-full-20260923/verify.py",
+        "reports/new27b-internal-full-20260923/verify_campaign.py",
+        "reports/new27b-jevbench-20260922/README.md",
+        "reports/new27b-jevbench-20260922/report.json",
+        "reports/new27b-jevbench-20260922/audit.json",
+        "jev/eval_resources.py",
+        "jev/sharded_model.py",
+        "jev/shared_resources.py",
+        "jev/train_distributed.py",
+        "jev/inference_initialization.py",
+        "scripts/evaluate_internal_full.py",
+        "scripts/evaluate_internal_shard.py",
+        "scripts/internal_eval_campaign.py",
+        "site/styles.css",
+        "reports/huggingface-v1.1/model/publication.json",
+        "reports/huggingface-data-v1.1/publication.json"
+      ],
+      "description": "Complete127787-row internal evaluation and separate JevBench public231 results, with verified HF model/data releases. Keeps released2B9B and CPU workbench.",
+      "full_internal_audit_status": "passed_complete_full24_audit",
+      "full_internal_report_sha256": "19a154c1a6ed3935bac266ab04b8a395bc180739540127b4b3802190e3c34f97",
+      "model_revision": "28cf73067d5b337860bbef3c85b8b82ba8730956",
+      "dataset_revision": "10ad6888333fa97f8c948192797bad3de3040802",
+      "private_operational_capture_included": false,
+      "raw_training_data_included": false,
+      "existing_model_results_preserved": true,
+      "workbench_preserved": true,
+      "public_hardware_identifiers_sanitized": true,
+      "social_posts_published": false
     }
   ]
 }
