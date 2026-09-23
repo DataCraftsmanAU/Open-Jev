@@ -1303,12 +1303,12 @@
     },
     {
       "path": "release/english-ui-20260923.json",
-      "sha256": "26e360731b0f1a10cb62ac264f67fe3e86034e54dda40cf9bbfa97f2ae4fd01d",
-      "bytes": 1577,
-      "source_sha256": "26e360731b0f1a10cb62ac264f67fe3e86034e54dda40cf9bbfa97f2ae4fd01d",
-      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "sha256": "1729aa26e71a5a47ebffb574d0a5a6f669f6c18365d2027121da45c8539e719e",
+      "bytes": 24582,
+      "source_sha256": "1729aa26e71a5a47ebffb574d0a5a6f669f6c18365d2027121da45c8539e719e",
+      "source_commit": "1d811da3d677070e642782fad76a4e630320ddec",
       "changes": [
-        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+        "Verified live English website and workbench; original models, scores and raw evidence preserved."
       ]
     },
     {
@@ -9643,7 +9643,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+  "current_source_commit": "1d811da3d677070e642782fad76a4e630320ddec",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -10509,6 +10509,21 @@
         "javascript_data_contract_tests": 6,
         "local_checks_are_model_inference": false
       }
+    },
+    {
+      "id": "english-interface-live-verification-20260923",
+      "created_at": "2026-09-23T08:20:28.142288+00:00",
+      "source_commit": "1d811da3d677070e642782fad76a4e630320ddec",
+      "paths": [
+        "release/english-ui-20260923.json"
+      ],
+      "description": "Anonymous SHA verification of 50 public, website and Space resources; 110 live browser checks including two real CPU classification requests and CSV export. English site, story, defaults and workbench confirmed.",
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "raw_training_data_included": false,
+      "private_operational_files_included": false,
+      "space_commit": "8783c4d856155e56afc20f2f867f81f7cfc134d6",
+      "workbench_model": "released Open-Jev-2B on CPU"
     }
   ]
 }
