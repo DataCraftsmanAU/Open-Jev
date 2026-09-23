@@ -1,64 +1,64 @@
-# 不写代码，用 Open-Jev 给消息分类
+# Classify messages with Open-Jev, without writing code
 
-例如，你有一份包含 100 条客户反馈的表格，希望把每条反馈分到“退款”“产品故障”“使用咨询”“其他”。Open-Jev 工作台让你上传表格、说明分类规则，再下载加上分类结果的 CSV。使用已部署的工作台只需要浏览器。
+For example, you might have a spreadsheet of 100 customer messages that you want to sort into “Refund,” “Product issue,” “How-to question,” and “Other.” The Open-Jev workbench lets you upload the spreadsheet, describe your categories, and download a CSV with classification results added. The hosted workbench only requires a browser.
 
-[在线分类](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench) · [项目网站工作台](https://zefan-cai.github.io/open-jev/workbench/)
+[Classify online](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench) · [Project website workbench](https://zefan-cai.github.io/open-jev/workbench/)
 
-“自己定义分类”就是给每个类别写一句解释：
+Defining your own categories means writing a short explanation for each one:
 
-| 分类名称 | 分类说明 |
+| Category name | Category description |
 | --- | --- |
-| 退款 | 要求退货、退款，或询问退款进度 |
-| 产品故障 | 商品损坏、软件报错，或功能不能正常使用 |
-| 使用咨询 | 询问操作步骤、功能用法或产品信息 |
-| 其他 | 以上类别都不适用，或信息不足以判断 |
+| Refund | Requests a return or refund, or asks about refund progress |
+| Product issue | Reports a damaged product, software error, or a feature that does not work |
+| How-to question | Asks about steps, features, or product information |
+| Other | None of the categories applies, or there is not enough information to decide |
 
-“我付了两次钱，请把多付的钱退给我”可以用来说明一个退款案例。这只是流程示例；实际分类结果由连接的模型产生。
+“I was charged twice. Please refund the extra payment” illustrates a refund case. This is only a workflow example; actual classifications come from the connected model.
 
-## 普通用户的使用流程
+## Using the workbench
 
-1. 打开工作台，确认页面显示推理服务已就绪。
-2. 粘贴消息，每行一条；或者上传 CSV，选择要分类的文本列。一次最多 200 条，CSV 不超过 2 MB。Excel 表格可以先另存为 UTF-8 CSV。
-3. 在分类框中每行写一个类别，可写成 `分类名称: 分类说明`，也接受中文冒号。建议保留“其他”或“需要人工判断”，处理不属于现有类别的消息。
-4. 点击“开始分类”。工作台逐条处理，显示进度、选中的类别和候选概率。请求失败会显示错误，不会用预设答案替代。
-5. 检查结果，再点击“下载结果”保存 CSV。导出保留原 CSV 的所有列，并追加分类结果，方便回到 Excel 继续处理。
+1. Open the workbench and confirm that the page shows the inference service is ready.
+2. Paste messages, one per line, or upload a CSV and choose the text column to classify. Each run accepts up to 200 rows, and CSV files must be no larger than 2 MB. You can save an Excel spreadsheet as UTF-8 CSV first.
+3. Enter one category per line in the category box, using `Category name: Category description`. Chinese colons are also accepted. Include an “Other” or “Needs human review” category for messages that do not fit the existing categories.
+4. Select “Start classification.” The workbench processes rows in order and shows progress, the selected category, and candidate probabilities. Failed requests show an error and are never replaced with preset answers.
+5. Review the results, then select “Download results” to save the CSV. The export retains every original CSV column and adds classification results, ready for further work in Excel.
 
-“下载任务配置”只保存分类规则和类别，不包含上传的消息或分类结果，适合保存和分享规则。
+“Download task settings” saves only the category rules and categories. It does not include uploaded messages or classification results, so you can use it to save and share your rules.
 
-上面的分类规则可以直接写为：
+You can enter the example categories directly as:
 
 ```text
-退款: 要求退货、退款，或询问退款进度
-产品故障: 商品损坏、软件报错，或功能不能正常使用
-使用咨询: 询问操作步骤、功能用法或产品信息
-其他: 以上类别都不适用，或信息不足以判断
+Refund: Requests a return or refund, or asks about refund progress
+Product issue: Reports a damaged product, software error, or a feature that does not work
+How-to question: Asks about steps, features, or product information
+Other: None of the categories applies, or there is not enough information to decide
 ```
 
-第一版每条文本选择一个类别，适合客服消息、邮件分流和产品反馈整理。分类完成后，由你检查和使用结果。
+The first version selects one category per text. It is suited to customer support messages, email routing, and organizing product feedback. You review and use the results after classification.
 
-**候选概率不是准确率。** 它表示模型在你给定的几个类别之间如何分配概率。先用少量熟悉的消息检查分类规则，再处理整份表格；新增类别上的概率还需要你自己的标注例子来验证。
+**Candidate probability is not accuracy.** It describes how the model distributes probability among the categories you provide. Try a few familiar messages to check your category rules before processing a full spreadsheet. Probabilities for new categories still need validation against your own labeled examples.
 
-## 示例流程与真实推理
+## Illustrative examples and real inference
 
-[工作台页面](../examples/workbench/index.html)在没有模型时也能打开。“看看示例流程”展示预先写好的示意内容，用来理解操作方式；它不是模型实测，也不会把你的输入送给模型。
+The [workbench page](../examples/workbench/index.html) can open without a model. “Show an example” displays preset illustrative content to explain the workflow; it is not a model measurement and does not send your inputs to a model.
 
-页面显示服务已就绪后，才能分类自己的内容。未连接、模型仍在加载或请求失败时，页面会显示对应状态。
+You can classify your own content once the page shows that the service is ready. The page reports when it is disconnected, when the model is still loading, or when a request fails.
 
-工作台不保存浏览器历史数据或加入分析追踪；刷新页面后，导入的表格和结果不会保留。开始分类时，所选文本与分类规则会发送给当前网站的模型服务。
+The workbench does not store your data in browser storage or add analytics tracking. Imported spreadsheets and results are cleared when the page is refreshed. Starting classification sends the selected text and category rules to the current website’s model service.
 
-## 在线使用与自己部署
+## Use the hosted app or deploy your own
 
-公开入口 [Open-Jev Workbench](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench)已上线，并通过真实分类请求验证。它使用已发布的 2B 模型，运行在 CPU 上。试用速度较慢，建议先放几条消息，确认分类规则合适后再处理更多内容。
+The public [Open-Jev Workbench](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench) is live and has been verified with real classification requests. It uses the released 2B model on CPU. The hosted trial is slower, so start with a few messages and check that your categories work before processing more content.
 
-公开服务每条接受 2–8 个类别、最多 4,000 个文本字符；完整提示每候选最多 1,024 tokens。服务一次处理一条请求，忙时提示稍后再试。
+The public service accepts 2–8 categories and up to 4,000 text characters per row, with a maximum full prompt of 1,024 tokens per candidate. It handles one request at a time and asks you to try later when busy.
 
-[项目网站工作台](https://zefan-cai.github.io/open-jev/workbench/)提供操作页面和在线服务入口，实际分类由 Hugging Face Space 中的模型完成。希望使用自己的机器或处理内部业务数据，可以按下面的步骤部署。
+The [project website workbench](https://zefan-cai.github.io/open-jev/workbench/) provides the interface and a link to the hosted service. Classification runs in the Hugging Face Space. To use your own machine or process internal business data, follow the deployment steps below.
 
-## 部署者：启动工作台
+## For deployers: start the workbench
 
-下面是已有的 **Linux + NVIDIA GPU** 推理路径，需要 Python 3.10+、CUDA 环境及足够显存。安装由部署者完成，普通用户只需要浏览器。完整的新环境安装验证仍在完善。
+The commands below use the existing **Linux + NVIDIA GPU** inference path and require Python 3.10+, a CUDA environment, and sufficient GPU memory. The deployer handles installation; end users only need a browser. Complete verification of installation in a fresh environment is still being improved.
 
-从 Git checkout 安装，确保包含工作台文件。`train` 依赖组也提供推理依赖，安装它不代表启动训练。
+Install from a Git checkout so the workbench files are included. The `train` dependency group also provides inference dependencies; installing it does not start training.
 
 ```bash
 git clone https://github.com/Zefan-Cai/Open-Jev.git
@@ -77,20 +77,20 @@ python -m jev.server \
   --host 127.0.0.1 --port 8791
 ```
 
-下载的是已发布的 2B LoRA adapter、决策头和配置，不是合并后的完整基础权重。Open-Jev loader 会加载 `Qwen/Qwen3.5-2B` 的固定 revision `15852e8c16360a2fea060d615a32b45270f8a8fc`；首次运行需要下载基础模型，或提前准备缓存。
+The download contains the released 2B LoRA adapter, decision head, and configuration, not merged base-model weights. The Open-Jev loader loads `Qwen/Qwen3.5-2B` at the pinned revision `15852e8c16360a2fea060d615a32b45270f8a8fc`. The first run needs to download the base model unless it is already cached.
 
-模型加载完成后，在同一台机器的浏览器打开：
+Once the model has loaded, open these URLs in a browser on the same machine:
 
-- 工作台首页：<http://127.0.0.1:8791/>
-- 工作台完整路径：<http://127.0.0.1:8791/examples/workbench/index.html>
-- 服务状态：<http://127.0.0.1:8791/health>
+- Workbench home: <http://127.0.0.1:8791/>
+- Full workbench path: <http://127.0.0.1:8791/examples/workbench/index.html>
+- Service status: <http://127.0.0.1:8791/health>
 
-默认监听 `127.0.0.1`，prefix cache 关闭。这个自部署命令允许每候选最多 4,096 tokens；超限时报错，不截断文本。
+The server listens on `127.0.0.1` by default, with prefix caching disabled. This self-hosted command allows up to 4,096 tokens per candidate. Inputs over the limit cause an error; text is not truncated.
 
-若要把自部署服务提供给别人，用 HTTPS 反向代理把工作台、`/health` 和 `/v1/systemone` 放在同一网站下，并配置身份认证。本地服务器本身没有账户系统。CPU Space 的具体设置见[部署说明](../deploy/huggingface-space/README.md)。
+To share a self-hosted service with others, use an HTTPS reverse proxy to serve the workbench, `/health`, and `/v1/systemone` under the same website, and configure authentication. The local server has no account system of its own. See the [deployment guide](../deploy/huggingface-space/README.md) for the CPU Space configuration.
 
-## 放进自己的项目
+## Add it to your own project
 
-已有后端可以通过 [Python Client](../jev/client.py) 接入相同的分类请求；请求写法见 [README 的 Typed decisions](../README.md#typed-decisions)。浏览器工作台则适合直接交给需要整理表格的用户。
+An existing backend can use the [Python Client](../jev/client.py) for the same classification requests. See [Typed decisions in the README](../README.md#typed-decisions) for request examples. The browser workbench can be shared directly with people who need to organize spreadsheets.
 
-社区的 [Docker 部署 PR #1](https://github.com/Zefan-Cai/Open-Jev/pull/1)尚未完成审查，与这里的 CPU Space 部署包分别维护。后续可以增加 n8n、Dify 连接器和更多业务模板；第一版先把“输入消息 → 定义分类 → 查看结果 → 导出表格”做好。
+The community [Docker deployment PR #1](https://github.com/Zefan-Cai/Open-Jev/pull/1) has not completed review and is maintained separately from this CPU Space deployment package. Future additions could include n8n and Dify connectors and more business templates. The first version focuses on a complete workflow: enter messages → define categories → review results → export a spreadsheet.

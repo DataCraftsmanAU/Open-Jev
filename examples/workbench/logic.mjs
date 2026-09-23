@@ -2,22 +2,22 @@ export const MAX_ROWS = 200;
 
 export const presets = {
   support: {
-    instructions: '根据客户留言的主要诉求，选择最合适的处理类别。信息不足时选择人工复核。',
-    categories: '退款：退款、退货或重复扣款\n物流：快递、配送进度或收货地址\n产品问题：产品故障、损坏或使用问题\n人工复核：信息不足或不属于以上类别',
-    text: '这笔订单扣了两次款，请退回多扣的钱。\n包裹三天没更新了，能帮我查一下吗？\n刚买的耳机左边没有声音。',
-    illustrative: ['退款', '物流', '产品问题'],
+    instructions: 'Choose the category that best matches the main customer request. Choose Human review if there is not enough information.',
+    categories: 'Refunds: refunds, returns, or duplicate charges\nShipping: deliveries, tracking, or shipping addresses\nProduct issues: faulty, damaged, or difficult-to-use products\nHuman review: not enough information or no category applies',
+    text: 'I was charged twice for this order. Please refund the duplicate charge.\nMy package has not moved in three days. Can you check it?\nThe left side of my new headphones has no sound.',
+    illustrative: ['Refunds', 'Shipping', 'Product issues'],
   },
   feedback: {
-    instructions: '根据反馈的主要内容选择一个类别。信息不足时选择人工复核。',
-    categories: '功能建议：希望增加或改进功能\n故障报告：现有功能无法正常工作\n使用咨询：询问如何使用已有功能\n人工复核：内容含糊或不属于以上类别',
-    text: '希望可以把报表导出为 PDF。\n点击保存后页面一直转圈，内容没有存上。\n在哪里修改我的通知设置？',
-    illustrative: ['功能建议', '故障报告', '使用咨询'],
+    instructions: 'Choose the category that best matches the feedback. Choose Human review if there is not enough information.',
+    categories: 'Feature requests: requests to add or improve a feature\nBug reports: an existing feature does not work\nHow-to questions: questions about using existing features\nHuman review: unclear feedback or no category applies',
+    text: 'Please add an option to export reports as PDF.\nThe page keeps spinning after I select Save, and my changes are lost.\nWhere can I change my notification settings?',
+    illustrative: ['Feature requests', 'Bug reports', 'How-to questions'],
   },
   custom: {
-    instructions: '按照下方类别的定义，对每条内容选择一个最合适的类别。',
-    categories: '需要处理：明确提出待办事项或请求\n仅供参考：提供消息，无需采取行动\n人工复核：信息不足，无法判断',
-    text: '请在周五前确认会议时间。\n本月产品更新说明已发布。\n关于上次那件事……',
-    illustrative: ['需要处理', '仅供参考', '人工复核'],
+    instructions: 'Choose the category that best matches each message, using the definitions below.',
+    categories: 'Action needed: a clear request or task to complete\nFor information: an update that requires no action\nHuman review: not enough information to decide',
+    text: 'Please confirm the meeting time by Friday.\nThe product update notes for this month are available.\nAbout that thing we discussed…',
+    illustrative: ['Action needed', 'For information', 'Human review'],
   },
 };
 
@@ -26,11 +26,11 @@ export function parseCategories(text) {
     const separator = line.search(/[:：]/);
     const label = (separator < 0 ? line : line.slice(0, separator)).trim();
     const description = separator < 0 ? null : line.slice(separator + 1).trim() || null;
-    if (!label) throw new Error('每个类别都需要名称。');
+    if (!label) throw new Error('Every category needs a name.');
     return [label, description];
   });
-  if (pairs.length < 2 || pairs.length > 20) throw new Error('请填写 2–20 个类别，每行一个。');
-  if (new Set(pairs.map(([label]) => label)).size !== pairs.length) throw new Error('类别名称不能重复。');
+  if (pairs.length < 2 || pairs.length > 20) throw new Error('Enter 2–20 categories, one per line.');
+  if (new Set(pairs.map(([label]) => label)).size !== pairs.length) throw new Error('Category names must be unique.');
   return Object.fromEntries(pairs);
 }
 
@@ -42,7 +42,7 @@ export function parseCSV(source) {
   function finishField() { record.push(field); field = ''; closed = false; started = false; }
   function finishRecord() {
     finishField(); records.push(record); record = [];
-    if (records.length > MAX_ROWS + 1) throw new Error(`一次最多处理 ${MAX_ROWS} 行，请拆分文件。`);
+    if (records.length > MAX_ROWS + 1) throw new Error(`Process up to ${MAX_ROWS} rows at a time. Split larger files into batches.`);
   }
   for (let i = 0; i < source.length; i++) {
     const char = source[i];
@@ -55,34 +55,34 @@ export function parseCSV(source) {
     else if (char === '\n' || char === '\r') {
       if (char === '\r' && source[i + 1] === '\n') i++;
       finishRecord();
-    } else if (closed) throw new Error('CSV 引号后有多余字符，请检查文件格式。');
+    } else if (closed) throw new Error('Unexpected characters after a closing CSV quote. Check the file format.');
     else if (char === '"') {
-      if (started) throw new Error('CSV 中有未正确转义的引号。');
+      if (started) throw new Error('The CSV contains an unescaped quote.');
       quoted = true; started = true;
     } else { field += char; started = true; }
   }
-  if (quoted) throw new Error('CSV 有未闭合的引号。');
+  if (quoted) throw new Error('The CSV contains an unclosed quote.');
   if (record.length || started || closed || field) finishRecord();
-  if (records.length < 2) throw new Error('CSV 需要一行列名和至少一行内容。');
+  if (records.length < 2) throw new Error('The CSV needs a header row and at least one data row.');
   const headers = records.shift().map(header => header.trim());
   if (headers.some(header => !header) || new Set(headers).size !== headers.length) {
-    throw new Error('CSV 列名不能为空或重复。');
+    throw new Error('CSV column names must be nonempty and unique.');
   }
   for (const [index, row] of records.entries()) {
-    if (row.length !== headers.length) throw new Error(`CSV 第 ${index + 2} 行的列数与列名不一致。`);
+    if (row.length !== headers.length) throw new Error(`CSV row ${index + 2} has a different number of columns from the header.`);
   }
   return {headers, rows: records};
 }
 
 export function makeRequest(text, instructions, categories) {
-  if (!text.trim()) throw new Error('这一行没有可分类的文字。');
-  if (!instructions.trim()) throw new Error('请填写分类规则。');
+  if (!text.trim()) throw new Error('This row has no text to classify.');
+  if (!instructions.trim()) throw new Error('Enter classification instructions.');
   return {state: text, questions: {category: {type: 'choice', instructions: instructions.trim(), criteria: categories}}};
 }
 
 export function readAnswer(data, categories) {
   if (!data || typeof data !== 'object' || !data.answers || Object.keys(data.answers).join() !== 'category') {
-    throw new Error('服务返回了不匹配的判断结果。');
+    throw new Error('The service returned a response for a different question.');
   }
   const answer = data.answers.category;
   const labels = Object.keys(categories);
@@ -90,13 +90,13 @@ export function readAnswer(data, categories) {
   if (answer?.type !== 'choice' || !probabilities || Array.isArray(probabilities) ||
       Object.keys(probabilities).length !== labels.length ||
       labels.some(label => !Object.hasOwn(probabilities, label)) || !labels.includes(answer.choice)) {
-    throw new Error('服务返回的类别与当前任务不一致。');
+    throw new Error('The returned categories do not match this task.');
   }
   const values = labels.map(label => probabilities[label]);
   if (values.some(p => typeof p !== 'number' || !Number.isFinite(p) || p < 0 || p > 1) ||
       Math.abs(values.reduce((a, b) => a + b, 0) - 1) > 1e-6 ||
       probabilities[answer.choice] < Math.max(...values) - 1e-12) {
-    throw new Error('服务返回的概率无效，未采用此结果。');
+    throw new Error('The service returned invalid probabilities. This result was not accepted.');
   }
   return {label: answer.choice, probability: probabilities[answer.choice], probabilities,
     model: typeof data.model === 'string' ? data.model : ''};

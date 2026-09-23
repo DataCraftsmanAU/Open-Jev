@@ -3,7 +3,7 @@ import {MAX_ROWS, presets, parseCategories, parseCSV, makeRequest, readAnswer, r
 const $ = id => document.getElementById(id);
 let mode = 'text', preset = 'support', csv = null, rows = [], running = false, stop = false;
 let service = null, illustrative = false, fileVersion = 0, exportHeaders = [];
-const labels = {pending: '待处理', complete: '已完成', error: '失败', stopped: '未处理', illustrative: '界面示例'};
+const labels = {pending: 'Pending', complete: 'Complete', error: 'Error', stopped: 'Not processed', illustrative: 'Illustrative example'};
 
 function node(tag, text, className) {
   const element = document.createElement(tag);
@@ -19,12 +19,12 @@ function setError(message) {
 
 function inputRows() {
   if (mode === 'csv') {
-    if (!csv) throw new Error('请先选择 UTF-8 CSV 文件。');
+    if (!csv) throw new Error('Choose a UTF-8 CSV file first.');
     return csv.rows.map((row, index) => ({index: index + 1, text: row[Number($('text-column').value)] ?? '', original: [...row]}));
   }
   const values = $('input-text').value.split(/\r?\n/).filter(text => text.trim());
-  if (!values.length) throw new Error('请放入需要分类的文字，每行一条。');
-  if (values.length > MAX_ROWS) throw new Error(`一次最多处理 ${MAX_ROWS} 条，请分批处理。`);
+  if (!values.length) throw new Error('Add the text to classify, one message per line.');
+  if (values.length > MAX_ROWS) throw new Error(`Process up to ${MAX_ROWS} rows at a time. Split larger inputs into batches.`);
   return values.map((text, index) => ({index: index + 1, text}));
 }
 
@@ -34,20 +34,20 @@ function renderRows() {
     const tr = document.createElement('tr');
     tr.append(node('td', row.index), node('td', row.text), node('td', row.label || '—'),
       node('td', row.probability == null ? '—' : `${(row.probability * 100).toFixed(1)}%`),
-      node('td', row.error ? `${labels[row.status]}：${row.error}` : labels[row.status]));
+      node('td', row.error ? `${labels[row.status]}: ${row.error}` : labels[row.status]));
     $('result-rows').append(tr);
   }
   $('empty-state').hidden = rows.length > 0;
   $('results').hidden = rows.length === 0;
   $('download').disabled = !rows.length || running;
-  $('result-summary').textContent = illustrative ? '界面示例 · 分类由人工预设，未调用模型，也没有模型概率。' :
-    rows.length ? `${rows.filter(r => r.status === 'complete').length} 条完成 · ${rows.filter(r => r.status === 'error').length} 条失败 · ${rows.filter(r => ['pending', 'stopped'].includes(r.status)).length} 条未处理` : '你的结果会出现在这里。';
+  $('result-summary').textContent = illustrative ? 'Illustrative example · Categories are preset. No model was called and no model probabilities are shown.' :
+    rows.length ? `${rows.filter(r => r.status === 'complete').length} complete · ${rows.filter(r => r.status === 'error').length} errors · ${rows.filter(r => ['pending', 'stopped'].includes(r.status)).length} not processed` : 'Your results will appear here.';
 }
 
 function note() {
-  $('mode-note').textContent = illustrative ? '正在展示预设内容与预设规则的界面示例，你编辑的输入保持不变。处理自己的内容需要点击“开始分类”并连接真实模型服务。' :
-    service ? '真实模型已连接。点击开始后，文字会发送到当前 Open-Jev 服务。概率表示模型对选项的分配，不代表实际正确率。' :
-    '当前可编辑任务、上传并预览表格、导出任务配置。点击“看看示例流程”可了解操作；处理自己的内容需要连接模型服务。';
+  $('mode-note').textContent = illustrative ? 'This illustration uses preset text and categories. Your edited inputs are unchanged. To classify your own text, connect a model and select “Start classification”.' :
+    service ? 'A real model is connected. Starting classification sends your text to this Open-Jev service. Candidate probability is not measured accuracy.' :
+    'You can edit a task, import and preview a CSV, or export task settings. Select “Show an example” to explore the workflow. A connected model is required to classify your own text.';
   $('setup-note').hidden = !!service;
 }
 
@@ -55,8 +55,8 @@ function refreshPreview() {
   $('input-preview').replaceChildren();
   try {
     const inputs = inputRows();
-    $('input-preview').append(node('p', `共 ${inputs.length} 条 · 预览前 ${Math.min(inputs.length, 3)} 条`));
-    inputs.slice(0, 3).forEach(row => $('input-preview').append(node('p', `${row.index}. ${row.text || '（空白，将标记为失败）'}`)));
+    $('input-preview').append(node('p', `${inputs.length} rows · Previewing the first ${Math.min(inputs.length, 3)}`));
+    inputs.slice(0, 3).forEach(row => $('input-preview').append(node('p', `${row.index}. ${row.text || '(empty; will be marked as an error)'}`)));
     $('request-preview').textContent = JSON.stringify(makeRequest(inputs[0].text, $('instructions').value, parseCategories($('categories').value)), null, 2);
   } catch (error) {
     $('request-preview').textContent = error.message;
@@ -107,15 +107,15 @@ async function checkHealth() {
     const data = await response.json();
     if (data.status === 'ready' && typeof data.model === 'string') {
       service = data;
-      $('health').textContent = `模型已连接 · ${data.checkpoint || data.model}${data.device ? ' · ' + data.device.toUpperCase() : ''}`;
+      $('health').textContent = `Model connected · ${data.checkpoint || data.model}${data.device ? ' · ' + data.device.toUpperCase() : ''}`;
       $('health').dataset.state = 'connected';
     } else if (data.status === 'loading') {
-      $('health').textContent = '模型正在加载，网页可以先编辑任务…';
+      $('health').textContent = 'Model loading. You can edit your task while you wait…';
       $('health').dataset.state = 'checking';
       setTimeout(checkHealth, 10000);
     } else throw new Error('not ready');
   } catch (_) {
-    service = null; $('health').textContent = '界面预览 · 模型未连接'; $('health').dataset.state = 'disconnected';
+    service = null; $('health').textContent = 'Interface preview · No model connected'; $('health').dataset.state = 'disconnected';
   }
   $('run').disabled = running || !service; note();
 }
@@ -126,29 +126,29 @@ $('run').addEventListener('click', async () => {
   let categories, instructions, inputs;
   try {
     inputs = inputRows(); categories = parseCategories($('categories').value); instructions = $('instructions').value;
-    if (!instructions.trim()) throw new Error('请填写分类规则。');
+    if (!instructions.trim()) throw new Error('Enter classification instructions.');
     const limit = service.limits?.max_candidates;
-    if (limit && Object.keys(categories).length > limit) throw new Error(`当前服务一次支持最多 ${limit} 个类别。`);
+    if (limit && Object.keys(categories).length > limit) throw new Error(`This service supports up to ${limit} categories per request.`);
   } catch (error) { setError(error.message); return; }
   rows = inputs.map(row => ({...row, status: 'pending'})); illustrative = false; stop = false;
   exportHeaders = mode === 'csv' ? [...csv.headers] : [];
   freeze(true); renderRows(); note();
   for (const [index, row] of rows.entries()) {
     if (stop) break;
-    $('progress').textContent = `正在处理 ${index + 1} / ${rows.length}…`;
+    $('progress').textContent = `Processing ${index + 1} / ${rows.length}…`;
     try {
-      if (service.limits?.max_text_chars && row.text.length > service.limits.max_text_chars) throw new Error(`内容超过当前服务的 ${service.limits.max_text_chars} 字符限制。`);
+      if (service.limits?.max_text_chars && row.text.length > service.limits.max_text_chars) throw new Error(`Text exceeds this service limit of ${service.limits.max_text_chars} characters.`);
       const request = makeRequest(row.text, instructions, categories);
       let response;
       try {
         response = await fetch('/v1/systemone', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(request), signal: AbortSignal.timeout(300000)});
-      } catch (_) { stop = true; throw new Error('连接中断或等待超时，服务器可能仍在处理。后续行未提交，请检查服务后再处理。'); }
+      } catch (_) { stop = true; throw new Error('The connection was interrupted or timed out. The server may still be processing this row. Later rows were not submitted; check the service before continuing.'); }
       let data;
       try { data = await response.json(); }
-      catch (_) { stop = true; throw new Error('服务返回的内容无法读取，已停止提交后续行。'); }
+      catch (_) { stop = true; throw new Error('The service response could not be read. Later rows were not submitted.'); }
       if (!response.ok) {
         if (response.status !== 422) stop = true;
-        throw new Error(response.status === 429 ? '服务正在处理其他请求，后续行未提交。稍后再试。' : (data.error || `服务返回 HTTP ${response.status}`));
+        throw new Error(response.status === 429 ? 'The service is busy. Later rows were not submitted. Try again when it is available.' : (data.error || `The service returned HTTP ${response.status}`));
       }
       try { Object.assign(row, readAnswer(data, categories)); }
       catch (error) { stop = true; throw error; }
@@ -158,12 +158,12 @@ $('run').addEventListener('click', async () => {
   }
   rows.filter(row => row.status === 'pending').forEach(row => { row.status = 'stopped'; });
   freeze(false); renderRows();
-  $('progress').textContent = stop ? '已停止提交后续行。已获得的结果仍可下载；超时的请求可能仍在服务器处理。' : '本批处理结束。请检查结果后使用。';
+  $('progress').textContent = stop ? 'Later rows were not submitted. Completed results are available to download; a timed-out request may still be running.' : 'Batch finished. Review the results before using them.';
 });
 
 $('stop').addEventListener('click', () => {
   stop = true; $('stop').disabled = true;
-  $('progress').textContent = '将在当前请求返回后停止，不再提交后续行。';
+  $('progress').textContent = 'Stopping after the current request finishes. No later rows will be submitted.';
 });
 
 function download(filename, text, type) {
@@ -175,7 +175,7 @@ $('download').addEventListener('click', () => download(illustrative ? 'open-jev-
 $('download-config').addEventListener('click', () => {
   try {
     const categories = parseCategories($('categories').value);
-    if (!$('instructions').value.trim()) throw new Error('请填写分类规则。');
+    if (!$('instructions').value.trim()) throw new Error('Enter classification instructions.');
     download('open-jev-task.json', JSON.stringify({instructions: $('instructions').value, categories}, null, 2), 'application/json');
   } catch (error) { setError(error.message); }
 });
@@ -188,7 +188,7 @@ $('csv-file').addEventListener('change', async event => {
   const file = event.target.files[0]; const version = ++fileVersion;
   if (!file) { refreshPreview(); return; }
   try {
-    if (file.size > 2 * 1024 * 1024) throw new Error('请使用不超过 2 MB 的 UTF-8 CSV 文件。');
+    if (file.size > 2 * 1024 * 1024) throw new Error('Choose a UTF-8 CSV file no larger than 2 MB.');
     const text = new TextDecoder('utf-8', {fatal: true}).decode(await file.arrayBuffer());
     if (version !== fileVersion) return;
     csv = parseCSV(text); $('text-column').replaceChildren(); $('text-column').disabled = false;

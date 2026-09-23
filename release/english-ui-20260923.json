@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "scope": "English website and workbench presentation; original evidence, model packages, scores and runtime preserved.",
+  "site_browser_checks": 74,
+  "workbench_fixture_browser_scenarios": 12,
+  "javascript_data_contract_tests": 6,
+  "model_inference_in_local_checks": false,
+  "model_runtime_unchanged": true,
+  "protected_files": {
+    "site/results.json": "1e3a695428a8fca4db94f9355b04dd99038ce2ac7754210526d0e571c4a945db",
+    "site/jevbench.json": "1464014d2ff0ccc4b62743fa33592612e1b8e5b6cdb1867242689d11dd8af4d0",
+    "site/provider-quality.json": "73ee1afd0cbbd16e88176fa0524833b3ce5ff1338b3d35569bac296d75695048",
+    "site/latency.json": "f285b9526f80ae3e62050953b5c5a56a1a2834217ebbbfae527533784db7e2ba",
+    "site/catalog.json": "cd07940bd4a093232625747f91158ae4040620b5a3e58d8aacfffc10425293d0",
+    "deploy/huggingface-space/app.py": "ecaea3069b310712e91c412ed9e8d74381e3ea0a71951eec9fa531b023062171",
+    "site/media/phone-extraction.mp4": "7743eb16c928988ed93ccff185c68890725be285ec71460e2985f95c6ad4eec4",
+    "site/media/phone-extraction.jpg": "92cf5358fd7b5c8913e93122d4ecb74df13ca38a4901dfe7fdf0375eda9e6bae",
+    "site/media/phone-extraction.txt": "24c1ee9d4350ca2a43ba1cc2529815b24e662dfe6cde928ad60ecf7a1e8a2859",
+    "site/media/phone-extraction.vtt": "d3ce012403f0ef975b9635ecf50eb0c21a0e50268640e561367068a852206948"
+  },
+  "multilingual_input_and_csv_round_trip": "passed with Chinese input and column names",
+  "phone_demo": "Labeled English display derivative; original catalog, request, offsets and media unchanged."
+}

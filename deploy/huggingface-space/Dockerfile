@@ -26,6 +26,7 @@ RUN python -m pip install --no-cache-dir torch==2.8.0 --index-url https://downlo
 RUN useradd -m -u 1000 user && chown -R user:user /opt/open-jev
 WORKDIR /app
 COPY --chown=user:user app.py /app/app.py
+COPY --chown=user:user workbench/ /opt/open-jev/examples/workbench/
 USER user
 EXPOSE 7860
 CMD ["python", "app.py"]

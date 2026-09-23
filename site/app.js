@@ -8,6 +8,19 @@ const state = { items: [], overview: null, category: "All", search: "", visible:
 const modal = $("#demo-modal");
 const video = $("#demo-video");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const phoneEnglishNote = "English display translation. The original request, Unicode character offsets and source video are preserved in the evidence downloads.";
+
+function displayItem(item) {
+  if (item.id !== "phone-extraction") return item;
+  return {
+    ...item,
+    video: "media/phone-extraction-en.mp4",
+    poster: "media/phone-extraction-en.jpg",
+    captions: "media/phone-extraction-en.vtt",
+    transcript: "media/phone-extraction-en.txt",
+    requestExplanation: `${phoneEnglishNote}\n\nRequested field: mobile\n\nFictional contact example; café contact card; do not dial.\nBilling: +1 416-555-0156 | Region: CA\nMobile: 07700 900123 | Region: GB\nSupport: +1 202-555-0123 | Region: US\n\nSelect the exact, complete phone span for the requested role using the original request's policy and offsets. Separately determine whether a phone slot for that role is populated. This display translation is an explanation, not an executable request. No model result is shown.`,
+  };
+}
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -61,7 +74,7 @@ function card(item) {
   const fallback = element("span", "poster-fallback", "[J]");
   fallback.setAttribute("aria-hidden", "true");
   poster.append(fallback);
-  const posterURL = localAsset(item.poster);
+  const posterURL = localAsset(displayItem(item).poster);
   if (posterURL) {
     const image = element("img");
     image.src = posterURL;
@@ -189,6 +202,7 @@ async function loadTranscript(item) {
 
 function openDemo(item, trigger) {
   state.selected = item;
+  const display = displayItem(item);
   state.returnFocus = trigger || document.activeElement;
   $("#demo-title").textContent = item.title;
   $("#demo-description").textContent = item.description || "";
@@ -200,7 +214,7 @@ function openDemo(item, trigger) {
   $("#demo-model").textContent = `${item.model_label || "No trained result"}${revision ? ` · revision ${revision.slice(0, 8)}` : ""}`;
   $("#demo-model").title = revision || "";
   $("#demo-summary").textContent = readable(item.result_summary);
-  $("#demo-request").textContent = item.request == null ? "This overview links to the individual task requests in the demo catalog." : JSON.stringify(item.request, null, 2);
+  $("#demo-request").textContent = display.requestExplanation || (item.request == null ? "This overview links to the individual task requests in the demo catalog." : JSON.stringify(item.request, null, 2));
   $("#demo-answer").textContent = item.answer == null ? "No trained result. This interface walkthrough demonstrates a task contract; it does not supply a model prediction." : JSON.stringify(item.answer, null, 2);
   if (item.id.endsWith("-overview")) $("#demo-answer").textContent = "Inspect the individual demos for their saved model responses and complete source evidence. This video retains each episode's goal and outcome.";
   const provenance = { source_path: item.source_path || null, source_sha256: item.source_sha256 || null, selector: item.selector || null, ...(item.provenance || {}) };
@@ -210,19 +224,19 @@ function openDemo(item, trigger) {
   $("#demo-source").hidden = !source;
   if (source) { $("#demo-source").href = source; $("#demo-source").title = "Repository access may be required"; }
   const limits = Array.isArray(item.limitations) ? item.limitations : [item.limitations || "This clip is a bounded example, not a general task-success result."];
-  $("#demo-limitations").replaceChildren(...limits.map((limit) => element("li", "", readable(limit))));
+  $("#demo-limitations").replaceChildren(...(display.requestExplanation ? [phoneEnglishNote, ...limits] : limits).map((limit) => element("li", "", readable(limit))));
   all("#demo-modal details").forEach((details) => { details.open = false; });
   $("#video-error").hidden = true;
   video.replaceChildren();
-  const movie = localAsset(item.video);
+  const movie = localAsset(display.video);
   if (movie) video.src = movie;
   else video.removeAttribute("src");
-  const poster = localAsset(item.poster);
+  const poster = localAsset(display.poster);
   if (poster) video.poster = poster;
   else video.removeAttribute("poster");
   video.preload = "metadata";
   video.setAttribute("aria-label", `${item.title} — ${evidenceName(item)}`);
-  const captions = localAsset(item.captions);
+  const captions = localAsset(display.captions);
   if (captions) {
     const track = document.createElement("track");
     track.kind = "captions";
@@ -234,15 +248,15 @@ function openDemo(item, trigger) {
   }
   const movieDownload = $("#video-download");
   movieDownload.hidden = !movie;
-  if (movie) { movieDownload.href = movie; movieDownload.download = `${item.id}.mp4`; }
-  const transcript = localAsset(item.transcript || item.video?.replace(/\.mp4$/, ".txt"));
+  if (movie) { movieDownload.href = localAsset(item.video); movieDownload.download = `${item.id}.mp4`; }
+  const transcript = localAsset(display.transcript || display.video?.replace(/\.mp4$/, ".txt"));
   $("#transcript-download").hidden = !transcript;
   if (transcript) { $("#transcript-download").href = transcript; $("#transcript-download").download = `${item.id}.txt`; }
   document.body.classList.add("modal-open");
   modal.showModal();
   modal.scrollTop = 0;
   $("#close-modal").focus({ preventScroll: true });
-  loadTranscript(item);
+  loadTranscript(display);
 }
 
 function closeDemo() { modal.close(); }

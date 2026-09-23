@@ -30,13 +30,13 @@
     },
     {
       "path": "README.md",
-      "source_sha256": "4e37974fe578602dfc825a07bd8698bdcfa9056f0e7107835560db5842e3f46d",
-      "sha256": "4e37974fe578602dfc825a07bd8698bdcfa9056f0e7107835560db5842e3f46d",
-      "bytes": 24087,
+      "source_sha256": "2ce63697dcf12a4811593e31d015fa86d5ae81ff5f012cfd64a4e6ee3427c1fb",
+      "sha256": "2ce63697dcf12a4811593e31d015fa86d5ae81ff5f012cfd64a4e6ee3427c1fb",
+      "bytes": 24079,
       "changes": [
-        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
       ],
-      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -68,21 +68,23 @@
     },
     {
       "path": "deploy/huggingface-space/Dockerfile",
-      "sha256": "c0eb171aa46a4283412c31b3fd114d998c674a4ebd617325d71ed0419106e169",
-      "bytes": 1473,
-      "source_sha256": "c0eb171aa46a4283412c31b3fd114d998c674a4ebd617325d71ed0419106e169",
+      "sha256": "edd9c22512437b81243f3839db89292b5f6e009cbb4a924a6172b2b5190e963b",
+      "bytes": 1541,
+      "source_sha256": "edd9c22512437b81243f3839db89292b5f6e009cbb4a924a6172b2b5190e963b",
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "deploy/huggingface-space/README.md",
-      "sha256": "a0de5664deaa9706509abb8ed353a319dc1eeb75902f2aee845ad31825e7d298",
-      "bytes": 5494,
-      "source_sha256": "a0de5664deaa9706509abb8ed353a319dc1eeb75902f2aee845ad31825e7d298",
+      "sha256": "0734c5c8ab9abd74a54b616da4a00808feb3690d98faca918331ecd747a4e321",
+      "bytes": 6361,
+      "source_sha256": "0734c5c8ab9abd74a54b616da4a00808feb3690d98faca918331ecd747a4e321",
       "changes": [
-        "Hosted workbench links and verified CPU deployment."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "deploy/huggingface-space/app.py",
@@ -305,12 +307,13 @@
     },
     {
       "path": "docs/get-started.md",
-      "sha256": "607895bb106009ec0183d25e8f833ef5481a3d5411a10c829ca2b062273e7f94",
-      "bytes": 6402,
-      "source_sha256": "607895bb106009ec0183d25e8f833ef5481a3d5411a10c829ca2b062273e7f94",
+      "sha256": "106b024bb753c62b212fa6ce8adbc659ae56258e1f870f98aa05cbd8333999a2",
+      "bytes": 7625,
+      "source_sha256": "106b024bb753c62b212fa6ce8adbc659ae56258e1f870f98aa05cbd8333999a2",
       "changes": [
-        "Hosted workbench links and verified CPU deployment."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "docs/inference-latency.md",
@@ -716,12 +719,13 @@
     },
     {
       "path": "examples/index.html",
-      "source_sha256": "55a3c6b72f338c01cfb8e0a6acf6ec5b60c77217cb7fe3d3f3b1e063020b11a6",
-      "sha256": "55a3c6b72f338c01cfb8e0a6acf6ec5b60c77217cb7fe3d3f3b1e063020b11a6",
-      "bytes": 5747,
+      "source_sha256": "3d14a3e6fc970a10498415503eab23148460ed0666806522dd40ca05e7784031",
+      "sha256": "3d14a3e6fc970a10498415503eab23148460ed0666806522dd40ca05e7784031",
+      "bytes": 5739,
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "examples/painting/app.mjs",
@@ -869,30 +873,33 @@
     },
     {
       "path": "examples/workbench/app.js",
-      "sha256": "176ce9b08202deb9c758e33ead2eec688ff4483005cc209c1e71a6961e09102a",
-      "bytes": 11183,
-      "source_sha256": "176ce9b08202deb9c758e33ead2eec688ff4483005cc209c1e71a6961e09102a",
+      "sha256": "5b35c4b0c46ba1158ec501d81472fd5e6661f096c33f93cbbcf3d4159104fcf0",
+      "bytes": 11377,
+      "source_sha256": "5b35c4b0c46ba1158ec501d81472fd5e6661f096c33f93cbbcf3d4159104fcf0",
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "examples/workbench/index.html",
-      "sha256": "1b50ea9770d2720c6d57b592f4f83dd20c2ab4a13ddcb80206618235ea122b6d",
-      "bytes": 11468,
-      "source_sha256": "1b50ea9770d2720c6d57b592f4f83dd20c2ab4a13ddcb80206618235ea122b6d",
+      "sha256": "8992244c55a1d1f568f0c7665e4b193ee87075aaa0f08286d7241752eadef66d",
+      "bytes": 11494,
+      "source_sha256": "8992244c55a1d1f568f0c7665e4b193ee87075aaa0f08286d7241752eadef66d",
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "examples/workbench/logic.mjs",
-      "sha256": "9a27a58ac6ab441655c678833ab1e50498ca6eb584752fcfc13bbc22c5e813e1",
-      "bytes": 7176,
-      "source_sha256": "9a27a58ac6ab441655c678833ab1e50498ca6eb584752fcfc13bbc22c5e813e1",
+      "sha256": "62115c035855c23841d544bc8c7d5b8b3ab0e145612b9461293d176febdcba0d",
+      "bytes": 7508,
+      "source_sha256": "62115c035855c23841d544bc8c7d5b8b3ab0e145612b9461293d176febdcba0d",
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "examples/workbench/styles.css",
@@ -1295,6 +1302,16 @@
       "bytes": 640
     },
     {
+      "path": "release/english-ui-20260923.json",
+      "sha256": "26e360731b0f1a10cb62ac264f67fe3e86034e54dda40cf9bbfa97f2ae4fd01d",
+      "bytes": 1577,
+      "source_sha256": "26e360731b0f1a10cb62ac264f67fe3e86034e54dda40cf9bbfa97f2ae4fd01d",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "changes": [
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ]
+    },
+    {
       "path": "release/history/PUBLIC_RELEASE.initial.json",
       "sha256": "948cc26de8d28577bfd984cc597949fd89b134e37028260d874f6ed9191b3f2a",
       "bytes": 284858,
@@ -1305,13 +1322,13 @@
     },
     {
       "path": "release/project-story/index.html",
-      "source_sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
-      "sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
-      "bytes": 60527,
+      "source_sha256": "4ee0ffe20c48f98bbc91508b6cf883332ed9c25d97366616f358239c4fd1bb56",
+      "sha256": "4ee0ffe20c48f98bbc91508b6cf883332ed9c25d97366616f358239c4fd1bb56",
+      "bytes": 63566,
       "changes": [
-        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
       ],
-      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "release/social/README.md",
@@ -7691,6 +7708,16 @@
       "bytes": 11059
     },
     {
+      "path": "scripts/render_phone_english.py",
+      "sha256": "e63f5e3eacd209bab2702570373115690f509809d1378e1711347b4676e8acc7",
+      "bytes": 2541,
+      "source_sha256": "e63f5e3eacd209bab2702570373115690f509809d1378e1711347b4676e8acc7",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "changes": [
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ]
+    },
+    {
       "path": "scripts/run_four_gpu_handoff.py",
       "source_sha256": "8294e8e0f1556ac6b590dfd3d8989db36fd20ea5ddf40e09e07a2a932ab316b0",
       "sha256": "8294e8e0f1556ac6b590dfd3d8989db36fd20ea5ddf40e09e07a2a932ab316b0",
@@ -7780,24 +7807,24 @@
     },
     {
       "path": "site/app.js",
-      "sha256": "1943f9d7947a4be1b3f5ae94873bdbb7bf232da8bd6f7ba8b95462f137aebff3",
-      "bytes": 32859,
-      "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
-      "source_sha256": "1943f9d7947a4be1b3f5ae94873bdbb7bf232da8bd6f7ba8b95462f137aebff3",
+      "sha256": "c1f8e02888307a01f692dc0d32a15191b8bfe9d495c18aec474eadde0e2af5a5",
+      "bytes": 34029,
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "source_sha256": "c1f8e02888307a01f692dc0d32a15191b8bfe9d495c18aec474eadde0e2af5a5",
       "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
       ]
     },
     {
       "path": "site/benchmarks/index.html",
-      "source_sha256": "0c5cb6aa634086934f30a90fd294f93038d1da029f988d8c9e32bf562c51cdbf",
+      "source_sha256": "ffa51e07dac4d9c49df13cc6ec5cc5a090261232c5287e56e517b465ff345a72",
       "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
-      "sha256": "0c5cb6aa634086934f30a90fd294f93038d1da029f988d8c9e32bf562c51cdbf",
-      "bytes": 18718,
+      "sha256": "ffa51e07dac4d9c49df13cc6ec5cc5a090261232c5287e56e517b465ff345a72",
+      "bytes": 18703,
       "changes": [
-        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
       ],
-      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "site/catalog.json",
@@ -7807,13 +7834,13 @@
     },
     {
       "path": "site/index.html",
-      "source_sha256": "3a0ad621d79d07efb8f4cf98651f2b5997dc0f6519973df7274016614ac9045c",
-      "sha256": "3a0ad621d79d07efb8f4cf98651f2b5997dc0f6519973df7274016614ac9045c",
-      "bytes": 37462,
+      "source_sha256": "02cd454b34eb5dc9fb3e6094db955e7c461087f15618c941fcd979df15299a6d",
+      "sha256": "02cd454b34eb5dc9fb3e6094db955e7c461087f15618c941fcd979df15299a6d",
+      "bytes": 37088,
       "changes": [
-        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
       ],
-      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "site/jevbench.js",
@@ -8288,6 +8315,56 @@
       "bytes": 612
     },
     {
+      "path": "site/media/phone-extraction-en.jpg",
+      "sha256": "3806cbba6bac62c9bb2474605ebfd3bc891afc1a2f405bd9dc72e1d7dae9340d",
+      "bytes": 103646,
+      "source_sha256": "3806cbba6bac62c9bb2474605ebfd3bc891afc1a2f405bd9dc72e1d7dae9340d",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "changes": [
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ]
+    },
+    {
+      "path": "site/media/phone-extraction-en.json",
+      "sha256": "f2fc0cde3177f636c0ffe1267e5facc563d3bdfefb289dbd412f989a67235e89",
+      "bytes": 2087,
+      "source_sha256": "f2fc0cde3177f636c0ffe1267e5facc563d3bdfefb289dbd412f989a67235e89",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "changes": [
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ]
+    },
+    {
+      "path": "site/media/phone-extraction-en.mp4",
+      "sha256": "92630d6162ed68868e40dc694b5f4b87de2b765ea9ac9d1c50a65aae69f6a5c0",
+      "bytes": 89206,
+      "source_sha256": "92630d6162ed68868e40dc694b5f4b87de2b765ea9ac9d1c50a65aae69f6a5c0",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "changes": [
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ]
+    },
+    {
+      "path": "site/media/phone-extraction-en.txt",
+      "sha256": "c3c1813bb1e375189c977f3c82de411131def526639ad3d01a5d8d123876895b",
+      "bytes": 639,
+      "source_sha256": "c3c1813bb1e375189c977f3c82de411131def526639ad3d01a5d8d123876895b",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "changes": [
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ]
+    },
+    {
+      "path": "site/media/phone-extraction-en.vtt",
+      "sha256": "792ceabe4972d299d76d0fbbeac16faa591254be209dd79a8365eb0c110c4e5e",
+      "bytes": 649,
+      "source_sha256": "792ceabe4972d299d76d0fbbeac16faa591254be209dd79a8365eb0c110c4e5e",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "changes": [
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ]
+    },
+    {
       "path": "site/media/phone-extraction.jpg",
       "source_sha256": "92cf5358fd7b5c8913e93122d4ecb74df13ca38a4901dfe7fdf0375eda9e6bae",
       "sha256": "92cf5358fd7b5c8913e93122d4ecb74df13ca38a4901dfe7fdf0375eda9e6bae",
@@ -8549,13 +8626,13 @@
     },
     {
       "path": "site/story/index.html",
-      "source_sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
-      "sha256": "448164c2ad505123416eaf809a27d5c05726693f18431c80fb3f03021f6bd47f",
-      "bytes": 60527,
+      "source_sha256": "4ee0ffe20c48f98bbc91508b6cf883332ed9c25d97366616f358239c4fd1bb56",
+      "sha256": "4ee0ffe20c48f98bbc91508b6cf883332ed9c25d97366616f358239c4fd1bb56",
+      "bytes": 63566,
       "changes": [
-        "Audited 27B v1.1 complete evaluation and verified HF model/data release."
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
       ],
-      "source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d"
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "site/styles.css",
@@ -8569,12 +8646,13 @@
     },
     {
       "path": "site/workbench/index.html",
-      "sha256": "07ddd0014538e4550d85f562726a68ff194849cc63bcffcccae727d85b51e410",
-      "source_sha256": "07ddd0014538e4550d85f562726a68ff194849cc63bcffcccae727d85b51e410",
-      "bytes": 6108,
+      "sha256": "f77db785b302597efe3bcd8e4df26d8565cf3871f97dd90218ad97611c9fc978",
+      "source_sha256": "f77db785b302597efe3bcd8e4df26d8565cf3871f97dd90218ad97611c9fc978",
+      "bytes": 4699,
       "changes": [
-        "Hosted workbench links and verified CPU deployment."
-      ]
+        "English website and workbench presentation. Original evidence, model identities and scientific scores preserved."
+      ],
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a"
     },
     {
       "path": "tests/test_amount_extraction_control.py",
@@ -9565,7 +9643,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "19d1a5bb04b1b61d7cae1e8440cd2afdfdeccd8d",
+  "current_source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -10390,6 +10468,47 @@
         "https://x.com/Zefan_Cai/status/2102668553845711093"
       ],
       "social_readback_verified": true
+    },
+    {
+      "id": "english-interface-20260923",
+      "source_commit": "cbaa163a295b769aa0ab84fe6369ca733318d13a",
+      "created_at": "2026-09-23T08:17:22.603997+00:00",
+      "paths": [
+        "README.md",
+        "deploy/huggingface-space/Dockerfile",
+        "deploy/huggingface-space/README.md",
+        "docs/get-started.md",
+        "examples/index.html",
+        "examples/workbench/index.html",
+        "examples/workbench/app.js",
+        "examples/workbench/logic.mjs",
+        "release/project-story/index.html",
+        "site/index.html",
+        "site/app.js",
+        "site/benchmarks/index.html",
+        "site/story/index.html",
+        "site/workbench/index.html",
+        "scripts/render_phone_english.py",
+        "site/media/phone-extraction-en.mp4",
+        "site/media/phone-extraction-en.jpg",
+        "site/media/phone-extraction-en.txt",
+        "site/media/phone-extraction-en.vtt",
+        "site/media/phone-extraction-en.json",
+        "release/english-ui-20260923.json"
+      ],
+      "description": "English website, story, workbench, presets, guidance and errors. Labeled English phone-demo display derivative preserves original raw request, character offsets and source media. Multilingual user input remains supported.",
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "raw_training_data_included": false,
+      "private_operational_files_included": false,
+      "fixed_workbench_inference_source": "45d5a0e81ab82b70070f05300afc4e821772b1f1",
+      "workbench_model": "released Open-Jev-2B on CPU",
+      "verification": {
+        "local_site_checks": 74,
+        "fixture_browser_scenarios": 12,
+        "javascript_data_contract_tests": 6,
+        "local_checks_are_model_inference": false
+      }
     }
   ]
 }

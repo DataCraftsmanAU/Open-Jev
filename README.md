@@ -40,7 +40,7 @@ compares 27B v1.1, the released 2B/9B baselines, Jev, GPT-5.6 Luna and GPT-6 Ast
 probability validation and timing diagnostics, with candidate-order and
 hardware/network limitations. See the [dedicated website table](https://zefan-cai.github.io/open-jev/#jevbench).
 
-**Broader data iteration:** [new community cases](docs/community-research-broadening-20260921.md), [the frozen 148,639-row training mixture](docs/community-hard-training-v2.md), and the [Chinese project story](https://zefan-cai.github.io/open-jev/story/) document the sources, construction, controls and limitations. The audited 27B results appear below; changes in model scale, prior training and data prevent attributing the difference to new data alone.
+**Broader data iteration:** [new community cases](docs/community-research-broadening-20260921.md), [the frozen 148,639-row training mixture](docs/community-hard-training-v2.md), and the [project story](https://zefan-cai.github.io/open-jev/story/) document the sources, construction, controls and limitations. The audited 27B results appear below; changes in model scale, prior training and data prevent attributing the difference to new data alone.
 
 **V3 data prepared:** [natural intent routing](docs/community-routing-v3.md),
 [executable SQL](docs/sql-semantics-v3.md) and [approval/CMS controls](docs/community-workflow-v3.md)
