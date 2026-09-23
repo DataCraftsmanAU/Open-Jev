@@ -30,11 +30,11 @@
     },
     {
       "path": "README.md",
-      "source_sha256": "500ef1b68cfccd1bf29a2ba5e140a98350a6dc9c621185e8f739f866ce13e463",
-      "sha256": "51881fadb5957a3e3a35a7f1598a419c4820be9aa563ffd5f758e81d4ef40a5e",
-      "bytes": 17820,
+      "source_sha256": "576434924a1e0d63c1a3c2e08e35ce40dd94715c3d77e526e3768ad102b224e4",
+      "sha256": "3a2e4e0e31a10a816a2ba666cd7578a5bdf3f9d766bdba18bdeb321a2bec508e",
+      "bytes": 18101,
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
+        "Hosted workbench links and verified CPU deployment."
       ]
     },
     {
@@ -76,11 +76,11 @@
     },
     {
       "path": "deploy/huggingface-space/README.md",
-      "sha256": "72d06d8f18ddf255741b9d811dc384d4afd400e39ec108e4f625d0832f966426",
-      "bytes": 4453,
-      "source_sha256": "72d06d8f18ddf255741b9d811dc384d4afd400e39ec108e4f625d0832f966426",
+      "sha256": "a0de5664deaa9706509abb8ed353a319dc1eeb75902f2aee845ad31825e7d298",
+      "bytes": 5494,
+      "source_sha256": "a0de5664deaa9706509abb8ed353a319dc1eeb75902f2aee845ad31825e7d298",
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
+        "Hosted workbench links and verified CPU deployment."
       ]
     },
     {
@@ -303,11 +303,11 @@
     },
     {
       "path": "docs/get-started.md",
-      "sha256": "33299e81d2a5e133a7b5833d067846675093c34862ee94e21d574c2f7a1b213b",
-      "bytes": 6409,
-      "source_sha256": "33299e81d2a5e133a7b5833d067846675093c34862ee94e21d574c2f7a1b213b",
+      "sha256": "607895bb106009ec0183d25e8f833ef5481a3d5411a10c829ca2b062273e7f94",
+      "bytes": 6402,
+      "source_sha256": "607895bb106009ec0183d25e8f833ef5481a3d5411a10c829ca2b062273e7f94",
       "changes": [
-        "No-code text/CSV classification workbench; no new benchmark results."
+        "Hosted workbench links and verified CPU deployment."
       ]
     },
     {
@@ -7058,6 +7058,24 @@
       "bytes": 5449
     },
     {
+      "path": "reports/workbench/README.md",
+      "sha256": "7b214fe412b3d7688d8984f37ca19705039c5c2355f65a913c76285b88679357",
+      "source_sha256": "7b214fe412b3d7688d8984f37ca19705039c5c2355f65a913c76285b88679357",
+      "bytes": 1160,
+      "changes": [
+        "Hosted workbench links and verified CPU deployment."
+      ]
+    },
+    {
+      "path": "reports/workbench/validation.json",
+      "sha256": "bd2b3eafcaa12f9b5bbd17b68bd873f140fc29fab1be4d4faa9c149e6736d31a",
+      "source_sha256": "bd2b3eafcaa12f9b5bbd17b68bd873f140fc29fab1be4d4faa9c149e6736d31a",
+      "bytes": 7415,
+      "changes": [
+        "Hosted workbench links and verified CPU deployment."
+      ]
+    },
+    {
       "path": "reports/workflow-service/27b-workflow-pilot/predictions.jsonl",
       "source_sha256": "9b24e82225d13a84c05ab9ef64e0253a8635c9dd519b0e6a7344947ff4ed2e7b",
       "sha256": "9b24e82225d13a84c05ab9ef64e0253a8635c9dd519b0e6a7344947ff4ed2e7b",
@@ -7594,11 +7612,11 @@
     },
     {
       "path": "site/index.html",
-      "source_sha256": "0a6253648ed2d354533110aaae39bfadbdbdc241e082d2326169dffda4095785",
-      "sha256": "a771bc362972a437089fc69d0adda431b1383a9cb43694eeaf43e3835fc6ca43",
-      "bytes": 33595,
+      "source_sha256": "f81fba2469aaed37139094e5cd7da327fdaf8d58e7819c9ba3794294c39765dd",
+      "sha256": "f81fba2469aaed37139094e5cd7da327fdaf8d58e7819c9ba3794294c39765dd",
+      "bytes": 35313,
       "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+        "Hosted workbench links and verified CPU deployment."
       ]
     },
     {
@@ -8338,13 +8356,21 @@
     },
     {
       "path": "site/styles.css",
-      "sha256": "c94f92913f1a8eabfb4e303c51270ef7c7353b57440a39f7d5db9df4fe037478",
-      "bytes": 31638,
+      "sha256": "30e66333dfe9b67fef96a787973df20f4f52c2abbefd023d42f3891439e53bb8",
+      "bytes": 36728,
       "source_commit": "bbffb57692164abac0b797f30ed3dcddaf487a1a",
-      "source_sha256": "a11949cb34f953e17e10becbae514d13b79f708e3c3e63a2b1e1d9d91af11bb9",
+      "source_sha256": "30e66333dfe9b67fef96a787973df20f4f52c2abbefd023d42f3891439e53bb8",
       "changes": [
-        "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code.",
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+        "Hosted workbench links and verified CPU deployment."
+      ]
+    },
+    {
+      "path": "site/workbench/index.html",
+      "sha256": "07ddd0014538e4550d85f562726a68ff194849cc63bcffcccae727d85b51e410",
+      "source_sha256": "07ddd0014538e4550d85f562726a68ff194849cc63bcffcccae727d85b51e410",
+      "bytes": 6108,
+      "changes": [
+        "Hosted workbench links and verified CPU deployment."
       ]
     },
     {
@@ -9336,7 +9362,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "9e7eff3f99f86b4f49bf143d77d70007b7468c62",
+  "current_source_commit": "ea4455fa98ddd435a70b1ac0bc848af02a683ccc",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -10073,6 +10099,36 @@
         "javascript_contract_tests": 6,
         "fixture_browser_checks": 11,
         "fixture_checks_are_model_inference": false
+      }
+    },
+    {
+      "id": "hosted-workbench-20260923",
+      "source_commit": "ea4455fa98ddd435a70b1ac0bc848af02a683ccc",
+      "created_at": "2026-09-23T06:00:31.443445+00:00",
+      "paths": [
+        "README.md",
+        "docs/get-started.md",
+        "deploy/huggingface-space/README.md",
+        "site/index.html",
+        "site/styles.css",
+        "site/workbench/index.html",
+        "reports/workbench/README.md",
+        "reports/workbench/validation.json"
+      ],
+      "description": "Launch the released 2B CPU classification workbench with website entry and real browser CSV/export validation.",
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "raw_training_data_included": false,
+      "private_operational_files_included": false,
+      "social_posts_published": false,
+      "verification": {
+        "real_cpu_smoke_requests": 1,
+        "invalid_request_rejected": true,
+        "real_browser_batch_rows": 2,
+        "real_browser_checks": 12,
+        "fixture_site_layout_checks": 4,
+        "gpu_jobs_started": false,
+        "record": "reports/workbench/validation.json"
       }
     }
   ]

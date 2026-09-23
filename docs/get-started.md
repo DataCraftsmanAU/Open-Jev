@@ -2,6 +2,8 @@
 
 例如，你有一份包含 100 条客户反馈的表格，希望把每条反馈分到“退款”“产品故障”“使用咨询”“其他”。Open-Jev 工作台让你上传表格、说明分类规则，再下载加上分类结果的 CSV。使用已部署的工作台只需要浏览器。
 
+[在线分类](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench) · [项目网站工作台](https://zefan-cai.github.io/open-jev/workbench/)
+
 “自己定义分类”就是给每个类别写一句解释：
 
 | 分类名称 | 分类说明 |
@@ -46,11 +48,11 @@
 
 ## 在线使用与自己部署
 
-公开 CPU 入口 [Open-Jev Workbench](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench)正在准备，真实分类、内存和速度仍待验证。它使用已发布的 2B 模型，部署在 Hugging Face CPU Basic 上；现有账户已具备资格，不增加硬件小时费，也不占用正在评测的 GPU。
+公开入口 [Open-Jev Workbench](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench)已上线，并通过真实分类请求验证。它使用已发布的 2B 模型，运行在 CPU 上。试用速度较慢，建议先放几条消息，确认分类规则合适后再处理更多内容。
 
-公开 CPU 服务每条接受 2–8 个类别、最多 4,000 个文本字符；完整提示每候选最多 1,024 tokens。服务一次处理一条请求，忙时提示稍后再试。CPU 结果尚未与已发布 GPU 结果逐条核对，速度也需要单独实测。
+公开服务每条接受 2–8 个类别、最多 4,000 个文本字符；完整提示每候选最多 1,024 tokens。服务一次处理一条请求，忙时提示稍后再试。
 
-[项目网站](https://zefan-cai.github.io/open-jev/)使用 GitHub Pages 展示说明和工作台页面，实际分类需要模型服务。在线入口验证完成后，网站可以链接或嵌入这个 Space。希望使用自己的机器或处理内部业务数据，可以按下面的步骤部署。
+[项目网站工作台](https://zefan-cai.github.io/open-jev/workbench/)提供操作页面和在线服务入口，实际分类由 Hugging Face Space 中的模型完成。希望使用自己的机器或处理内部业务数据，可以按下面的步骤部署。
 
 ## 部署者：启动工作台
 

@@ -11,7 +11,9 @@ without autoregressive answer generation or parsing generated JSON.
 [9B model](https://huggingface.co/ZefanCai/Open-Jev-9B) ·
 [Dataset](https://huggingface.co/datasets/ZefanCai/Open-Jev)
 
-**No-code workbench:** [User guide](docs/get-started.md) · [Workbench source](examples/workbench/) · [CPU deployment](deploy/huggingface-space/). Paste messages or import a CSV, define your categories, and download the original table with suggested labels and candidate probabilities. The interface calls a real Open-Jev service; its optional walkthrough is explicitly marked as an illustrative example.
+**Try it online:** [Text & CSV workbench](https://zefan-cai.github.io/open-jev/workbench/) · [Open in Hugging Face](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench)
+
+**No-code workbench:** [User guide](docs/get-started.md) · [Workbench source](examples/workbench/) · [CPU deployment](deploy/huggingface-space/). Paste messages or import a CSV, define your categories, and download the original table with suggested labels and candidate probabilities. The hosted workbench uses the released Open-Jev-2B model on CPU. Start with a few rows: this trial is slower than the GPU deployment measured below. Its optional walkthrough is explicitly marked as an illustrative example.
 
 **Benchmarks:** [Results and scope](docs/benchmarks.md) ·
 [Website tables](https://zefan-cai.github.io/open-jev/benchmarks/) ·

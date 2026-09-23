@@ -12,9 +12,20 @@ license: mit
 
 这个部署包把[普通用户工作台](https://github.com/Zefan-Cai/Open-Jev/blob/main/docs/get-started.md)和 Open-Jev-2B 放在同一个 Docker Space 里。用户粘贴消息或上传 CSV，定义类别，再下载分类结果。
 
-**当前状态：[ZefanCai/Open-Jev-Workbench](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench) 已创建，正在准备构建，真实 CPU 分类、内存和速度仍待验证。** 使用 CPU Basic；现有账户已具备 Pro 资格，不增加硬件小时费，也不使用现有评测 GPU。
+**[Open-Jev Workbench](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench) 已上线并通过真实 CPU 分类请求验证。** [项目网站工作台](https://zefan-cai.github.io/open-jev/workbench/)提供操作页面和在线服务入口。服务使用已发布的 2B 模型和 CPU Basic；试用速度较慢，建议先处理几条消息。
 
 工作台一次最多处理 200 条，CSV 不超过 2 MB。导出结果保留原 CSV 列，再追加分类结果。“下载任务配置”只包含分类规则和类别，不包含用户消息或结果。
+
+## 部署验证记录
+
+2026-09-23，16 GB CPU Basic 容器完成模型加载、启动检查和真实请求。一条虚构中文退款消息、4 个类别的 HTTP 请求成功返回“退款”，包含同源 Origin 请求头；客户端用时 **17.21 秒**。无效输入返回 HTTP 422。这是单条部署检查，不是 benchmark 或服务速度承诺。
+
+启动日志记录耗时 28.58 秒、启动阶段进程峰值 RSS 3,250.45 MiB。该内存观测仅截至启动完成，不代表整个服务运行期间的峰值。CPU 结果及概率尚未与已发布 GPU 结果逐条核对。
+
+- 公开源码 commit：[`45d5a0e81ab82b70070f05300afc4e821772b1f1`](https://github.com/Zefan-Cai/Open-Jev/commit/45d5a0e81ab82b70070f05300afc4e821772b1f1)。
+- 首次部署并验证的 Space commit：[`ce8278238af1c9658d19356064293b0f65314176`](https://huggingface.co/spaces/ZefanCai/Open-Jev-Workbench/commit/ce8278238af1c9658d19356064293b0f65314176)。
+
+本 Space 使用 CPU Basic，不增加硬件小时费。
 
 ## 发布前设置
 
@@ -44,7 +55,7 @@ docker run --rm -p 127.0.0.1:7860:7860 --cpus=2 --memory=16g open-jev-cpu
 - 一次处理一条推理请求，不排队；忙时返回 HTTP 429。最多 8 个 HTTP 处理线程，连接 backlog 为 8，连接超限返回 503。表格逐条处理。
 - 用户停止后，正在计算的一条请求仍会运行到结束。失败请求不会自动重试，也不会用预设答案替代。
 
-2B 的 BF16 权重约 4.55 GB，加载和推理还需要额外内存。Transformers 5.10.2 提供 Qwen3.5 的 PyTorch CPU 路径；16 GB 的实际峰值和 2 核 CPU 的速度仍待测试。CPU 结果及概率尚未与已发布 GPU 结果逐条核对，GPU benchmark 不代表此部署的延迟或数值一致性。
+2B 的 BF16 权重约 4.55 GB，加载和推理还需要额外内存。Transformers 5.10.2 提供 Qwen3.5 的 PyTorch CPU 路径。上面的启动和单条请求记录不代表长文本、多类别或持续负载下的性能；GPU benchmark 也不代表此部署的延迟或数值一致性。
 
 ## 公开试用与数据
 
@@ -52,4 +63,4 @@ docker run --rm -p 127.0.0.1:7860:7860 --cpus=2 --memory=16g open-jev-cpu
 
 分类时，文本和类别会发送到 Space 的 CPU 服务。应用不记录用户内容、请求体或用户地址，不保存表格，不加分析追踪；Hugging Face 平台仍适用自己的隐私条款。
 
-部署成功后，核验真实分类、错误提示及内存/延迟，再更新本页状态和网站入口。需要把请求接入自己的后端，可参考 [README 的 Typed decisions](https://github.com/Zefan-Cai/Open-Jev#typed-decisions)。
+更新部署版本后，应重新核验真实分类和错误提示，并记录新的代码、模型版本与性能观测。需要把请求接入自己的后端，可参考 [README 的 Typed decisions](https://github.com/Zefan-Cai/Open-Jev#typed-decisions)。
