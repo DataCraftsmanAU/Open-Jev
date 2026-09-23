@@ -10382,7 +10382,14 @@
       "existing_model_results_preserved": true,
       "workbench_preserved": true,
       "public_hardware_identifiers_sanitized": true,
-      "social_posts_published": false
+      "social_posts_published": true,
+      "social_thread_url": "https://x.com/Zefan_Cai/status/2102668551073255523",
+      "social_post_urls": [
+        "https://x.com/Zefan_Cai/status/2102668551073255523",
+        "https://x.com/Zefan_Cai/status/2102668552654496150",
+        "https://x.com/Zefan_Cai/status/2102668553845711093"
+      ],
+      "social_readback_verified": true
     }
   ]
 }
