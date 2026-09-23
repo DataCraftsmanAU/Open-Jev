@@ -30,13 +30,11 @@
     },
     {
       "path": "README.md",
-      "source_sha256": "e7067bf770aab5a340ed562f42b63151ea7d6f169d692c0789b9296c5b1cd0c2",
-      "sha256": "d23ae0946c01e25e3d591a8a711eed0c2e7c9447348d3fbb5e1dbfab849ae363",
-      "bytes": 17421,
+      "source_sha256": "500ef1b68cfccd1bf29a2ba5e140a98350a6dc9c621185e8f739f866ce13e463",
+      "sha256": "51881fadb5957a3e3a35a7f1598a419c4820be9aa563ffd5f758e81d4ef40a5e",
+      "bytes": 17820,
       "changes": [
-        "Preserve custom public README; add broader-data and project-story links and verified initialization status.",
-        "Preserve custom public README; record verified optimizer updates and prepared v3 data, frozen evaluation panel and unmeasured status.",
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+        "No-code text/CSV classification workbench; no new benchmark results."
       ]
     },
     {
@@ -68,6 +66,33 @@
       ]
     },
     {
+      "path": "deploy/huggingface-space/Dockerfile",
+      "sha256": "c0eb171aa46a4283412c31b3fd114d998c674a4ebd617325d71ed0419106e169",
+      "bytes": 1473,
+      "source_sha256": "c0eb171aa46a4283412c31b3fd114d998c674a4ebd617325d71ed0419106e169",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
+      "path": "deploy/huggingface-space/README.md",
+      "sha256": "72d06d8f18ddf255741b9d811dc384d4afd400e39ec108e4f625d0832f966426",
+      "bytes": 4453,
+      "source_sha256": "72d06d8f18ddf255741b9d811dc384d4afd400e39ec108e4f625d0832f966426",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
+      "path": "deploy/huggingface-space/app.py",
+      "sha256": "ecaea3069b310712e91c412ed9e8d74381e3ea0a71951eec9fa531b023062171",
+      "bytes": 12583,
+      "source_sha256": "ecaea3069b310712e91c412ed9e8d74381e3ea0a71951eec9fa531b023062171",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
       "path": "docs/amount-extraction-control.md",
       "source_sha256": "e15666754377b289f216264698c36a5821a5a2ba0a2511cd313e80f70ef79df9",
       "sha256": "e15666754377b289f216264698c36a5821a5a2ba0a2511cd313e80f70ef79df9",
@@ -78,6 +103,16 @@
       "source_sha256": "6c90b160180ca3d71fd9c0232293f6d57a9effd23bf07e0f6364442985ce9a93",
       "sha256": "6c90b160180ca3d71fd9c0232293f6d57a9effd23bf07e0f6364442985ce9a93",
       "bytes": 10628
+    },
+    {
+      "path": "docs/benchmarks.md",
+      "source_sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
+      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
+      "sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
+      "bytes": 10065,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
     },
     {
       "path": "docs/browser-data.md",
@@ -122,6 +157,12 @@
       "bytes": 6535
     },
     {
+      "path": "docs/community-hard-training-v3.md",
+      "source_sha256": "711f92869df5a41c8998e7746de867c2fc52e018571e51eb18c9fa0e253487db",
+      "sha256": "711f92869df5a41c8998e7746de867c2fc52e018571e51eb18c9fa0e253487db",
+      "bytes": 7188
+    },
+    {
       "path": "docs/community-research-20260920.md",
       "sha256": "689670eb2bf4b34144f42bc032d67dadd03e638c0fc6c852d6150f6f307b908c",
       "bytes": 13621,
@@ -143,6 +184,18 @@
       "source_sha256": "26468574063c4863808ba7e299a0f60d972eddf34ce5a60e66efb3e15897684a",
       "sha256": "26468574063c4863808ba7e299a0f60d972eddf34ce5a60e66efb3e15897684a",
       "bytes": 16584
+    },
+    {
+      "path": "docs/community-routing-v3.md",
+      "source_sha256": "8ed833a5c0bd468159911efc704a192cd91fcc8e3e61770aca95c96c390a95db",
+      "sha256": "8ed833a5c0bd468159911efc704a192cd91fcc8e3e61770aca95c96c390a95db",
+      "bytes": 9354
+    },
+    {
+      "path": "docs/community-workflow-v3.md",
+      "source_sha256": "df842498a04f5893bf578750e1b42ee8505d0ae531c8e2c6576ec96e6850e183",
+      "sha256": "df842498a04f5893bf578750e1b42ee8505d0ae531c8e2c6576ec96e6850e183",
+      "bytes": 7809
     },
     {
       "path": "docs/community.md",
@@ -249,6 +302,15 @@
       "bytes": 20586
     },
     {
+      "path": "docs/get-started.md",
+      "sha256": "33299e81d2a5e133a7b5833d067846675093c34862ee94e21d574c2f7a1b213b",
+      "bytes": 6409,
+      "source_sha256": "33299e81d2a5e133a7b5833d067846675093c34862ee94e21d574c2f7a1b213b",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
       "path": "docs/inference-latency.md",
       "sha256": "2e0e641b327f60c1f77130961993fd9d61b256f9a5da300cae3fd4c73306ba49",
       "bytes": 5295,
@@ -257,6 +319,12 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "docs/internal-evaluation.md",
+      "source_sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
+      "sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
+      "bytes": 7363
     },
     {
       "path": "docs/ir-control-data.md",
@@ -456,6 +524,12 @@
       ]
     },
     {
+      "path": "docs/sql-semantics-v3.md",
+      "source_sha256": "ed995257576de0ac3eb3651cdb52bba9410a045f1a531e70c5b540f90d7803a1",
+      "sha256": "ed995257576de0ac3eb3651cdb52bba9410a045f1a531e70c5b540f90d7803a1",
+      "bytes": 6735
+    },
+    {
       "path": "docs/training-coverage-gaps.md",
       "source_sha256": "60165eded83e3cff19cad0e41d3eaac02ba7cbfaec6afb55e5dee2971874afe9",
       "sha256": "60165eded83e3cff19cad0e41d3eaac02ba7cbfaec6afb55e5dee2971874afe9",
@@ -623,9 +697,12 @@
     },
     {
       "path": "examples/index.html",
-      "source_sha256": "8770569b785771b83e1acb22e3b4b89d08ff2157396fcc5bc506c147e266ab7c",
-      "sha256": "8770569b785771b83e1acb22e3b4b89d08ff2157396fcc5bc506c147e266ab7c",
-      "bytes": 5672
+      "source_sha256": "55a3c6b72f338c01cfb8e0a6acf6ec5b60c77217cb7fe3d3f3b1e063020b11a6",
+      "sha256": "55a3c6b72f338c01cfb8e0a6acf6ec5b60c77217cb7fe3d3f3b1e063020b11a6",
+      "bytes": 5747,
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
     },
     {
       "path": "examples/painting/app.mjs",
@@ -772,6 +849,42 @@
       "bytes": 497
     },
     {
+      "path": "examples/workbench/app.js",
+      "sha256": "176ce9b08202deb9c758e33ead2eec688ff4483005cc209c1e71a6961e09102a",
+      "bytes": 11183,
+      "source_sha256": "176ce9b08202deb9c758e33ead2eec688ff4483005cc209c1e71a6961e09102a",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
+      "path": "examples/workbench/index.html",
+      "sha256": "1b50ea9770d2720c6d57b592f4f83dd20c2ab4a13ddcb80206618235ea122b6d",
+      "bytes": 11468,
+      "source_sha256": "1b50ea9770d2720c6d57b592f4f83dd20c2ab4a13ddcb80206618235ea122b6d",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
+      "path": "examples/workbench/logic.mjs",
+      "sha256": "9a27a58ac6ab441655c678833ab1e50498ca6eb584752fcfc13bbc22c5e813e1",
+      "bytes": 7176,
+      "source_sha256": "9a27a58ac6ab441655c678833ab1e50498ca6eb584752fcfc13bbc22c5e813e1",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
+      "path": "examples/workbench/styles.css",
+      "sha256": "cea28d2dce23e6fc5f430f0c14a3a562cd23230b6de8ebc1de0e6fad2418419d",
+      "bytes": 18837,
+      "source_sha256": "cea28d2dce23e6fc5f430f0c14a3a562cd23230b6de8ebc1de0e6fad2418419d",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
       "path": "examples/workflows/agent_trace_observability.json",
       "source_sha256": "a099cf0102f7deefe5d11738ba647406d64d48f0bb62038e36d18d916892b710",
       "sha256": "a099cf0102f7deefe5d11738ba647406d64d48f0bb62038e36d18d916892b710",
@@ -906,6 +1019,18 @@
       "source_sha256": "2336b2e25f01f98e436924f7ff46a0057b05b772fa4d2e482a4db6af7f2a61c4",
       "sha256": "2336b2e25f01f98e436924f7ff46a0057b05b772fa4d2e482a4db6af7f2a61c4",
       "bytes": 62711
+    },
+    {
+      "path": "jev/community_routing_v3.py",
+      "source_sha256": "75dfd7d1742cea78cbb28e1788b8544e526f47727b5c1796c59c5a25c3674bd4",
+      "sha256": "75dfd7d1742cea78cbb28e1788b8544e526f47727b5c1796c59c5a25c3674bd4",
+      "bytes": 19773
+    },
+    {
+      "path": "jev/community_workflow_v3.py",
+      "source_sha256": "e7e4bc911787ff37d3a8c8553f26e6168a4c1cc77fd787de6f17876d467fb4c2",
+      "sha256": "e7e4bc911787ff37d3a8c8553f26e6168a4c1cc77fd787de6f17876d467fb4c2",
+      "bytes": 35140
     },
     {
       "path": "jev/context_retention_data.py",
@@ -1047,9 +1172,12 @@
     },
     {
       "path": "jev/server.py",
-      "source_sha256": "932aee18e81f9fc3d7a534f7a22f497c97bc45935626331e5452557d00b97ee1",
-      "sha256": "932aee18e81f9fc3d7a534f7a22f497c97bc45935626331e5452557d00b97ee1",
-      "bytes": 6458
+      "source_sha256": "0632bbdb0092cd4e8ad1dc7ee4aaaa95ae03fbfb60475939c80231f78eb6616a",
+      "sha256": "0632bbdb0092cd4e8ad1dc7ee4aaaa95ae03fbfb60475939c80231f78eb6616a",
+      "bytes": 6823,
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
     },
     {
       "path": "jev/serving.py",
@@ -1066,6 +1194,12 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "jev/sql_semantics_v3.py",
+      "source_sha256": "9f3cf5436c5fcb94845207967d4b9e1a5f90ffdb221803389bb62db33dc0ced3",
+      "sha256": "9f3cf5436c5fcb94845207967d4b9e1a5f90ffdb221803389bb62db33dc0ced3",
+      "bytes": 33985
     },
     {
       "path": "jev/train.py",
@@ -1743,6 +1877,60 @@
       "bytes": 1962
     },
     {
+      "path": "reports/community-diversity-v3/audit_integration.py",
+      "source_sha256": "d53a7e9d5325edda8036a747ae2ad40c31334bbd1def82f2baf908ea8ac38588",
+      "sha256": "d53a7e9d5325edda8036a747ae2ad40c31334bbd1def82f2baf908ea8ac38588",
+      "bytes": 20918
+    },
+    {
+      "path": "reports/community-diversity-v3/final-overlap-screen.json",
+      "source_sha256": "34abad5ac328e4ae4ebeee69e4c38cca07ca6c56d96a84bffc43c3d4dc60b607",
+      "sha256": "34abad5ac328e4ae4ebeee69e4c38cca07ca6c56d96a84bffc43c3d4dc60b607",
+      "bytes": 1127
+    },
+    {
+      "path": "reports/community-diversity-v3/focus-panel-manifest.json",
+      "source_sha256": "3cd051b48f324cf1d24c6981bed31269a503f12e2e7c0bd203a3391a586c2e8a",
+      "sha256": "3cd051b48f324cf1d24c6981bed31269a503f12e2e7c0bd203a3391a586c2e8a",
+      "bytes": 3938
+    },
+    {
+      "path": "reports/community-diversity-v3/integration-audit.json",
+      "source_sha256": "12e495b31200019f49137c26ca1ea5b78b82e52230e69faf15340596def39505",
+      "sha256": "12e495b31200019f49137c26ca1ea5b78b82e52230e69faf15340596def39505",
+      "bytes": 14768
+    },
+    {
+      "path": "reports/community-diversity-v3/queue-status.json",
+      "source_sha256": "03288db9e9d95f54abc5d000a733b8ab415869cf974ec6a74f02508c5ee35c58",
+      "sha256": "03288db9e9d95f54abc5d000a733b8ab415869cf974ec6a74f02508c5ee35c58",
+      "bytes": 976
+    },
+    {
+      "path": "reports/community-diversity-v3/tokenizer-preflight.json",
+      "source_sha256": "bbb318bde010d18392c8c7ea085c9f60c91438ef6999850c67ff20a10c8662d6",
+      "sha256": "bbb318bde010d18392c8c7ea085c9f60c91438ef6999850c67ff20a10c8662d6",
+      "bytes": 10758
+    },
+    {
+      "path": "reports/community-diversity-v3/training-mixture-manifest.json",
+      "source_sha256": "0c4abb45b9703a18d6e406013ea1f7d2c1f3d355b951d9f98d1875297d0dda05",
+      "sha256": "0c4abb45b9703a18d6e406013ea1f7d2c1f3d355b951d9f98d1875297d0dda05",
+      "bytes": 19277
+    },
+    {
+      "path": "reports/community-diversity-v3/training-plan.json",
+      "source_sha256": "365375ef024f4b47f2fba311e3a25600704058e8c3ee1d32fcac9e080540c6ad",
+      "sha256": "365375ef024f4b47f2fba311e3a25600704058e8c3ee1d32fcac9e080540c6ad",
+      "bytes": 3227
+    },
+    {
+      "path": "reports/community-diversity-v3/validation.json",
+      "source_sha256": "b2d982156674b9c2b8d486727a40260dc7211ff3ef71d89e2eb8797c67a39fa2",
+      "sha256": "b2d982156674b9c2b8d486727a40260dc7211ff3ef71d89e2eb8797c67a39fa2",
+      "bytes": 755
+    },
+    {
       "path": "reports/community-research-20260920/authenticated-x-followup.json",
       "sha256": "4d1f1ad129768519d4b32eb6c2ace123a553996fda09b5e65972dc3b2c5cbaff",
       "bytes": 4720,
@@ -1922,6 +2110,78 @@
       "bytes": 4219,
       "source_sha256": "248e961fc9c2b4ef781e575d4a4a3c165fb194642408c06f7218608fa37856be",
       "source_commit": "1d1f92ae660df0cffbfabb0166d94bd4af57d506"
+    },
+    {
+      "path": "reports/community-routing-v3/cpu-tests.txt",
+      "source_sha256": "4c0f58331c1d0f318a223bc80bf84c1e7afbf430dfa175ddb0dc62e5936c746e",
+      "sha256": "4c0f58331c1d0f318a223bc80bf84c1e7afbf430dfa175ddb0dc62e5936c746e",
+      "bytes": 1478
+    },
+    {
+      "path": "reports/community-routing-v3/data-manifest.json",
+      "source_sha256": "9ec1fdb644fa949e3cc879c335133f18bda3d741eb93183e5154b3616058a57e",
+      "sha256": "9ec1fdb644fa949e3cc879c335133f18bda3d741eb93183e5154b3616058a57e",
+      "bytes": 16862
+    },
+    {
+      "path": "reports/community-routing-v3/full-catalog-eval-only.json",
+      "source_sha256": "5596759515a02c1f7578fb53d58b359bc889534626812b7a40eb337ce1f43d68",
+      "sha256": "5596759515a02c1f7578fb53d58b359bc889534626812b7a40eb337ce1f43d68",
+      "bytes": 181573
+    },
+    {
+      "path": "reports/community-routing-v3/independent_audit.py",
+      "source_sha256": "364a60bed984e9fc969626d78a56431ebaad292c7beee95d144d742ad97ea4d9",
+      "sha256": "364a60bed984e9fc969626d78a56431ebaad292c7beee95d144d742ad97ea4d9",
+      "bytes": 15345
+    },
+    {
+      "path": "reports/community-routing-v3/integrity-audit.json",
+      "source_sha256": "c4571e52c2f640b929e1ccbe7513a959c56ab84d5abb25fd33cbd9be0110801e",
+      "sha256": "c4571e52c2f640b929e1ccbe7513a959c56ab84d5abb25fd33cbd9be0110801e",
+      "bytes": 4929
+    },
+    {
+      "path": "reports/community-routing-v3/source-manifest.json",
+      "source_sha256": "845a0006f8e694fee87c28bada16e26034b3022a344df9c3246a4c93a1726a12",
+      "sha256": "845a0006f8e694fee87c28bada16e26034b3022a344df9c3246a4c93a1726a12",
+      "bytes": 1925
+    },
+    {
+      "path": "reports/community-workflow-v3/README.md",
+      "source_sha256": "711fea29e609a97dd3b813f2fb502075b82058fd64cc61938cd85df3029be29e",
+      "sha256": "711fea29e609a97dd3b813f2fb502075b82058fd64cc61938cd85df3029be29e",
+      "bytes": 1747
+    },
+    {
+      "path": "reports/community-workflow-v3/audit_visible_records.py",
+      "source_sha256": "20006cc94d606994d4e0b0c2bf48931a7a12ed9ae60cb19b3d68d56dd682b78d",
+      "sha256": "20006cc94d606994d4e0b0c2bf48931a7a12ed9ae60cb19b3d68d56dd682b78d",
+      "bytes": 12339
+    },
+    {
+      "path": "reports/community-workflow-v3/independent-audit.json",
+      "source_sha256": "e60e5a3b0a784cae0a6b0344cec44a408653ae22fa993fa509df9fd51afadb83",
+      "sha256": "e60e5a3b0a784cae0a6b0344cec44a408653ae22fa993fa509df9fd51afadb83",
+      "bytes": 1951
+    },
+    {
+      "path": "reports/community-workflow-v3/manifest.json",
+      "source_sha256": "3fc6c0539c1a32325c9d0e0311c308019d4e2afab88d68f12f738ac636572af4",
+      "sha256": "3fc6c0539c1a32325c9d0e0311c308019d4e2afab88d68f12f738ac636572af4",
+      "bytes": 3577
+    },
+    {
+      "path": "reports/community-workflow-v3/validation.json",
+      "source_sha256": "028013dc4faf0096502d3fa698ed0e34aeee5cdfbf658c34e3cc2f9c345585f7",
+      "sha256": "028013dc4faf0096502d3fa698ed0e34aeee5cdfbf658c34e3cc2f9c345585f7",
+      "bytes": 1234
+    },
+    {
+      "path": "reports/community-workflow-v3/visible-input-audit.json",
+      "source_sha256": "86932747737a1e0f83c6645a26b80da1cf0805991cdcf9c05017ac0d0c6277e5",
+      "sha256": "86932747737a1e0f83c6645a26b80da1cf0805991cdcf9c05017ac0d0c6277e5",
+      "bytes": 2482
     },
     {
       "path": "reports/contact-service-eval/capture_tokenizer_lengths.py",
@@ -6668,6 +6928,16 @@
       "bytes": 40571
     },
     {
+      "path": "reports/site/benchmark-redesign-validation.json",
+      "source_sha256": "eaba74b5dadd463c0153e5ca5ae6fdd16da75a144182347e61a3ef52e50c6689",
+      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
+      "sha256": "eaba74b5dadd463c0153e5ca5ae6fdd16da75a144182347e61a3ef52e50c6689",
+      "bytes": 5469,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
+      ]
+    },
+    {
       "path": "reports/site/browser-audit-success-selection.json",
       "source_sha256": "9507f118bd60d42b841f0eede9e55819fbb59978629cd4dc98456c145e15680f",
       "sha256": "9507f118bd60d42b841f0eede9e55819fbb59978629cd4dc98456c145e15680f",
@@ -6762,6 +7032,30 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "reports/sql-semantics-v3/generation-audit.json",
+      "source_sha256": "2d359ee23dd3b8f712008f56a95be483de14d23e06879807883a91dd06691d62",
+      "sha256": "2d359ee23dd3b8f712008f56a95be483de14d23e06879807883a91dd06691d62",
+      "bytes": 1738
+    },
+    {
+      "path": "reports/sql-semantics-v3/independent-replay-audit.json",
+      "source_sha256": "3406f8a946b1d4177730b7aea24a0dfb1e550759aa8be10ca2818ad3196e3340",
+      "sha256": "3406f8a946b1d4177730b7aea24a0dfb1e550759aa8be10ca2818ad3196e3340",
+      "bytes": 1673
+    },
+    {
+      "path": "reports/sql-semantics-v3/independent_audit.py",
+      "source_sha256": "5fe2e96ddd84b27ee43f40ce743f035e7e04fcc994b57b3fcbfd659f53ee8483",
+      "sha256": "5fe2e96ddd84b27ee43f40ce743f035e7e04fcc994b57b3fcbfd659f53ee8483",
+      "bytes": 12904
+    },
+    {
+      "path": "reports/sql-semantics-v3/manifest.json",
+      "source_sha256": "26aa4e0aab6d30c3bb7f77eda0e36e56c8aaaaa8f04ab9aae5a3ff39022b1f8f",
+      "sha256": "26aa4e0aab6d30c3bb7f77eda0e36e56c8aaaaa8f04ab9aae5a3ff39022b1f8f",
+      "bytes": 5449
     },
     {
       "path": "reports/workflow-service/27b-workflow-pilot/predictions.jsonl",
@@ -7052,6 +7346,12 @@
       "bytes": 37138
     },
     {
+      "path": "scripts/evaluate_community_pair.py",
+      "source_sha256": "3895d23ef44657bcca8dc39e2c82487a286b291d5e2c271da5374a0ce654d2cc",
+      "sha256": "3895d23ef44657bcca8dc39e2c82487a286b291d5e2c271da5374a0ce654d2cc",
+      "bytes": 25569
+    },
+    {
       "path": "scripts/evaluate_contact_service.py",
       "source_sha256": "562dac913d4cebf2732aef9d055dd8dea126c2ec2987573321f1554caf06153a",
       "sha256": "562dac913d4cebf2732aef9d055dd8dea126c2ec2987573321f1554caf06153a",
@@ -7274,6 +7574,16 @@
       "source_sha256": "1943f9d7947a4be1b3f5ae94873bdbb7bf232da8bd6f7ba8b95462f137aebff3",
       "changes": [
         "Audited real Jev TREC strict/scalar results and verified publication; protected post-training continuation code."
+      ]
+    },
+    {
+      "path": "site/benchmarks/index.html",
+      "source_sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
+      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
+      "sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
+      "bytes": 15647,
+      "changes": [
+        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
       ]
     },
     {
@@ -8140,6 +8450,24 @@
       "bytes": 8437
     },
     {
+      "path": "tests/test_community_pair.py",
+      "source_sha256": "4034b3ee465c892ab8da88627096f21634399850c60960a73f2e7a7a4a91faa2",
+      "sha256": "4034b3ee465c892ab8da88627096f21634399850c60960a73f2e7a7a4a91faa2",
+      "bytes": 18396
+    },
+    {
+      "path": "tests/test_community_routing_v3.py",
+      "source_sha256": "46547b7c484e61d2ac6012c5e663558e9e259871d6814b5b8e053c9403a1557e",
+      "sha256": "46547b7c484e61d2ac6012c5e663558e9e259871d6814b5b8e053c9403a1557e",
+      "bytes": 8793
+    },
+    {
+      "path": "tests/test_community_workflow_v3.py",
+      "source_sha256": "f9997f8fb2c851fe2ca0936143b38f15a1cb05613583859e40d6129c4a79ffb2",
+      "sha256": "f9997f8fb2c851fe2ca0936143b38f15a1cb05613583859e40d6129c4a79ffb2",
+      "bytes": 13071
+    },
+    {
       "path": "tests/test_contact_service.py",
       "source_sha256": "3606f0727c3983f833d0ddecf9a6d7218f589d99db0682d2502501e20e4e89eb",
       "sha256": "3606f0727c3983f833d0ddecf9a6d7218f589d99db0682d2502501e20e4e89eb",
@@ -8414,9 +8742,12 @@
     },
     {
       "path": "tests/test_serving.py",
-      "source_sha256": "4bb3da885f134e533588aa472fcab3df4cfb1c3f2ba585786c74187a319c694d",
-      "sha256": "4bb3da885f134e533588aa472fcab3df4cfb1c3f2ba585786c74187a319c694d",
-      "bytes": 6769
+      "source_sha256": "53d9705d97b3c43c3f87a399d0182dce773b9307a7db985f3653f1f4c5123757",
+      "sha256": "53d9705d97b3c43c3f87a399d0182dce773b9307a7db985f3653f1f4c5123757",
+      "bytes": 7107,
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
     },
     {
       "path": "tests/test_silent_failure_data.py",
@@ -8429,6 +8760,15 @@
       ]
     },
     {
+      "path": "tests/test_space_app.py",
+      "sha256": "eccf01b62cbe7c9d1bbb428e0f362816fa8f858d97f093309bb65c91b90c3248",
+      "bytes": 9533,
+      "source_sha256": "eccf01b62cbe7c9d1bbb428e0f362816fa8f858d97f093309bb65c91b90c3248",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
       "path": "tests/test_sponsor_segments.py",
       "sha256": "77b0fe4a221ef589476230a2c7c6f044141b89c4be61255fb125a1f5627cc7c8",
       "bytes": 4597,
@@ -8437,6 +8777,12 @@
       "changes": [
         "Verified community/provider-comparison follow-up; public projection where documented."
       ]
+    },
+    {
+      "path": "tests/test_sql_semantics_v3.py",
+      "source_sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
+      "sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
+      "bytes": 11729
     },
     {
       "path": "tests/test_training_initialization.py",
@@ -8480,6 +8826,15 @@
       "bytes": 3538
     },
     {
+      "path": "tests/test_workbench.mjs",
+      "sha256": "e575c15aa618aba70de4b0b7906f0764464cfc5884b85266284ee9b4af4fca29",
+      "bytes": 3576,
+      "source_sha256": "e575c15aa618aba70de4b0b7906f0764464cfc5884b85266284ee9b4af4fca29",
+      "changes": [
+        "No-code text/CSV classification workbench; no new benchmark results."
+      ]
+    },
+    {
       "path": "tests/test_workflows.py",
       "source_sha256": "cbec713649762b8966f17f7fad40da3be35b170fd566d6f8f9ccdfd4e69bbe50",
       "sha256": "cbec713649762b8966f17f7fad40da3be35b170fd566d6f8f9ccdfd4e69bbe50",
@@ -8496,264 +8851,6 @@
       "source_sha256": "8d77b0b07ec0e34af6dfa238d05d2f95109926df91b468bfb238276610d1c420",
       "sha256": "8d77b0b07ec0e34af6dfa238d05d2f95109926df91b468bfb238276610d1c420",
       "bytes": 1875
-    },
-    {
-      "path": "docs/community-hard-training-v3.md",
-      "source_sha256": "711f92869df5a41c8998e7746de867c2fc52e018571e51eb18c9fa0e253487db",
-      "sha256": "711f92869df5a41c8998e7746de867c2fc52e018571e51eb18c9fa0e253487db",
-      "bytes": 7188
-    },
-    {
-      "path": "docs/community-routing-v3.md",
-      "source_sha256": "8ed833a5c0bd468159911efc704a192cd91fcc8e3e61770aca95c96c390a95db",
-      "sha256": "8ed833a5c0bd468159911efc704a192cd91fcc8e3e61770aca95c96c390a95db",
-      "bytes": 9354
-    },
-    {
-      "path": "docs/community-workflow-v3.md",
-      "source_sha256": "df842498a04f5893bf578750e1b42ee8505d0ae531c8e2c6576ec96e6850e183",
-      "sha256": "df842498a04f5893bf578750e1b42ee8505d0ae531c8e2c6576ec96e6850e183",
-      "bytes": 7809
-    },
-    {
-      "path": "docs/internal-evaluation.md",
-      "source_sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
-      "sha256": "d9d1c0135fb435516434d03a291f604dee2d296af67880ce6cf3fa149ad08b6e",
-      "bytes": 7363
-    },
-    {
-      "path": "docs/sql-semantics-v3.md",
-      "source_sha256": "ed995257576de0ac3eb3651cdb52bba9410a045f1a531e70c5b540f90d7803a1",
-      "sha256": "ed995257576de0ac3eb3651cdb52bba9410a045f1a531e70c5b540f90d7803a1",
-      "bytes": 6735
-    },
-    {
-      "path": "jev/community_routing_v3.py",
-      "source_sha256": "75dfd7d1742cea78cbb28e1788b8544e526f47727b5c1796c59c5a25c3674bd4",
-      "sha256": "75dfd7d1742cea78cbb28e1788b8544e526f47727b5c1796c59c5a25c3674bd4",
-      "bytes": 19773
-    },
-    {
-      "path": "jev/community_workflow_v3.py",
-      "source_sha256": "e7e4bc911787ff37d3a8c8553f26e6168a4c1cc77fd787de6f17876d467fb4c2",
-      "sha256": "e7e4bc911787ff37d3a8c8553f26e6168a4c1cc77fd787de6f17876d467fb4c2",
-      "bytes": 35140
-    },
-    {
-      "path": "jev/sql_semantics_v3.py",
-      "source_sha256": "9f3cf5436c5fcb94845207967d4b9e1a5f90ffdb221803389bb62db33dc0ced3",
-      "sha256": "9f3cf5436c5fcb94845207967d4b9e1a5f90ffdb221803389bb62db33dc0ced3",
-      "bytes": 33985
-    },
-    {
-      "path": "reports/community-diversity-v3/audit_integration.py",
-      "source_sha256": "d53a7e9d5325edda8036a747ae2ad40c31334bbd1def82f2baf908ea8ac38588",
-      "sha256": "d53a7e9d5325edda8036a747ae2ad40c31334bbd1def82f2baf908ea8ac38588",
-      "bytes": 20918
-    },
-    {
-      "path": "reports/community-diversity-v3/final-overlap-screen.json",
-      "source_sha256": "34abad5ac328e4ae4ebeee69e4c38cca07ca6c56d96a84bffc43c3d4dc60b607",
-      "sha256": "34abad5ac328e4ae4ebeee69e4c38cca07ca6c56d96a84bffc43c3d4dc60b607",
-      "bytes": 1127
-    },
-    {
-      "path": "reports/community-diversity-v3/focus-panel-manifest.json",
-      "source_sha256": "3cd051b48f324cf1d24c6981bed31269a503f12e2e7c0bd203a3391a586c2e8a",
-      "sha256": "3cd051b48f324cf1d24c6981bed31269a503f12e2e7c0bd203a3391a586c2e8a",
-      "bytes": 3938
-    },
-    {
-      "path": "reports/community-diversity-v3/integration-audit.json",
-      "source_sha256": "12e495b31200019f49137c26ca1ea5b78b82e52230e69faf15340596def39505",
-      "sha256": "12e495b31200019f49137c26ca1ea5b78b82e52230e69faf15340596def39505",
-      "bytes": 14768
-    },
-    {
-      "path": "reports/community-diversity-v3/training-mixture-manifest.json",
-      "source_sha256": "0c4abb45b9703a18d6e406013ea1f7d2c1f3d355b951d9f98d1875297d0dda05",
-      "sha256": "0c4abb45b9703a18d6e406013ea1f7d2c1f3d355b951d9f98d1875297d0dda05",
-      "bytes": 19277
-    },
-    {
-      "path": "reports/community-diversity-v3/training-plan.json",
-      "source_sha256": "365375ef024f4b47f2fba311e3a25600704058e8c3ee1d32fcac9e080540c6ad",
-      "sha256": "365375ef024f4b47f2fba311e3a25600704058e8c3ee1d32fcac9e080540c6ad",
-      "bytes": 3227
-    },
-    {
-      "path": "reports/community-diversity-v3/validation.json",
-      "source_sha256": "b2d982156674b9c2b8d486727a40260dc7211ff3ef71d89e2eb8797c67a39fa2",
-      "sha256": "b2d982156674b9c2b8d486727a40260dc7211ff3ef71d89e2eb8797c67a39fa2",
-      "bytes": 755
-    },
-    {
-      "path": "reports/community-routing-v3/cpu-tests.txt",
-      "source_sha256": "4c0f58331c1d0f318a223bc80bf84c1e7afbf430dfa175ddb0dc62e5936c746e",
-      "sha256": "4c0f58331c1d0f318a223bc80bf84c1e7afbf430dfa175ddb0dc62e5936c746e",
-      "bytes": 1478
-    },
-    {
-      "path": "reports/community-routing-v3/data-manifest.json",
-      "source_sha256": "9ec1fdb644fa949e3cc879c335133f18bda3d741eb93183e5154b3616058a57e",
-      "sha256": "9ec1fdb644fa949e3cc879c335133f18bda3d741eb93183e5154b3616058a57e",
-      "bytes": 16862
-    },
-    {
-      "path": "reports/community-routing-v3/full-catalog-eval-only.json",
-      "source_sha256": "5596759515a02c1f7578fb53d58b359bc889534626812b7a40eb337ce1f43d68",
-      "sha256": "5596759515a02c1f7578fb53d58b359bc889534626812b7a40eb337ce1f43d68",
-      "bytes": 181573
-    },
-    {
-      "path": "reports/community-routing-v3/independent_audit.py",
-      "source_sha256": "364a60bed984e9fc969626d78a56431ebaad292c7beee95d144d742ad97ea4d9",
-      "sha256": "364a60bed984e9fc969626d78a56431ebaad292c7beee95d144d742ad97ea4d9",
-      "bytes": 15345
-    },
-    {
-      "path": "reports/community-routing-v3/integrity-audit.json",
-      "source_sha256": "c4571e52c2f640b929e1ccbe7513a959c56ab84d5abb25fd33cbd9be0110801e",
-      "sha256": "c4571e52c2f640b929e1ccbe7513a959c56ab84d5abb25fd33cbd9be0110801e",
-      "bytes": 4929
-    },
-    {
-      "path": "reports/community-routing-v3/source-manifest.json",
-      "source_sha256": "845a0006f8e694fee87c28bada16e26034b3022a344df9c3246a4c93a1726a12",
-      "sha256": "845a0006f8e694fee87c28bada16e26034b3022a344df9c3246a4c93a1726a12",
-      "bytes": 1925
-    },
-    {
-      "path": "reports/community-workflow-v3/README.md",
-      "source_sha256": "711fea29e609a97dd3b813f2fb502075b82058fd64cc61938cd85df3029be29e",
-      "sha256": "711fea29e609a97dd3b813f2fb502075b82058fd64cc61938cd85df3029be29e",
-      "bytes": 1747
-    },
-    {
-      "path": "reports/community-workflow-v3/audit_visible_records.py",
-      "source_sha256": "20006cc94d606994d4e0b0c2bf48931a7a12ed9ae60cb19b3d68d56dd682b78d",
-      "sha256": "20006cc94d606994d4e0b0c2bf48931a7a12ed9ae60cb19b3d68d56dd682b78d",
-      "bytes": 12339
-    },
-    {
-      "path": "reports/community-workflow-v3/independent-audit.json",
-      "source_sha256": "e60e5a3b0a784cae0a6b0344cec44a408653ae22fa993fa509df9fd51afadb83",
-      "sha256": "e60e5a3b0a784cae0a6b0344cec44a408653ae22fa993fa509df9fd51afadb83",
-      "bytes": 1951
-    },
-    {
-      "path": "reports/community-workflow-v3/manifest.json",
-      "source_sha256": "3fc6c0539c1a32325c9d0e0311c308019d4e2afab88d68f12f738ac636572af4",
-      "sha256": "3fc6c0539c1a32325c9d0e0311c308019d4e2afab88d68f12f738ac636572af4",
-      "bytes": 3577
-    },
-    {
-      "path": "reports/community-workflow-v3/validation.json",
-      "source_sha256": "028013dc4faf0096502d3fa698ed0e34aeee5cdfbf658c34e3cc2f9c345585f7",
-      "sha256": "028013dc4faf0096502d3fa698ed0e34aeee5cdfbf658c34e3cc2f9c345585f7",
-      "bytes": 1234
-    },
-    {
-      "path": "reports/community-workflow-v3/visible-input-audit.json",
-      "source_sha256": "86932747737a1e0f83c6645a26b80da1cf0805991cdcf9c05017ac0d0c6277e5",
-      "sha256": "86932747737a1e0f83c6645a26b80da1cf0805991cdcf9c05017ac0d0c6277e5",
-      "bytes": 2482
-    },
-    {
-      "path": "reports/sql-semantics-v3/generation-audit.json",
-      "source_sha256": "2d359ee23dd3b8f712008f56a95be483de14d23e06879807883a91dd06691d62",
-      "sha256": "2d359ee23dd3b8f712008f56a95be483de14d23e06879807883a91dd06691d62",
-      "bytes": 1738
-    },
-    {
-      "path": "reports/sql-semantics-v3/independent-replay-audit.json",
-      "source_sha256": "3406f8a946b1d4177730b7aea24a0dfb1e550759aa8be10ca2818ad3196e3340",
-      "sha256": "3406f8a946b1d4177730b7aea24a0dfb1e550759aa8be10ca2818ad3196e3340",
-      "bytes": 1673
-    },
-    {
-      "path": "reports/sql-semantics-v3/independent_audit.py",
-      "source_sha256": "5fe2e96ddd84b27ee43f40ce743f035e7e04fcc994b57b3fcbfd659f53ee8483",
-      "sha256": "5fe2e96ddd84b27ee43f40ce743f035e7e04fcc994b57b3fcbfd659f53ee8483",
-      "bytes": 12904
-    },
-    {
-      "path": "reports/sql-semantics-v3/manifest.json",
-      "source_sha256": "26aa4e0aab6d30c3bb7f77eda0e36e56c8aaaaa8f04ab9aae5a3ff39022b1f8f",
-      "sha256": "26aa4e0aab6d30c3bb7f77eda0e36e56c8aaaaa8f04ab9aae5a3ff39022b1f8f",
-      "bytes": 5449
-    },
-    {
-      "path": "scripts/evaluate_community_pair.py",
-      "source_sha256": "3895d23ef44657bcca8dc39e2c82487a286b291d5e2c271da5374a0ce654d2cc",
-      "sha256": "3895d23ef44657bcca8dc39e2c82487a286b291d5e2c271da5374a0ce654d2cc",
-      "bytes": 25569
-    },
-    {
-      "path": "tests/test_community_pair.py",
-      "source_sha256": "4034b3ee465c892ab8da88627096f21634399850c60960a73f2e7a7a4a91faa2",
-      "sha256": "4034b3ee465c892ab8da88627096f21634399850c60960a73f2e7a7a4a91faa2",
-      "bytes": 18396
-    },
-    {
-      "path": "tests/test_community_routing_v3.py",
-      "source_sha256": "46547b7c484e61d2ac6012c5e663558e9e259871d6814b5b8e053c9403a1557e",
-      "sha256": "46547b7c484e61d2ac6012c5e663558e9e259871d6814b5b8e053c9403a1557e",
-      "bytes": 8793
-    },
-    {
-      "path": "tests/test_community_workflow_v3.py",
-      "source_sha256": "f9997f8fb2c851fe2ca0936143b38f15a1cb05613583859e40d6129c4a79ffb2",
-      "sha256": "f9997f8fb2c851fe2ca0936143b38f15a1cb05613583859e40d6129c4a79ffb2",
-      "bytes": 13071
-    },
-    {
-      "path": "tests/test_sql_semantics_v3.py",
-      "source_sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
-      "sha256": "bb9f55c1df99d26c2d243c4f0c57d709fd287e014b3367d7158a193b5914c63a",
-      "bytes": 11729
-    },
-    {
-      "path": "docs/benchmarks.md",
-      "source_sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
-      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
-      "sha256": "2df83beeb7823b686cf634366f45134a2335eda840ebef96865c8b2c2481d4b9",
-      "bytes": 10065,
-      "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
-      ]
-    },
-    {
-      "path": "reports/community-diversity-v3/queue-status.json",
-      "source_sha256": "03288db9e9d95f54abc5d000a733b8ab415869cf974ec6a74f02508c5ee35c58",
-      "sha256": "03288db9e9d95f54abc5d000a733b8ab415869cf974ec6a74f02508c5ee35c58",
-      "bytes": 976
-    },
-    {
-      "path": "reports/community-diversity-v3/tokenizer-preflight.json",
-      "source_sha256": "bbb318bde010d18392c8c7ea085c9f60c91438ef6999850c67ff20a10c8662d6",
-      "sha256": "bbb318bde010d18392c8c7ea085c9f60c91438ef6999850c67ff20a10c8662d6",
-      "bytes": 10758
-    },
-    {
-      "path": "reports/site/benchmark-redesign-validation.json",
-      "source_sha256": "eaba74b5dadd463c0153e5ca5ae6fdd16da75a144182347e61a3ef52e50c6689",
-      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
-      "sha256": "eaba74b5dadd463c0153e5ca5ae6fdd16da75a144182347e61a3ef52e50c6689",
-      "bytes": 5469,
-      "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
-      ]
-    },
-    {
-      "path": "site/benchmarks/index.html",
-      "source_sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
-      "source_origin": "Authored in the public checkout from preserved published reports; no private source file at the baseline source commit.",
-      "sha256": "af6551267d9644c23fb543b5858429662494dcbbbd28c157569bc689122dd32a",
-      "bytes": 15647,
-      "changes": [
-        "Readable research-project presentation, unified benchmark index and explicit resource links; original scientific JSON and media preserved."
-      ]
     }
   ],
   "excluded_development_files": [
@@ -9239,7 +9336,7 @@
   "archived_remote_context_links_verified": 15,
   "scientific_metrics_modified": false,
   "social_posts_published_by_this_release": false,
-  "current_source_commit": "529443b42684f625e542e14987b0e8cb7e89e9e6",
+  "current_source_commit": "9e7eff3f99f86b4f49bf143d77d70007b7468c62",
   "followup_releases": [
     {
       "id": "community-and-provider-comparison-20260920",
@@ -9943,6 +10040,39 @@
         "benchmark_values_independently_reviewed": true,
         "stylesheet_cache_version": "readable-20260921",
         "report": "reports/site/benchmark-redesign-validation.json"
+      }
+    },
+    {
+      "id": "no-code-workbench-source-20260923",
+      "source_commit": "9e7eff3f99f86b4f49bf143d77d70007b7468c62",
+      "created_at": "2026-09-23T05:53:39.902069+00:00",
+      "paths": [
+        "README.md",
+        "jev/server.py",
+        "examples/index.html",
+        "examples/workbench/index.html",
+        "examples/workbench/styles.css",
+        "examples/workbench/app.js",
+        "examples/workbench/logic.mjs",
+        "tests/test_serving.py",
+        "tests/test_workbench.mjs",
+        "tests/test_space_app.py",
+        "deploy/huggingface-space/app.py",
+        "deploy/huggingface-space/Dockerfile",
+        "docs/get-started.md",
+        "deploy/huggingface-space/README.md"
+      ],
+      "description": "Interactive browser text/CSV categorization, reproducible CPU Space deployment, and user guide. Model predictions require a real service; illustrative data are clearly labeled.",
+      "new_model_quality_results": false,
+      "existing_numeric_results_modified": false,
+      "raw_training_data_included": false,
+      "private_operational_files_included": false,
+      "social_posts_published": false,
+      "verification": {
+        "cpu_http_and_contract_tests": 21,
+        "javascript_contract_tests": 6,
+        "fixture_browser_checks": 11,
+        "fixture_checks_are_model_inference": false
       }
     }
   ]

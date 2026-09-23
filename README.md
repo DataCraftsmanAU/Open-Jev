@@ -11,6 +11,8 @@ without autoregressive answer generation or parsing generated JSON.
 [9B model](https://huggingface.co/ZefanCai/Open-Jev-9B) ·
 [Dataset](https://huggingface.co/datasets/ZefanCai/Open-Jev)
 
+**No-code workbench:** [User guide](docs/get-started.md) · [Workbench source](examples/workbench/) · [CPU deployment](deploy/huggingface-space/). Paste messages or import a CSV, define your categories, and download the original table with suggested labels and candidate probabilities. The interface calls a real Open-Jev service; its optional walkthrough is explicitly marked as an illustrative example.
+
 **Benchmarks:** [Results and scope](docs/benchmarks.md) ·
 [Website tables](https://zefan-cai.github.io/open-jev/benchmarks/) ·
 [Source code](https://github.com/Zefan-Cai/Open-Jev)
@@ -20,10 +22,9 @@ at the links above. The 2B/9B artifacts are LoRA adapters plus a trained scalar 
 head and calibration temperature. They require the pinned upstream Qwen
 weights and the Open-Jev loader; they are not merged base models or ordinary
 text-generation checkpoints. The dedicated public JevBench evaluation is
-complete. A new 27B training iteration with more diverse training data
-is training on four H100 GPUs, with optimizer updates verified at step 616
-on September 21, 2026 at 07:31 UTC. Final checkpoint evaluation remains pending;
-finite training loss does not establish a quality improvement.
+complete. The new 27B training iteration is complete; its full internal
+evaluation and independent audit are still in progress. New model results
+will be published after that audit.
 
 Open-Jev is an independent implementation inspired by TypeSafe's Jev. It does
 not reproduce proprietary RLCD, private weights or training data, and does not
@@ -105,7 +106,8 @@ python -m jev.server --checkpoint models/Open-Jev-2B/package/checkpoint \
 The download is pinned to the published 2B revision. The 9B package uses the
 same layout at revision `47e966881e489511c0c7f5633a9e1960a676a551`. The public
 dataset revision is `c67699e13d0ae25e35b77165a4b6b079bedc8aba`; the original release remains reproducible at `341d9338462da1cf56ba57519fb0f3f5258b825f`.
-Open **http://127.0.0.1:8791** for the task lab or
+Open **http://127.0.0.1:8791** for the text/CSV classification workbench,
+**http://127.0.0.1:8791/examples/index.html** for the developer task lab, or
 **http://127.0.0.1:8791/examples/painting/index.html** for probability painting.
 Run from the checkout to serve the example UI. No live business action is
 performed by the server.
